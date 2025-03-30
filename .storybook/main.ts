@@ -1,4 +1,5 @@
 import type { StorybookConfig } from "@storybook/experimental-nextjs-vite";
+import { mergeConfig } from "vite";
 
 const config: StorybookConfig = {
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
@@ -15,14 +16,20 @@ const config: StorybookConfig = {
   staticDirs: ["../public"],
   viteFinal: (config) => {
     // Ignore postcss.config.mjs, important fix that causes a SB bug.
-    config.css = {
-      ...config.css,
-      postcss: {
-        // Empty configurations for error preventing.
-        plugins: [],
+    return mergeConfig(config, {
+      resolve: {
+        alias: {
+          "@": "../src",
+        },
       },
-    };
-    return config;
+      css: {
+        ...config.css,
+        postcss: {
+          // Empty configurations for error preventing.
+          plugins: [],
+        },
+      },
+    });
   },
 };
 
