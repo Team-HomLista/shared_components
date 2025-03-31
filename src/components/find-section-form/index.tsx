@@ -14,8 +14,7 @@ export interface FindFormProps {}
 /**
  * FindForm is a React functional component that provides a form
  * for selecting property-related options such as property type,
- * location, and search type. It uses Radix UI's Select components
- * for dropdown menus.
+ * location, and search type.
  *
  * @component
  * @example

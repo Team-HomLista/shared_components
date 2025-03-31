@@ -2,7 +2,6 @@ import { SectionHeader } from "@/components/section-header";
 import { FC } from "react";
 import React from "react";
 import { Text } from "@/components/ui/text";
-import { Label } from "@radix-ui/react-select";
 
 interface City {
   name: string;
@@ -117,7 +116,7 @@ export const CitiesSection: FC<CitiesSectionProps> = ({}) => {
         ciudades de México. Encuentra tu próximo hogar o inversión en lugares 
         como Cancún, Playa del Carmen, Ciudad de México, y mucho más"
           orientation="left"
-        ></SectionHeader>
+        />
         <CitiesGrid cities={cities} />
       </div>
     </section>

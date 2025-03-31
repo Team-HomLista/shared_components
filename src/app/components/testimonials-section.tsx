@@ -1,9 +1,7 @@
 import { SectionHeader } from "@/components/section-header";
 import { FC } from "react";
 
-interface TestimonialsSectionProps {
-  // Define your props here
-}
+interface TestimonialsSectionProps {}
 
 export const TestimonialsSection: FC<TestimonialsSectionProps> = ({}) => {
   return (

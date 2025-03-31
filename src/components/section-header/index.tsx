@@ -21,9 +21,10 @@ export interface SectionHeaderProps {
 }
 
 /**
- * SectionHeader is a React functional component that renders a section header
- * with a title, description, and optional children. It supports configurable
- * orientation to align the content either to the left or right.
+ * SectionHeader renders a section header with a title, description,
+ * and optional children. It supports configurableorientation to align the
+ * content either to the left or right. It must be used at the top whenever a
+ * section is created
  *
  * @component
  * @example

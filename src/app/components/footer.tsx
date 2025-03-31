@@ -6,12 +6,6 @@ import { FC } from "react";
 
 interface FooterProps {}
 
-/**
- *
- *
- * @param param0
- * @returns
- */
 export const Footer: FC<FooterProps> = ({}) => {
   const socialMediaIcons = [
     {

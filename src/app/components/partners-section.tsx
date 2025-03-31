@@ -13,7 +13,7 @@ export const PartnersSection: FC<PartnersSectionProps> = ({}) => {
         description="Colaboramos con organizacionesy asociaciones reconocidas 
         para garantizar los más altos estándares del mercado inmobiliario"
         orientation="right"
-      ></SectionHeader>
+      />
     </section>
   );
 };

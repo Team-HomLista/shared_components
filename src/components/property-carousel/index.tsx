@@ -11,23 +11,7 @@ import {
 import { Bed, Car, Heart, Ruler, ShowerHead } from "lucide-react";
 import { PropertyCarouselFeatureItem } from "./feature-item";
 
-/**
- * DiscoverCarousel is a React functional component that displays a carousel
- * of property listings. Each property includes details such as an image,
- * tag, title, location, price, and features (e.g., rooms, showers, cars, size).
- * Users can mark properties as favorites by clicking the heart icon.
- *
- * @component
- * @example
- * return (
- *   <DiscoverCarousel />
- * )
- */
 const DiscoverCarousel = () => {
-  /**
-   * State to manage the favorite status of each property.
-   * @type {boolean[]}
-   */
   const [favorites, setFavorites] = useState([
     false,
     false,
@@ -36,22 +20,12 @@ const DiscoverCarousel = () => {
     false,
   ]);
 
-  /**
-   * Toggles the favorite status of a property.
-   *
-   * @param {number} index - The index of the property to toggle.
-   */
   const toggleFavorite = (index: number) => {
     const newFavorites = [...favorites];
     newFavorites[index] = !newFavorites[index];
     setFavorites(newFavorites);
   };
 
-  /**
-   * Array of property items to display in the carousel.
-   * Each item includes details such as image, tag, title, location, price,
-   * number of rooms, showers, cars, and size.
-   */
   const items = [
     {
       image: "https://pics.craiyon.com/2024-04-22/d25WiRyTTnazlHfrKYp2HA.webp",

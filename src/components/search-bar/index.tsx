@@ -29,7 +29,7 @@ export interface SearchBarProps {}
  *   <SearchBar />
  * )
  *
- * @returns {JSX.Element} A JSX element rendering the search bar.
+ * @returns {JSX.Element}
  */
 export const SearchBar: FC<SearchBarProps> = () => {
   /**

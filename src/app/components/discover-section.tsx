@@ -1,8 +1,6 @@
 import { FC } from "react";
 import DiscoverCarousel from "@/components/property-carousel";
 import { Button } from "@/components/ui/button";
-import { Divider } from "@/components/divider";
-import { Section } from "lucide-react";
 import { SectionHeader } from "@/components/section-header";
 
 interface DiscoverSectionProps {}

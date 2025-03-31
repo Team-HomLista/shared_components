@@ -4,7 +4,7 @@ import { Button } from "../ui/button";
 interface navbarProps {}
 
 /**
- * @todo
+ * @todo create navbar using figma
  * @param param0
  * @returns
  */

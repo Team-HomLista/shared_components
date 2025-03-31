@@ -1,5 +1,3 @@
-import { Divider } from "@/components/divider";
-import { FindForm } from "@/components/find-section-form";
 import { SectionHeader } from "@/components/section-header";
 import { Button } from "@/components/ui/button";
 import { FC } from "react";
