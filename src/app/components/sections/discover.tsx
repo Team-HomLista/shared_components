@@ -25,18 +25,6 @@ export interface DiscoverSectionProps extends PropertyCarouselProps {}
  * />
  * ```
  *
- * @param {DiscoverSectionProps} props - The props for the component.
- * @param {Array<Object>} props.items - An array of property items to display in the carousel.
- * Each item should include details such as `id`, `title`, and `image`.
- * @param {Function} props.onClickLike - A callback function triggered when the "like" button
- * is clicked on a property item. Receives the `id` of the liked property as an argument.
- *
- * @returns {JSX.Element} A JSX element representing the discover section.
- *
- * @remarks
- * This component is typically used in property listing pages to allow users to explore
- * available properties. It leverages the `PropertyCarousel` component to display the items
- * in a scrollable format.
  */
 export const DiscoverSection: FC<DiscoverSectionProps> = ({
   items,

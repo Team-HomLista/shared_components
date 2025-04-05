@@ -3,15 +3,7 @@ import { PropertyCardItemProps } from "@/components/property-card";
 import { Property } from "@/types/property";
 import { useEffect, useState } from "react";
 
-/** UseHomeProps
- *
- * Defines the props for the `useHome` hook.
- * Includes an array of `Property` objects representing the properties to be displayed.
- */
 export interface UseHomeProps {
-  /**
-   * Array of properties to be processed and displayed.
-   */
   properties: Array<Property>;
 }
 
@@ -28,9 +20,6 @@ export interface UseHomeReturn {
    */
   onClickLike: (index: number, isLiked: boolean) => void;
 
-  /**
-   * Array of property card items to be displayed, excluding the `onClickLike` function.
-   */
   items: Array<Omit<PropertyCardItemProps, "onClickLike">>;
 }
 
@@ -70,14 +59,6 @@ export const useHome = ({ properties }: UseHomeProps): UseHomeReturn => {
     );
   }, []);
 
-  /** onClickLike
-   *
-   * Handles the "like" action for a property card.
-   * Currently, this function is a placeholder and does not perform any actions.
-   *
-   * @param {number} index - Index of the property card.
-   * @param {boolean} isLiked - Current like state of the property card.
-   */
   const onClickLike = (index: number, isLiked: boolean) => {};
 
   return { items, onClickLike };

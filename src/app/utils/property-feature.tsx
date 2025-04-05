@@ -35,6 +35,7 @@ const featureIconMap: Record<Feature, React.FC> = {
 export const getFeatureIcons = (features: Array<PropertyFeature>) => {
   return features.map((feature) => {
     const Icon = featureIconMap[Feature[feature.type]];
+
     return (
       <div
         key={feature.type}
