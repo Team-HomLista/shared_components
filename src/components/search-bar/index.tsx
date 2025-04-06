@@ -12,9 +12,6 @@ import {
 import { Text } from "@/components/ui/text";
 import { ChevronsUpDown, Search } from "lucide-react";
 
-/**
- * Props for the SearchBar component.
- */
 export interface SearchBarProps {}
 
 /**
