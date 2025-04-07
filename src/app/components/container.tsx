@@ -10,9 +10,9 @@ import { Footer } from "../../components/footer/footer";
 import { useHome } from "./use-home";
 import { properties } from "../../dummy/property";
 
-export interface HomepageLayoutProps {}
+export interface HomepageContainerProps {}
 
-export const HomepageLayout: FC<HomepageLayoutProps> = ({}) => {
+export const HomepageContainer: FC<HomepageContainerProps> = ({}) => {
   const { onClickLike, items } = useHome({ properties });
 
   return (
