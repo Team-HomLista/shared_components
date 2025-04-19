@@ -6,16 +6,16 @@ interface HeroSectionProps {}
 export const HeroSection: FC<HeroSectionProps> = ({}) => {
   return (
     <section
-      className="w-full h-screen flex flex-col items-start px-32 pt-24"
+      className="flex h-screen w-full flex-col items-start px-32 pt-24"
       style={{
-        backgroundImage: "url('/images/homlistaHero.png')",
+        backgroundImage: "url('/images/hero-assets/homepage.png')",
         backgroundSize: "100%",
         backgroundPosition: "auto",
         backgroundColor: "#03224A",
         backdropFilter: "brightness(0.5)",
       }}
     >
-      <div className="w-[744px] h-full flex flex-col text-white font-medium px-8 gap-8 pt-16">
+      <div className="flex h-full w-[744px] flex-col gap-8 px-8 pt-16 font-medium text-white">
         <h1 className="text-[64px] leading-[72px]">
           Deja que nosotros encontremos el hogar que mereces
         </h1>
