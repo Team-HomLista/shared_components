@@ -1,13 +1,13 @@
 "use client";
 import { FC, useState } from "react";
 import { Text } from "@/components/ui/text";
-import { Select, SelectGroup, SelectLabel } from "../ui/select";
 import {
+  Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@radix-ui/react-select";
+} from "../ui/select";
 
 export interface FindFormProps {}
 
@@ -33,58 +33,45 @@ export const FindForm: FC<FindFormProps> = ({}) => {
   const [searchType, setSearchType] = useState("compra");
 
   return (
-    <div className="flex flex-row justify-center w-[512px] h-screen pb-16">
-      <div className="flex flex-col w-full">
-        {/* Property Type Selection */}
-        <div className="flex flex-col w-full">
-          <Text variant="label">Tipo de propiedad</Text>
-          <Select
-            value={propertyType}
-            onValueChange={(v) => setPropertyType(v)}
-          >
-            <SelectTrigger className="w-full border-2 flex border-secondary">
-              <SelectValue placeholder="Casas" />
-            </SelectTrigger>
-            <SelectGroup>
-              <SelectContent position="popper">
-                <SelectItem value="casas">Casas</SelectItem>
-                <SelectItem value="departamentos">Departamentos</SelectItem>
-                <SelectItem value="terrenos">Terrenos</SelectItem>
-                <SelectItem value="locales">Locales</SelectItem>
-              </SelectContent>
-            </SelectGroup>
-          </Select>
-        </div>
-
-        {/* Location Selection */}
-        <div className="flex flex-col">
-          <Text variant="label">Ubicación</Text>
-          <Select value={location} onValueChange={(v) => setLocation(v)}>
-            <SelectTrigger className="w-[200px] border-2 border-secondary">
-              <SelectValue placeholder="Cancún" />
-            </SelectTrigger>
-            <SelectContent position="popper">
-              <SelectItem value="cdmx">CDMX</SelectItem>
-              <SelectItem value="guadalajara">Guadalajara</SelectItem>
-              <SelectItem value="monterrey">Monterrey</SelectItem>
-              <SelectItem value="puebla">Puebla</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
-
-        {/* Search Type Selection */}
-        <div className="flex flex-col w-full">
-          <Text variant="label">Tipo de búsqueda</Text>
-          <Select value={searchType} onValueChange={(v) => setSearchType(v)}>
-            <SelectTrigger className="w-[200px] border-2 border-secondary">
-              <SelectValue placeholder="Compra" />
-            </SelectTrigger>
-            <SelectContent position="popper">
-              <SelectItem value="compra">Compra</SelectItem>
-              <SelectItem value="venta">Venta</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
+    <div className="flex flex-col items-center justify-evenly gap-4 pb-8">
+      <div className="flex flex-col items-start">
+        <Text variant="label">Tipo de propiedad</Text>
+        <Select>
+          <SelectTrigger className="w-[428px] bg-white">
+            <SelectValue placeholder="Propiedad" />
+          </SelectTrigger>
+          <SelectContent position="popper">
+            <SelectItem value="casas">Casas</SelectItem>
+            <SelectItem value="departamentos">Departamentos</SelectItem>
+            <SelectItem value="terrenos">Terrenos</SelectItem>
+            <SelectItem value="locales">Locales</SelectItem>
+          </SelectContent>
+        </Select>
+      </div>
+      <div className="flex flex-col">
+        <Text variant="label">Ubicación</Text>
+        <Select>
+          <SelectTrigger className="w-[428px] bg-white">
+            <SelectValue placeholder="Ubicación" />
+          </SelectTrigger>
+          <SelectContent position="popper">
+            <SelectItem value="cancun">Cancún</SelectItem>
+            <SelectItem value="playa-del-carmen">Playa del Carmen</SelectItem>
+            <SelectItem value="ciudad-de-mexico">Ciudad de México</SelectItem>
+          </SelectContent>
+        </Select>
+      </div>
+      <div className="flex flex-col">
+        <Text variant="label">Tipo de búsqueda</Text>
+        <Select>
+          <SelectTrigger className="w-[428px] bg-white">
+            <SelectValue placeholder="Compra" />
+          </SelectTrigger>
+          <SelectContent position="popper">
+            <SelectItem value="compra">Compra</SelectItem>
+            <SelectItem value="renta">Renta</SelectItem>
+          </SelectContent>
+        </Select>
       </div>
     </div>
   );
