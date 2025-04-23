@@ -42,6 +42,7 @@ export const pricingInfo: Array<ComparisonSection> = [
       {
         Icon: UserIcon,
         Information: CircleHelpIcon,
+        infoDescription: "Número de asientos a la que una cuenta tiene acceso.",
         name: "Número de usuarios",
         free: "1",
         agent: "1",
