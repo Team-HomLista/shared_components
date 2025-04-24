@@ -196,8 +196,8 @@ export const LeadForm = ({
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent position="popper">
-                        <SelectItem value="52">+52 MEX</SelectItem>
-                        <SelectItem value="33">+33 FRA</SelectItem>
+                        <SelectItem value="52">+52 MX</SelectItem>
+                        <SelectItem value="33">+33 FR</SelectItem>
                       </SelectContent>
                     </Select>
                   )}
@@ -239,7 +239,7 @@ export const LeadForm = ({
           control={form.control}
           name="contactConsent"
           render={({ field }) => (
-            <FormItem className="flex w-full max-w-[428px] flex-row items-start space-y-0 space-x-3 rounded-md p-4">
+            <FormItem className="flex w-full max-w-[428px] flex-row items-start space-y-0 space-x-3 rounded-md pt-4">
               <FormControl>
                 <Checkbox
                   checked={field.value}
@@ -261,7 +261,7 @@ export const LeadForm = ({
           control={form.control}
           name="dataConsent"
           render={({ field }) => (
-            <FormItem className="flex w-full max-w-[428px] flex-row items-start space-y-0 space-x-3 rounded-md p-4">
+            <FormItem className="flex w-full max-w-[428px] flex-row items-start space-y-0 space-x-3 rounded-md">
               <FormControl>
                 <Checkbox
                   checked={field.value}
@@ -279,7 +279,7 @@ export const LeadForm = ({
             </FormItem>
           )}
         />
-        <Button type="submit" className="mt-4 w-full max-w-[428px]">
+        <Button type="submit" className="mt-1 w-full max-w-[428px]">
           Recibe 5 sugerencias personalizadas gratis
         </Button>
         <p className="text-muted-foreground text-sm">

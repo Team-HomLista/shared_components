@@ -3,7 +3,7 @@
 import { useIsMobile } from "@/app/hooks/useIsMobile";
 import { LeadFormData, SmallFormData } from "@/types/find-schemas";
 import { LeadFormModal } from "./lead-form-modal";
-import { LeadFormSheet } from "./lead-form-sheet";
+import { LeadFormDrawer } from "./lead-form-drawer";
 
 interface LeadFormResponsiveProps {
   open: boolean;
@@ -25,7 +25,7 @@ export const LeadFormResponsive = ({
       initialData={initialData}
     />
   ) : (
-    <LeadFormSheet
+    <LeadFormDrawer
       open={open}
       onOpenChange={onOpenChange}
       initialData={initialData}

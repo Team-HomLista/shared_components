@@ -10,6 +10,13 @@ const nextConfig: NextConfig = {
         pathname: "/**",
         search: "",
       },
+      {
+        protocol: "https",
+        hostname: "cannele-bucket.nyc3.cdn.digitaloceanspaces.com",
+        port: "",
+        pathname: "/**",
+        search: "",
+      },
     ],
   },
 };
