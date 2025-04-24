@@ -239,7 +239,7 @@ export const LeadForm = ({
           control={form.control}
           name="contactConsent"
           render={({ field }) => (
-            <FormItem className="flex w-full max-w-[428px] flex-row items-start space-y-0 space-x-3 rounded-md pt-4">
+            <FormItem className="flex w-full max-w-[428px] flex-row items-start space-y-0 space-x-3 rounded-md px-4 pt-4">
               <FormControl>
                 <Checkbox
                   checked={field.value}
@@ -261,7 +261,7 @@ export const LeadForm = ({
           control={form.control}
           name="dataConsent"
           render={({ field }) => (
-            <FormItem className="flex w-full max-w-[428px] flex-row items-start space-y-0 space-x-3 rounded-md">
+            <FormItem className="flex w-full max-w-[428px] flex-row items-start space-y-0 space-x-3 rounded-md px-4">
               <FormControl>
                 <Checkbox
                   checked={field.value}
