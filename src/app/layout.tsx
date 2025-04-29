@@ -1,5 +1,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { Fingerprinting } from "./fingerprinting";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -14,6 +15,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={`${inter.variable} antialiased`}>{children}</body>
+      <Fingerprinting />
     </html>
   );
 }
