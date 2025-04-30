@@ -26,6 +26,7 @@ import {
   SmallFormData,
   LeadFormData,
 } from "@/types/find-schemas";
+import { InquiryService } from "@/app/services/inquiry";
 
 interface LeadFormProps {
   initialData: SmallFormData;
@@ -51,6 +52,16 @@ export const LeadForm = ({
   });
 
   const onSubmit = (data: LeadFormData) => {
+    let identifications = localStorage.getItem("IDENTIFICATIONS");
+
+    if (identifications !== null) {
+      const parsedIdentifications = JSON.parse(identifications) as {
+        guest_id: number;
+        lead_id: number;
+        user_id: number;
+      };
+      InquiryService.postGeneral(parsedIdentifications.lead_id, data);
+    }
     onSubmitSuccess?.(data);
     onClose();
   };
@@ -64,7 +75,7 @@ export const LeadForm = ({
         {/* Property type field */}
         <FormField
           control={form.control}
-          name="propertyType"
+          name="property_type"
           render={({ field }) => (
             <FormItem className="flex w-full max-w-[428px] flex-col items-start">
               <FormLabel>
@@ -119,7 +130,7 @@ export const LeadForm = ({
         {/* Search type field */}
         <FormField
           control={form.control}
-          name="searchType"
+          name="search_type"
           render={({ field }) => (
             <FormItem className="flex w-full max-w-[428px] flex-col items-start">
               <FormLabel>

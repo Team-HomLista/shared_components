@@ -2,7 +2,6 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import type { Metadata, Viewport } from "next";
 import { Fingerprinting } from "./fingerprinting";
-import type { Metadata, Viewport } from "next";
 
 const inter = Inter({
   variable: "--font-inter",

@@ -20,30 +20,24 @@ import {
 } from "../../../../components/ui/select";
 import { Slider } from "../../../../components/ui/slider";
 import { Button } from "../../../../components/ui/button";
-
-const formSchema = z.object({
-  propertyType: z.string().min(1, "Selecciona un tipo de propiedad"),
-  location: z.string().min(1, "Selecciona una ubicación"),
-  searchType: z.string().min(1, "Selecciona un tipo de búsqueda"),
-  budget: z.number().min(500000, "El presupuesto mínimo es de $500,000 MXN"),
-});
+import { smallFormSchema } from "@/types/find-schemas"; // Import the schema
 
 interface FindSmallFormProps {
-  onComplete: (data: z.infer<typeof formSchema>) => void;
+  onComplete: (data: z.infer<typeof smallFormSchema>) => void;
 }
 
 export const FindSmallForm = ({ onComplete }: FindSmallFormProps) => {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<z.infer<typeof smallFormSchema>>({
+    resolver: zodResolver(smallFormSchema), // Use the imported schema
     defaultValues: {
-      propertyType: "casas",
+      property_type: "casas",
       location: "cancun",
-      searchType: "compra",
+      search_type: "compra",
       budget: 5000000,
     },
   });
 
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
+  const onSubmit = (values: z.infer<typeof smallFormSchema>) => {
     onComplete(values);
   };
 
@@ -55,7 +49,7 @@ export const FindSmallForm = ({ onComplete }: FindSmallFormProps) => {
       >
         <FormField
           control={form.control}
-          name="propertyType"
+          name="property_type"
           render={({ field }) => (
             <FormItem className="flex w-full max-w-[428px] flex-col items-start">
               <FormLabel>
@@ -110,7 +104,7 @@ export const FindSmallForm = ({ onComplete }: FindSmallFormProps) => {
         {/* Search type field */}
         <FormField
           control={form.control}
-          name="searchType"
+          name="search_type"
           render={({ field }) => (
             <FormItem className="flex w-full max-w-[428px] flex-col items-start">
               <FormLabel>
