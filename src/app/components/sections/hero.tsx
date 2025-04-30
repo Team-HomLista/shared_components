@@ -6,7 +6,7 @@ interface HeroSectionProps {}
 export const HeroSection: FC<HeroSectionProps> = ({}) => {
   return (
     <section
-      className="flex h-screen w-full flex-col items-start px-32 pt-24"
+      className="relative -mt-22 flex h-screen w-full flex-col items-start px-32 pt-24"
       style={{
         backgroundImage: "url('/images/hero-assets/homepage.png')",
         backgroundSize: "100%",

@@ -1,6 +1,8 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Fingerprinting } from "./fingerprinting";
+import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/footer/footer";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -14,7 +16,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={`${inter.variable} antialiased`}>{children}</body>
+      <body className={`${inter.variable} antialiased`}>
+        {children}
+        <Footer />
+      </body>
       <Fingerprinting />
     </html>
   );
