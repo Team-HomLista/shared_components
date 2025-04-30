@@ -1,5 +1,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
+import type { Metadata, Viewport } from "next";
 import { Fingerprinting } from "./fingerprinting";
 
 const inter = Inter({
@@ -7,11 +8,23 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
+export const metadata: Metadata = {
+  title: "HomLista",
+  // description: "Descripción de tu app",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+};
+
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="es">
       <body className={`${inter.variable} antialiased`}>{children}</body>

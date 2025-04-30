@@ -1,5 +1,5 @@
 "use client";
-import { ComparisonTable } from "@/components/comparison-table-test";
+import { ComparisonTable } from "@/components/comparison-table";
 import { pricingInfo } from "@/dummy/pricingInfo";
 import { FC } from "react";
 
