@@ -1,3 +1,4 @@
+import { AssociatesMarqueeLogo } from "@/components/associates-carousel";
 import { SectionHeader } from "@/components/section-header";
 import { FC } from "react";
 
@@ -12,6 +13,9 @@ export const PartnersSection: FC<PartnersSectionProps> = ({}) => {
         para garantizar los más altos estándares del mercado inmobiliario"
         orientation="right"
       />
+      <div className="overflow-hidden">
+        <AssociatesMarqueeLogo />
+      </div>
     </section>
   );
 };

@@ -3,6 +3,7 @@ import { LucideIcon } from "lucide-react";
 interface ComparisonFeature {
   Icon?: LucideIcon;
   Information?: LucideIcon;
+  infoDescription?: string;
   agency: string | boolean;
   agencyVIP: string | boolean;
   agent: string | boolean;
