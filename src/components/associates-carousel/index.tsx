@@ -13,14 +13,14 @@ export const AssociatesMarqueeLogo = () => {
           className="animate-marquee flex gap-12 whitespace-nowrap"
           style={{ animationDuration: "60s" }}
         >
-          {logos.map((logo) => (
+          {logos.map((logo, index) => (
             <div
-              key={`${logo.id}-${Math.random()}`}
+              key={index}
               className="flex h-24 w-40 flex-shrink-0 items-center justify-center"
             >
               <Image
                 src={logo.url}
-                alt={`Logo ${logo.id}`}
+                alt={String(index)}
                 width={100}
                 height={100}
                 className="object-contain"

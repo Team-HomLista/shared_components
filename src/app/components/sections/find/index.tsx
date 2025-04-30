@@ -10,16 +10,16 @@ interface FindSectionProps {}
 export const FindSection = ({}: FindSectionProps) => {
   const [showLeadForm, setShowLeadForm] = useState(false);
   const [formData, setFormData] = useState<{
-    propertyType: string;
+    property_type: string;
     location: string;
-    searchType: string;
+    search_type: string;
     budget: number;
   } | null>(null);
 
   const handleSmallFormComplete = (data: {
-    propertyType: string;
+    property_type: string;
     location: string;
-    searchType: string;
+    search_type: string;
     budget: number;
   }) => {
     setFormData(data);
