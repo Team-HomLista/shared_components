@@ -1,4 +1,4 @@
-import { LeadFormData } from "@/types/find-schemas";
+import { LeadFormData } from "@/app/components/sections/find/schemas";
 
 export class InquiryService {
   static async postGeneral(

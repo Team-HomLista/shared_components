@@ -6,9 +6,9 @@ import {
   DrawerHeader,
   DrawerTitle,
 } from "@/components/ui/drawer";
-import type { SmallFormData, LeadFormData } from "@/types/find-schemas";
+import type { SmallFormData, LeadFormData } from "./schemas";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
-import { LeadForm } from "./lead-form";
+import { LeadForm } from "./form";
 
 interface LeadFormDrawerProps {
   open: boolean;

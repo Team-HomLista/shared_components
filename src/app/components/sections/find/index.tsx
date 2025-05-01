@@ -3,7 +3,7 @@
 import { SectionHeader } from "@/components/section-header";
 import { useState } from "react";
 import { LeadFormResponsive } from "./lead-form-responsive";
-import { FindSmallForm } from "./lead-small-form";
+import { FindSmallForm } from "./small-form";
 
 interface FindSectionProps {}
 

@@ -1,9 +1,9 @@
 "use client";
 
 import { useIsMobile } from "@/app/hooks/useIsMobile";
-import { LeadFormData, SmallFormData } from "@/types/find-schemas";
-import { LeadFormModal } from "./lead-form-modal";
-import { LeadFormDrawer } from "./lead-form-drawer";
+import { LeadFormData, SmallFormData } from "./schemas";
+import { LeadFormModal } from "./modal";
+import { LeadFormDrawer } from "./drawer";
 
 interface LeadFormResponsiveProps {
   open: boolean;
