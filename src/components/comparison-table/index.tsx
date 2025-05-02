@@ -11,6 +11,8 @@ import { Button } from "../ui/button";
 import { Check, X } from "lucide-react";
 import { ComparisonSection } from "@/types/plan-info";
 import { Fragment } from "react";
+import { Badge } from "../ui/badge";
+import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 
 interface ComparisonTableProps {
   sections: ComparisonSection[];
@@ -88,6 +90,20 @@ export function ComparisonTable({ sections }: ComparisonTableProps) {
                   <TableCell className="flex items-center gap-2 p-4 font-medium">
                     {item.Icon && <item.Icon className="h-5 w-5" />}
                     {item.name}
+                    {item.Information && item.infoDescription && (
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <span className="cursor-pointer">
+                            <item.Information className="h-4.5 w-4.5 hover:text-gray-700" />
+                          </span>
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p className="max-w-[200px] text-sm">
+                            {item.infoDescription}
+                          </p>
+                        </TooltipContent>
+                      </Tooltip>
+                    )}
                   </TableCell>
                   {/* Free Plan */}
                   <TableCell className="text-center">
