@@ -11,22 +11,18 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { LeadFormData, leadFormSchema, SmallFormData } from "./schemas";
+import { InquiryService } from "@/app/services/inquiry";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../../../../components/ui/select";
-import { Input } from "../../../../components/ui/input";
-import { Checkbox } from "../../../../components/ui/checkbox";
-import { Slider } from "../../../../components/ui/slider";
-import {
-  leadFormSchema,
-  SmallFormData,
-  LeadFormData,
-} from "@/types/find-schemas";
-import { InquiryService } from "@/app/services/inquiry";
+} from "@/components/ui/select";
+import { Slider } from "@/components/ui/slider";
+import { Input } from "@/components/ui/input";
+import { Checkbox } from "@/components/ui/checkbox";
 
 interface LeadFormProps {
   initialData: SmallFormData;

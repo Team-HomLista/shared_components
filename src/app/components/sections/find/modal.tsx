@@ -1,7 +1,7 @@
 "use client";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
-import { LeadForm } from "./lead-form";
-import type { SmallFormData, LeadFormData } from "@/types/find-schemas";
+import { LeadForm } from "./form";
+import type { SmallFormData, LeadFormData } from "./schemas";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 interface LeadFormModalProps {
@@ -16,7 +16,6 @@ export const LeadFormModal = ({
   initialData,
 }: LeadFormModalProps) => {
   const handleSubmit = (data: LeadFormData) => {
-    console.log("Datos completos:", data);
     onOpenChange(false);
   };
 

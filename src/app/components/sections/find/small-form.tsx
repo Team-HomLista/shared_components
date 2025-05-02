@@ -11,16 +11,16 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { Button } from "@/components/ui/button";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../../../../components/ui/select";
-import { Slider } from "../../../../components/ui/slider";
-import { Button } from "../../../../components/ui/button";
-import { smallFormSchema } from "@/types/find-schemas"; // Import the schema
+} from "@/components/ui/select";
+import { Slider } from "@/components/ui/slider";
+import { smallFormSchema } from "./schemas";
 
 interface FindSmallFormProps {
   onComplete: (data: z.infer<typeof smallFormSchema>) => void;
@@ -28,11 +28,11 @@ interface FindSmallFormProps {
 
 export const FindSmallForm = ({ onComplete }: FindSmallFormProps) => {
   const form = useForm<z.infer<typeof smallFormSchema>>({
-    resolver: zodResolver(smallFormSchema), // Use the imported schema
+    resolver: zodResolver(smallFormSchema),
     defaultValues: {
-      property_type: "casas",
-      location: "cancun",
-      search_type: "compra",
+      property_type: "",
+      location: "",
+      search_type: "",
       budget: 5000000,
     },
   });
