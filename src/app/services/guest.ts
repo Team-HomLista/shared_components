@@ -1,5 +1,8 @@
 export class GuestService {
   static async postFingerprint(anonymous_id: string) {
+    const SERVER_URL = process.env.SERVER_URL;
+    const HARD_KEY = String(process.env.HARD_KEY);
+
     const response = await fetch("/api/guest/fingerprinting", {
       method: "POST",
       headers: {

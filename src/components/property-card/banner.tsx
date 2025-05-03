@@ -1,28 +1,27 @@
 import { FC } from "react";
 import { Text } from "../ui/text";
+import { TransactionType } from "@/types/enums/transaction-type";
 
-export enum TransactionTypeEnum {
-  ForSale = "ForSale",
-  Rent = "Rent",
-}
-export interface BannerPropertyProps {
-  transaction: keyof typeof TransactionTypeEnum;
+export interface PropertyCardBannerProps {
+  transaction: keyof typeof TransactionType;
 }
 
-export const BannerProperty: FC<BannerPropertyProps> = ({ transaction }) => {
+export const PropertyCardBanner: FC<PropertyCardBannerProps> = ({
+  transaction,
+}) => {
   const transactionType = () => {
     switch (transaction) {
-      case TransactionTypeEnum.ForSale:
+      case TransactionType.BUY:
         return "VENTA";
-      case TransactionTypeEnum.Rent:
+      case TransactionType.RENT:
         return "RENTA";
       default:
         return undefined;
     }
   };
   return (
-    <div className="relative bg-primary w-full flex flex-col items-center justify-end rounded-b-2xl font-bold">
-      <Text variant={"label"} className="text-white text-xs p-1">
+    <div className="bg-primary relative flex w-full flex-col items-center justify-end rounded-b-2xl font-bold">
+      <Text variant={"label"} className="p-2 text-sm text-white">
         {transactionType()}
       </Text>
     </div>

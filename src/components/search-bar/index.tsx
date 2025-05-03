@@ -10,49 +10,24 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Text } from "@/components/ui/text";
-import { ChevronsUpDown, Search } from "lucide-react";
+import { Search } from "lucide-react";
+import Link from "next/link";
 
 export interface SearchBarProps {}
 
-/**
- * SearchBar is a React functional component that provides a search interface
+/** SearchBar is a React functional component that provides a search interface
  * for filtering properties based on property type, search type, and city.
  * It includes dropdowns for selecting property and search types, an input
  * field for entering the city, and a button to trigger the search.
- *
- * @component
- * @example
- * return (
- *   <SearchBar />
- * )
- *
- * @returns {JSX.Element}
  */
 export const SearchBar: FC<SearchBarProps> = () => {
-  /**
-   * State for the selected property type (e.g., casas, departamentos).
-   * @type {string}
-   */
   const [propertyType, setPropertyType] = useState("casas");
-
-  /**
-   * State for the selected search type (e.g., compra, venta).
-   * @type {string}
-   */
   const [searchType, setSearchType] = useState("compra");
-
-  /**
-   * State for the entered city name.
-   * @type {string}
-   */
   const [city, setCity] = useState("");
 
   return (
-    <div className="flex flex-row justify-center w-full py-16 px-8">
-      <div
-        className="flex flex-row p-4 bg-white border-4 border-secondary 
-          rounded-2xl justify-center items-end gap-3 w-full max-w-[1024px]"
-      >
+    <div className="flex w-full flex-row justify-center px-8 py-16">
+      <div className="border-secondary flex w-full max-w-[1024px] flex-row items-end justify-center gap-3 rounded-2xl border-4 bg-white p-4">
         {/* Property Type Selection */}
         <div className="flex flex-col">
           <Text variant="label">Tipo de propiedad</Text>
@@ -87,27 +62,29 @@ export const SearchBar: FC<SearchBarProps> = () => {
         </div>
 
         {/* City Input */}
-        <div className="flex flex-col w-full">
+        <div className="flex w-full flex-col">
           <Text variant="label">Ciudad</Text>
           <Input
             value={city}
             onChange={(e) => setCity(e.target.value)}
             placeholder="Nombre de la ciudad"
-            className="w-full border-2 border-secondary"
+            className="border-secondary w-full border-2"
           />
         </div>
 
         {/* Search Button */}
         <Button
+          asChild
           className="has-[>svg]:px-6"
           size={"lg"}
           corner={"squared"}
-          onClick={() => {
-            /* handle submit */
-          }}
         >
-          <Search />
-          Buscar propiedades
+          <Link
+            href={`/properties?property_type=${propertyType}&search_type=${searchType}&city=${city}`}
+          >
+            <Search />
+            Buscar propiedades
+          </Link>
         </Button>
       </div>
     </div>
