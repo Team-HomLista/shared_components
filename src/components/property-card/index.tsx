@@ -1,98 +1,77 @@
 import { FC, useState } from "react";
 import Image from "next/image";
-import FeatureProperty, { FeaturePropertyProps } from "./feature";
+import { PropertyCardTag, PropertyCardTagProps } from "./feature";
 import { Heart } from "lucide-react";
-import { BannerProperty, BannerPropertyProps } from "./banner";
+import { PropertyCardBanner, PropertyCardBannerProps } from "./banner";
 import {
   PropertyCardInformation,
   PropertyCardInformationProps,
 } from "./information";
+import { cn } from "@/lib/utils";
+import Link from "next/link";
 
-/** PropertyCardItemProps
- *
- * Defines the props for the `PropertyCardItem` component.
- * Includes information about the property, feature tags, banners, and an optional image.
- * Also provides a callback function for handling "like" actions.
- */
-export interface PropertyCardItemProps {
-  /**
-   * Information about the property, such as title, description, and price.
-   */
+export interface PropertyCardItemProps
+  extends Pick<PropertyCardTagProps, "tag"> {
   information: PropertyCardInformationProps;
-
-  /**
-   * Feature tag for the property, e.g., "New" or "Featured".
-   */
-  feature: Pick<FeaturePropertyProps, "tag">;
-
-  /**
-   * Banner details for the property, such as transaction type (e.g., "For Sale").
-   */
-  banner: Pick<BannerPropertyProps, "transaction">;
-
-  /**
-   * Image URL for the property. Defaults to a placeholder image if not provided.
-   */
-  image?: string;
-
-  /**
-   * Callback function triggered when the like button is clicked.
+  banner: Pick<PropertyCardBannerProps, "transaction">;
+  image: string;
+  slug: string;
+  /** Callback function triggered when the like button is clicked.
    * @param index - Index of the property card.
    * @param isLiked - Current like state of the property card.
    */
   onClickLike: (index: number, isLiked: boolean) => void;
 }
 
-/** PropertyCardItem
- *
- * A functional component that displays a property card.
- * It includes an image, feature tag, banner, and property information.
- * Users can "like" the property by clicking a heart icon.
+/** A functional component that displays a property card. It includes an image,
+ * feature tag, banner, and property information. Users can "like" the property
+ * by clicking a heart icon.
  */
 export const PropertyCardItem: FC<PropertyCardItemProps> = ({
   image,
-  feature,
+  tag,
   banner,
   information,
+  slug,
 }) => {
   const [isLiked, setIsLiked] = useState(false);
 
-  /** handleHeartClick
-   *
-   * Toggles the like state of the property card.
-   */
   const handleHeartClick = () => {
     setIsLiked((prev) => !prev);
   };
 
-  const imagePath = image || "/images/card-images-assets/CasaAsset.png";
+  const redirect = `/properties/${slug}`;
 
   return (
-    <div className="m-2 w-[240px]">
-      <div className="w-full h-[240px] relative flex flex-col justify-between">
-        <div className="absolute inset-0">
+    <div className="hover:bg-secondary/20 h-full w-[360px] rounded-2xl p-2 transition-all duration-200 select-none">
+      <div className="relative flex h-[240px] w-full flex-col justify-between">
+        <Link
+          className="absolute inset-0 cursor-pointer rounded-2xl"
+          href={redirect}
+        >
           <Image
-            src={imagePath}
-            alt={""}
+            src={image}
+            alt=""
             layout="fill"
-            objectFit="contain"
+            objectFit="cover"
             className="z-0 rounded-2xl"
           />
-        </div>
-        <div className="relative w-full flex justify-between items-center p-2">
-          <FeatureProperty {...feature} />
+        </Link>
+        <div className="relative flex w-full items-center justify-between p-2">
+          <PropertyCardTag tag={tag} />
           <Heart
-            className={`w-7 h-7 fill-white overflow-hidden cursor-pointer ${
-              isLiked ? "text-accent" : "stroke-current"
-            }`}
+            className={cn(
+              "h-7 w-7 cursor-pointer overflow-hidden fill-white",
+              isLiked ? "fill-accent" : "stroke-current",
+            )}
             onClick={handleHeartClick}
           />
         </div>
-        <BannerProperty {...banner} />
+        <PropertyCardBanner {...banner} />
       </div>
-      <div className="p-2 w-full">
+      <Link className="w-full cursor-pointer p-2" href={redirect}>
         <PropertyCardInformation {...information} />
-      </div>
+      </Link>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import { FaqItem } from "@/components/faq/types";
+import { FaqItem } from "@/app/planes/components/faq/types";
 import {
   Accordion,
   AccordionContent,

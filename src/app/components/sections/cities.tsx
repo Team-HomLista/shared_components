@@ -2,6 +2,7 @@ import { SectionHeader } from "@/components/section-header";
 import { FC } from "react";
 import React from "react";
 import { Text } from "@/components/ui/text";
+import Link from "next/link";
 
 interface City {
   name: string;
@@ -14,24 +15,31 @@ interface CitiesGridProps {
 
 export const CitiesGrid: FC<CitiesGridProps> = ({ cities }) => {
   return (
-    <div className="grid grid-cols-4 gap-8 items-center justify-center mx-32 pb-16">
+    <div className="mx-32 grid grid-cols-4 items-center justify-center gap-8 pb-16">
       {cities.map((city, index) => (
-        <div key={index} className="relative w-full h-48 rounded-3xl">
-          <div className="relative w-full h-48 rounded-3xl bg-black overflow-hidden">
+        <Link
+          key={index}
+          className="group relative h-48 w-full cursor-pointer rounded-3xl transition-all hover:opacity-90"
+          href={`/properties?city=${city.name}`}
+        >
+          <div className="relative h-48 w-full overflow-hidden rounded-3xl bg-black">
             <img
               src={city.image}
               alt={city.name}
-              className="w-full h-full object-cover rounded-3xl blur-xs opacity-50"
+              className="h-full w-full rounded-3xl object-cover opacity-50 blur-xs"
             />
           </div>
           <div className="absolute inset-0"></div>
-          <div className="absolute inset-0 flex flex-col justify-center items-center rounded-3xl">
-            <Text variant="title" className="text-white">
+          <div className="absolute inset-0 flex flex-col items-center justify-center rounded-3xl">
+            <Text
+              variant="title"
+              className="text-white transition-transform duration-200 ease-in-out group-hover:scale-110"
+            >
               {city.name}
             </Text>
-            <Text className="text-white hidden">2000 propiedades</Text>
+            <Text className="hidden text-white">2000 propiedades</Text>
           </div>
-        </div>
+        </Link>
       ))}
     </div>
   );

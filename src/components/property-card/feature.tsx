@@ -1,17 +1,17 @@
 import { cn } from "@/lib/utils";
 import { FC } from "react";
 
-export enum PropertyTagTypeEnum {
+export enum PropertyCardTagType {
   Featured = "Featured",
   Offer = "Offer",
 }
 
-export interface FeaturePropertyProps {
-  tag?: keyof typeof PropertyTagTypeEnum;
+export interface PropertyCardTagProps {
+  tag?: keyof typeof PropertyCardTagType;
 }
 
-const FeatureProperty: FC<FeaturePropertyProps> = ({ tag }) => {
-  const isFeature = tag === PropertyTagTypeEnum.Featured;
+export const PropertyCardTag: FC<PropertyCardTagProps> = ({ tag }) => {
+  const isFeature = tag === PropertyCardTagType.Featured;
 
   if (!tag) {
     return null;
@@ -20,14 +20,12 @@ const FeatureProperty: FC<FeaturePropertyProps> = ({ tag }) => {
   return (
     <div
       className={cn(
-        "flex h-full border-1 rounded-[30px] justify-center bg-white border-white py-0.5 px-2 text-sm w-fit",
-        isFeature ? "bg-accent border-2 border-primary" : "bg-white border-1"
+        "flex h-full w-fit justify-center rounded-[30px] border-1 border-white bg-white px-2 py-0.5 text-sm",
+        isFeature ? "bg-accent border-primary border-2" : "border-1 bg-white",
       )}
     >
-      {tag == PropertyTagTypeEnum.Featured && "destacado"}
-      {tag == PropertyTagTypeEnum.Offer && "oferta especial"}
+      {tag == PropertyCardTagType.Featured && "destacado"}
+      {tag == PropertyCardTagType.Offer && "oferta especial"}
     </div>
   );
 };
-
-export default FeatureProperty;

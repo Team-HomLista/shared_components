@@ -45,17 +45,27 @@ export const useHome = ({ properties }: UseHomeProps): UseHomeReturn => {
     setItems(
       properties.map((property) => {
         return {
-          banner: { transaction: property.transaction },
-          feature: { tag: property.tag },
+          banner: { transaction: property.transaction_type },
+          tag: property.is_featured ? "Featured" : undefined,
           information: {
-            features: property.features,
-            location: property.location,
-            price: property.price,
+            location: property.city,
+            price: {
+              currency: property.price_currency,
+              value: property.price,
+            },
             title: property.title,
+            details: {
+              bathrooms: property.bathrooms,
+              building_size: property.building_size,
+              land_size: property.land_size,
+              parking_slots: property.parking_slots,
+              rooms: property.rooms,
+            },
           },
-          image: property.image,
+          image: property.cover_image,
+          slug: property.slug,
         };
-      })
+      }),
     );
   }, []);
 

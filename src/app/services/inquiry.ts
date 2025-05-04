@@ -5,11 +5,16 @@ export class InquiryService {
     leadId: number,
     data: Omit<LeadFormData, "contactConsent" | "dataConsent">,
   ) {
-    const url = `/api/leads/${leadId}/inquiry`;
+    const SERVER_URL = process.env.SERVER_URL;
+    const HARD_KEY = String(process.env.HARD_KEY);
+
+    const url = `${SERVER_URL}/leads/${leadId}/inquiry`;
+
     const response = await fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "X-HARD-KEY": HARD_KEY,
         Accept: "application/json",
       },
       body: JSON.stringify({ ...data, type: "GENERAL" }),
@@ -18,9 +23,12 @@ export class InquiryService {
     if (!response.ok) {
       const errorData = (await response.json()) as Error;
 
-      console.error(`InquiryService.postGeneral`, errorData);
+      console.error(
+        new Error(`InquiryService.postGeneral: ${JSON.stringify(errorData)}`),
+      );
       return errorData;
     }
+
     return (await response.json()) as null;
   }
 }
