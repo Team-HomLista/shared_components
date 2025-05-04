@@ -12,6 +12,8 @@ import {
 import { Text } from "@/components/ui/text";
 import { Search } from "lucide-react";
 import Link from "next/link";
+import { BuildingType } from "@/types/enums/building-type";
+import { TransactionType } from "@/types/enums/transaction-type";
 
 export interface SearchBarProps {}
 
@@ -21,8 +23,10 @@ export interface SearchBarProps {}
  * field for entering the city, and a button to trigger the search.
  */
 export const SearchBar: FC<SearchBarProps> = () => {
-  const [propertyType, setPropertyType] = useState("casas");
-  const [searchType, setSearchType] = useState("compra");
+  const [propertyType, setPropertyType] =
+    useState<keyof typeof BuildingType>("HOUSE");
+  const [searchType, setSearchType] =
+    useState<keyof typeof TransactionType>("BUY");
   const [city, setCity] = useState("");
 
   return (
@@ -33,16 +37,20 @@ export const SearchBar: FC<SearchBarProps> = () => {
           <Text variant="label">Tipo de propiedad</Text>
           <Select
             value={propertyType}
-            onValueChange={(v) => setPropertyType(v)}
+            onValueChange={(v) =>
+              setPropertyType(v as keyof typeof BuildingType)
+            }
           >
             <SelectTrigger className="w-[200px]">
               <SelectValue placeholder="Propiedad" />
             </SelectTrigger>
             <SelectContent position="popper">
-              <SelectItem value="casas">Casas</SelectItem>
-              <SelectItem value="departamentos">Departamentos</SelectItem>
-              <SelectItem value="terrenos">Terrenos</SelectItem>
-              <SelectItem value="locales">Locales</SelectItem>
+              <SelectItem value={BuildingType.HOUSE}>Casas</SelectItem>
+              <SelectItem value={BuildingType.APARTMENT}>
+                Departamentos
+              </SelectItem>
+              <SelectItem value={BuildingType.LAND}>Terrenos</SelectItem>
+              <SelectItem value={BuildingType.COMMERCIAL}>Locales</SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -50,13 +58,18 @@ export const SearchBar: FC<SearchBarProps> = () => {
         {/* Search Type Selection */}
         <div className="flex flex-col">
           <Text variant="label">Tipo de búsqueda</Text>
-          <Select value={searchType} onValueChange={(v) => setSearchType(v)}>
+          <Select
+            value={searchType}
+            onValueChange={(v) =>
+              setSearchType(v as keyof typeof TransactionType)
+            }
+          >
             <SelectTrigger className="w-[200px]">
               <SelectValue placeholder="Búsqueda" />
             </SelectTrigger>
             <SelectContent position="popper">
-              <SelectItem value="compra">Compra</SelectItem>
-              <SelectItem value="venta">Venta</SelectItem>
+              <SelectItem value={TransactionType.BUY}>Compra</SelectItem>
+              <SelectItem value={TransactionType.RENT}>Venta</SelectItem>
             </SelectContent>
           </Select>
         </div>

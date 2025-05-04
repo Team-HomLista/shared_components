@@ -1,15 +1,31 @@
 import { Paginated } from "@/types/paginated";
 import { DetailedProperty, Property } from "@/types/property";
 
+interface GetPropertiesBySearchParams {
+  search_type?: string;
+  property_type?: string;
+  city?: string;
+}
+
 export class PropertyService {
-  static async getPropertiesBySearch() {
+  static async getPropertiesBySearch(params?: GetPropertiesBySearchParams) {
     "use server";
     const SERVER_URL = process.env.SERVER_URL;
     const HARD_KEY = String(process.env.HARD_KEY);
 
-    const url = `${SERVER_URL}/properties/search`;
+    const url = new URL(`${SERVER_URL}/properties/search`);
 
-    const response = await fetch(url, {
+    if (params) {
+      if (params.search_type)
+        url.searchParams.append("search_type", params.search_type);
+
+      if (params.property_type)
+        url.searchParams.append("property_type", params.property_type);
+
+      if (params.city) url.searchParams.append("city", params.city);
+    }
+
+    const response = await fetch(url.toString(), {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -27,7 +43,7 @@ export class PropertyService {
         ),
       );
 
-      return errorData;
+      throw errorData;
     }
 
     return (await response.json()) as Paginated<Property>;

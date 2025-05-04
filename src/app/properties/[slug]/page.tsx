@@ -1,5 +1,5 @@
 import { PropertyService } from "@/app/services/property";
-import { PropertyDetailContainer } from "../components/container";
+import { PropertyDetailContainer } from "./components/container";
 
 export default async function DetailedPropertiesPage({
   params,
