@@ -1,7 +1,6 @@
 import { BuildingType } from "./enums/building-type";
 import { TransactionType } from "./enums/transaction-type";
 
-
 export interface Property {
   agency: PropertyAgency | null;
   agency_id: number | null;
@@ -31,6 +30,8 @@ export interface Property {
 
 export interface DetailedProperty extends Property {
   multimedia: Array<string>;
+  agency: PropertyAgency | null;
+  agent: PropertyAgent | null;
 }
 
 export interface PropertyAgent {
