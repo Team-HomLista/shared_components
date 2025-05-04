@@ -4,7 +4,7 @@ import { HomlistaFeaturesSection } from "../sections/homlista-features";
 import { PricingCardSection } from "../sections/pricing-cards";
 import { ComparisonTableSection } from "../sections/pricing-table";
 import { SubscriptionHeroSection } from "../sections/suscription-hero";
-import { Faqs } from "@/components/faq/faq-data";
+import { Faqs } from "@/app/planes/components/faq/faq-data";
 import { PartnersSection } from "../sections/partners";
 import { FaqSection } from "../sections/faq";
 import { Navbar } from "@/components/navbar";
