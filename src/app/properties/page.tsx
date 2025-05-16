@@ -1,22 +1,16 @@
 import { PropertyService } from "../services/property";
+import { cleanQueries } from "../utils/clean-queries";
 import { PropertiesSearchContainer } from "./components/container";
+import { PropertyQueryParams } from "./types";
 
 export default async function PropertiesPage({
   searchParams,
 }: {
-  searchParams: Promise<{
-    property_type?: string;
-    search_type?: string;
-    city?: string;
-  }>;
+  searchParams: Promise<PropertyQueryParams>;
 }) {
-  const { property_type, search_type, city } = await searchParams;
+  const queries = cleanQueries(await searchParams);
 
-  const { data: properties } = await PropertyService.getPropertiesBySearch({
-    property_type,
-    search_type,
-    city,
-  });
+  const response = await PropertyService.getPropertiesBySearch(queries);
 
-  return <PropertiesSearchContainer properties={properties} />;
+  return <PropertiesSearchContainer response={response} queries={queries} />;
 }
