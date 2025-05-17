@@ -1,3 +1,4 @@
+import { FilterService } from "../services/filter";
 import { PropertyService } from "../services/property";
 import { cleanQueries } from "../utils/clean-queries";
 import { PropertiesSearchContainer } from "./components/container";
@@ -10,7 +11,16 @@ export default async function PropertiesPage({
 }) {
   const queries = cleanQueries(await searchParams);
 
-  const response = await PropertyService.getPropertiesBySearch(queries);
+  const [paginated, filters] = await Promise.all([
+    PropertyService.getPropertiesBySearch(queries),
+    FilterService.getFilterOptions(),
+  ]);
 
-  return <PropertiesSearchContainer response={response} queries={queries} />;
+  return (
+    <PropertiesSearchContainer
+      filters={filters}
+      paginated={paginated}
+      queries={queries}
+    />
+  );
 }

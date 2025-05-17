@@ -10,19 +10,21 @@ import { PropertyQueryParams } from "../types";
 import { useRouter, useSearchParams } from "next/navigation";
 
 export interface PropertiesSearchContainerProps {
+  filters: unknown;
+  paginated: Paginated<Property>;
   queries: PropertyQueryParams;
-  response: Paginated<Property>;
 }
 
 const PROPERTIES_PER_PAGE = 9;
 
 export const PropertiesSearchContainer: FC<PropertiesSearchContainerProps> = ({
+  filters,
+  paginated,
   queries,
-  response,
 }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const { data: properties, last_page, current_page } = response;
+  const { data: properties, last_page, current_page } = paginated;
 
   const handlePageChange = (newPage: number) => {
     const params = new URLSearchParams(searchParams.toString());
@@ -30,7 +32,6 @@ export const PropertiesSearchContainer: FC<PropertiesSearchContainerProps> = ({
     router.push(`/properties?${params.toString()}`);
   };
 
-  console.log(response);
   return (
     <>
       <Navbar variant="default" />

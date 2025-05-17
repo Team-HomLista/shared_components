@@ -4,7 +4,7 @@ export class FilterService {
     const SERVER_URL = process.env.SERVER_URL;
     const HARD_KEY = String(process.env.HARD_KEY);
 
-    const url = new URL(`${SERVER_URL}/properties/filters`);
+    const url = new URL(`${SERVER_URL}/search/filters`);
 
     const response = await fetch(url.toString(), {
       method: "GET",
