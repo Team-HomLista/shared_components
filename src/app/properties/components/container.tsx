@@ -15,8 +15,6 @@ export interface PropertiesSearchContainerProps {
   queries: PropertyQueryParams;
 }
 
-const PROPERTIES_PER_PAGE = 9;
-
 export const PropertiesSearchContainer: FC<PropertiesSearchContainerProps> = ({
   filters,
   paginated,

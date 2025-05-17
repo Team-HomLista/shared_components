@@ -3,30 +3,23 @@ import {
   Sheet,
   SheetContent,
   SheetDescription,
-  SheetHeader,
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { ListFilter } from "lucide-react";
-import { FC, useState } from "react";
-import { FilterSelect } from "../components/select";
-import { MEXICO_LOCATIONS } from "../components/mexico-locations";
+import { FC, useState, useEffect } from "react";
+import { FilterSelect } from "./components/select";
 import { Switch } from "@/components/ui/switch";
 import { Slider } from "@/components/ui/slider";
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { LabeledSelect } from "./LabeledSelect";
-import { LabeledToggleGroup } from "./LabeledToggleGroup";
-import { DimensionInput } from "./DimensionInput";
+import { LabeledSelect } from "./components/LabeledSelect";
+import { LabeledToggleGroup } from "./components/LabeledToggleGroup";
+import { DimensionInput } from "./components/DimensionInput";
+import { FilterService } from "@/app/services/filter";
+import { PropertyLocations } from "@/types/property-filter";
 
-export interface FilterProps {}
+export interface FilterProps {
+  filters?: unknown;
+}
 
 export const Filters: FC<FilterProps> = () => {
   const [selectedState, setSelectedState] = useState("");
@@ -43,26 +36,64 @@ export const Filters: FC<FilterProps> = () => {
   const [parkingSize, setParkingSize] = useState("");
   const [parkingUnit, setParkingUnit] = useState("m2");
 
-  const stateOptions = MEXICO_LOCATIONS.map((s) => ({
-    value: s.state,
-    label: s.state,
-  }));
+  const [stateOptions, setStateOptions] = useState<
+    { value: string; label: string }[]
+  >([]);
+  const [municipalityOptions, setMunicipalityOptions] = useState<
+    { value: string; label: string }[]
+  >([]);
+  const [cityOptions, setCityOptions] = useState<
+    { value: string; label: string }[]
+  >([]);
+  const [filtersData, setFiltersData] = useState<PropertyLocations>({});
 
-  const municipalityOptions =
-    MEXICO_LOCATIONS.find((s) => s.state === selectedState)?.municipalities.map(
-      (m) => ({
-        value: m.municipality,
-        label: m.municipality,
-      }),
-    ) || [];
+  useEffect(() => {
+    async function fetchFilters() {
+      try {
+        const filters = await FilterService.getFilterOptions();
+        setFiltersData(filters);
+        setStateOptions(
+          Object.keys(filters).map((state) => ({ value: state, label: state })),
+        );
+      } catch (error) {
+        console.error("Failed to fetch filter options", error);
+      }
+    }
+    fetchFilters();
+  }, []);
 
-  const cityOptions =
-    MEXICO_LOCATIONS.find((s) => s.state === selectedState)
-      ?.municipalities.find((m) => m.municipality === selectedMunicipality)
-      ?.cities.map((c) => ({
-        value: c,
-        label: c,
-      })) || [];
+  useEffect(() => {
+    if (selectedState && filtersData[selectedState]) {
+      setMunicipalityOptions(
+        Object.keys(filtersData[selectedState]).map((municipality) => ({
+          value: municipality,
+          label: municipality,
+        })),
+      );
+    } else {
+      setMunicipalityOptions([]);
+    }
+    setSelectedMunicipality("");
+    setSelectedCity("");
+  }, [selectedState, filtersData]);
+
+  useEffect(() => {
+    if (
+      selectedState &&
+      selectedMunicipality &&
+      filtersData[selectedState]?.[selectedMunicipality]
+    ) {
+      setCityOptions(
+        filtersData[selectedState][selectedMunicipality].map((city) => ({
+          value: city,
+          label: city,
+        })),
+      );
+    } else {
+      setCityOptions([]);
+    }
+    setSelectedCity("");
+  }, [selectedMunicipality, selectedState, filtersData]);
 
   return (
     <>
@@ -101,8 +132,8 @@ export const Filters: FC<FilterProps> = () => {
                 options={stateOptions}
               />
               <FilterSelect
-                label="Municipio"
-                placeholder="Elegir un municipio"
+                label="Ciudad"
+                placeholder="Elegir una ciudad"
                 value={selectedMunicipality}
                 onChange={(value) => {
                   setSelectedMunicipality(value);
@@ -116,8 +147,8 @@ export const Filters: FC<FilterProps> = () => {
                 }
               />
               <FilterSelect
-                label="Ciudad"
-                placeholder="Elegir una ciudad"
+                label="Colonia"
+                placeholder="Elegir una colonia"
                 value={selectedCity}
                 onChange={setSelectedCity}
                 options={cityOptions}

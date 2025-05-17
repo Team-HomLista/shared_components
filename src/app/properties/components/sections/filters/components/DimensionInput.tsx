@@ -25,8 +25,8 @@ export const DimensionInput: FC<DimensionInputProps> = ({
   unit,
   onUnitChange,
   unitOptions = [
-    { value: "m2", label: "m2" },
-    { value: "ft2", label: "ft2" },
+    { value: "m²", label: "m²" },
+    { value: "ft²", label: "ft²" },
   ],
   placeholder = "Dimensión en m²",
 }) => (

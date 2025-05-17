@@ -44,7 +44,7 @@ export const PropertiesSearchControlsSection: FC<
   return (
     <div className="flex flex-col px-32">
       <div className="flex w-full flex-col gap-4 pt-8">
-        {/* Input de palabras clave y botón buscar */}
+        {/* Input for keyword and search button */}
         <div className="flex w-full flex-row gap-2">
           <Input
             value={keywords}
@@ -58,7 +58,7 @@ export const PropertiesSearchControlsSection: FC<
             Buscar propiedades
           </Button>
         </div>
-        {/* Selects y controles */}
+        {/* Selects and controls */}
         <div className="flex w-full flex-row items-center gap-4">
           {/* Select property_type */}
           <Select
@@ -94,12 +94,12 @@ export const PropertiesSearchControlsSection: FC<
               <SelectItem value={TransactionType.RENT}>Renta</SelectItem>
             </SelectContent>
           </Select>
-          {/* Botón Orden por */}
+          {/* Order by button */}
           <Button variant="default" className="font-normal">
             <ArrowUpDown />
             Orden por <span className="ml-1 font-bold">Relevancia</span>
           </Button>
-          {/* Botón Filtros */}
+          {/* Filters button */}
           <Filters />
         </div>
         <div className="border-secondary flex w-full border"></div>
