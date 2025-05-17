@@ -4,9 +4,10 @@ import { FC } from "react";
 import { ImageGallery } from "./gallery";
 import { PropertyDetailHeader } from "./detail-header";
 import { CtaInfoCard } from "./cta/container";
+import { DetailedProperty } from "@/types/property";
 
 export interface PropertyDetailContainerProps {
-  property: any;
+  property: DetailedProperty;
 }
 
 export const PropertyDetailContainer: FC<PropertyDetailContainerProps> = ({
@@ -25,11 +26,10 @@ export const PropertyDetailContainer: FC<PropertyDetailContainerProps> = ({
       <ImageGallery multimedia={property.multimedia} />
       <CtaInfoCard
         description={property.description}
-        features={property.features}
-        amenities={property.amenities}
-        full_name={property.agent.full_name}
-        agent_avatar={property.agent.avatar}
-        agent_agency={property.agency}
+        features={[]}
+        amenities={[]}
+        agency={property.agency}
+        agent={property.agent}
       />
     </>
   );

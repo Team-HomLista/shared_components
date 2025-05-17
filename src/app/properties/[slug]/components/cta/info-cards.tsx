@@ -1,7 +1,7 @@
 import { FC } from "react";
 
 export interface InfoCardProps {
-  description: string;
+  description: string | null;
   features: string[];
   amenities: string[];
 }
