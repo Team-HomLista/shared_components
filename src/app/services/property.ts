@@ -2,27 +2,37 @@ import { Paginated } from "@/types/paginated";
 import { DetailedProperty, Property } from "@/types/property";
 
 interface GetPropertiesBySearchParams {
+  page?: number;
   search_type?: string;
   property_type?: string;
   city?: string;
+  title?: string;
 }
 
 export class PropertyService {
   static async getPropertiesBySearch(params?: GetPropertiesBySearchParams) {
-    "use server";
-    const SERVER_URL = process.env.SERVER_URL;
-    const HARD_KEY = String(process.env.HARD_KEY);
+    const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL;
+    const HARD_KEY = String(process.env.NEXT_PUBLIC_HARD_KEY);
+
+    console.log({ params });
 
     const url = new URL(`${SERVER_URL}/properties/search`);
 
     if (params) {
-      if (params.search_type)
+      if (params.page !== undefined)
+        url.searchParams.append("page", String(params.page));
+
+      if (params.search_type !== undefined)
         url.searchParams.append("search_type", params.search_type);
 
-      if (params.property_type)
+      if (params.property_type !== undefined)
         url.searchParams.append("property_type", params.property_type);
 
-      if (params.city) url.searchParams.append("city", params.city);
+      if (params.city !== undefined)
+        url.searchParams.append("city", params.city);
+
+      if (params.title !== undefined)
+        url.searchParams.append("title", params.title);
     }
 
     const response = await fetch(url.toString(), {
@@ -50,13 +60,12 @@ export class PropertyService {
   }
 
   static async getFeaturedProperties() {
-    "use server";
-    const SERVER_URL = process.env.SERVER_URL;
-    const HARD_KEY = String(process.env.HARD_KEY);
+    const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL;
+    const HARD_KEY = String(process.env.NEXT_PUBLIC_HARD_KEY);
 
-    const url = `${SERVER_URL}/properties/featured`;
+    const featuredUrl = `${SERVER_URL}/properties/featured`;
 
-    const response = await fetch(url, {
+    const response = await fetch(featuredUrl, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -81,9 +90,8 @@ export class PropertyService {
   }
 
   static async getPropertyDetails(slug: string) {
-    "use server";
-    const SERVER_URL = process.env.SERVER_URL;
-    const HARD_KEY = String(process.env.HARD_KEY);
+    const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL;
+    const HARD_KEY = String(process.env.NEXT_PUBLIC_HARD_KEY);
 
     const url = `${SERVER_URL}/properties/${slug}`;
 

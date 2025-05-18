@@ -1,28 +1,21 @@
+import { PropertyAgent } from "@/types/property";
 import { FC } from "react";
 
-export interface TouchProps {
-  full_name: string;
-  agent_avatar: string;
-  agent_agency: string;
+export interface AgentTouchProps {
+  agent: PropertyAgent;
 }
 
-export const Touch: FC<TouchProps> = ({
-  full_name,
-  agent_avatar,
-  agent_agency,
+export const AgentTouch: FC<AgentTouchProps> = ({
+  agent: { avatar, full_name },
 }) => {
   return (
     <div className="border-primary w-xl rounded-lg border-2 p-4">
       {/* header */}
       <div className="flex items-center gap-2">
-        <img
-          src={agent_avatar}
-          alt="Asesor"
-          className="h-10 w-10 rounded-full"
-        />
+        <img src={avatar} alt="Asesor" className="h-10 w-10 rounded-full" />
         <div>
           <p className="text-sm">{full_name}</p>
-          <p className="text-sm text-[#929292]">{agent_agency} papas fritas</p>
+          {/* <p className="text-sm text-[#929292]">{agent_agency} papas fritas</p> */}
         </div>
       </div>
 

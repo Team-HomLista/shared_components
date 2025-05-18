@@ -1,31 +1,29 @@
-import { FC, Fragment } from "react";
+import { FC } from "react";
 import { InfoCard } from "./info-cards";
-import { Touch } from "./touch";
+import { PropertyAgency, PropertyAgent } from "@/types/property";
+import { AgencyTouch } from "./agency-touch";
+import { AgentTouch } from "./agent-touch";
 
 export interface CtaInfoCardProps {
-  description: string;
-  features: string[];
+  agency: PropertyAgency | null;
+  agent: PropertyAgent | null;
   amenities: string[];
-  full_name: string;
-  agent_avatar: string;
-  agent_agency: string;
+  description: string | null;
+  features: string[];
 }
 
 export const CtaInfoCard: FC<CtaInfoCardProps> = ({
+  agency,
+  agent,
+  amenities,
   description,
   features,
-  full_name,
-  agent_avatar,
-  agent_agency,
 }) => {
   return (
     <div className="flex w-full flex-row gap-4 px-64 pt-12 pb-12">
       <InfoCard description={description} amenities={[]} features={features} />
-      <Touch
-        full_name={full_name}
-        agent_agency={agent_agency}
-        agent_avatar={agent_avatar}
-      />
+      {agency && <AgencyTouch agency={agency} />}
+      {agent && <AgentTouch agent={agent} />}
     </div>
   );
 };
