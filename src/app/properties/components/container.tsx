@@ -16,9 +16,7 @@ export interface PropertiesSearchContainerProps {
 }
 
 export const PropertiesSearchContainer: FC<PropertiesSearchContainerProps> = ({
-  filters,
   paginated,
-  queries,
 }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
