@@ -28,7 +28,7 @@ export const DimensionInput: FC<DimensionInputProps> = ({
     { value: "m²", label: "m²" },
     { value: "ft²", label: "ft²" },
   ],
-  placeholder = "Dimensión en m²",
+  placeholder = unitOptions[0]?.label || "m²",
 }) => (
   <div>
     <label>{label}</label>
@@ -41,7 +41,14 @@ export const DimensionInput: FC<DimensionInputProps> = ({
       />
       <Select value={unit} onValueChange={onUnitChange}>
         <SelectTrigger className="border-secondary rounded-l-none rounded-r-md">
-          <SelectValue placeholder={unitOptions[0].label} />
+          <SelectValue placeholder={"m²"}>
+            {unit || (
+              <>
+                {"m"}
+                <sup>2</sup>
+              </>
+            )}
+          </SelectValue>
         </SelectTrigger>
         <SelectContent>
           {unitOptions.map((opt) => (

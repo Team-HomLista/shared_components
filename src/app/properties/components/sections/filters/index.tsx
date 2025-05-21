@@ -16,6 +16,7 @@ import { LabeledToggleGroup } from "./components/LabeledToggleGroup";
 import { DimensionInput } from "./components/DimensionInput";
 import { FilterService } from "@/app/services/filter";
 import { PropertyLocations } from "@/types/property-filter";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export interface FilterProps {
   filters?: unknown;
@@ -46,6 +47,9 @@ export const Filters: FC<FilterProps> = () => {
     { value: string; label: string }[]
   >([]);
   const [filtersData, setFiltersData] = useState<PropertyLocations>({});
+
+  const router = useRouter();
+  const searchParams = useSearchParams();
 
   useEffect(() => {
     async function fetchFilters() {
@@ -95,6 +99,15 @@ export const Filters: FC<FilterProps> = () => {
     setSelectedCity("");
   }, [selectedMunicipality, selectedState, filtersData]);
 
+  const handleApplyFilters = () => {
+    const params = new URLSearchParams(searchParams.toString());
+    if (selectedState) params.set("state", selectedState);
+    if (selectedMunicipality) params.set("city", selectedMunicipality);
+    if (selectedCity) params.set("neigborhood", selectedCity);
+
+    router.push(`/properties?${params.toString()}`);
+  };
+
   return (
     <>
       <Sheet>
@@ -105,7 +118,7 @@ export const Filters: FC<FilterProps> = () => {
         </SheetTrigger>
         <SheetContent
           headerActions={
-            <Button corner="squared" size="sm">
+            <Button corner="squared" size="sm" onClick={handleApplyFilters}>
               Aplicar filtros
             </Button>
           }
