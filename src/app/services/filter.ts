@@ -2,10 +2,10 @@ import { PropertyLocations } from "@/types/property-filter";
 
 export class FilterService {
   static async getFilterOptions() {
-    const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL;
-    const HARD_KEY = String(process.env.NEXT_PUBLIC_HARD_KEY);
+    const SERVER_URL = process.env.SERVER_URL;
+    const HARD_KEY = String(process.env.HARD_KEY);
 
-    const url = new URL(`${SERVER_URL}/search/filters`);
+    const url = new URL(`${SERVER_URL}/api/search/filters`);
 
     const response = await fetch(url.toString(), {
       method: "GET",

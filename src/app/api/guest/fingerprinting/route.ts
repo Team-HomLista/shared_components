@@ -11,7 +11,7 @@ export async function POST(request: Request) {
 
     const { anonymous_id } = (await request.json()) as RequestBody;
 
-    const url = `${SERVER_URL}/guest/identify`;
+    const url = `${SERVER_URL}/api/guest/identify`;
 
     const response = await fetch(url, {
       method: "POST",
@@ -27,7 +27,7 @@ export async function POST(request: Request) {
 
     if (!response.ok) {
       const errorData = await response.json();
-      
+
       return NextResponse.json(
         { message: `Error from downstream server: ${errorData}` },
         { status: response.status },

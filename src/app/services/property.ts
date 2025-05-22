@@ -11,12 +11,10 @@ interface GetPropertiesBySearchParams {
 
 export class PropertyService {
   static async getPropertiesBySearch(params?: GetPropertiesBySearchParams) {
-    const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL;
-    const HARD_KEY = String(process.env.NEXT_PUBLIC_HARD_KEY);
+    const SERVER_URL = process.env.SERVER_URL;
+    const HARD_KEY = String(process.env.HARD_KEY);
 
-    console.log({ params });
-
-    const url = new URL(`${SERVER_URL}/properties/search`);
+    const url = new URL(`${SERVER_URL}/api/properties/search`);
 
     if (params) {
       if (params.page !== undefined)
@@ -60,10 +58,13 @@ export class PropertyService {
   }
 
   static async getFeaturedProperties() {
-    const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL;
-    const HARD_KEY = String(process.env.NEXT_PUBLIC_HARD_KEY);
+    const SERVER_URL = process.env.SERVER_URL;
+    const HARD_KEY = String(process.env.HARD_KEY);
 
-    const featuredUrl = `${SERVER_URL}/properties/featured`;
+    console.log("SERVER_URL", SERVER_URL);
+    console.log("HARD_KEY", HARD_KEY);
+
+    const featuredUrl = `${SERVER_URL}/api/properties/featured`;
 
     const response = await fetch(featuredUrl, {
       method: "GET",
@@ -90,8 +91,8 @@ export class PropertyService {
   }
 
   static async getPropertyDetails(slug: string) {
-    const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL;
-    const HARD_KEY = String(process.env.NEXT_PUBLIC_HARD_KEY);
+    const SERVER_URL = process.env.SERVER_URL;
+    const HARD_KEY = String(process.env.HARD_KEY);
 
     const url = `${SERVER_URL}/properties/${slug}`;
 
