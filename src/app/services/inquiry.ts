@@ -5,7 +5,8 @@ export class InquiryService {
     leadId: number,
     data: Omit<LeadFormData, "contactConsent" | "dataConsent">,
   ) {
-    const url = `/api/leads/${leadId}/inquiry`;
+    const url = `api/leads/${leadId}/inquiry`;
+
     const response = await fetch(url, {
       method: "POST",
       headers: {
@@ -18,9 +19,10 @@ export class InquiryService {
     if (!response.ok) {
       const errorData = (await response.json()) as Error;
 
-      console.error(`InquiryService.postGeneral`, errorData);
+      console.error(new Error(`InquiryService.postGeneral: ${errorData}`));
       return errorData;
     }
+
     return (await response.json()) as null;
   }
 }

@@ -18,7 +18,7 @@ export const SubscriptionHeroSection: FC<
           }}
         ></div>
       </div>
-      <div className="container mx-auto px-4 pt-40">
+      <div className="container mx-auto px-4 pt-24">
         <div className="mx-auto flex w-full flex-col items-center text-center">
           <h1 className="mb-10 max-w-4xl text-5xl font-bold md:text-5xl lg:text-6xl">
             Todo lo que tu inmobiliaria necesita para crecer, en una sola

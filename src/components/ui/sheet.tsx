@@ -4,6 +4,7 @@ import * as React from "react";
 import * as SheetPrimitive from "@radix-ui/react-dialog";
 
 import { cn } from "@/lib/utils";
+import { X } from "lucide-react";
 
 function Sheet({ ...props }: React.ComponentProps<typeof SheetPrimitive.Root>) {
   return <SheetPrimitive.Root data-slot="sheet" {...props} />;
@@ -47,9 +48,11 @@ function SheetContent({
   className,
   children,
   side = "right",
+  headerActions,
   ...props
 }: React.ComponentProps<typeof SheetPrimitive.Content> & {
   side?: "top" | "right" | "bottom" | "left";
+  headerActions?: React.ReactNode;
 }) {
   return (
     <SheetPortal>
@@ -70,9 +73,10 @@ function SheetContent({
         )}
         {...props}
       >
-        <div className="flex justify-center pt-3">
-          <SheetPrimitive.Close className="ring-offset-background focus:ring-ring h-10 w-24 rounded-xs">
-            <div className="bg-terciary mx-auto h-1 w-12 rounded-full" />
+        <div className="flex items-center justify-between px-4 pt-3">
+          {headerActions}
+          <SheetPrimitive.Close className="rounded-sm opacity-70 transition-opacity hover:opacity-100 disabled:pointer-events-none">
+            <X className="h-4 w-4" />
             <span className="sr-only">Close</span>
           </SheetPrimitive.Close>
         </div>

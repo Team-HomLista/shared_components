@@ -1,0 +1,41 @@
+"use client";
+import { Property } from "@/types/property";
+import { PropertyCardItem } from "@/components/property-card";
+
+export interface PropertiesSearchGridSectionProps {
+  properties: Array<Property>;
+}
+
+export const PropertiesSearchGridSection: React.FC<
+  PropertiesSearchGridSectionProps
+> = ({ properties }) => {
+  return (
+    <div className="flex flex-col px-32 pt-8">
+      <div className="grid grid-cols-1 justify-items-center gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {properties.map((property, idx) => (
+          <PropertyCardItem
+            key={property.short_id}
+            image={property.cover_image}
+            banner={{ transaction: property.transaction_type }}
+            information={{
+              title: property.title,
+              location: `${property.city}, ${property.state}`,
+              price: {
+                value: property.price,
+                currency: property.price_currency,
+              },
+              details: {
+                rooms: property.rooms,
+                bathrooms: property.bathrooms,
+                parking_slots: property.parking_slots,
+                building_size: property.building_size,
+              },
+            }}
+            slug={property.slug}
+            onClickLike={() => {}}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};

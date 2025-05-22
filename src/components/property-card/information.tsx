@@ -1,77 +1,57 @@
-import { PropertyFeature } from "@/types/feature";
 import { FC } from "react";
 import { Text } from "@/components/ui/text";
 import { formatPrice } from "@/app/utils/price-formatter";
-import { getFeatureIcons } from "@/app/utils/property-feature";
+import { PropertyCardLandDetail } from "@/components/property-card/land-detail";
+import { BathIcon, BedIcon, CarIcon, RulerIcon } from "lucide-react";
 
-/** PropertyCardInformationProps
- *
- * Defines the props for the `PropertyCardInformation` component.
- * Includes details about the property such as title, location, price, and features.
- */
 export interface PropertyCardInformationProps {
-  /**
-   * The title of the property (e.g., "Modern Apartment").
+  /** The title of the property (e.g., "Modern Apartment").
    */
   title: string;
-
-  /**
-   * The location of the property (e.g., "New York, USA").
+  /** The location of the property (e.g., "New York, USA").
    */
   location: string;
-
-  /**
-   * The price of the property, including its value and currency.
+  /** The price of the property, including its value and currency.
    */
   price: {
     value: number;
     currency: string;
   };
-
-  /**
-   * An array of features for the property, such as rooms, bathrooms, and parking slots.
-   */
-  features: Array<PropertyFeature>;
+  details: {
+    rooms: number;
+    bathrooms: number;
+    parking_slots: number;
+    building_size: number | null;
+  };
 }
 
-/** PropertyCardInformation
- *
- * A functional component that displays detailed information about a property.
- * It includes the title, location, formatted price, and a list of features with icons.
- *
- * @param {PropertyCardInformationProps} props - Props containing the property details.
- * @returns {JSX.Element} A JSX element displaying the property information.
- *
- * @example
- * ```tsx
- * <PropertyCardInformation
- *   title="Modern Apartment"
- *   location="New York, USA"
- *   price={{ value: 250000, currency: "USD" }}
- *   features={[
- *     { type: "Rooms", value: 3 },
- *     { type: "Bathrooms", value: 2 },
- *   ]}
- * />
- * ```
+/** A functional component that displays detailed information about a property.
+ * It includes the title, location, formatted price, and a list of features
+ * with icons.
  */
 export const PropertyCardInformation: FC<PropertyCardInformationProps> = ({
   title,
   location,
   price,
-  features,
+  details: { rooms, bathrooms, parking_slots, building_size },
 }) => {
   return (
     <>
-      <Text variant={"default"} className="text-base text-zinc-950 font-medium">
+      <Text variant={"default"} className="text-base font-medium text-zinc-950">
         {title}
       </Text>
-      <Text className="text-sm text-neutral-400 font-medium">{location}</Text>
-      <Text className="text-zinc-950 text-base font-medium">
+      <Text className="text-sm font-medium text-neutral-400">{location}</Text>
+      <Text className="text-base font-medium text-zinc-950">
         {formatPrice(price)}
       </Text>
-      <div className="flex flex-wrap gap-4 mt-2">
-        {getFeatureIcons(features)}
+      <div className="mt-2 flex flex-wrap gap-4">
+        <PropertyCardLandDetail Icon={BedIcon} value={rooms} />
+        <PropertyCardLandDetail Icon={BathIcon} value={bathrooms} />
+        <PropertyCardLandDetail Icon={CarIcon} value={parking_slots} />
+        {building_size && (
+          <PropertyCardLandDetail Icon={RulerIcon} value={building_size} />
+        )}
+        {/* <PropertyCardLandDetail Icon={ShowerHeadIcon} value={} /> */}
       </div>
     </>
   );

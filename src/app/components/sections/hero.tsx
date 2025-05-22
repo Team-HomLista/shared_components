@@ -1,21 +1,23 @@
 import { SearchBar } from "@/components/search-bar";
+import Image from "next/image";
 import { FC } from "react";
 
 interface HeroSectionProps {}
 
 export const HeroSection: FC<HeroSectionProps> = ({}) => {
   return (
-    <section
-      className="flex h-screen w-full flex-col items-start px-32 pt-24"
-      style={{
-        backgroundImage: "url('/images/hero-assets/homepage.png')",
-        backgroundSize: "100%",
-        backgroundPosition: "auto",
-        backgroundColor: "#03224A",
-        backdropFilter: "brightness(0.5)",
-      }}
-    >
-      <div className="flex h-full w-[744px] flex-col gap-8 px-8 pt-16 font-medium text-white">
+    <section className="relative -mt-22 flex h-screen w-full flex-col items-start px-32 pt-24">
+      <Image
+        src="/images/hero-assets/homepage.png"
+        alt="Hero background image"
+        layout="fill"
+        objectFit="cover"
+        objectPosition="center"
+        quality={100}
+        priority
+        className="-z-10 brightness-50"
+      />
+      <div className="relative z-10 flex h-full w-[744px] flex-col gap-8 px-8 pt-16 font-medium text-white">
         <h1 className="text-[64px] leading-[72px]">
           Deja que nosotros encontremos el hogar que mereces
         </h1>
@@ -24,7 +26,9 @@ export const HeroSection: FC<HeroSectionProps> = ({}) => {
           IA. Compra, vende o invierte: tu futuro inmobiliario comienza aquí
         </h2>
       </div>
-      <SearchBar />
+      <div className="relative z-10 w-full">
+        <SearchBar />
+      </div>
     </section>
   );
 };
