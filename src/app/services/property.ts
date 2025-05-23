@@ -5,16 +5,17 @@ interface GetPropertiesBySearchParams {
   page?: number;
   search_type?: string;
   property_type?: string;
-  city?: string;
   title?: string;
+  state?: string;
+  city?: string;
+  neigborhood?: string;
 }
 
 export class PropertyService {
   static async getPropertiesBySearch(params?: GetPropertiesBySearchParams) {
-    const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL;
-    const HARD_KEY = String(process.env.NEXT_PUBLIC_HARD_KEY);
-
-    console.log({ params });
+    "use server";
+    const SERVER_URL = process.env.SERVER_URL;
+    const HARD_KEY = String(process.env.HARD_KEY);
 
     const url = new URL(`${SERVER_URL}/properties/search`);
 
@@ -28,11 +29,17 @@ export class PropertyService {
       if (params.property_type !== undefined)
         url.searchParams.append("property_type", params.property_type);
 
+      if (params.title !== undefined)
+        url.searchParams.append("title", params.title);
+
+      if (params.state !== undefined)
+        url.searchParams.append("state", params.state);
+
       if (params.city !== undefined)
         url.searchParams.append("city", params.city);
 
-      if (params.title !== undefined)
-        url.searchParams.append("title", params.title);
+      if (params.neigborhood !== undefined)
+        url.searchParams.append("neigborhood", params.neigborhood);
     }
 
     const response = await fetch(url.toString(), {
@@ -60,8 +67,9 @@ export class PropertyService {
   }
 
   static async getFeaturedProperties() {
-    const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL;
-    const HARD_KEY = String(process.env.NEXT_PUBLIC_HARD_KEY);
+    "use server";
+    const SERVER_URL = process.env.SERVER_URL;
+    const HARD_KEY = String(process.env.HARD_KEY);
 
     const featuredUrl = `${SERVER_URL}/properties/featured`;
 
