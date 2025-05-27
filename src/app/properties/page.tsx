@@ -7,7 +7,7 @@ import { PropertyQueryParams } from "./types";
 export default async function PropertiesPage({
   searchParams,
 }: {
-  searchParams: Promise<PropertyQueryParams>;
+  searchParams: Promise<{ [key: string]: string | string[] }>;
 }) {
   const queries = cleanQueries(await searchParams);
 

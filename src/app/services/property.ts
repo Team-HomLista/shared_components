@@ -1,23 +1,14 @@
 import { Paginated } from "@/types/paginated";
 import { DetailedProperty, Property } from "@/types/property";
-
-interface GetPropertiesBySearchParams {
-  page?: number;
-  search_type?: string;
-  property_type?: string;
-  title?: string;
-  state?: string;
-  city?: string;
-  neigborhood?: string;
-}
+import { PropertyQueryParams } from "../properties/types";
 
 export class PropertyService {
-  static async getPropertiesBySearch(params?: GetPropertiesBySearchParams) {
+  static async getPropertiesBySearch(params?: PropertyQueryParams) {
     "use server";
     const SERVER_URL = process.env.SERVER_URL;
     const HARD_KEY = String(process.env.HARD_KEY);
 
-    const url = new URL(`${SERVER_URL}/properties/search`);
+    const url = new URL(`${SERVER_URL}/api/properties/search`);
 
     if (params) {
       if (params.page !== undefined)
@@ -38,8 +29,8 @@ export class PropertyService {
       if (params.city !== undefined)
         url.searchParams.append("city", params.city);
 
-      if (params.neigborhood !== undefined)
-        url.searchParams.append("neigborhood", params.neigborhood);
+      if (params.neighborhood !== undefined)
+        url.searchParams.append("neighborhood", params.neighborhood);
     }
 
     const response = await fetch(url.toString(), {
@@ -71,7 +62,7 @@ export class PropertyService {
     const SERVER_URL = process.env.SERVER_URL;
     const HARD_KEY = String(process.env.HARD_KEY);
 
-    const featuredUrl = `${SERVER_URL}/properties/featured`;
+    const featuredUrl = `${SERVER_URL}/api/properties/featured`;
 
     const response = await fetch(featuredUrl, {
       method: "GET",
@@ -98,8 +89,9 @@ export class PropertyService {
   }
 
   static async getPropertyDetails(slug: string) {
+    "use server";
     const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL;
-    const HARD_KEY = String(process.env.NEXT_PUBLIC_HARD_KEY);
+    const HARD_KEY = String(process.env.HARD_KEY);
 
     const url = `${SERVER_URL}/properties/${slug}`;
 
