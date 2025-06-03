@@ -61,9 +61,6 @@ export class PropertyService {
     const SERVER_URL = process.env.SERVER_URL;
     const HARD_KEY = String(process.env.HARD_KEY);
 
-    console.log("SERVER_URL", SERVER_URL);
-    console.log("HARD_KEY", HARD_KEY);
-
     const featuredUrl = `${SERVER_URL}/api/properties/featured`;
 
     const response = await fetch(featuredUrl, {

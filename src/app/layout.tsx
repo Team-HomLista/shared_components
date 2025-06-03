@@ -12,7 +12,6 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "HomLista",
-  // description: "Descripción de tu app",
 };
 
 export const viewport: Viewport = {
