@@ -2,8 +2,7 @@ import { LocationFilters } from "@/types/property-filter";
 
 export class FilterService {
   static async getFilterOptions() {
-    "use server";
-    const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL;
+    const SERVER_URL = process.env.SERVER_URL;
     const HARD_KEY = String(process.env.HARD_KEY);
 
     const url = new URL(`${SERVER_URL}/api/search/filters`);

@@ -9,13 +9,13 @@ export async function POST(
   { params }: { params: Promise<{ leadId: number }> },
 ) {
   try {
-    const SERVER_URL = process.env.SERVER_URL;
-    const HARD_KEY = String(process.env.HARD_KEY);
+    const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL;
+    const HARD_KEY = String(process.env.NEXT_PUBLIC_HARD_KEY);
 
     const body = (await request.json()) as RequestBody;
     const { leadId } = await params;
 
-    const url = `${SERVER_URL}/leads/${leadId}/inquiries/store`;
+    const url = `${SERVER_URL}/api/leads/${leadId}/inquiries/store`;
 
     const response = await fetch(url, {
       method: "POST",

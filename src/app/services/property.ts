@@ -3,8 +3,7 @@ import { DetailedProperty, Property } from "@/types/property";
 import { PropertyQueryParams } from "../properties/types";
 
 export class PropertyService {
-  static async getPropertiesBySearch(params?: PropertyQueryParams) {
-    "use server";
+  static async getPropertiesBySearch(params?: GetPropertiesBySearchParams) {
     const SERVER_URL = process.env.SERVER_URL;
     const HARD_KEY = String(process.env.HARD_KEY);
 
@@ -58,9 +57,11 @@ export class PropertyService {
   }
 
   static async getFeaturedProperties() {
-    "use server";
     const SERVER_URL = process.env.SERVER_URL;
     const HARD_KEY = String(process.env.HARD_KEY);
+
+    console.log("SERVER_URL", SERVER_URL);
+    console.log("HARD_KEY", HARD_KEY);
 
     const featuredUrl = `${SERVER_URL}/api/properties/featured`;
 
@@ -89,8 +90,7 @@ export class PropertyService {
   }
 
   static async getPropertyDetails(slug: string) {
-    "use server";
-    const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL;
+    const SERVER_URL = process.env.SERVER_URL;
     const HARD_KEY = String(process.env.HARD_KEY);
 
     const url = `${SERVER_URL}/properties/${slug}`;
