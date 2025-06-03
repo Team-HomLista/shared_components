@@ -17,6 +17,7 @@ export interface FilterSelectProps {
     label: string;
   }>;
   label?: string;
+  disabled?: boolean;
 }
 
 export const FilterSelect: FC<FilterSelectProps> = ({
@@ -26,13 +27,16 @@ export const FilterSelect: FC<FilterSelectProps> = ({
   className,
   options,
   label,
+  disabled,
 }) => {
   return (
     <div className={className}>
       {label && (
         <label className="mb-1 block text-sm font-medium">{label}</label>
       )}
-      <Select value={value} onValueChange={onChange}>
+      <Select value={value} onValueChange={onChange} disabled={disabled}>
+        {" "}
+        {/* Apply disabled prop */}
         <SelectTrigger className="w-full py-2">
           <SelectValue placeholder={placeholder} />
         </SelectTrigger>

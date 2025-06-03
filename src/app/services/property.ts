@@ -1,13 +1,6 @@
 import { Paginated } from "@/types/paginated";
 import { DetailedProperty, Property } from "@/types/property";
-
-interface GetPropertiesBySearchParams {
-  page?: number;
-  search_type?: string;
-  property_type?: string;
-  city?: string;
-  title?: string;
-}
+import { PropertyQueryParams } from "../properties/types";
 
 export class PropertyService {
   static async getPropertiesBySearch(params?: GetPropertiesBySearchParams) {
@@ -26,11 +19,17 @@ export class PropertyService {
       if (params.property_type !== undefined)
         url.searchParams.append("property_type", params.property_type);
 
+      if (params.title !== undefined)
+        url.searchParams.append("title", params.title);
+
+      if (params.state !== undefined)
+        url.searchParams.append("state", params.state);
+
       if (params.city !== undefined)
         url.searchParams.append("city", params.city);
 
-      if (params.title !== undefined)
-        url.searchParams.append("title", params.title);
+      if (params.neighborhood !== undefined)
+        url.searchParams.append("neighborhood", params.neighborhood);
     }
 
     const response = await fetch(url.toString(), {

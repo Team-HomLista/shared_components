@@ -2,42 +2,115 @@
 import { Navbar } from "@/components/navbar";
 import { Property } from "@/types/property";
 import { FC } from "react";
-import { PropertiesSearchControlsSection } from "./sections/controls";
 import { PropertiesSearchGridSection } from "./sections/grid";
 import { PropertiesSearchPaginationSection } from "./sections/pagination";
 import { Paginated } from "@/types/paginated";
 import { PropertyQueryParams } from "../types";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
+import { LocationFilters } from "@/types/property-filter";
+import { buildSearchQueryParams } from "@/app/utils/build-search-query-params";
+import { ControlsSection } from "./sections/controls";
+import { ControlsSchema, controlsSchema } from "./Schema";
+import { z } from "zod";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 export interface PropertiesSearchContainerProps {
-  filters: unknown;
+  filters: LocationFilters;
   paginated: Paginated<Property>;
   queries: PropertyQueryParams;
 }
 
 export const PropertiesSearchContainer: FC<PropertiesSearchContainerProps> = ({
+  queries,
   paginated,
+  filters,
 }) => {
   const router = useRouter();
-  const searchParams = useSearchParams();
   const { data: properties, last_page, current_page } = paginated;
 
+  const form = useForm<ControlsSchema>({
+    resolver: zodResolver(controlsSchema),
+    defaultValues: {
+      order_by: queries.order_by ?? "",
+      state: queries.state ?? "",
+      city: queries.city ?? "",
+      neighborhood: queries.neighborhood ?? "",
+      distance_km: queries.distance_km ?? "",
+      constructionYear: queries.construction_year ?? "",
+      rooms: queries.rooms ?? "",
+      baths: queries.baths ?? "",
+      land_size: queries.land_size ?? "",
+      land_unit: queries.land_unit ?? "",
+      house_size: queries.house_size ?? "",
+      house_unit: queries.house_unit ?? "",
+      property_type: queries.property_type ?? "",
+      transaction_type: queries.search_type ?? "",
+      keywords: queries.title ?? "",
+      parking_unit: queries.parking_unit ?? "",
+    },
+  });
+
+  const selectedState = form.watch("state");
+  const selectedCity = form.watch("city");
+
+  const stateOptions = Object.keys(filters).map((state) => ({
+    value: state,
+    label: state,
+  }));
+  const cityOptions =
+    selectedState && filters[selectedState]
+      ? Object.keys(filters[selectedState]).map((city) => ({
+          value: city,
+          label: city,
+        }))
+      : [];
+  const neighborhoodOptions =
+    selectedState && selectedCity && filters[selectedState]?.[selectedCity]
+      ? filters[selectedState][selectedCity].map((neighborhood) => ({
+          value: neighborhood,
+          label: neighborhood,
+        }))
+      : [];
+
   const handlePageChange = (newPage: number) => {
-    const params = new URLSearchParams(searchParams.toString());
-    params.set("page", String(newPage));
-    router.push(`/properties?${params.toString()}`);
+    const params = buildSearchQueryParams({ ...queries, page: newPage });
+    router.push(`/properties?${params}`);
+  };
+
+  const onClickPrev = () => {
+    if (current_page > 1) {
+      handlePageChange(current_page - 1);
+    }
+  };
+
+  const onClickNext = () => {
+    if (current_page < last_page) {
+      handlePageChange(current_page + 1);
+    }
+  };
+
+  const handleFormSubmit = (data: z.infer<typeof controlsSchema>) => {
+    const params = buildSearchQueryParams(data as PropertyQueryParams);
+    router.push(`/properties?${params}`);
   };
 
   return (
     <>
       <Navbar variant="default" />
-      <PropertiesSearchControlsSection />
+      <ControlsSection
+        form={form}
+        onFormSubmit={handleFormSubmit}
+        stateOptions={stateOptions}
+        cityOptions={cityOptions}
+        neighborhoodOptions={neighborhoodOptions}
+      />
       <PropertiesSearchGridSection properties={properties} />
       <PropertiesSearchPaginationSection
         currentPage={current_page}
         totalPages={last_page}
-        onPrev={() => handlePageChange(current_page - 1)}
-        onNext={() => handlePageChange(current_page + 1)}
+        onClickPrev={onClickPrev}
+        onClickNext={onClickNext}
       />
     </>
   );
