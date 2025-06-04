@@ -3,7 +3,7 @@ import { DetailedProperty, Property } from "@/types/property";
 import { PropertyQueryParams } from "../properties/types";
 
 export class PropertyService {
-  static async getPropertiesBySearch(params?: GetPropertiesBySearchParams) {
+  static async getPropertiesBySearch(params?: PropertyQueryParams) {
     const SERVER_URL = process.env.SERVER_URL;
     const HARD_KEY = String(process.env.HARD_KEY);
 
