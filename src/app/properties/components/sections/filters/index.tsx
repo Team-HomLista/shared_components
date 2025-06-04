@@ -1,255 +1,186 @@
+"use client";
+import { FC } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
   SheetTitle,
   SheetTrigger,
+  SheetFooter,
+  SheetClose,
 } from "@/components/ui/sheet";
-import { ListFilter } from "lucide-react";
-import { FC, useState, useEffect } from "react";
-import { FilterSelect } from "./components/select";
-import { Switch } from "@/components/ui/switch";
 import { Slider } from "@/components/ui/slider";
-import { LabeledSelect } from "./components/LabeledSelect";
-import { LabeledToggleGroup } from "./components/LabeledToggleGroup";
+import { SubmitHandler, UseFormReturn } from "react-hook-form";
+import { Form } from "@/components/ui/form";
+import { FilterSelect } from "./components/select";
 import { DimensionInput } from "./components/DimensionInput";
-import { FilterService } from "@/app/services/filter";
-import { PropertyLocations } from "@/types/property-filter";
-import { useRouter, useSearchParams } from "next/navigation";
+import { LabeledSelect } from "./components/LabeledSelect";
+import { ControlsSchema } from "../../Schema";
 
-export interface FilterProps {
-  filters?: unknown;
+interface FilterProps {
+  form: UseFormReturn<ControlsSchema>;
+  stateOptions: { value: string; label: string }[];
+  cityOptions: { value: string; label: string }[];
+  neighborhoodOptions: { value: string; label: string }[];
+  onSubmit: SubmitHandler<ControlsSchema>;
 }
 
-export const Filters: FC<FilterProps> = () => {
-  const [selectedState, setSelectedState] = useState("");
-  const [selectedMunicipality, setSelectedMunicipality] = useState("");
-  const [selectedCity, setSelectedCity] = useState("");
-  const [sliderValue, setSliderValue] = useState([25]);
-  const [year, setYear] = useState("");
-  const [rooms, setRooms] = useState("");
-  const [baths, setBaths] = useState("");
-  const [landSize, setLandSize] = useState("");
-  const [landUnit, setLandUnit] = useState("m2");
-  const [houseSize, setHouseSize] = useState("");
-  const [houseUnit, setHouseUnit] = useState("m2");
-  const [parkingSize, setParkingSize] = useState("");
-  const [parkingUnit, setParkingUnit] = useState("m2");
-
-  const [stateOptions, setStateOptions] = useState<
-    { value: string; label: string }[]
-  >([]);
-  const [municipalityOptions, setMunicipalityOptions] = useState<
-    { value: string; label: string }[]
-  >([]);
-  const [cityOptions, setCityOptions] = useState<
-    { value: string; label: string }[]
-  >([]);
-  const [filtersData, setFiltersData] = useState<PropertyLocations>({});
-
-  const router = useRouter();
-  const searchParams = useSearchParams();
-
-  useEffect(() => {
-    async function fetchFilters() {
-      try {
-        const filters = await FilterService.getFilterOptions();
-        setFiltersData(filters);
-        setStateOptions(
-          Object.keys(filters).map((state) => ({ value: state, label: state })),
-        );
-      } catch (error) {
-        console.error("Failed to fetch filter options", error);
-      }
-    }
-    fetchFilters();
-  }, []);
-
-  useEffect(() => {
-    if (selectedState && filtersData[selectedState]) {
-      setMunicipalityOptions(
-        Object.keys(filtersData[selectedState]).map((municipality) => ({
-          value: municipality,
-          label: municipality,
-        })),
-      );
-    } else {
-      setMunicipalityOptions([]);
-    }
-    setSelectedMunicipality("");
-    setSelectedCity("");
-  }, [selectedState, filtersData]);
-
-  useEffect(() => {
-    if (
-      selectedState &&
-      selectedMunicipality &&
-      filtersData[selectedState]?.[selectedMunicipality]
-    ) {
-      setCityOptions(
-        filtersData[selectedState][selectedMunicipality].map((city) => ({
-          value: city,
-          label: city,
-        })),
-      );
-    } else {
-      setCityOptions([]);
-    }
-    setSelectedCity("");
-  }, [selectedMunicipality, selectedState, filtersData]);
-
-  const handleApplyFilters = () => {
-    const params = new URLSearchParams(searchParams.toString());
-    if (selectedState) params.set("state", selectedState);
-    if (selectedMunicipality) params.set("city", selectedMunicipality);
-    if (selectedCity) params.set("neigborhood", selectedCity);
-
-    router.push(`/properties?${params.toString()}`);
-  };
+export const Filters: FC<FilterProps> = ({
+  form,
+  stateOptions,
+  cityOptions,
+  neighborhoodOptions,
+  onSubmit,
+}) => {
+  const selectedState = form.watch("state");
+  const selectedCity = form.watch("city");
 
   return (
     <>
       <Sheet>
         <SheetTrigger asChild>
-          <Button corner={"rounded"} size={"icon"}>
-            <ListFilter className="h-2 w-2">Filtros</ListFilter>
+          <Button corner={"rounded"} variant="outline" type="button">
+            Filtros
           </Button>
         </SheetTrigger>
-        <SheetContent
-          headerActions={
-            <Button corner="squared" size="sm" onClick={handleApplyFilters}>
-              Aplicar filtros
-            </Button>
-          }
-        >
-          <div className="max-h-[calc(100vh-64px)] flex-1 overflow-y-auto">
-            <SheetTitle className="sr-only">Filtros</SheetTitle>
-            <SheetDescription className="sr-only">
-              Configura la busqueda a tu manera.
-            </SheetDescription>
-            <div className="flex flex-col gap-4 px-3">
-              <div className="flex flex-col gap-2">
-                <label>Solo propiedades destacadas</label>
-                <Switch className="peer data-[state=checked]:bg-secondary" />
+        <SheetContent className="w-[400px] overflow-y-auto px-6 pt-6 pb-2 sm:w-[540px]">
+          <SheetTitle>Filtros</SheetTitle>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+              <div className="mb-2 flex justify-end">
+                <Button type="submit" className="w-fit">
+                  Aplicar Filtros
+                </Button>
               </div>
               <FilterSelect
                 label="Estado"
-                placeholder="Elegir un estado"
-                value={selectedState}
+                value={form.watch("state")}
                 onChange={(value) => {
-                  setSelectedState(value);
-                  setSelectedMunicipality("");
-                  setSelectedCity("");
+                  form.setValue("state", value);
+                  form.setValue("city", "");
+                  form.setValue("neighborhood", "");
                 }}
                 options={stateOptions}
+                placeholder="Selecciona un estado"
+                disabled={stateOptions.length === 0}
+                className="mb-2"
               />
               <FilterSelect
                 label="Ciudad"
-                placeholder="Elegir una ciudad"
-                value={selectedMunicipality}
+                value={form.watch("city")}
                 onChange={(value) => {
-                  setSelectedMunicipality(value);
-                  setSelectedCity("");
+                  form.setValue("city", value);
+                  form.setValue("neighborhood", "");
                 }}
-                options={municipalityOptions}
-                className={
-                  municipalityOptions.length === 0
-                    ? "pointer-events-none opacity-50"
-                    : ""
-                }
+                options={cityOptions}
+                placeholder="Selecciona una ciudad"
+                disabled={!selectedState || cityOptions.length === 0}
+                className="mb-2"
               />
               <FilterSelect
                 label="Colonia"
-                placeholder="Elegir una colonia"
-                value={selectedCity}
-                onChange={setSelectedCity}
-                options={cityOptions}
-                className={
-                  cityOptions.length === 0
-                    ? "pointer-events-none opacity-50"
-                    : ""
-                }
+                value={form.watch("neighborhood")}
+                onChange={(value) => form.setValue("neighborhood", value)}
+                options={neighborhoodOptions}
+                placeholder="Selecciona una colonia"
+                disabled={!selectedCity || neighborhoodOptions.length === 0}
+                className="mb-2"
               />
-              <div className="flex flex-col gap-2.5">
-                <label>A cuántos km cerca de mi: {sliderValue[0]} km</label>
+              <div className="mb-2">
+                <label className="mb-1 block text-sm font-medium">
+                  Distancia (km): {form.watch("distance_km") ?? "N/A"}
+                </label>
                 <Slider
-                  value={sliderValue}
-                  onValueChange={setSliderValue}
-                  max={50}
+                  min={1}
+                  max={100}
                   step={1}
-                  className="w-full"
+                  value={[Number(form.watch("distance_km"))]}
+                  onValueChange={(value) =>
+                    form.setValue("distance_km", value[0].toString())
+                  }
                 />
               </div>
-              <div className="flex flex-col">
-                <label>Detalles de propiedad</label>
-                <div className="border-secondary w-full border-[1px]"></div>
+              <DimensionInput
+                label="Tamaño del Terreno"
+                value={form.watch("land_size")}
+                onValueChange={(v) => form.setValue("land_size", v)}
+                unit={form.watch("land_unit")}
+                onUnitChange={(v) => form.setValue("land_unit", v)}
+                unitOptions={[
+                  { value: "m2", label: "m²" },
+                  { value: "ft2", label: "ft²" },
+                  { value: "ha", label: "ha" },
+                ]}
+                placeholder="Ej: 200"
+              />
+              <DimensionInput
+                label="Tamaño de Construcción"
+                value={form.watch("house_size")}
+                onValueChange={(v) => form.setValue("house_size", v)}
+                unit={form.watch("house_unit")}
+                onUnitChange={(v) => form.setValue("house_unit", v)}
+                unitOptions={[
+                  { value: "m2", label: "m²" },
+                  { value: "ft2", label: "ft²" },
+                ]}
+                placeholder="Ej: 150"
+              />
+              <div className="grid grid-cols-2 gap-4">
+                <LabeledSelect
+                  label="Año de Construcción"
+                  placeholder="Ej: 2005"
+                  value={form.watch("constructionYear")}
+                  onChange={(v) => form.setValue("constructionYear", v)}
+                  options={Array.from({ length: 70 }, (_, i) => {
+                    const year = `${new Date().getFullYear() - i}`;
+                    return { value: year, label: year };
+                  })}
+                  className="mb-2"
+                />
+                <LabeledSelect
+                  label="Habitaciones"
+                  placeholder="Ej: 3"
+                  value={form.watch("rooms")}
+                  onChange={(v) => form.setValue("rooms", v)}
+                  options={Array.from({ length: 10 }, (_, i) => {
+                    const val = `${i + 1}`;
+                    return { value: val, label: val };
+                  })}
+                  className="mb-2"
+                />
+                <LabeledSelect
+                  label="Baños"
+                  placeholder="Ej: 2"
+                  value={form.watch("baths")}
+                  onChange={(v) => form.setValue("baths", v)}
+                  options={Array.from({ length: 10 }, (_, i) => {
+                    const val = `${i + 1}`;
+                    return { value: val, label: val };
+                  })}
+                  className="mb-2"
+                />
+                <DimensionInput
+                  label="Estacionamiento"
+                  value={form.watch("parking_size")}
+                  onValueChange={(v) => form.setValue("parking_size", v)}
+                  unit={form.watch("parking_unit")}
+                  onUnitChange={(v) => form.setValue("parking_unit", v)}
+                  unitOptions={[
+                    { value: "count", label: "Cantidad" },
+                    { value: "m2", label: "m² (área)" },
+                  ]}
+                  placeholder="Ej: 2"
+                />
               </div>
-              <LabeledSelect
-                label="Año de construcción"
-                placeholder="Elegir un año"
-                value={year}
-                onChange={setYear}
-                options={[
-                  { value: "2023", label: "2023" },
-                  { value: "2022", label: "2022" },
-                  { value: "2021", label: "2021" },
-                ]}
-              />
-              <LabeledToggleGroup
-                label="Número de habitaciones"
-                value={rooms}
-                onChange={setRooms}
-                options={[
-                  { value: "1", label: "1" },
-                  { value: "2", label: "2" },
-                  { value: "3", label: "3" },
-                  { value: "4", label: "4" },
-                  { value: "5", label: "5+" },
-                ]}
-              />
-              <LabeledToggleGroup
-                label="Número de baños"
-                value={baths}
-                onChange={setBaths}
-                options={[
-                  { value: "1", label: "1" },
-                  { value: "2", label: "2" },
-                  { value: "3", label: "3" },
-                  { value: "4", label: "4" },
-                  { value: "5", label: "5+" },
-                ]}
-              />
-              <div className="flex flex-col">
-                <label>Detalles de propiedad</label>
-                <div className="border-secondary w-full border-[1px]"></div>
-              </div>
-              <DimensionInput
-                label="Tamaño del terreno"
-                value={landSize}
-                onValueChange={setLandSize}
-                unit={landUnit}
-                onUnitChange={setLandUnit}
-                placeholder="Dimensión del terreno en m²"
-              />
-              <DimensionInput
-                label="Tamaño de la casa construida"
-                value={houseSize}
-                onValueChange={setHouseSize}
-                unit={houseUnit}
-                onUnitChange={setHouseUnit}
-                placeholder="Dimensión de la casa en m²"
-              />
-              <DimensionInput
-                label="Tamaño del estacionamiento construido"
-                value={parkingSize}
-                onValueChange={setParkingSize}
-                unit={parkingUnit}
-                onUnitChange={setParkingUnit}
-                placeholder="Dimensión del estacionamiento en m²"
-              />
-            </div>
-          </div>
+              <SheetFooter className="mt-6">
+                <SheetClose asChild>
+                  <Button type="button" variant="outline">
+                    Cancelar
+                  </Button>
+                </SheetClose>
+              </SheetFooter>
+            </form>
+          </Form>
         </SheetContent>
       </Sheet>
     </>

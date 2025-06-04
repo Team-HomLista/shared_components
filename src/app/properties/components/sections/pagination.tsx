@@ -5,13 +5,13 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 interface PropertiesSearchPaginationSectionProps {
   currentPage: number;
   totalPages: number;
-  onPrev: () => void;
-  onNext: () => void;
+  onClickPrev: () => void;
+  onClickNext: () => void;
 }
 
 export const PropertiesSearchPaginationSection: React.FC<
   PropertiesSearchPaginationSectionProps
-> = ({ currentPage, totalPages, onPrev, onNext }) => {
+> = ({ currentPage, totalPages, onClickPrev, onClickNext }) => {
   return (
     <div className="mx-auto flex max-w-[512px] flex-row items-center justify-center gap-2 px-16 py-8">
       <Button
@@ -19,7 +19,7 @@ export const PropertiesSearchPaginationSection: React.FC<
         corner="rounded"
         size="icon"
         className="h-6 w-6"
-        onClick={onPrev}
+        onClick={onClickPrev}
         disabled={currentPage === 1}
         aria-label="Página anterior"
       >
@@ -36,7 +36,7 @@ export const PropertiesSearchPaginationSection: React.FC<
         corner="rounded"
         size="icon"
         className="h-6 w-6"
-        onClick={onNext}
+        onClick={onClickNext}
         disabled={currentPage === totalPages}
         aria-label="Página siguiente"
       >
