@@ -8,18 +8,22 @@ export default async function PropertiesPage({
 }: {
   searchParams: Promise<{ [key: string]: string | string[] }>;
 }) {
-  const queries = cleanQueries(await searchParams);
+  try {
+    const queries = cleanQueries(await searchParams);
 
-  const [paginated, filters] = await Promise.all([
-    PropertyService.getPropertiesBySearch(queries),
-    FilterService.getFilterOptions(),
-  ]);
+    const [paginated, filters] = await Promise.all([
+      PropertyService.getPropertiesBySearch(queries),
+      FilterService.getFilterOptions(),
+    ]);
 
-  return (
-    <PropertiesSearchContainer
-      filters={filters}
-      paginated={paginated}
-      queries={queries}
-    />
-  );
+    return (
+      <PropertiesSearchContainer
+        filters={filters}
+        paginated={paginated}
+        queries={queries}
+      />
+    );
+  } catch (error) {
+    return <>{JSON.stringify(error)}</>;
+  }
 }

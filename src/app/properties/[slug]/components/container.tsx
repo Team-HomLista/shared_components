@@ -5,6 +5,7 @@ import { ImageGallery } from "./gallery";
 import { PropertyDetailHeader } from "./detail-header";
 import { CtaInfoCard } from "./cta/container";
 import { DetailedProperty } from "@/types/property";
+import { BreadcrumbPagination } from "@/components/breadcrumb-index";
 
 export interface PropertyDetailContainerProps {
   property: DetailedProperty;
@@ -16,7 +17,7 @@ export const PropertyDetailContainer: FC<PropertyDetailContainerProps> = ({
   return (
     <>
       <Navbar variant="default" />
-      {/* Breadcrumbs */}
+      <BreadcrumbPagination propertyTitle={property.title} />
       <PropertyDetailHeader
         title={property.title}
         price={property.price}

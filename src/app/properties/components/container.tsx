@@ -14,6 +14,7 @@ import { ControlsSchema, controlsSchema } from "./Schema";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { BreadcrumbPagination } from "@/components/breadcrumb-index";
 
 export interface PropertiesSearchContainerProps {
   filters: LocationFilters;
