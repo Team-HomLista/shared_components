@@ -22,7 +22,7 @@ export const BreadcrumbPagination: FC<BreadcrumbPaginationProps> = ({
 
   return (
     <>
-      <PaginationBreadcrumb className="px-32 pt-4">
+      <PaginationBreadcrumb className="px-64 pt-8">
         <BreadcrumbList>
           <BreadcrumbItem>
             <BreadcrumbLink href="/">
