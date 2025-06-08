@@ -6,6 +6,7 @@
  * Used to showcase property images, allowing users to view thumbnails, open a masonry gallery, and navigate images in a fullscreen carousel.
  */
 import { useState, useEffect, FC } from "react";
+import { GalleryGrid } from "./galleryGrid";
 
 interface ImageGalleryProps {
   multimedia: string[];
@@ -134,77 +135,11 @@ export const ImageGallery: FC<ImageGalleryProps> = ({ multimedia }) => {
 
   return (
     <>
-      <div className="flex px-64 py-3">
-        <div className="grid grid-cols-2 gap-2">
-          {/* big image */}
-          <div
-            className="group relative col-span-1 row-span-2 h-[528px] cursor-pointer overflow-hidden rounded-lg"
-            onClick={() => openCarousel(0)}
-          >
-            <img
-              src={multimedia[0]}
-              alt="Propiedad principal"
-              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-            />
-          </div>
-
-          {/* 4 small images */}
-          <div className="col-span-1 grid grid-cols-2 gap-2">
-            {/* First row - 2 imágenes */}
-            <div
-              className="group h-[260px] cursor-pointer overflow-hidden rounded-lg"
-              onClick={() => openCarousel(1)}
-            >
-              <img
-                src={multimedia[1]}
-                alt="Propiedad vista 2"
-                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-            </div>
-            <div
-              className="group h-[260px] cursor-pointer overflow-hidden rounded-lg"
-              onClick={() => openCarousel(2)}
-            >
-              <img
-                src={multimedia[2]}
-                alt="Propiedad vista 3"
-                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-            </div>
-
-            {/* second row - 2 imágenes */}
-            <div
-              className="group h-[260px] cursor-pointer overflow-hidden rounded-lg"
-              onClick={() => openCarousel(3)}
-            >
-              <img
-                src={multimedia[3]}
-                alt="Propiedad vista 4"
-                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-            </div>
-            <div
-              className="group relative h-[260px] cursor-pointer overflow-hidden rounded-lg"
-              onClick={() => openGallery(4)}
-            >
-              <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/50 transition-colors group-hover:bg-black/60">
-                <div className="text-center text-white">
-                  <div className="text-2xl font-bold">
-                    +{multimedia.length - 4}
-                  </div>
-                  <div className="text-sm">Ver galería</div>
-                </div>
-              </div>
-              <img
-                src={multimedia[4]}
-                alt="Propiedad vista 5"
-                className="h-full w-full object-cover blur-sm transition-transform duration-500 group-hover:scale-105"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-
+      <GalleryGrid
+        multimedia={multimedia}
+        onImageClick={openCarousel}
+        onGalleryClick={openGallery}
+      />
       {/* Full screen Masonry gallery */}
       {showGallery && (
         <div className="animate-fade-in fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-sm">
@@ -231,7 +166,6 @@ export const ImageGallery: FC<ImageGalleryProps> = ({ multimedia }) => {
                 </svg>
               </button>
             </div>
-
             <div className="columns-2 gap-4 space-y-4 md:columns-3 lg:columns-4">
               {multimedia.map((image, index) => (
                 <div
@@ -250,7 +184,6 @@ export const ImageGallery: FC<ImageGalleryProps> = ({ multimedia }) => {
           </div>
         </div>
       )}
-
       {/* Full screen Carrusel */}
       {showCarousel && (
         <div className="animate-fade-in fixed inset-0 z-50 flex items-center justify-center bg-black/90">
@@ -273,7 +206,6 @@ export const ImageGallery: FC<ImageGalleryProps> = ({ multimedia }) => {
               <line x1="6" y1="6" x2="18" y2="18"></line>
             </svg>
           </button>
-
           <button
             onClick={() => navigateCarousel("prev")}
             className="animate-slide-in-left absolute left-4 z-10 rounded-full p-2 text-white hover:bg-white/10"
@@ -292,7 +224,6 @@ export const ImageGallery: FC<ImageGalleryProps> = ({ multimedia }) => {
               <polyline points="15 18 9 12 15 6"></polyline>
             </svg>
           </button>
-
           <div className="animate-zoom-in flex h-full max-h-screen w-full max-w-4xl items-center justify-center p-8">
             <img
               src={multimedia[selectedImageIndex]}
@@ -300,7 +231,6 @@ export const ImageGallery: FC<ImageGalleryProps> = ({ multimedia }) => {
               className="max-h-full max-w-full object-contain"
             />
           </div>
-
           <button
             onClick={() => navigateCarousel("next")}
             className="animate-slide-in-right absolute right-4 z-10 rounded-full p-2 text-white hover:bg-white/10"
@@ -319,7 +249,6 @@ export const ImageGallery: FC<ImageGalleryProps> = ({ multimedia }) => {
               <polyline points="9 18 15 12 9 6"></polyline>
             </svg>
           </button>
-
           <div className="absolute right-0 bottom-4 left-0 text-center text-white">
             {selectedImageIndex + 1} / {multimedia.length}
           </div>
