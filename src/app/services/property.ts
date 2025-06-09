@@ -113,6 +113,7 @@ export class PropertyService {
       return errorData;
     }
 
-    return (await response.json()).data as DetailedProperty;
+    const data = await response.json();
+    return data.data as DetailedProperty;
   }
 }

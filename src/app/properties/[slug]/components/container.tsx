@@ -1,14 +1,27 @@
 "use client";
 import { Navbar } from "@/components/navbar";
 import { FC } from "react";
-import { ImageGallery } from "./gallery";
-import { PropertyDetailHeader } from "./detail-header";
-import { CtaInfoCard } from "./cta/container";
-import { DetailedProperty } from "@/types/property";
+import { ImageGallery } from "./sections/gallery";
+import { CtaInfoCard } from "./sections/cta/container";
+import {
+  DetailedProperty,
+  PropertyPrice,
+  PropertyPriceType,
+} from "@/types/property";
 import { BreadcrumbPagination } from "@/components/breadcrumb-index";
+import { PropertyMainInfo } from "./main-info";
 
 export interface PropertyDetailContainerProps {
   property: DetailedProperty;
+}
+
+function mapPropertyPrice(property: DetailedProperty): PropertyPrice {
+  return {
+    type: PropertyPriceType.Normal,
+    after: null,
+    current: property.price,
+    currency: property.price_currency,
+  };
 }
 
 export const PropertyDetailContainer: FC<PropertyDetailContainerProps> = ({
@@ -18,13 +31,14 @@ export const PropertyDetailContainer: FC<PropertyDetailContainerProps> = ({
     <>
       <Navbar variant="default" />
       <BreadcrumbPagination propertyTitle={property.title} />
-      <PropertyDetailHeader
-        title={property.title}
-        price={property.price}
-        price_currency={property.price_currency}
-        state={property.state}
-      />
       <ImageGallery multimedia={property.multimedia} />
+      <PropertyMainInfo
+        title={property.title}
+        price={mapPropertyPrice(property)}
+        state={property.state}
+        city={property.city}
+        neighborhood={property.neighborhood}
+      />
       <CtaInfoCard
         description={property.description}
         features={[]}

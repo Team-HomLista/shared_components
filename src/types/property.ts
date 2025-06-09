@@ -24,6 +24,7 @@ export interface Property {
   slug: string;
   state: string;
   title: string;
+  neighborhood: string;
   transaction_type: keyof typeof TransactionType;
   uuid: string;
 }
@@ -67,4 +68,17 @@ export interface PropertyAgency {
     handler: string;
     type: string;
   }>;
+}
+
+export enum PropertyPriceType {
+  Normal = "Normal",
+  Offer = "Offer",
+  PriceReduction = "PriceReduction",
+}
+
+export interface PropertyPrice {
+  type: PropertyPriceType;
+  after: number | null;
+  current: number;
+  currency: string;
 }

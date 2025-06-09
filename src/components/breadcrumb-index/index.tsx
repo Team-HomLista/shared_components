@@ -38,21 +38,15 @@ export const BreadcrumbPagination: FC<BreadcrumbPaginationProps> = ({
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbLink href="/properties">Propiedaes</BreadcrumbLink>
+            <BreadcrumbLink href="/properties" className="">
+              Propiedades
+            </BreadcrumbLink>
           </BreadcrumbItem>
           {isDetail && (
             <>
               <BreadcrumbSeparator />
               <BreadcrumbItem>
-                <BreadcrumbPage
-                  style={{
-                    maxWidth: 300,
-                    display: "inline-block",
-                    overflow: "hidden",
-                    textOverflow: "ellipsis",
-                    whiteSpace: "nowrap",
-                  }}
-                >
+                <BreadcrumbPage className="inline-block max-w-[500px] overflow-hidden text-ellipsis whitespace-nowrap">
                   {propertyTitle || "Detalles de propiedad"}
                 </BreadcrumbPage>
               </BreadcrumbItem>
