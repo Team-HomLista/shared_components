@@ -1,29 +1,40 @@
 import { FC } from "react";
-import { InfoCard } from "./info-cards";
-import { PropertyAgency, PropertyAgent } from "@/types/property";
-import { AgencyTouch } from "./agency-touch";
-import { AgentTouch } from "./agent-touch";
+import {
+  DetailedProperty,
+  PropertyAgency,
+  PropertyAgent,
+} from "@/types/property";
+import { AgencyTouch } from "./sections/agency-touch";
+import { AgentTouch } from "./sections/agent-touch";
+import { InfoCard } from "./sections/info-cards/index.tsx";
 
 export interface CtaInfoCardProps {
-  agency: PropertyAgency | null;
-  agent: PropertyAgent | null;
-  amenities: string[];
-  description: string | null;
-  features: string[];
+  property: DetailedProperty;
+  agency?: PropertyAgency;
+  agent?: PropertyAgent;
 }
 
 export const CtaInfoCard: FC<CtaInfoCardProps> = ({
+  property,
   agency,
   agent,
-  amenities,
-  description,
-  features,
 }) => {
   return (
-    <div className="flex w-full flex-row gap-4 px-64 pt-12 pb-12">
-      <InfoCard description={description} amenities={[]} features={features} />
-      {agency && <AgencyTouch agency={agency} />}
-      {agent && <AgentTouch agent={agent} />}
-    </div>
+    <>
+      <div className="flex w-full flex-row gap-4 px-64 pt-12 pb-12">
+        {/*<DescriptionCard/>
+     <AmenitiesCard/> */}
+        <InfoCard
+          property={property}
+          description={property.description}
+          amenities={[]}
+          features={
+            property.features ? property.features.map((f) => f.name) : []
+          }
+        />
+        {agency && <AgencyTouch agency={agency} />}
+        {agent && <AgentTouch agent={agent} />}
+      </div>
+    </>
   );
 };

@@ -27,12 +27,22 @@ export interface Property {
   neighborhood: string;
   transaction_type: keyof typeof TransactionType;
   uuid: string;
+  year_built?: number | null;
 }
 
 export interface DetailedProperty extends Property {
   multimedia: Array<string>;
   agency: PropertyAgency | null;
   agent: PropertyAgent | null;
+  features?: Array<PropertyFeature>;
+}
+
+export interface PropertyFeature {
+  id: number;
+  name: string;
+  description: string | null;
+  tag: string;
+  is_active: boolean;
 }
 
 export interface PropertyAgent {

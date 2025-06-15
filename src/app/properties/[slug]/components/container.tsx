@@ -9,7 +9,7 @@ import {
   PropertyPriceType,
 } from "@/types/property";
 import { BreadcrumbPagination } from "@/components/breadcrumb-index";
-import { PropertyMainInfo } from "./main-info";
+import { PropertyMainInfo } from "./sections/main-info";
 
 export interface PropertyDetailContainerProps {
   property: DetailedProperty;
@@ -40,11 +40,9 @@ export const PropertyDetailContainer: FC<PropertyDetailContainerProps> = ({
         neighborhood={property.neighborhood}
       />
       <CtaInfoCard
-        description={property.description}
-        features={[]}
-        amenities={[]}
-        agency={property.agency}
-        agent={property.agent}
+        property={property}
+        agency={property.agency || undefined}
+        agent={property.agent || undefined}
       />
     </>
   );
