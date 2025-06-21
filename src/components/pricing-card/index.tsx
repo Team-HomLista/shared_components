@@ -33,7 +33,7 @@ export function PricingCard({
         <div className="flex w-full flex-col items-center justify-center">
           <h3 className="mb-2 text-xl font-semibold">{title}</h3>
           <div className="mb-4">
-            <span className="text-primary text-4xl font-bold">{price}</span>
+            <span className="text-primary text-3xl font-bold">{price}</span>
             {priceDetail && (
               <span className="ml-1 text-sm text-gray-500">{priceDetail}</span>
             )}

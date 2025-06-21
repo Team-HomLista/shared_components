@@ -185,10 +185,13 @@ function CarouselPrevious({
       variant={variant}
       size={size}
       className={cn(
-        "absolute size-8 cursor-pointer rounded-full",
-        orientation === "horizontal"
-          ? "top-1/2 -left-12 -translate-y-1/2"
-          : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
+        "z-10 size-8 cursor-pointer rounded-full",
+        // Only use absolute positioning if not overridden by className
+        !className?.includes("static") &&
+          !className?.includes("relative") &&
+          (orientation === "horizontal"
+            ? "absolute top-1/2 left-2 -translate-y-1/2 sm:-left-12"
+            : "absolute -top-12 left-1/2 -translate-x-1/2 rotate-90"),
         className,
       )}
       disabled={!canScrollPrev}
@@ -215,10 +218,13 @@ function CarouselNext({
       variant={variant}
       size={size}
       className={cn(
-        "absolute size-8 cursor-pointer rounded-full",
-        orientation === "horizontal"
-          ? "top-1/2 -right-12 -translate-y-1/2"
-          : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
+        "z-10 size-8 cursor-pointer rounded-full",
+        // Only use absolute positioning if not overridden by className
+        !className?.includes("static") &&
+          !className?.includes("relative") &&
+          (orientation === "horizontal"
+            ? "absolute top-1/2 right-2 -translate-y-1/2 sm:-right-12"
+            : "absolute -bottom-12 left-1/2 -translate-x-1/2 rotate-90"),
         className,
       )}
       disabled={!canScrollNext}

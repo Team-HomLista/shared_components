@@ -27,14 +27,18 @@ export const FindSection = ({}: FindSectionProps) => {
   };
 
   return (
-    <section className="flex flex-col items-center justify-evenly gap-4 bg-[#F5F5F5] pb-8">
-      <div>
+    <section className="flex flex-col items-center justify-evenly gap-4 bg-[#F5F5F5] pb-16">
+      <div className="w-full">
         <SectionHeader
           title="Encuentra"
           description="¿Aún no encuentras lo que buscas? Deja que nuestra IA te recomiende opciones o encuentre el mejor asesor para ti"
           orientation="left"
         />
-        <FindSmallForm onComplete={handleSmallFormComplete} />
+        <div className="flex justify-center">
+          <div className="w-full max-w-[600px] px-8">
+            <FindSmallForm onComplete={handleSmallFormComplete} />
+          </div>
+        </div>
       </div>
       <LeadFormResponsive
         open={showLeadForm}

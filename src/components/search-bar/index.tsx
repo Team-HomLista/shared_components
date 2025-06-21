@@ -30,8 +30,8 @@ export const SearchBar: FC<SearchBarProps> = () => {
   const [city, setCity] = useState("");
 
   return (
-    <div className="flex w-full flex-row justify-center px-8 py-16">
-      <div className="border-secondary flex w-full max-w-[1024px] flex-row items-end justify-center gap-3 rounded-2xl border-4 bg-white p-4">
+    <div className="flex w-full flex-row justify-center px-4 py-4 md:px-8 md:py-16">
+      <div className="border-secondary flex w-full max-w-[1024px] flex-col items-stretch justify-center gap-4 rounded-2xl border-4 bg-white p-4 md:flex-row md:items-end md:gap-3">
         {/* Property Type Selection */}
         <div className="flex flex-col">
           <Text variant="label">Tipo de propiedad</Text>
@@ -41,7 +41,7 @@ export const SearchBar: FC<SearchBarProps> = () => {
               setPropertyType(v as keyof typeof BuildingType)
             }
           >
-            <SelectTrigger className="w-[200px]">
+            <SelectTrigger className="w-full md:w-[200px]">
               <SelectValue placeholder="Propiedad" />
             </SelectTrigger>
             <SelectContent position="popper">
@@ -64,7 +64,7 @@ export const SearchBar: FC<SearchBarProps> = () => {
               setSearchType(v as keyof typeof TransactionType)
             }
           >
-            <SelectTrigger className="w-[200px]">
+            <SelectTrigger className="w-full md:w-[200px]">
               <SelectValue placeholder="Búsqueda" />
             </SelectTrigger>
             <SelectContent position="popper">
@@ -88,7 +88,7 @@ export const SearchBar: FC<SearchBarProps> = () => {
         {/* Search Button */}
         <Button
           asChild
-          className="has-[>svg]:px-6"
+          className="w-full has-[>svg]:px-6 md:w-auto"
           size={"lg"}
           corner={"squared"}
         >

@@ -13,7 +13,7 @@ export const PartnersSection: FC<PartnersSectionProps> = ({}) => {
         para garantizar los más altos estándares del mercado inmobiliario"
         orientation="right"
       />
-      <div className="overflow-hidden">
+      <div className="overflow-hidden pb-16">
         <AssociatesMarqueeLogo />
       </div>
     </section>
