@@ -1,6 +1,6 @@
 import { Paginated } from "@/types/paginated";
 import { DetailedProperty, Property } from "@/types/property";
-import { PropertyQueryParams } from "../properties/types";
+import { PropertyQueryParams } from "../propiedades/types";
 
 export class PropertyService {
   static async getPropertiesBySearch(params?: PropertyQueryParams) {
@@ -110,10 +110,15 @@ export class PropertyService {
         ),
       );
 
-      return errorData;
+      throw new Error(`Failed to fetch property details: ${response.status}`);
     }
 
     const data = await response.json();
+    
+    if (!data.data) {
+      throw new Error('Property not found');
+    }
+    
     return data.data as DetailedProperty;
   }
 }

@@ -1,4 +1,4 @@
-import { PropertyQueryParams } from "../properties/types";
+import { PropertyQueryParams } from "../propiedades/types";
 
 export function buildSearchQueryParams(params: PropertyQueryParams): string {
   const queryParams = new URLSearchParams();

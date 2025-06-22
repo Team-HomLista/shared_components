@@ -25,7 +25,7 @@ export const DiscoverSection: FC<DiscoverSectionProps> = ({
         description=" Encuentra casas en venta o renta, departamentos, terrenos, todas las opciones las encontrarás con nosotros"
       >
         <Button asChild className="mt-6 w-fit">
-          <Link href={"/properties"}>Explorar propiedades</Link>
+          <Link href={"/propiedades"}>Explorar propiedades</Link>
         </Button>
       </SectionHeader>
       <div className="flex w-full flex-row items-center justify-center p-4">

@@ -42,7 +42,7 @@ export const PropertyCardItem: FC<PropertyCardItemProps> = ({
     onClickLike(0, !isLiked);
   };
 
-  const redirect = `/properties/${slug}`;
+  const redirect = `/propiedades/${slug}`;
 
   return (
     <div className="hover:bg-secondary/20 h-full w-[360px] rounded-2xl p-2 transition-all duration-200 select-none">

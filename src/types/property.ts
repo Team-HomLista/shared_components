@@ -34,7 +34,7 @@ export interface DetailedProperty extends Property {
   multimedia: Array<string>;
   agency: PropertyAgency | null;
   agent: PropertyAgent | null;
-  features?: Array<PropertyFeature>;
+  property_features?: Array<PropertyFeature>;
 }
 
 export interface PropertyFeature {

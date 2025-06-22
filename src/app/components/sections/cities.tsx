@@ -20,7 +20,7 @@ export const CitiesGrid: FC<CitiesGridProps> = ({ cities }) => {
         <Link
           key={index}
           className="group relative h-48 w-full cursor-pointer rounded-3xl transition-all hover:opacity-90"
-          href={`/properties?city=${city.name}`}
+          href={`/propiedades?city=${city.name}`}
         >
           <div className="relative h-48 w-full overflow-hidden rounded-3xl bg-black">
             <img

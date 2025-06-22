@@ -93,7 +93,7 @@ export const SearchBar: FC<SearchBarProps> = () => {
           corner={"squared"}
         >
           <Link
-            href={`/properties?property_type=${propertyType}&search_type=${searchType}&city=${city}`}
+            href={`/propiedades?property_type=${propertyType}&search_type=${searchType}&city=${city}`}
           >
             <Search />
             Buscar propiedades
