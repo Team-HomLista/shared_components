@@ -104,7 +104,7 @@ export const PropertyFeatureConfig = {
       "rooms",
     ] as const,
   },
-  APARTMENT: {
+  DEPARTMENT: {
     features: ["buildingSize", "rooms", "bathrooms", "floor"] as const,
     priority: ["rooms", "bathrooms", "buildingSize", "floor"] as const,
   },

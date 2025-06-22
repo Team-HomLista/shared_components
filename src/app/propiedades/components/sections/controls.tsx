@@ -100,7 +100,7 @@ export const ControlsSection: FC<ControlsSectionProps> = ({
                       </FormControl>
                       <SelectContent>
                         <SelectItem value={BuildingType.HOUSE}>Casa</SelectItem>
-                        <SelectItem value={BuildingType.APARTMENT}>
+                        <SelectItem value={BuildingType.DEPARTMENT}>
                           Departamento
                         </SelectItem>
                         <SelectItem value={BuildingType.LAND}>

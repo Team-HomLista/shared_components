@@ -32,7 +32,7 @@ export const PropertyBuildingDetails: FC<PropertyBuildingDetailsProps> = ({
     switch (property.building_type) {
       case "HOUSE":
         return <HouseDetails {...detailProps} />;
-      case "APARTMENT":
+      case "DEPARTMENT":
         return <ApartmentDetails {...detailProps} />;
       case "LAND":
         return <LandDetails {...detailProps} />;
