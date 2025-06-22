@@ -157,7 +157,7 @@ export const FindSmallForm = ({ onComplete }: FindSmallFormProps) => {
             );
           }}
         />
-        <Button type="submit" className="w-[428px]">
+        <Button type="submit" className="mt-4 w-fit">
           Recibe 5 sugerencias personalizadas gratis
         </Button>
       </form>

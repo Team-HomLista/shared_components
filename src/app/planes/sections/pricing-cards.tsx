@@ -19,7 +19,7 @@ export const PricingCardSection: FC<PricingCardProps> = () => {
           </p>
         </div>
 
-        <div className="mx-auto flex w-full flex-col items-stretch justify-center gap-8 px-12 md:flex-row">
+        <div className="mx-auto flex w-full flex-col items-stretch justify-center gap-8 px-4 md:flex-row lg:px-12">
           <PricingCard
             title="Asesor"
             price="$1,580 MXN"

@@ -9,10 +9,7 @@ export const AssociatesMarqueeLogo = () => {
   return (
     <div className="w-full overflow-hidden bg-white py-4">
       <div className="relative w-full">
-        <div
-          className="animate-marquee flex gap-12 whitespace-nowrap"
-          style={{ animationDuration: "60s" }}
-        >
+        <div className="animate-marquee flex gap-12 whitespace-nowrap">
           {logos.map((logo, index) => (
             <div
               key={index}

@@ -19,7 +19,7 @@ export const DiscoverSection: FC<DiscoverSectionProps> = ({
   onClickLike,
 }) => {
   return (
-    <section className="flex h-full w-full flex-col items-start pb-14">
+    <section className="flex h-full w-full flex-col items-start pb-8 lg:pb-14">
       <SectionHeader
         title="Descubre"
         description=" Encuentra casas en venta o renta, departamentos, terrenos, todas las opciones las encontrarás con nosotros"
@@ -28,7 +28,7 @@ export const DiscoverSection: FC<DiscoverSectionProps> = ({
           <Link href={"/properties"}>Explorar propiedades</Link>
         </Button>
       </SectionHeader>
-      <div className="flex w-full flex-row items-center justify-center p-4">
+      <div className="flex w-full flex-row items-center justify-center py-4">
         <PropertyCarousel items={items} onClickLike={onClickLike} />
       </div>
     </section>

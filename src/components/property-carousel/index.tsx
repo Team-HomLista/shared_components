@@ -23,16 +23,25 @@ export const PropertyCarousel: FC<PropertyCarouselProps> = ({
   onClickLike,
 }) => {
   return (
-    <Carousel className="max-w-[1128px]" opts={{ align: "center", loop: true }}>
-      <CarouselPrevious />
-      <CarouselContent>
-        {items.map((item, index) => (
-          <CarouselItem key={index} className="basis-1/3">
-            <PropertyCardItem {...item} onClickLike={onClickLike} />
-          </CarouselItem>
-        ))}
-      </CarouselContent>
-      <CarouselNext />
-    </Carousel>
+    <div className="mx-auto w-full max-w-7xl overflow-hidden px-4 sm:px-6 lg:px-8">
+      <Carousel className="w-full" opts={{ align: "center", loop: true }}>
+        <div className="flex w-full items-center gap-2 sm:gap-4">
+          <CarouselPrevious className="static size-8 flex-shrink-0 translate-x-0 translate-y-0" />
+          <CarouselContent className="-ml-2 min-w-0 flex-1 sm:-ml-4">
+            {items.map((item, index) => (
+              <CarouselItem
+                key={index}
+                className="basis-full pl-2 sm:pl-4 md:basis-1/2 lg:basis-1/3"
+              >
+                <div className="flex justify-center">
+                  <PropertyCardItem {...item} onClickLike={onClickLike} />
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselNext className="static size-8 flex-shrink-0 translate-x-0 translate-y-0" />
+        </div>
+      </Carousel>
+    </div>
   );
 };

@@ -36,7 +36,7 @@ export const PropertyCardInformation: FC<PropertyCardInformationProps> = ({
   details: { rooms, bathrooms, parking_slots, building_size },
 }) => {
   return (
-    <>
+    <div className="flex flex-col pt-2 pl-1">
       <Text variant={"default"} className="text-base font-medium text-zinc-950">
         {title}
       </Text>
@@ -44,7 +44,7 @@ export const PropertyCardInformation: FC<PropertyCardInformationProps> = ({
       <Text className="text-base font-medium text-zinc-950">
         {formatPrice(price)}
       </Text>
-      <div className="mt-2 flex flex-wrap gap-4">
+      <div className="mt-1 flex flex-wrap gap-4">
         <PropertyCardLandDetail Icon={BedIcon} value={rooms} />
         <PropertyCardLandDetail Icon={BathIcon} value={bathrooms} />
         <PropertyCardLandDetail Icon={CarIcon} value={parking_slots} />
@@ -53,6 +53,6 @@ export const PropertyCardInformation: FC<PropertyCardInformationProps> = ({
         )}
         {/* <PropertyCardLandDetail Icon={ShowerHeadIcon} value={} /> */}
       </div>
-    </>
+    </div>
   );
 };

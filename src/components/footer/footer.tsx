@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { SocialMediaIcons } from "./socialMediaIcons";
 import { FC } from "react";
+import Link from "next/link";
 
 interface FooterProps {}
 
@@ -46,27 +47,31 @@ export const Footer: FC<FooterProps> = ({}) => {
   ];
 
   return (
-    <footer className="bg-primary w-full h-full text-white py-8 px-32">
-      <div className="flex flex-row justify-center items-end gap-32 pb-8">
-        <div className="w-full justify-center items-center">
-          <h1 className="text-[28px]">Entérate de todo lo nuevo</h1>
+    <footer className="bg-primary h-full w-full px-4 py-4 text-white sm:px-8 sm:py-6 lg:px-32 lg:py-8">
+      <div className="flex flex-col items-center justify-center gap-8 pb-8 lg:flex-row lg:items-end lg:gap-32">
+        <div className="w-full items-center justify-center text-center lg:text-left">
+          <h1 className="text-xl sm:text-2xl lg:text-[28px]">
+            Entérate de todo lo nuevo
+          </h1>
           <Divider direction={"right"} colorScheme="white" />
         </div>
-        <div className="flex flex-row w-full justify-center items-center gap-4">
+        <div className="flex w-full flex-col items-center justify-center gap-4 sm:flex-row lg:w-full">
           <Input
             type="email"
             placeholder="nombre@correo.com"
-            className="bg-white text-black border-secondary border-2 "
+            className="border-secondary w-full border-2 bg-white text-black sm:flex-1"
           />
-          <Button corner={"squared"}>Subscribirse</Button>
+          <Button corner={"squared"} className="w-full sm:w-auto">
+            Subscribirse
+          </Button>
         </div>
       </div>
-      <div className="flex flex-row justify-between items-start gap-16 py-8">
-        <ul className="font-bold mr-16 w-[300px]">
+      <div className="flex flex-col items-start justify-between gap-8 py-8 lg:flex-row lg:gap-16">
+        <ul className="w-full text-center font-bold lg:mr-16 lg:w-[300px] lg:text-left">
           <img
             src="/GoogleMaps_pin.svg"
             alt="Google Maps Pin"
-            className="w-[17px] h-[24px] inline-block mr-2"
+            className="mr-2 inline-block h-[24px] w-[17px]"
           />
           Ubicación
           <li className="mt-4 font-medium">
@@ -74,49 +79,147 @@ export const Footer: FC<FooterProps> = ({}) => {
             - Quintana Roo - MEXICO
           </li>
         </ul>
-        <div className="flex flex-row gap-16">
+        <div className="grid w-full grid-cols-2 gap-8 sm:grid-cols-3 lg:flex lg:w-auto lg:flex-row lg:gap-16">
           <ul className="flex flex-col gap-4 font-bold">
             Propiedades
-            <div className="flex flex-col font-medium gap-4">
-              <li>Comprar</li>
-              <li>Rentar</li>
-              <li>Vender</li>
+            <div className="flex flex-col gap-4 font-medium">
+              <li>
+                <Link
+                  href="/properties?search_type=BUY"
+                  className="hover:text-secondary underline transition-colors"
+                >
+                  Comprar
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/properties?search_type=RENT"
+                  className="hover:text-secondary underline transition-colors"
+                >
+                  Rentar
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/planes"
+                  className="hover:text-secondary underline transition-colors"
+                >
+                  Vender
+                </Link>
+              </li>
             </div>
           </ul>
           <ul className="flex flex-col gap-4 font-bold">
             Compañía
-            <div className="flex flex-col font-medium gap-4">
-              <li>Acerca de</li>
-              <li>FAQ</li>
-              <li>Ayuda</li>
-              <li>Contacto</li>
+            <div className="flex flex-col gap-4 font-medium">
+              <li>
+                <Link
+                  href="/acerca-de"
+                  className="hover:text-secondary underline transition-colors"
+                >
+                  Acerca de
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/faq"
+                  className="hover:text-secondary underline transition-colors"
+                >
+                  FAQ
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/ayuda"
+                  className="hover:text-secondary underline transition-colors"
+                >
+                  Ayuda
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/contacto"
+                  className="hover:text-secondary underline transition-colors"
+                >
+                  Contacto
+                </Link>
+              </li>
             </div>
           </ul>
           <ul className="flex flex-col gap-4 font-bold">
             Recursos
-            <div className="flex flex-col font-medium gap-4">
-              <li>Blog</li>
-              <li>Noticias</li>
+            <div className="flex flex-col gap-4 font-medium">
+              <li>
+                <Link
+                  href="/blog"
+                  className="hover:text-secondary underline transition-colors"
+                >
+                  Blog
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/noticias"
+                  className="hover:text-secondary underline transition-colors"
+                >
+                  Noticias
+                </Link>
+              </li>
             </div>
           </ul>
           <ul className="flex flex-col gap-4 font-bold">
             Agencias y agentes
-            <div className="flex flex-col font-medium gap-4">
-              <li>Planes y precios</li>
+            <div className="flex flex-col gap-4 font-medium">
+              <li>
+                <Link
+                  href="/planes"
+                  className="hover:text-secondary underline transition-colors"
+                >
+                  Planes y precios
+                </Link>
+              </li>
             </div>
           </ul>
           <ul className="flex flex-col gap-4 font-bold">
             Legal
-            <div className="flex flex-col font-medium gap-4">
-              <li>Términos y condiciones</li>
-              <li>Política de privacidad</li>
-              <li>Política de reembolso</li>
-              <li>Cookies</li>
+            <div className="flex flex-col gap-4 font-medium">
+              <li>
+                <Link
+                  href="/terminos-y-condiciones"
+                  className="hover:text-secondary underline transition-colors"
+                >
+                  Términos y condiciones
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/politica-de-privacidad"
+                  className="hover:text-secondary underline transition-colors"
+                >
+                  Política de privacidad
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/politica-de-reembolso"
+                  className="hover:text-secondary underline transition-colors"
+                >
+                  Política de reembolso
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/cookies"
+                  className="hover:text-secondary underline transition-colors"
+                >
+                  Cookies
+                </Link>
+              </li>
             </div>
           </ul>
         </div>
       </div>
-      <div className="flex flex-row justify-end items-end gap-4 py-8 h-full w-full">
+      <div className="flex h-full w-full flex-row items-end justify-center gap-4 py-8 lg:justify-end">
         <SocialMediaIcons icons={socialMediaIcons} />
       </div>
     </footer>

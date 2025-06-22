@@ -25,7 +25,7 @@ export const HomlistaFeaturesSection: FC<HomlistaFeaturesSectionProps> = () => {
           </p>
         </div>
 
-        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-16 md:grid-cols-2">
+        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-2 lg:gap-16">
           <FeatureItem
             Icon={Building2Icon}
             title="CRM Inmobiliario Especializado"

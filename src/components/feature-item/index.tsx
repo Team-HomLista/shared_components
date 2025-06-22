@@ -8,7 +8,7 @@ interface FeatureItemProps {
 
 export function FeatureItem({ title, description, Icon }: FeatureItemProps) {
   return (
-    <div className="border-secondary flex flex-col rounded-[12px] border-1 p-4 pb-6">
+    <div className="border-secondary flex flex-col rounded-[12px] border-1 p-2 pb-4 lg:p-4 lg:pb-6">
       <div className="mb-2 flex items-center">
         <div className="bg-homlista-blue/10 mr-4 rounded-full p-2">
           {Icon && <Icon className="text-secondary h-8 w-8" />}

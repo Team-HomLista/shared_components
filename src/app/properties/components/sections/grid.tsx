@@ -10,8 +10,8 @@ export const PropertiesSearchGridSection: React.FC<
   PropertiesSearchGridSectionProps
 > = ({ properties }) => {
   return (
-    <div className="flex flex-col px-32 pt-8">
-      <div className="grid grid-cols-1 justify-items-center gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="flex flex-col px-4 pt-8 sm:px-8">
+      <div className="mx-auto grid max-w-[1200px] grid-cols-1 justify-items-center gap-4 min-[600px]:grid-cols-2 min-[920px]:grid-cols-3">
         {properties.map((property, idx) => (
           <PropertyCardItem
             key={property.short_id}

@@ -90,7 +90,7 @@ export class PropertyService {
     const SERVER_URL = process.env.SERVER_URL;
     const HARD_KEY = String(process.env.HARD_KEY);
 
-    const url = `${SERVER_URL}/properties/${slug}`;
+    const url = `${SERVER_URL}/api/properties/${slug}`;
 
     const response = await fetch(url, {
       method: "GET",
