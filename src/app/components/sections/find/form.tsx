@@ -286,7 +286,7 @@ export const LeadForm = ({
             </FormItem>
           )}
         />
-        <Button type="submit" className="mt-1 w-full max-w-[428px]">
+        <Button type="submit" className="mt-1 w-fit">
           Recibe 5 sugerencias personalizadas gratis
         </Button>
         <p className="text-muted-foreground text-sm">

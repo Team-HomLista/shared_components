@@ -9,7 +9,7 @@ export const ComparisonTableSection: FC<ComparisonTableSectionProps> = ({}) => {
   return (
     <>
       <section className="flex w-full justify-center bg-white py-20">
-        <div className="flex w-[70%] flex-col items-center justify-center">
+        <div className="flex w-[95%] flex-col items-center justify-center">
           <div className="mx-auto mb-8 flex w-full flex-col items-center text-center">
             <h2 className="mb-6 max-w-3xl text-3xl font-bold md:text-4xl">
               Compara los planes

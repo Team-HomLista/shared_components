@@ -50,24 +50,28 @@ export const SectionHeader: FC<SectionHeaderProps> = ({
   return (
     <div
       className={cn(
-        "flex gap-16 py-16 px-32 justify-center items-center w-full",
-        orientation === "right" ? "flex-row" : "flex-row-reverse"
+        "flex w-full items-center justify-center gap-8 px-8 py-8 lg:gap-16 lg:px-32 lg:py-16",
+        "flex-col lg:flex-row",
+        orientation === "right" ? "lg:flex-row" : "lg:flex-row-reverse",
       )}
     >
-      <div className="w-full flex flex-col">
+      <div className="flex w-full flex-col">
         <h2
           className={cn(
-            "text-black text-6xl font-medium leading-[64px] mx-6",
-            orientation === "left" ? "text-right" : "text-left"
+            "mx-6 text-4xl leading-tight font-medium text-black lg:text-6xl lg:leading-[64px]",
+            "text-center lg:text-left",
+            orientation === "left" ? "lg:text-right" : "lg:text-left",
           )}
         >
           {title}
         </h2>
         <Divider direction={orientation} colorScheme="default" />
       </div>
-      <div className="w-full flex flex-col">
-        <h3 className="text-2xl justify-start">{description}</h3>
-        {children}
+      <div className="flex w-full flex-col">
+        <h3 className="text-left text-lg leading-6 font-medium lg:text-2xl lg:leading-8 lg:font-normal">
+          {description}
+        </h3>
+        <div className="flex justify-center lg:justify-start">{children}</div>
       </div>
     </div>
   );

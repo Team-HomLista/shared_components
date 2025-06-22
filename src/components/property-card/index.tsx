@@ -45,7 +45,7 @@ export const PropertyCardItem: FC<PropertyCardItemProps> = ({
   const redirect = `/propiedades/${slug}`;
 
   return (
-    <div className="hover:bg-secondary/20 h-full w-[360px] rounded-2xl p-2 transition-all duration-200 select-none">
+    <div className="hover:bg-secondary/20 h-full w-full max-w-[360px] min-w-[260px] rounded-2xl p-2 transition-all duration-200 select-none sm:min-w-[280px]">
       <div className="relative flex h-[240px] w-full flex-col justify-between">
         <Link
           className="absolute inset-0 cursor-pointer rounded-2xl"
@@ -69,7 +69,7 @@ export const PropertyCardItem: FC<PropertyCardItemProps> = ({
         </div>
         <PropertyCardBanner {...banner} />
       </div>
-      <Link className="w-full cursor-pointer p-2" href={redirect}>
+      <Link className="w-full cursor-pointer" href={redirect}>
         <PropertyCardInformation {...information} />
       </Link>
     </div>

@@ -73,10 +73,10 @@ function SheetContent({
         )}
         {...props}
       >
-        <div className="flex items-center justify-between px-4 pt-3">
+        <div className="absolute top-2 right-2 flex items-center justify-between">
           {headerActions}
-          <SheetPrimitive.Close className="rounded-sm opacity-70 transition-opacity hover:opacity-100 disabled:pointer-events-none">
-            <X className="h-4 w-4" />
+          <SheetPrimitive.Close className="text-secondary rounded-sm opacity-70 transition-opacity hover:opacity-100 disabled:pointer-events-none">
+            <X className="h-8 w-8" />
             <span className="sr-only">Close</span>
           </SheetPrimitive.Close>
         </div>

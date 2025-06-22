@@ -1,13 +1,12 @@
 import { AssociatesMarqueeLogo } from "@/components/associates-carousel";
-import { SectionHeader } from "@/components/section-header";
 import { FC } from "react";
 
 interface PartnersSectionProps {}
 
 export const PartnersSection: FC<PartnersSectionProps> = ({}) => {
   return (
-    <section>
-      <div className="mx-auto mb-20 flex w-full flex-col items-center pt-16 text-center">
+    <section className="pb-16">
+      <div className="mx-auto flex w-full flex-col items-center py-12 text-center">
         <h2 className="mb-6 max-w-3xl text-4xl font-bold md:text-5xl">
           Conoce a nuestros aliados
         </h2>
