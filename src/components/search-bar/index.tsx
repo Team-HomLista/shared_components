@@ -46,7 +46,7 @@ export const SearchBar: FC<SearchBarProps> = () => {
             </SelectTrigger>
             <SelectContent position="popper">
               <SelectItem value={BuildingType.HOUSE}>Casas</SelectItem>
-              <SelectItem value={BuildingType.APARTMENT}>
+              <SelectItem value={BuildingType.DEPARTMENT}>
                 Departamentos
               </SelectItem>
               <SelectItem value={BuildingType.LAND}>Terrenos</SelectItem>
@@ -93,7 +93,7 @@ export const SearchBar: FC<SearchBarProps> = () => {
           corner={"squared"}
         >
           <Link
-            href={`/properties?property_type=${propertyType}&search_type=${searchType}&city=${city}`}
+            href={`/propiedades?property_type=${propertyType}&search_type=${searchType}&city=${city}`}
           >
             <Search />
             Buscar propiedades

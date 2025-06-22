@@ -75,7 +75,7 @@ export const PropertiesSearchContainer: FC<PropertiesSearchContainerProps> = ({
 
   const handlePageChange = (newPage: number) => {
     const params = buildSearchQueryParams({ ...queries, page: newPage });
-    router.push(`/properties?${params}`);
+    router.push(`/propiedades?${params}`);
   };
 
   const onClickPrev = () => {
@@ -92,7 +92,7 @@ export const PropertiesSearchContainer: FC<PropertiesSearchContainerProps> = ({
 
   const handleFormSubmit = (data: z.infer<typeof controlsSchema>) => {
     const params = buildSearchQueryParams(data as PropertyQueryParams);
-    router.push(`/properties?${params}`);
+    router.push(`/propiedades?${params}`);
   };
 
   return (
