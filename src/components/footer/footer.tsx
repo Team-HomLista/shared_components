@@ -12,37 +12,37 @@ export const Footer: FC<FooterProps> = ({}) => {
     {
       src: "/socialMedia-svg/whatsapp.svg",
       alt: "WhatsApp",
-      link: "https://wa.me/1234567890",
+      link: "https://wa.me/529982286242",
     },
     {
       src: "/socialMedia-svg/facebook.svg",
       alt: "Facebook",
-      link: "https://facebook.com",
+      link: "https://www.facebook.com/HomLista",
     },
     {
       src: "/socialMedia-svg/instagram.svg",
       alt: "Instagram",
-      link: "https://instagram.com",
+      link: "https://www.instagram.com/homlista/",
     },
     {
       src: "/socialMedia-svg/youtube.svg",
       alt: "YouTube",
-      link: "https://youtube.com",
+      link: "https://www.youtube.com/channel/UCLQSEcRaLc4D_tdnBsCNWcw",
     },
     {
       src: "/socialMedia-svg/x.svg",
       alt: "Twitter",
-      link: "https://x.com",
+      link: "https://x.com/HomLista",
     },
     {
       src: "/socialMedia-svg/telegram.svg",
       alt: "Telegram",
-      link: "https://t.me/yourchannel",
+      link: "@Red_HomLista",
     },
     {
       src: "/socialMedia-svg/linkedin.svg",
       alt: "LinkedIn",
-      link: "https://linkedin.com",
+      link: "https://www.linkedin.com/company/homlista/",
     },
   ];
 
