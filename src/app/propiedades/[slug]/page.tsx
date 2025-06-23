@@ -13,7 +13,8 @@ interface PageProps {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   
-  try {
+  try {  
+    const propertieCarrusel = await PropertyService.getFeaturedProperties(10);
     const property = await PropertyService.getPropertyDetails(slug);
     
     return {
@@ -37,11 +38,17 @@ export default async function DetailedPropertiesPage({ params }: PageProps) {
   const { slug } = await params;
   
   try {
-    const property = await PropertyService.getPropertyDetails(slug);
+    const [property, featuredProperties] = await Promise.all([
+      PropertyService.getPropertyDetails(slug),
+      PropertyService.getFeaturedProperties(10)
+    ]);
     
     return (
       <ErrorBoundary>
-        <PropertyDetailContainer property={property} />
+        <PropertyDetailContainer 
+          property={property} 
+          propertyCarrusel={featuredProperties}
+        />
       </ErrorBoundary>
     );
   } catch (error) {

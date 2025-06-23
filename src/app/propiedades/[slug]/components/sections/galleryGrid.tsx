@@ -26,7 +26,7 @@ export const GalleryGrid: FC<GalleryGridProps> = ({
   // 1 image: Large landscape
   if (count === 1) {
     return (
-      <div className="flex px-64 py-3">
+      <div className="flex py-3">
         <div className="h-[528px] w-full cursor-pointer overflow-hidden rounded-lg">
           <img
             src={multimedia[0]}
@@ -42,7 +42,7 @@ export const GalleryGrid: FC<GalleryGridProps> = ({
   // 2 images: Two large side-by-side
   if (count === 2) {
     return (
-      <div className="flex px-64 py-3">
+      <div className="flex py-3">
         <div className="grid h-[528px] w-full grid-cols-2 gap-2">
           {multimedia.map((img, idx) => (
             <div
@@ -65,7 +65,7 @@ export const GalleryGrid: FC<GalleryGridProps> = ({
   // 3 images: One large left, two small right (column)
   if (count === 3) {
     return (
-      <div className="flex px-64 py-3">
+      <div className="flex py-3">
         <div className="grid h-[528px] w-full grid-cols-2 grid-rows-2 gap-2">
           <div
             className="col-span-1 row-span-2 cursor-pointer overflow-hidden rounded-lg"
@@ -98,7 +98,7 @@ export const GalleryGrid: FC<GalleryGridProps> = ({
   // 4 images: Four medium squares
   if (count === 4) {
     return (
-      <div className="flex px-64 py-3">
+      <div className="flex py-3">
         <div className="grid h-[528px] w-full grid-cols-2 gap-2">
           {multimedia.map((img, idx) => (
             <div
@@ -120,7 +120,7 @@ export const GalleryGrid: FC<GalleryGridProps> = ({
 
   // 5 or more images: Original design
   return (
-    <div className="flex px-64 py-3">
+    <div className="flex py-3">
       <div className="grid h-[528px] w-full grid-cols-2 grid-rows-2 gap-2">
         {/* Big image */}
         <div

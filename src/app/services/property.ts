@@ -56,13 +56,17 @@ export class PropertyService {
     return (await response.json()) as Paginated<Property>;
   }
 
-  static async getFeaturedProperties() {
+  static async getFeaturedProperties(limit?: number) {
     const SERVER_URL = process.env.SERVER_URL;
     const HARD_KEY = String(process.env.HARD_KEY);
 
-    const featuredUrl = `${SERVER_URL}/api/properties/featured`;
+    const url = new URL(`${SERVER_URL}/api/properties/featured`);
+    
+    if (limit !== undefined) {
+      url.searchParams.append("limit", String(limit));
+    }
 
-    const response = await fetch(featuredUrl, {
+    const response = await fetch(url.toString(), {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -83,7 +87,13 @@ export class PropertyService {
       throw errorData;
     }
 
-    return (await response.json()).data as Array<Property>;
+    const data = (await response.json()).data as Array<Property>;
+    
+    if (limit !== undefined && data.length > limit) {
+      return data.slice(0, limit);
+    }
+    
+    return data;
   }
 
   static async getPropertyDetails(slug: string) {

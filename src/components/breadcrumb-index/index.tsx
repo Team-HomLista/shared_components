@@ -24,7 +24,7 @@ export const BreadcrumbPagination: FC<BreadcrumbPaginationProps> = ({
   return (
     <>
       {isPropertiesPage && (
-        <PaginationBreadcrumb className={isDetail ? "px-64 pt-8" : ""}>
+        <PaginationBreadcrumb className={isDetail ? "pt-8" : ""}>
           <BreadcrumbList>
             <BreadcrumbItem>
               <BreadcrumbLink href="/">
