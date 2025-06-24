@@ -50,7 +50,7 @@ export const PropertyMainInfo: FC<PropertyMainInfoProps> = ({
   };
 
   return (
-    <div className={`${LAYOUT_CONSTANTS.CONTENT_PADDING_X} ${LAYOUT_CONSTANTS.SECTION_PADDING_Y}`}>
+    <div className={` ${LAYOUT_CONSTANTS.SECTION_PADDING_Y}`}>
       <div className="flex flex-row gap-6">
         <h2 className={`text-primary w-full truncate ${LAYOUT_CONSTANTS.TITLE_SIZE} font-bold`}>
           {title}

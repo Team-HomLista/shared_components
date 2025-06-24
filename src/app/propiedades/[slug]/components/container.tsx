@@ -60,14 +60,14 @@ export const PropertyDetailContainer: FC<PropertyDetailContainerProps> = ({
           agency={property.agency || undefined}
           agent={property.agent || undefined}
         />
-        <PropertyCarousel 
-          items={carouselItems} 
-          onClickLike={(index, isLiked) => {
-            // TODO: Implement like functionality for recommended properties
-            console.log(`Property ${index} liked: ${isLiked}`);
-          }}
-        />
       </div>
+      <PropertyCarousel
+        items={carouselItems} 
+        onClickLike={(index, isLiked) => {
+          // TODO: Implement like functionality for recommended properties
+          console.log(`Property ${index} liked: ${isLiked}`);
+        }}
+      />
     </>
   );
 };
