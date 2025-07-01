@@ -36,7 +36,7 @@ export const AmenityDetails: FC<AmenityDetailsProps> = ({ property }) => {
                             <TooltipTrigger asChild>
                                 <div className="flex flex-col items-center gap-2 p-3 rounded-lg hover:bg-gray-50 transition-colors cursor-help">
                                     <IconComponent className="h-6 w-6 text-secondary" />
-                                    <span className="text-sm text-center font-medium text-gray-700">
+                                    <span className="text-sm text-center font-light" style={{ color: '#09090B' }}>
                                         {feature.name}
                                     </span>
                                 </div>

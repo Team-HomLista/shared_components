@@ -64,7 +64,7 @@ export const AgencyTouch: FC<AgencyTouchProps> = ({
 
         <button
           type="submit"
-          className="bg-secondary hover:bg-secondary/80 w-full rounded py-2 sm:py-3 text-sm sm:text-base font-semibold transition hover:cursor-pointer"
+          className="bg-secondary text-white hover:bg-secondary/80 w-full rounded py-2 sm:py-3 text-sm sm:text-base font-semibold transition hover:cursor-pointer"
         >
           Enviar mensaje
         </button>

@@ -19,23 +19,23 @@ export const ApartmentDetails: FC<FeatureDetailProps> = ({
   const features = [
     createFeature(
       <RulerDimensionLineIcon className="text-secondary h-6 w-6" />,
-      "Área del terreno",
+      "Área del terreno:",
       buildingSize,
       true,
     ),
     createFeature(
       <BedDoubleIcon className="text-secondary h-6 w-6" />,
-      "Habitaciones",
+      "Habitaciones:",
       rooms,
     ),
     createFeature(
       <ToiletIcon className="text-secondary h-6 w-6" />,
-      "Baños",
+      "Baños:",
       bathrooms,
     ),
     createFeature(
       <BuildingIcon className="text-secondary h-6 w-6" />,
-      "Piso",
+      "Piso:",
       floor,
     ),
     yearBuilt ? {

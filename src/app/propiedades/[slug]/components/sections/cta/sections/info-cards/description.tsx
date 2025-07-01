@@ -18,7 +18,7 @@ export const PropertyDescription: FC<PropertyDescriptionProps> = ({
          <h3 className="text-lg font-semibold mb-3">Descripción</h3>
       </div>
       <div className="flex flex-col gap-2">
-        <p className="text-gray-700 leading-relaxed">{property.description}</p>
+        <p className="leading-relaxed font-light" style={{ color: '#09090B' }}>{property.description}</p>
       </div>
     </>
   );

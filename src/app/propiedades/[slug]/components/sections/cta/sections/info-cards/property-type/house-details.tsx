@@ -21,35 +21,34 @@ export const HouseDetails: FC<FeatureDetailProps> = ({
   const features = [
     createFeature(
       <RulerDimensionLineIcon className="text-secondary h-6 w-6" />,
-      "Área del terreno",
+      "Área del terreno:",
       buildingSize,
       true,
     ),
     createFeature(
       <CarIcon className="text-secondary h-6 w-6" />,
-      "Estacionamiento",
+      "Estacionamientos:",
       parkingSlots,
     ),
     createFeature(
       <ToiletIcon className="text-secondary h-6 w-6" />,
-      "Baños",
+      "Baños:",
       bathrooms,
     ),
     createFeature(
       <ChartAreaIcon className="text-secondary h-6 w-6" />,
-      "Construcción",
+      "Construcción:",
       landSize,
       true,
     ),
-    // Explicit year handling to ensure it shows
     yearBuilt ? {
       icon: <CalendarIcon className="text-secondary h-6 w-6" />,
-      text: "Año",
+      text: "Año:",
       value: yearBuilt.toString()
     } : null,
     createFeature(
       <BedDoubleIcon className="text-secondary h-6 w-6" />,
-      "Habitaciones",
+      "Habitaciones:",
       rooms,
     ),
   ].filter(Boolean) as FeatureItem[];
