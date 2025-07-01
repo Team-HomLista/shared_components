@@ -12,21 +12,23 @@ import { Card } from "@/components/ui/card";
 import { Copy, MapPinnedIcon, PrinterIcon, Share2Icon } from "lucide-react";
 import { FC, useState } from "react";
 import { formatPrice } from "@/app/utils/price-formatter";
-import { PropertyPrice, PropertyPriceType } from "@/types/property";
+import { PropertyPrice, PropertyPriceType, PropertyTag } from "@/types/property";
 import { useCopyToClipboard } from "@/app/hooks/useCopyToClipboard";
 import { useLike } from "@/app/hooks/useLike";
-import { LAYOUT_CONSTANTS } from "@/app/constants/layout";
+import { PropertyTags } from "@/components/property-tags";
 
 export interface PropertyMainInfoProps {
   title: string;
   price: PropertyPrice;
   location: string;
+  tags?: Array<PropertyTag>;
 }
 
 export const PropertyMainInfo: FC<PropertyMainInfoProps> = ({
   title,
   price,
   location,
+  tags,
 }) => {
   const { isLiked, toggleLike } = useLike();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -50,15 +52,15 @@ export const PropertyMainInfo: FC<PropertyMainInfoProps> = ({
   };
 
   return (
-    <div className={` ${LAYOUT_CONSTANTS.SECTION_PADDING_Y}`}>
-      <div className="flex flex-row gap-6">
-        <h2 className={`text-primary w-full truncate ${LAYOUT_CONSTANTS.TITLE_SIZE} font-bold`}>
+    <div className="sm:pt-6 lg:pt-6.5">
+      <div className="flex flex-row">
+        <h2 className="text-primary w-full truncate text-xl sm:text-2xl lg:text-[28px] font-bold">
           {title}
         </h2>
-        <div className={`relative ml-auto flex flex-row items-center justify-end ${LAYOUT_CONSTANTS.BUTTON_GAP} pt-2`}>
+        <div className="relative ml-auto flex flex-row items-center justify-end gap-2 sm:gap-4 lg:gap-8 pt-2">
           <LikeButton isLiked={isLiked} onClick={toggleLike} />
           <PrinterIcon
-            className={`top-4 right-16 ${LAYOUT_CONSTANTS.ICON_SIZE} cursor-pointer text-black`}
+            className="h-5 w-5 sm:h-6 sm:w-6 cursor-pointer text-black"
             onClick={handlePrint}
           />
           <Dialog open={isDialogOpen} onOpenChange={handleDialogOpenChange}>
@@ -66,14 +68,14 @@ export const PropertyMainInfo: FC<PropertyMainInfoProps> = ({
               <Button
                 variant="ghost"
                 size="icon"
-                className={`flex ${LAYOUT_CONSTANTS.ICON_SIZE} min-h-0 min-w-0 cursor-pointer items-center justify-center hover:bg-transparent focus:bg-transparent active:bg-transparent`}
+                className="flex h-5 w-5 sm:h-6 sm:w-6 min-h-0 min-w-0 cursor-pointer items-center justify-center hover:bg-transparent focus:bg-transparent active:bg-transparent"
               >
-                <Share2Icon className={`m-0 block ${LAYOUT_CONSTANTS.ICON_SIZE} min-h-0 min-w-0 p-0 text-black`} />
+                <Share2Icon className="m-0 block h-5 w-5 sm:h-6 sm:w-6 min-h-0 min-w-0 p-0 text-black" />
               </Button>
             </DialogTrigger>
             <DialogContent>
               <DialogHeader>
-                <DialogTitle className={`text-primary ${LAYOUT_CONSTANTS.SUBTITLE_SIZE} font-bold`}>
+                <DialogTitle className="text-primary text-lg sm:text-xl font-bold">
                   ¡Comparte esta Propiedad!
                 </DialogTitle>
                 <DialogDescription>
@@ -82,7 +84,7 @@ export const PropertyMainInfo: FC<PropertyMainInfoProps> = ({
                 </DialogDescription>
               </DialogHeader>
               <div className="mt-4 flex flex-row items-center gap-2">
-                <Card className={`border-primary ${LAYOUT_CONSTANTS.COPY_CARD_WIDTH} flex-1 truncate overflow-hidden border px-4 py-2 text-base text-ellipsis select-all`}>
+                <Card className="border-primary flex-1 truncate overflow-hidden border px-4 py-2 text-sm sm:text-base text-ellipsis select-all">
                   {isCopied
                     ? "Se ha copiado el texto en el portapapeles."
                     : url}
@@ -100,10 +102,15 @@ export const PropertyMainInfo: FC<PropertyMainInfoProps> = ({
           </Dialog>
         </div>
       </div>
-      <div className="flex flex-row items-center gap-4">
-        <h3 className={`text-primary flex flex-row items-center gap-2 ${LAYOUT_CONSTANTS.SUBTITLE_SIZE}`}>
+      {tags && tags.length > 0 && (
+        <div className="py-2 sm:py-4">
+          <PropertyTags tags={tags} />
+        </div>
+      )}
+      <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+        <h3 className="text-primary flex flex-row items-center gap-2 text-lg sm:text-xl">
           {price.type !== PropertyPriceType.Normal && price.after ? (
-            <span className="text-lg text-gray-400 line-through">
+            <span className="text-base sm:text-lg text-gray-400 line-through">
               {formatPrice({ value: price.after, currency: price.currency })}
             </span>
           ) : null}
@@ -112,8 +119,8 @@ export const PropertyMainInfo: FC<PropertyMainInfoProps> = ({
           </span>
         </h3>
         <div className="flex flex-row items-center">
-          <MapPinnedIcon className={`text-primary ${LAYOUT_CONSTANTS.ICON_SIZE}`} />
-          <p className={`text-primary pl-1 ${LAYOUT_CONSTANTS.SUBTITLE_SIZE}`}>
+          <MapPinnedIcon className="text-primary h-4 w-4 sm:h-5 sm:w-5 lg:h-6 lg:w-6" />
+          <p className="text-primary pl-1 text-sm sm:text-base lg:text-xl">
             {location}
           </p>
         </div>

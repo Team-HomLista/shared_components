@@ -1,6 +1,13 @@
 import { BuildingType } from "./enums/building-type";
 import { TransactionType } from "./enums/transaction-type";
 
+export interface PropertyTag {
+  type: string;
+  name: string;
+  isRemarkable: boolean;
+  description: string | null;
+}
+
 export interface Property {
   agency: PropertyAgency | null;
   agency_id: number | null;
@@ -28,6 +35,7 @@ export interface Property {
   transaction_type: keyof typeof TransactionType;
   uuid: string;
   year_built?: number | null;
+  tags?: Array<PropertyTag>;
 }
 
 export interface DetailedProperty extends Property {

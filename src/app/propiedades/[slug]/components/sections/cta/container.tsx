@@ -21,7 +21,7 @@ export const CtaInfoCard: FC<CtaInfoCardProps> = ({
   agent,
 }) => {
   return (
-    <div className={`flex w-full flex-row gap-4  ${LAYOUT_CONSTANTS.CTA_SECTION_PADDING}`}>
+    <div className="flex w-full flex-col lg:flex-row gap-4 py-4 sm:py-6 lg:py-8">
       <InfoCard property={property} />
       {agency && <AgencyTouch agency={agency} />}
       {agent && <AgentTouch agent={agent} />}
