@@ -1,11 +1,16 @@
 import { BuildingType } from "./enums/building-type";
 import { TransactionType } from "./enums/transaction-type";
+import { TransportationType } from "./enums/transportation-type";
 
 export interface PropertyTag {
   type: string;
   name: string;
   isRemarkable: boolean;
   description: string | null;
+}
+
+export interface PropertyLocationDetail extends Property {
+  transportation_type: keyof typeof TransportationType;
 }
 
 export interface Property {
@@ -36,6 +41,7 @@ export interface Property {
   uuid: string;
   year_built?: number | null;
   tags?: Array<PropertyTag>;
+  transportation?: Array<PropertyLocationDetail>;
 }
 
 export interface DetailedProperty extends Property {
@@ -43,6 +49,10 @@ export interface DetailedProperty extends Property {
   agency: PropertyAgency | null;
   agent: PropertyAgent | null;
   property_features?: Array<PropertyFeature>;
+  property_nearbys?: Array<PropertyLocationDetail>;
+  postal_code?: string | null;
+  latitude?: number;
+  longitude?: number;
 }
 
 export interface PropertyFeature {

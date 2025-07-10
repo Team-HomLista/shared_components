@@ -3,19 +3,28 @@ import { Navbar } from "@/components/navbar";
 import { FC, useState } from "react";
 import { ImageGallery } from "./sections/gallery";
 import { CtaInfoCard } from "./sections/cta/container";
-import { DetailedProperty, Property } from "@/types/property";
+import {
+  DetailedProperty,
+  Property,
+  PropertyLocationDetail,
+} from "@/types/property";
 import { BreadcrumbPagination } from "@/components/breadcrumb-index";
 import { PropertyMainInfo } from "./sections/main-info";
-import { transformPropertyPrice, formatPropertyLocation } from "@/app/utils/property-transformers";
+import {
+  transformPropertyPrice,
+  formatPropertyLocation,
+} from "@/app/utils/property-transformers";
 import { PropertyCarousel } from "@/components/property-carousel";
 import { Button } from "@/components/ui/button";
 import { SearchIcon } from "lucide-react";
+import { LocationNearby } from "./sections/location";
+import { NearbyLocation } from "@/app/utils/location-utils";
 
 export interface PropertyDetailContainerProps {
   property: DetailedProperty;
   propertyCarrusel?: Property[];
+  transportation?: Array<PropertyLocationDetail>;
 }
-
 export const PropertyDetailContainer: FC<PropertyDetailContainerProps> = ({
   property,
   propertyCarrusel: recommendedProperties = [],
@@ -23,11 +32,25 @@ export const PropertyDetailContainer: FC<PropertyDetailContainerProps> = ({
   const propertyPrice = transformPropertyPrice(property);
   const propertyLocation = formatPropertyLocation(property);
   const [showGallery, setShowGallery] = useState(false);
-  
+
+  const transformNearbyData = (nearbyData: any[]): NearbyLocation[] => {
+    return nearbyData.map((item) => ({
+      id: item.id,
+      name: item.name,
+      travel_time: item.travel_time,
+      time_unit: item.time_unit,
+      travel_mode: item.travel_mode,
+    }));
+  };
+
+  const nearbyLocations = transformNearbyData(property.property_nearbys || []);
   const carouselItems = recommendedProperties.map((prop) => ({
     slug: prop.slug,
     image: prop.cover_image,
-    tag: (prop.is_featured ? "Featured" : undefined) as "Featured" | "Offer" | undefined,
+    tag: (prop.is_featured ? "Featured" : undefined) as
+      | "Featured"
+      | "Offer"
+      | undefined,
     banner: {
       transaction: prop.transaction_type,
     },
@@ -46,13 +69,19 @@ export const PropertyDetailContainer: FC<PropertyDetailContainerProps> = ({
       },
     },
   }));
-
+  /* remind removing this console log */
+  console.log("Property Detail Container", property);
+  console.log("Postal Code:", property.postal_code);
+  console.log("Coordinates:", {
+    latitude: property.latitude,
+    longitude: property.longitude,
+  });
   return (
     <>
       <Navbar variant="default" />
       <div className="px-4 sm:px-6 md:px-8 lg:px-16 xl:px-32 2xl:px-64">
-        <div className="hidden sm:flex flex-row items-end justify-between gap-4 sm:gap-6 lg:gap-8 sm:mb-8 min-w-0">
-          <div className="flex-1 min-w-0">
+        <div className="hidden min-w-0 flex-row items-end justify-between gap-4 sm:mb-8 sm:flex sm:gap-6 lg:gap-8">
+          <div className="min-w-0 flex-1">
             <BreadcrumbPagination propertyTitle={property.title} />
           </div>
           <div className="flex-shrink-0">
@@ -91,14 +120,14 @@ export const PropertyDetailContainer: FC<PropertyDetailContainerProps> = ({
           <div className="relative mb-4 sm:mb-6">
             {property.multimedia?.[0] && (
               <div className="relative aspect-video w-full overflow-hidden rounded-lg">
-                <img 
-                  src={property.multimedia[0]} 
+                <img
+                  src={property.multimedia[0]}
                   alt={property.title}
                   className="h-full w-full object-cover"
                 />
-                <button 
+                <button
                   onClick={() => setShowGallery(true)}
-                  className="absolute top-3 right-3 rounded-md bg-white/90 px-3 py-2 text-sm font-medium text-gray-900 shadow-sm backdrop-blur-sm hover:bg-white transition-all"
+                  className="absolute top-3 right-3 rounded-md bg-white/90 px-3 py-2 text-sm font-medium text-gray-900 shadow-sm backdrop-blur-sm transition-all hover:bg-white"
                 >
                   Ver imágenes
                 </button>
@@ -113,7 +142,7 @@ export const PropertyDetailContainer: FC<PropertyDetailContainerProps> = ({
           />
         </div>
       </div>
-      <div className="block lg:hidden px-4 sm:px-6 md:px-8 mb-6 sm:mb-8">
+      <div className="mb-6 block px-4 sm:mb-8 sm:px-6 md:px-8 lg:hidden">
         <CtaInfoCard
           property={property}
           agency={property.agency || undefined}
@@ -144,12 +173,25 @@ export const PropertyDetailContainer: FC<PropertyDetailContainerProps> = ({
           </button>
         </div>
       )}
-      <div className="pb-8 md:pb-12 lg:pb-16">      
-        <PropertyCarousel
-        items={carouselItems} 
-        onClickLike={(index, isLiked) => {
-        }}
-      /></div>
+      <div className="px-4 sm:px-6 md:px-8 lg:px-16 xl:px-32 2xl:px-64">
+        <LocationNearby
+          nearby={nearbyLocations}
+          locationInfo={{
+            city: property.city,
+            state: property.state,
+            neighborhood: property.neighborhood,
+            postalCode: property.postal_code,
+            latitude: property.latitude,
+            longitude: property.longitude,
+          }}
+        />
+        <div className="flex items-center pb-3 text-xl font-semibold text-zinc-900">
+          Otras propiedades que podrían interesarte
+        </div>
+      </div>
+      <div className="pb-8 md:pb-12 lg:pb-16">
+        <PropertyCarousel items={carouselItems} onClickLike={() => {}} />
+      </div>
     </>
   );
 };

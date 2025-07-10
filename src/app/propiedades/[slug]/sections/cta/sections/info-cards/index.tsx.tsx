@@ -7,7 +7,6 @@ import { AmenityDetails } from "./amenity";
 export interface InfoCardProps {
   property: DetailedProperty;
 }
-
 export const InfoCard: FC<InfoCardProps> = ({ property }) => {
   return (
     <div className="flex w-full flex-col gap-2.5">
@@ -18,7 +17,7 @@ export const InfoCard: FC<InfoCardProps> = ({ property }) => {
         <PropertyDescription property={property} />
       </div>
       <div className="flex flex-col gap-2 rounded-sm bg-[#F8F9FA] p-4">
-      <AmenityDetails property={property} />
+        <AmenityDetails property={property} />
       </div>
     </div>
   );

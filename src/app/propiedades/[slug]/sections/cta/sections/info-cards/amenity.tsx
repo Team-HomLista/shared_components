@@ -12,7 +12,6 @@ export const AmenityDetails: FC<AmenityDetailsProps> = ({ property }) => {
     const [showAll, setShowAll] = useState(false);
 
     if (!property.property_features || property.property_features.length === 0) {
-        console.log('Debug - No property_features found');
         return null;
     }
 
@@ -27,9 +26,7 @@ export const AmenityDetails: FC<AmenityDetailsProps> = ({ property }) => {
             <h3 className="text-lg font-semibold mb-3">Amenidades</h3>
             <div className="grid grid-cols-3 gap-4">
                 {visibleFeatures.map((feature) => {
-                    console.log('Debug - Feature:', feature.name, 'Tag:', feature.tag);
                     const IconComponent = amenityIcons[feature.tag] || HelpCircle;
-                    console.log('Debug - IconComponent found:', !!amenityIcons[feature.tag]);
                     
                     return (
                         <Tooltip key={feature.id}>
