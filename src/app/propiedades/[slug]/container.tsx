@@ -1,6 +1,9 @@
 "use client";
 import { Navbar } from "@/components/navbar";
 import { FC, useState } from "react";
+import Link from "next/link";
+import { buildSearchQueryParams } from "@/app/utils/build-search-query-params";
+import { PropertyQueryParams } from "@/app/propiedades/types";
 import { ImageGallery } from "./sections/gallery";
 import { CtaInfoCard } from "./sections/cta/container";
 import {
@@ -44,6 +47,19 @@ export const PropertyDetailContainer: FC<PropertyDetailContainerProps> = ({
   };
 
   const nearbyLocations = transformNearbyData(property.property_nearbys || []);
+  const getSimilarPropertiesUrl = () => {
+    const searchParams: PropertyQueryParams = {
+      city: property.city,
+      state: property.state,
+      neighborhood: property.neighborhood,
+      property_type: property.building_type,
+      search_type: property.transaction_type,
+    };
+
+    const queryString = buildSearchQueryParams(searchParams);
+    return `/propiedades?${queryString}`;
+  };
+
   const carouselItems = recommendedProperties.map((prop) => ({
     slug: prop.slug,
     image: prop.cover_image,
@@ -69,13 +85,6 @@ export const PropertyDetailContainer: FC<PropertyDetailContainerProps> = ({
       },
     },
   }));
-  /* remind removing this console log */
-  console.log("Property Detail Container", property);
-  console.log("Postal Code:", property.postal_code);
-  console.log("Coordinates:", {
-    latitude: property.latitude,
-    longitude: property.longitude,
-  });
   return (
     <>
       <Navbar variant="default" />
@@ -85,10 +94,12 @@ export const PropertyDetailContainer: FC<PropertyDetailContainerProps> = ({
             <BreadcrumbPagination propertyTitle={property.title} />
           </div>
           <div className="flex-shrink-0">
-            <Button className="bg-secondary" corner={"squared"}>
-              <SearchIcon className="h-4 w-4" />
-              <p>Ver Propiedades Similares</p>
-            </Button>
+            <Link href={getSimilarPropertiesUrl()}>
+              <Button className="bg-secondary" corner={"squared"}>
+                <SearchIcon className="h-4 w-4" />
+                <p>Ver Propiedades Similares</p>
+              </Button>
+            </Link>
           </div>
         </div>
         <div className="block sm:hidden">
@@ -96,10 +107,12 @@ export const PropertyDetailContainer: FC<PropertyDetailContainerProps> = ({
             <BreadcrumbPagination propertyTitle={property.title} />
           </div>
           <div className="mb-6">
-            <Button className="bg-secondary w-full" corner={"squared"}>
-              <SearchIcon className="h-4 w-4" />
-              <p>Ver Propiedades Similares</p>
-            </Button>
+            <Link href={getSimilarPropertiesUrl()}>
+              <Button className="bg-secondary w-full" corner={"squared"}>
+                <SearchIcon className="h-4 w-4" />
+                <p>Ver Propiedades Similares</p>
+              </Button>
+            </Link>
           </div>
         </div>
         <div className="hidden lg:block">
