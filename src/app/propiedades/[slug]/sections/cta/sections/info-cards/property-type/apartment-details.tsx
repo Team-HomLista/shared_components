@@ -1,57 +1,48 @@
 import { FC } from "react";
 import {
   BedDoubleIcon,
-  CalendarIcon,
-  CarIcon,
-  ChartAreaIcon,
   ToiletIcon,
   RulerDimensionLineIcon,
+  BuildingIcon,
+  CalendarIcon,
 } from "lucide-react";
 import { FeatureDetailProps, createFeature, FeatureItem } from "./types";
 import { FeatureGrid } from "./feature-grid";
 
-export const HouseDetails: FC<FeatureDetailProps> = ({
+export const ApartmentDetails: FC<FeatureDetailProps> = ({
   buildingSize,
   rooms,
   bathrooms,
-  landSize,
+  floor,
   yearBuilt,
-  parkingSlots,
 }) => {
   const features = [
     createFeature(
       <RulerDimensionLineIcon className="text-secondary h-6 w-6" />,
-      "Área del terreno",
+      "Área del terreno:",
       buildingSize,
       true,
     ),
     createFeature(
-      <CarIcon className="text-secondary h-6 w-6" />,
-      "Estacionamiento",
-      parkingSlots,
+      <BedDoubleIcon className="text-secondary h-6 w-6" />,
+      "Habitaciones:",
+      rooms,
     ),
     createFeature(
       <ToiletIcon className="text-secondary h-6 w-6" />,
-      "Baños",
+      "Baños:",
       bathrooms,
     ),
     createFeature(
-      <ChartAreaIcon className="text-secondary h-6 w-6" />,
-      "Construcción",
-      landSize,
-      true,
+      <BuildingIcon className="text-secondary h-6 w-6" />,
+      "Piso:",
+      floor,
     ),
-    // Explicit year handling to ensure it shows
     yearBuilt ? {
       icon: <CalendarIcon className="text-secondary h-6 w-6" />,
       text: "Año",
       value: yearBuilt.toString()
     } : null,
-    createFeature(
-      <BedDoubleIcon className="text-secondary h-6 w-6" />,
-      "Habitaciones",
-      rooms,
-    ),
   ].filter(Boolean) as FeatureItem[];
 
   return <FeatureGrid features={features} />;

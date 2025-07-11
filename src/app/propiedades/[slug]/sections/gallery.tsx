@@ -6,7 +6,7 @@
  * Used to showcase property images, allowing users to view thumbnails, open a masonry gallery, and navigate images in a fullscreen carousel.
  */
 import { useState, useEffect, FC } from "react";
-import { GalleryGrid } from "./galleryGrid";
+import { GalleryGrid } from "./gallery-grid";
 
 interface ImageGalleryProps {
   multimedia: string[];
