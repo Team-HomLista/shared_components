@@ -9,11 +9,13 @@ import { PropertyQueryParams } from "../types";
 import { useRouter } from "next/navigation";
 import { LocationFilters } from "@/types/property-filter";
 import { buildSearchQueryParams } from "@/app/utils/build-search-query-params";
+import { cleanQueries } from "@/app/utils/clean-queries";
 import { ControlsSection } from "./sections/controls";
 import { ControlsSchema, controlsSchema } from "./Schema";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { TransactionType } from "@/types/enums/transaction-type";
 
 export interface PropertiesSearchContainerProps {
   filters: LocationFilters;
@@ -74,8 +76,9 @@ export const PropertiesSearchContainer: FC<PropertiesSearchContainerProps> = ({
       : [];
 
   const handlePageChange = (newPage: number) => {
-    const params = buildSearchQueryParams({ ...queries, page: newPage });
-    router.push(`/properties?${params}`);
+    const cleanedQueries = cleanQueries({ ...queries, page: newPage });
+    const params = buildSearchQueryParams(cleanedQueries);
+    router.push(`/propiedades?${params}`);
   };
 
   const onClickPrev = () => {
@@ -91,8 +94,31 @@ export const PropertiesSearchContainer: FC<PropertiesSearchContainerProps> = ({
   };
 
   const handleFormSubmit = (data: z.infer<typeof controlsSchema>) => {
-    const params = buildSearchQueryParams(data as PropertyQueryParams);
-    router.push(`/properties?${params}`);
+    // Map form data to PropertyQueryParams format
+    const mappedData: Partial<PropertyQueryParams> = {
+      order_by: data.order_by,
+      property_type: data.property_type as any,
+      search_type: data.transaction_type as any,
+      title: data.keywords,
+      state: data.state,
+      city: data.city,
+      neighborhood: data.neighborhood,
+      distance_km: data.distance_km,
+      construction_year: data.constructionYear,
+      rooms: data.rooms,
+      baths: data.baths,
+      land_size: data.land_size,
+      land_unit: data.land_unit,
+      house_size: data.house_size,
+      house_unit: data.house_unit,
+      parking_size: data.parking_size,
+      parking_unit: data.parking_unit,
+    };
+
+    // Clean the data to remove empty values before building query params
+    const cleanedData = cleanQueries(mappedData);
+    const params = buildSearchQueryParams(cleanedData as PropertyQueryParams);
+    router.push(`/propiedades?${params}`);
   };
 
   return (

@@ -23,6 +23,7 @@ import { Filters } from "./filters";
 import { UseFormReturn } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
+import { BreadcrumbPagination } from "@/components/breadcrumb-index";
 
 export interface ControlsSectionProps {
   form: UseFormReturn<z.infer<typeof controlsSchema>>;
@@ -46,6 +47,7 @@ export const ControlsSection: FC<ControlsSectionProps> = ({
   return (
     <div className="flex flex-col px-4 sm:px-8">
       <div className="mx-auto flex w-full max-w-[1112px] flex-col gap-4 px-2 pt-8 md:px-0">
+        <BreadcrumbPagination />
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
@@ -97,7 +99,7 @@ export const ControlsSection: FC<ControlsSectionProps> = ({
                           <SelectItem value={BuildingType.HOUSE}>
                             Casa
                           </SelectItem>
-                          <SelectItem value={BuildingType.APARTMENT}>
+                          <SelectItem value={BuildingType.DEPARTMENT}>
                             Departamento
                           </SelectItem>
                           <SelectItem value={BuildingType.LAND}>

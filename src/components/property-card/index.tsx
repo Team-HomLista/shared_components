@@ -2,14 +2,13 @@
 import { FC, useState } from "react";
 import Image from "next/image";
 import { PropertyCardTag, PropertyCardTagProps } from "./feature";
-import { Heart } from "lucide-react";
 import { PropertyCardBanner, PropertyCardBannerProps } from "./banner";
 import {
   PropertyCardInformation,
   PropertyCardInformationProps,
 } from "./information";
-import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { LikeButton } from "@/components/like-button";
 
 export interface PropertyCardItemProps
   extends Pick<PropertyCardTagProps, "tag"> {
@@ -34,14 +33,16 @@ export const PropertyCardItem: FC<PropertyCardItemProps> = ({
   banner,
   information,
   slug,
+  onClickLike,
 }) => {
   const [isLiked, setIsLiked] = useState(false);
 
-  const handleHeartClick = () => {
+  const handleLike = () => {
     setIsLiked((prev) => !prev);
+    onClickLike(0, !isLiked);
   };
 
-  const redirect = `/properties/${slug}`;
+  const redirect = `/propiedades/${slug}`;
 
   return (
     <div className="hover:bg-secondary/20 h-full w-full max-w-[360px] min-w-[260px] rounded-2xl p-2 transition-all duration-200 select-none sm:min-w-[280px]">
@@ -60,12 +61,10 @@ export const PropertyCardItem: FC<PropertyCardItemProps> = ({
         </Link>
         <div className="relative flex w-full items-center justify-between p-2">
           <PropertyCardTag tag={tag} />
-          <Heart
-            className={cn(
-              "h-7 w-7 cursor-pointer overflow-hidden fill-white",
-              isLiked ? "fill-accent" : "stroke-current",
-            )}
-            onClick={handleHeartClick}
+          <LikeButton
+            isLiked={isLiked}
+            onClick={handleLike}
+            className="h-7 w-7"
           />
         </div>
         <PropertyCardBanner {...banner} />

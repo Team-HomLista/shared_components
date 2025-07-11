@@ -1,5 +1,17 @@
 import { BuildingType } from "./enums/building-type";
 import { TransactionType } from "./enums/transaction-type";
+import { TransportationType } from "./enums/transportation-type";
+
+export interface PropertyTag {
+  type: string;
+  name: string;
+  isRemarkable: boolean;
+  description: string | null;
+}
+
+export interface PropertyLocationDetail extends Property {
+  transportation_type: keyof typeof TransportationType;
+}
 
 export interface Property {
   agency: PropertyAgency | null;
@@ -24,14 +36,31 @@ export interface Property {
   slug: string;
   state: string;
   title: string;
+  neighborhood: string;
   transaction_type: keyof typeof TransactionType;
   uuid: string;
+  year_built?: number | null;
+  tags?: Array<PropertyTag>;
+  transportation?: Array<PropertyLocationDetail>;
 }
 
 export interface DetailedProperty extends Property {
   multimedia: Array<string>;
   agency: PropertyAgency | null;
   agent: PropertyAgent | null;
+  property_features?: Array<PropertyFeature>;
+  property_nearbys?: Array<PropertyLocationDetail>;
+  postal_code?: string | null;
+  latitude?: number;
+  longitude?: number;
+}
+
+export interface PropertyFeature {
+  id: number;
+  name: string;
+  description: string | null;
+  tag: string;
+  is_active: boolean;
 }
 
 export interface PropertyAgent {
@@ -67,4 +96,17 @@ export interface PropertyAgency {
     handler: string;
     type: string;
   }>;
+}
+
+export enum PropertyPriceType {
+  Normal = "Normal",
+  Offer = "Offer",
+  PriceReduction = "PriceReduction",
+}
+
+export interface PropertyPrice {
+  type: PropertyPriceType;
+  after: number | null;
+  current: number;
+  currency: string;
 }
