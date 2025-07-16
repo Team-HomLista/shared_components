@@ -16,10 +16,10 @@ export const CTASubscriptionSection: FC<CTASubscriptionSectionProps> = ({}) => {
           para impulsar su negocio inmobiliario
         </p>
         <div className="flex flex-col justify-center gap-4 sm:flex-row">
-          <Button className="bg-accent hover:bg-accent/80 px-8 py-6 text-lg">
+          <Button variant="outline" size="lg">
             Comenzar prueba gratuita
           </Button>
-          <Button className="bg-secondary hover:bg-secondary/80 px-8 py-6 text-lg text-white">
+          <Button variant="secondary" size="lg">
             Contáctanos
             <ArrowRightIcon />
           </Button>

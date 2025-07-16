@@ -65,7 +65,6 @@ export const ControlsSection: FC<ControlsSectionProps> = ({
                       <FormControl>
                         <Input
                           placeholder="Buscar por palabras clave"
-                          className="border-secondary w-full border-2"
                           {...field}
                         />
                       </FormControl>
@@ -141,7 +140,7 @@ export const ControlsSection: FC<ControlsSectionProps> = ({
                     </FormItem>
                   )}
                 />
-                <Button className="font-normal" type="button">
+                <Button className="font-normal" variant="outline" type="button">
                   <ArrowUpDown className="mr-1 size-5!" />
                   Ordenar por <span className="font-bold">Relevancia</span>
                 </Button>
@@ -166,7 +165,6 @@ export const ControlsSection: FC<ControlsSectionProps> = ({
                     <FormControl>
                       <Input
                         placeholder="Buscar por palabras clave"
-                        className="border-secondary w-full border-2"
                         {...field}
                       />
                     </FormControl>
@@ -192,11 +190,11 @@ export const ControlsSection: FC<ControlsSectionProps> = ({
             </div>
           </form>
         </Form>
-        <div className="border-secondary flex w-full border"></div>
+        <div className="border-primary flex w-full border"></div>
 
         {/* Mobile sorting button - appears below divider */}
         <div className="flex justify-end md:hidden">
-          <Button variant="ghost" className="font-normal" type="button">
+          <Button variant="outline" className="font-normal" type="button">
             <ArrowUpDown className="mr-1 size-5!" />
             Ordenar por <span className="font-bold">Relevancia</span>
           </Button>

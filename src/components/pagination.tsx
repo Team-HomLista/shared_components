@@ -18,7 +18,6 @@ export const Pagination: React.FC<PaginationProps> = ({
   return (
     <div className="mx-auto flex max-w-[512px] flex-row items-center justify-center gap-2 px-16 py-8">
       <Button
-        variant="secondary"
         corner="rounded"
         size="icon"
         className="h-6 w-6"
@@ -29,11 +28,11 @@ export const Pagination: React.FC<PaginationProps> = ({
         <ChevronLeft />
       </Button>
       <div className="flex min-w-0 flex-1 items-center gap-2">
-        <div className="bg-secondary h-1 flex-1" />
-        <span className="text-secondary px-4 text-center text-base font-bold whitespace-nowrap">
+        <div className="bg-primary h-1 flex-1" />
+        <span className="text-primary px-4 text-center text-base font-semibold whitespace-nowrap">
           Página {currentPage} de {totalPages}
         </span>
-        <div className="bg-secondary h-1 flex-1" />
+        <div className="bg-primary h-1 flex-1" />
       </div>
       <Button
         corner="rounded"

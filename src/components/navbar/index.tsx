@@ -109,9 +109,9 @@ export const Navbar: FC<navbarProps> = ({ variant = "default" }) => {
       </Link>
 
       {/* Desktop Navigation */}
-      <div className="hidden lg:flex lg:items-center lg:space-x-8">
+      <div className="hidden px-6 lg:flex lg:items-center lg:space-x-8">
         <NavigationMenu>
-          <NavigationMenuList className="mr-8">
+          <NavigationMenuList>
             <NavigationMenuItem>
               <NavigationMenuTrigger className="text-primary-foreground text-md bg-transparent">
                 Comprar
@@ -170,7 +170,7 @@ export const Navbar: FC<navbarProps> = ({ variant = "default" }) => {
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
-        <Button>Acceder</Button>
+        <Button variant="secondary">Iniciar Sesión</Button>
       </div>
 
       {/* Mobile Menu Button */}
@@ -266,9 +266,10 @@ export const Navbar: FC<navbarProps> = ({ variant = "default" }) => {
               <div className="">
                 <Button
                   className="mb-12 w-fit"
+                  variant="secondary"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  Acceder
+                  Iniciar Sesión
                 </Button>
               </div>
             </div>

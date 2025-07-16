@@ -1,76 +1,76 @@
 import { FC, useState } from "react";
 import { DetailedProperty } from "@/types/property";
-import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+} from "@/components/ui/tooltip";
 import { amenityIcons } from "./amenity-icons";
 import { HelpCircle, ChevronDown, ChevronUp } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 interface AmenityDetailsProps {
-    property: DetailedProperty;
+  property: DetailedProperty;
 }
 
 export const AmenityDetails: FC<AmenityDetailsProps> = ({ property }) => {
-    const [showAll, setShowAll] = useState(false);
+  const [showAll, setShowAll] = useState(false);
 
-    if (!property.property_features || property.property_features.length === 0) {
-        return null;
-    }
+  if (!property.property_features || property.property_features.length === 0) {
+    return null;
+  }
 
-    const maxVisibleFeatures = 9;
-    const hasMoreFeatures = property.property_features.length > maxVisibleFeatures;
-    const visibleFeatures = showAll 
-        ? property.property_features 
-        : property.property_features.slice(0, maxVisibleFeatures);
+  const maxVisibleFeatures = 9;
+  const hasMoreFeatures =
+    property.property_features.length > maxVisibleFeatures;
+  const visibleFeatures = showAll
+    ? property.property_features
+    : property.property_features.slice(0, maxVisibleFeatures);
 
-    return (
-        <div className="w-full">
-            <h3 className="text-lg font-semibold mb-3">Amenidades</h3>
-            <div className="grid grid-cols-3 gap-4">
-                {visibleFeatures.map((feature) => {
-                    const IconComponent = amenityIcons[feature.tag] || HelpCircle;
-                    
-                    return (
-                        <Tooltip key={feature.id}>
-                            <TooltipTrigger asChild>
-                                <div className="flex flex-col items-center gap-2 p-3 rounded-lg hover:bg-gray-50 transition-colors cursor-help">
-                                    <IconComponent className="h-6 w-6 text-secondary" />
-                                    <span className="text-sm text-center font-light" style={{ color: '#09090B' }}>
-                                        {feature.name}
-                                    </span>
-                                </div>
-                            </TooltipTrigger>
-                            {feature.description && (
-                                <TooltipContent>
-                                    <p className="max-w-xs">{feature.description}</p>
-                                </TooltipContent>
-                            )}
-                        </Tooltip>
-                    );
-                })}
-                
-                {hasMoreFeatures && !showAll && (
-                    <div className="flex flex-col items-center gap-2 p-3">
-                        <button
-                            onClick={() => setShowAll(true)}
-                            className="flex flex-col items-center gap-2 p-3 rounded-lg hover:bg-gray-50 transition-colors bg-secondary text-white"
-                        >
-                            <ChevronDown className="h-6 w-6" />
-                            <span className="text-sm font-medium">Ver más</span>
-                        </button>
-                    </div>
-                )}
-                
-                {hasMoreFeatures && showAll && (
-                    <div className="flex flex-col items-center gap-2 p-3">
-                        <button
-                            onClick={() => setShowAll(false)}
-                            className="flex flex-col items-center gap-2 p-3 rounded-lg hover:bg-gray-50 transition-colors bg-secondary text-white"
-                        >
-                            <ChevronUp className="h-6 w-6" />
-                            <span className="text-sm font-medium">Ver menos</span>
-                        </button>
-                    </div>
-                )}
-            </div>
-        </div>
-    );
-}
+  return (
+    <div className="w-full">
+      <h3 className="mb-3 text-lg font-semibold">Amenidades</h3>
+      <div className="grid grid-cols-3 gap-4">
+        {visibleFeatures.map((feature) => {
+          const IconComponent = amenityIcons[feature.tag] || HelpCircle;
+
+          return (
+            <Tooltip key={feature.id}>
+              <TooltipTrigger asChild>
+                <div className="flex cursor-help flex-col items-center gap-2 rounded-lg p-3 transition-colors hover:bg-gray-50">
+                  <IconComponent className="text-primary h-6 w-6" />
+                  <span className="text-center text-sm font-light">
+                    {feature.name}
+                  </span>
+                </div>
+              </TooltipTrigger>
+              {feature.description && (
+                <TooltipContent>
+                  <p className="max-w-xs">{feature.description}</p>
+                </TooltipContent>
+              )}
+            </Tooltip>
+          );
+        })}
+
+        {hasMoreFeatures && !showAll && (
+          <div className="flex flex-col items-center gap-2 p-3">
+            <Button variant="link" onClick={() => setShowAll(true)}>
+              <ChevronDown className="h-6 w-6" />
+              <span className="text-sm font-medium">Ver más</span>
+            </Button>
+          </div>
+        )}
+
+        {hasMoreFeatures && showAll && (
+          <div className="flex flex-col items-center gap-2 p-3">
+            <Button variant="link" onClick={() => setShowAll(false)}>
+              <ChevronUp className="h-6 w-6" />
+              <span className="text-sm font-medium">Ver menos</span>
+            </Button>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};

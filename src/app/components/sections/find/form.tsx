@@ -210,11 +210,7 @@ export const LeadForm = ({
                   )}
                 />
                 <FormControl>
-                  <Input
-                    placeholder="Número de WhatsApp"
-                    {...field}
-                    className="border-secondary border-2"
-                  />
+                  <Input placeholder="Número de WhatsApp" {...field} />
                 </FormControl>
               </div>
               <FormMessage />
@@ -231,11 +227,7 @@ export const LeadForm = ({
                 <Text variant="label">Correo electrónico</Text>
               </FormLabel>
               <FormControl>
-                <Input
-                  placeholder="nombre@correo.com"
-                  {...field}
-                  className="border-secondary border-2"
-                />
+                <Input placeholder="nombre@correo.com" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

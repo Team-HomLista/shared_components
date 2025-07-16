@@ -31,7 +31,7 @@ export const SearchBar: FC<SearchBarProps> = () => {
 
   return (
     <div className="flex w-full flex-row justify-center px-4 py-4 md:px-8 md:py-16">
-      <div className="border-secondary flex w-full max-w-[1024px] flex-col items-stretch justify-center gap-4 rounded-2xl border-4 bg-white p-4 md:flex-row md:items-end md:gap-3">
+      <div className="ring-primary/30 flex w-full max-w-[1024px] flex-col items-stretch justify-center gap-4 rounded-2xl bg-white/75 p-4 ring-4 backdrop-blur-xs md:flex-row md:items-end md:gap-3">
         {/* Property Type Selection */}
         <div className="flex flex-col">
           <Text variant="label">Tipo de propiedad</Text>
@@ -41,7 +41,7 @@ export const SearchBar: FC<SearchBarProps> = () => {
               setPropertyType(v as keyof typeof BuildingType)
             }
           >
-            <SelectTrigger className="w-full md:w-[200px]">
+            <SelectTrigger className="w-full bg-white md:w-[200px]">
               <SelectValue placeholder="Propiedad" />
             </SelectTrigger>
             <SelectContent position="popper">
@@ -64,7 +64,7 @@ export const SearchBar: FC<SearchBarProps> = () => {
               setSearchType(v as keyof typeof TransactionType)
             }
           >
-            <SelectTrigger className="w-full md:w-[200px]">
+            <SelectTrigger className="w-full bg-white md:w-[200px]">
               <SelectValue placeholder="Búsqueda" />
             </SelectTrigger>
             <SelectContent position="popper">
@@ -81,17 +81,12 @@ export const SearchBar: FC<SearchBarProps> = () => {
             value={city}
             onChange={(e) => setCity(e.target.value)}
             placeholder="Nombre de la ciudad"
-            className="border-secondary w-full border-2"
+            className="bg-white"
           />
         </div>
 
         {/* Search Button */}
-        <Button
-          asChild
-          className="w-full has-[>svg]:px-6 md:w-auto"
-          size={"lg"}
-          corner={"squared"}
-        >
+        <Button asChild className="w-full has-[>svg]:px-6 md:w-auto" size="lg">
           <Link
             href={`/propiedades?property_type=${propertyType}&search_type=${searchType}&city=${city}`}
           >

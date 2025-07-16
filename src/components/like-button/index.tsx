@@ -3,7 +3,7 @@ import { HeartIcon } from "lucide-react";
 
 export interface LikeButtonProps {
   isLiked: boolean;
-  onClick: () => void;
+  onClick: (e: any) => void;
   className?: string;
 }
 

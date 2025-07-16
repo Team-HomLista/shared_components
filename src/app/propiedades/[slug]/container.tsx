@@ -95,7 +95,7 @@ export const PropertyDetailContainer: FC<PropertyDetailContainerProps> = ({
           </div>
           <div className="flex-shrink-0">
             <Link href={getSimilarPropertiesUrl()}>
-              <Button className="bg-secondary" corner={"squared"}>
+              <Button>
                 <SearchIcon className="h-4 w-4" />
                 <p>Ver Propiedades Similares</p>
               </Button>
@@ -108,7 +108,7 @@ export const PropertyDetailContainer: FC<PropertyDetailContainerProps> = ({
           </div>
           <div className="mb-6">
             <Link href={getSimilarPropertiesUrl()}>
-              <Button className="bg-secondary w-full" corner={"squared"}>
+              <Button className="w-full">
                 <SearchIcon className="h-4 w-4" />
                 <p>Ver Propiedades Similares</p>
               </Button>

@@ -39,7 +39,7 @@ export const Filters: FC<FilterProps> = ({
     <>
       <Sheet>
         <SheetTrigger asChild>
-          <Button corner={"rounded"} variant="default" type="button">
+          <Button variant="outline" type="button">
             Filtros
           </Button>
         </SheetTrigger>

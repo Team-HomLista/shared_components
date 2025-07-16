@@ -18,31 +18,25 @@ export const ApartmentDetails: FC<FeatureDetailProps> = ({
 }) => {
   const features = [
     createFeature(
-      <RulerDimensionLineIcon className="text-secondary h-6 w-6" />,
+      <RulerDimensionLineIcon className="h-6 w-6" />,
       "Área del terreno:",
       buildingSize,
       true,
     ),
     createFeature(
-      <BedDoubleIcon className="text-secondary h-6 w-6" />,
+      <BedDoubleIcon className="h-6 w-6" />,
       "Habitaciones:",
       rooms,
     ),
-    createFeature(
-      <ToiletIcon className="text-secondary h-6 w-6" />,
-      "Baños:",
-      bathrooms,
-    ),
-    createFeature(
-      <BuildingIcon className="text-secondary h-6 w-6" />,
-      "Piso:",
-      floor,
-    ),
-    yearBuilt ? {
-      icon: <CalendarIcon className="text-secondary h-6 w-6" />,
-      text: "Año",
-      value: yearBuilt.toString()
-    } : null,
+    createFeature(<ToiletIcon className="h-6 w-6" />, "Baños:", bathrooms),
+    createFeature(<BuildingIcon className="h-6 w-6" />, "Piso:", floor),
+    yearBuilt
+      ? {
+          icon: <CalendarIcon className="h-6 w-6" />,
+          text: "Año",
+          value: yearBuilt.toString(),
+        }
+      : null,
   ].filter(Boolean) as FeatureItem[];
 
   return <FeatureGrid features={features} />;

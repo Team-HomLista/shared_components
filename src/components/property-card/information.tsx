@@ -36,14 +36,14 @@ export const PropertyCardInformation: FC<PropertyCardInformationProps> = ({
   details: { rooms, bathrooms, parking_slots, building_size },
 }) => {
   return (
-    <div className="flex flex-col pt-2 pl-1">
-      <Text variant={"default"} className="text-base font-medium text-zinc-950">
+    <div className="flex flex-col gap-2">
+      <Text className="text-primary line-clamp-2 text-sm font-medium break-words">
         {title}
       </Text>
-      <Text className="text-sm font-medium text-neutral-400">{location}</Text>
-      <Text className="text-base font-medium text-zinc-950">
+      <Text className="text-primary line-clamp-1 text-base font-medium break-words">
         {formatPrice(price)}
       </Text>
+      <Text className="text-xs font-medium text-neutral-500">{location}</Text>
       <div className="mt-1 flex flex-wrap gap-4">
         <PropertyCardLandDetail Icon={BedIcon} value={rooms} />
         <PropertyCardLandDetail Icon={BathIcon} value={bathrooms} />

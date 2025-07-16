@@ -22,7 +22,7 @@ export const LabeledToggleGroup: FC<LabeledToggleGroupProps> = ({
       type="single"
       value={value}
       onValueChange={onChange}
-      className={className + " border-secondary border-1"}
+      className={className}
     >
       {options.map((opt) => (
         <ToggleGroupItem key={opt.value} value={opt.value}>

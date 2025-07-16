@@ -61,7 +61,7 @@ export const Footer: FC<FooterProps> = ({}) => {
             placeholder="nombre@correo.com"
             className="border-secondary w-full border-2 bg-white text-black sm:flex-1"
           />
-          <Button corner={"squared"} className="w-full sm:w-auto">
+          <Button variant="secondary" className="w-full sm:w-auto">
             Subscribirse
           </Button>
         </div>
