@@ -48,7 +48,7 @@ export const PropertyCardItem: FC<PropertyCardItemProps> = ({
 
   return (
     <Link href={redirect}>
-      <Card className="gap-2 py-4">
+      <Card className="gap-4 py-4">
         <CardHeader className="flex w-full flex-col justify-between px-4">
           <div className="relative aspect-square h-full w-full overflow-hidden rounded-2xl">
             <Image

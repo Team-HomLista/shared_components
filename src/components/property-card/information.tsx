@@ -44,7 +44,7 @@ export const PropertyCardInformation: FC<PropertyCardInformationProps> = ({
         {formatPrice(price)}
       </Text>
       <Text className="text-xs font-medium text-neutral-500">{location}</Text>
-      <div className="mt-1 flex flex-wrap gap-4">
+      <div className="flex flex-wrap gap-4">
         <PropertyCardLandDetail Icon={BedIcon} value={rooms} />
         <PropertyCardLandDetail Icon={BathIcon} value={bathrooms} />
         <PropertyCardLandDetail Icon={CarIcon} value={parking_slots} />
