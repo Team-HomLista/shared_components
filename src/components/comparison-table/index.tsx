@@ -49,7 +49,7 @@ export function ComparisonTable({ sections }: ComparisonTableProps) {
               <span className="text-primary text-xl font-bold">$0 MXN</span>
               <span className="ml-1 text-sm text-gray-500">/ MES</span>
             </div>
-            <Button size={"lg"}>Suscribirse</Button>
+            <Button size="lg">Suscribirse</Button>
           </div>
           <div className="flex w-1/6 flex-col items-center justify-center">
             <h3 className="mb-2 text-xl font-semibold">Asesor</h3>
@@ -57,7 +57,7 @@ export function ComparisonTable({ sections }: ComparisonTableProps) {
               <span className="text-primary text-xl font-bold">$1,580 MXN</span>
               <span className="ml-1 text-sm text-gray-500">/ MES</span>
             </div>
-            <Button size={"lg"}>Suscribirse</Button>
+            <Button size="lg">Suscribirse</Button>
           </div>
           <div className="flex w-1/6 flex-col items-center justify-center">
             <h3 className="mb-2 text-xl font-semibold">Agencia</h3>
@@ -65,7 +65,7 @@ export function ComparisonTable({ sections }: ComparisonTableProps) {
               <span className="text-primary text-xl font-bold">$3,000 MXN</span>
               <span className="ml-1 text-sm text-gray-500">/ MES</span>
             </div>
-            <Button size={"lg"}>Suscribirse</Button>
+            <Button size="lg">Suscribirse</Button>
           </div>
           <div className="flex w-1/6 flex-col items-center justify-center">
             <h3 className="mb-2 text-xl font-semibold">Agencia VIP</h3>
@@ -73,7 +73,7 @@ export function ComparisonTable({ sections }: ComparisonTableProps) {
               <span className="text-primary text-xl font-bold">$4,200 MXN</span>
               <span className="ml-1 text-sm text-gray-500">/ MES</span>
             </div>
-            <Button size={"lg"} className="bg-accent">
+            <Button size="lg" variant="secondary">
               Suscribirse
             </Button>
           </div>
@@ -247,7 +247,7 @@ export function ComparisonTable({ sections }: ComparisonTableProps) {
               </span>
             </div>
             <Button
-              size={"lg"}
+              size="lg"
               className={`w-full max-w-[200px] ${selectedPlan === "agencyVIP" ? "bg-accent" : ""}`}
             >
               Suscribirse

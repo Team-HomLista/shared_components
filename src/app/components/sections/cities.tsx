@@ -73,7 +73,7 @@ export const CitiesGrid: FC<CitiesGridProps> = ({ cities }) => {
 
                 {/* Animated CTA */}
                 <div className="flex transform items-center space-x-3 opacity-0 transition-all duration-500 group-hover:opacity-100">
-                  <div className="from-secondary to-accent h-0.5 w-8 rounded-full bg-gradient-to-r transition-all duration-500 group-hover:w-12" />
+                  <div className="from-secondary to-secondary/50 h-0.5 w-8 rounded-full bg-gradient-to-r transition-all duration-500 group-hover:w-12" />
                   <Text className="text-sm font-medium whitespace-nowrap text-white/90">
                     Ver propiedades
                   </Text>

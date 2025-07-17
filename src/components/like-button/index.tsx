@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { HeartIcon } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export interface LikeButtonProps {
   isLiked: boolean;
@@ -18,11 +19,15 @@ export const LikeButton: FC<LikeButtonProps> = ({
 }) => {
   return (
     <HeartIcon
-      className={`stroke-primary top-4 right-4 h-6 w-6 cursor-pointer ${className}`}
-      style={{
-        fill: isLiked ? "var(--accent)" : "transparent",
-        transition: "fill 0.2s",
-      }}
+      className={cn(
+        "stroke-primary top-4 right-4 h-6 w-6 cursor-pointer",
+        className,
+        {
+          "fill-secondary": isLiked,
+          "fill-transparent": !isLiked,
+          "transition-colors duration-200": true,
+        },
+      )}
       onClick={onClick}
       aria-label={isLiked ? "Quitar de favoritos" : "Agregar a favoritos"}
       role="button"
