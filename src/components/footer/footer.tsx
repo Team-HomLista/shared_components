@@ -37,7 +37,7 @@ export const Footer: FC<FooterProps> = ({}) => {
     {
       src: "/socialMedia-svg/telegram.svg",
       alt: "Telegram",
-      link: "@Red_HomLista",
+      link: "https://t.me/Red_HomLista",
     },
     {
       src: "/socialMedia-svg/linkedin.svg",
@@ -85,7 +85,7 @@ export const Footer: FC<FooterProps> = ({}) => {
             <div className="flex flex-col gap-4 font-medium">
               <li>
                 <Link
-                  href="/properties?search_type=BUY"
+                  href="/propiedades?search_type=BUY"
                   className="hover:text-secondary underline transition-colors"
                 >
                   Comprar
@@ -93,7 +93,7 @@ export const Footer: FC<FooterProps> = ({}) => {
               </li>
               <li>
                 <Link
-                  href="/properties?search_type=RENT"
+                  href="/propiedades?search_type=RENT"
                   className="hover:text-secondary underline transition-colors"
                 >
                   Rentar
