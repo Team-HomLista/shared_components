@@ -118,6 +118,7 @@ export const PropertyDetailContainer: FC<PropertyDetailContainerProps> = ({
         <div className="hidden lg:block">
           <ImageGallery multimedia={property.multimedia} />
           <PropertyMainInfo
+            uuid={property.uuid}
             title={property.title}
             price={propertyPrice}
             location={propertyLocation}
@@ -148,6 +149,7 @@ export const PropertyDetailContainer: FC<PropertyDetailContainerProps> = ({
             )}
           </div>
           <PropertyMainInfo
+            uuid={property.uuid}
             title={property.title}
             price={propertyPrice}
             location={propertyLocation}

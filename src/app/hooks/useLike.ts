@@ -1,4 +1,5 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from "react";
+import { PropertyService } from "../services/property";
 
 interface UseLikeReturn {
   /** Current liked state */
@@ -11,18 +12,18 @@ interface UseLikeReturn {
 
 /**
  * Custom hook for like functionality with state management
- * 
+ *
  * @example
  * ```typescript
  * const { isLiked, toggleLike } = useLike(false);
- * 
+ *
  * return (
  *   <button onClick={toggleLike}>
  *     {isLiked ? '❤️' : '🤍'}
  *   </button>
  * );
  * ```
- * 
+ *
  * @param initialLiked - Initial liked state (default: false)
  * @returns Object with like functionality and status
  */
@@ -30,7 +31,7 @@ export function useLike(initialLiked: boolean = false): UseLikeReturn {
   const [isLiked, setIsLiked] = useState(initialLiked);
 
   const toggleLike = useCallback(() => {
-    setIsLiked(prev => !prev);
+    setIsLiked((prev) => !prev);
   }, []);
 
   const setLiked = useCallback((liked: boolean) => {
