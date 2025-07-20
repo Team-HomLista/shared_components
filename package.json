@@ -2,6 +2,7 @@
   "name": "@team-homlista/shared_components",
   "type": "module",
   "version": "0.0.1",
+  "description": "Shared components for Homlista projects",
   "repository": {
     "url": "https://github.com/Team-Homlista/shared_components.git"
   },
