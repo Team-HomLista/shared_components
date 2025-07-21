@@ -2,8 +2,8 @@ import { isNodeSelection, type Editor } from "@tiptap/react";
 import * as React from "react";
 
 // --- Hooks ---
-import { useMenuNavigation } from "@/hooks/use-menu-navigation";
-import { useTiptapEditor } from "@/hooks/use-tiptap-editor";
+import { useMenuNavigation } from "../../../../../../../../gingerbread/shared/src/hooks/use-menu-navigation";
+import { useTiptapEditor } from "../../../../../../../../gingerbread/shared/src/hooks/use-tiptap-editor";
 
 // --- Icons ---
 import { BanIcon } from "@shared/components/tiptap/tiptap-icons/ban-icon";

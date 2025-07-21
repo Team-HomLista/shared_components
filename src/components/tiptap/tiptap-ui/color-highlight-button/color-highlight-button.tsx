@@ -5,7 +5,7 @@ import { isNodeSelection, type Editor } from "@tiptap/react";
 import * as React from "react";
 
 // --- Hooks ---
-import { useTiptapEditor } from "@/hooks/use-tiptap-editor";
+import { useTiptapEditor } from "../../../../../../../../gingerbread/shared/src/hooks/use-tiptap-editor";
 
 // --- Lib ---
 import {
