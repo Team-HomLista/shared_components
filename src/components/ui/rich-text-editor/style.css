@@ -1,0 +1,49 @@
+@reference "@css/app.css";
+
+.content-wrapper {
+  --tt-toolbar-height: 44px;
+  --tt-theme-text: var(--tt-gray-light-900);
+
+  .dark &:not(.ligth &) {
+    --tt-theme-text: var(--tt-gray-dark-900);
+  }
+}
+
+.tiptap.ProseMirror {
+  font-family: "DM Sans", sans-serif;
+}
+
+.content-wrapper {
+  @apply bg-card text-foreground w-full overflow-y-auto;
+  height: calc(100% - var(--tt-toolbar-height));
+
+  /* Firefox scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: var(--tt-scrollbar-color) transparent;
+
+  &::-webkit-scrollbar {
+    @apply block w-2;
+  }
+
+  &::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    @apply rounded-sm bg-[--tt-scrollbar-color];
+  }
+}
+
+.editor-content {
+  @apply mx-auto w-full max-w-2xl;
+}
+
+.editor-content .tiptap.ProseMirror {
+  @apply px-10 py-6;
+}
+
+@media screen and (max-width: 480px) {
+  .editor-content .tiptap.ProseMirror {
+    @apply px-8 py-4;
+  }
+}
