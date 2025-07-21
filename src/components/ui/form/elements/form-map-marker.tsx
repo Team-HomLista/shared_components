@@ -4,7 +4,6 @@ import { FormLabel } from "@shared/components/ui/form/elements/form-label";
 import { DisplayErrorMessage } from "@shared/components/ui/form/elements/form-message";
 import {
   AdvancedMarker,
-  APIProvider,
   Map,
   MapCameraChangedEvent,
   MapCameraProps,
@@ -112,39 +111,37 @@ export function FormMapMarker<TFieldValues extends FieldValues>({
       <FormLabel>{title}</FormLabel>
       <FormDescription>{description}</FormDescription>
       <div className="flex w-full flex-1 flex-col gap-2 self-center">
-        <APIProvider apiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
-          <Map
-            mapId="MapWithMarker"
-            className="aspect-[21/9] w-full overflow-hidden rounded-sm"
-            {...cameraProps}
-            gestureHandling="greedy"
-            disableDefaultUI
-            onCameraChanged={handleCameraChange}
-            onClick={(e) => {
-              if (!e.detail.latLng) return;
+        <Map
+          mapId="MapWithMarker"
+          className="aspect-[21/9] w-full overflow-hidden rounded-sm"
+          {...cameraProps}
+          gestureHandling="greedy"
+          disableDefaultUI
+          onCameraChanged={handleCameraChange}
+          onClick={(e) => {
+            if (!e.detail.latLng) return;
 
-              setLatLng(e.detail.latLng);
-            }}
-          >
-            {isDirty && !isInvalid && (
-              <AdvancedMarker
-                draggable
-                position={position}
-                onDragEnd={(e) => {
-                  if (!e.latLng) return;
+            setLatLng(e.detail.latLng);
+          }}
+        >
+          {isDirty && !isInvalid && (
+            <AdvancedMarker
+              draggable
+              position={position}
+              onDragEnd={(e) => {
+                if (!e.latLng) return;
 
-                  setLatLng({ lat: e.latLng.lat(), lng: e.latLng.lng() }, true);
-                }}
-              />
-            )}
-          </Map>
-
-          {isInvalid && (
-            <DisplayErrorMessage>
-              No has seleccionado ninguna ubicación en el mapa.
-            </DisplayErrorMessage>
+                setLatLng({ lat: e.latLng.lat(), lng: e.latLng.lng() }, true);
+              }}
+            />
           )}
-        </APIProvider>
+        </Map>
+
+        {isInvalid && (
+          <DisplayErrorMessage>
+            No has seleccionado ninguna ubicación en el mapa.
+          </DisplayErrorMessage>
+        )}
       </div>
     </FormItem>
   );
