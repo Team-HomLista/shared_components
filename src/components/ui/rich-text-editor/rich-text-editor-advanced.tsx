@@ -1,4 +1,4 @@
-import { handleImageUpload, MAX_FILE_SIZE } from "@/lib/tiptap-utils";
+import { handleImageUpload, MAX_FILE_SIZE } from "@shared/lib/tiptap-utils";
 import { Selection } from "@shared/components/tiptap/tiptap-extension/selection-extension";
 import TrailingNode from "@shared/components/tiptap/tiptap-extension/trailing-node-extension";
 import { ArrowLeftIcon } from "@shared/components/tiptap/tiptap-icons/arrow-left-icon";

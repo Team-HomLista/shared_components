@@ -2,7 +2,7 @@ import { type Editor } from "@tiptap/react";
 import * as React from "react";
 
 // --- Hooks ---
-import { useTiptapEditor } from "../../../../../../../../gingerbread/shared/src/hooks/use-tiptap-editor";
+import { useTiptapEditor } from "@shared/hooks/use-tiptap-editor";
 
 // --- Icons ---
 import { Redo2Icon } from "@shared/components/tiptap/tiptap-icons/redo2-icon";

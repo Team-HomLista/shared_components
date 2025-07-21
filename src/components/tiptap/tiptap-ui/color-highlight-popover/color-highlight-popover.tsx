@@ -2,15 +2,15 @@ import { isNodeSelection, type Editor } from "@tiptap/react";
 import * as React from "react";
 
 // --- Hooks ---
-import { useMenuNavigation } from "../../../../../../../../gingerbread/shared/src/hooks/use-menu-navigation";
-import { useTiptapEditor } from "../../../../../../../../gingerbread/shared/src/hooks/use-tiptap-editor";
+import { useMenuNavigation } from "@shared/hooks/use-menu-navigation";
+import { useTiptapEditor } from "@shared/hooks/use-tiptap-editor";
 
 // --- Icons ---
 import { BanIcon } from "@shared/components/tiptap/tiptap-icons/ban-icon";
 import { HighlighterIcon } from "@shared/components/tiptap/tiptap-icons/highlighter-icon";
 
 // --- Lib ---
-import { isMarkInSchema } from "@/lib/tiptap-utils";
+import { isMarkInSchema } from "@shared/lib/tiptap-utils";
 
 // --- UI Primitives ---
 import type { ButtonProps } from "@shared/components/tiptap/tiptap-ui-primitive/button";

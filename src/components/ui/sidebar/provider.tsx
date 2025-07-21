@@ -1,17 +1,17 @@
-import { forwardRef, useCallback, useEffect, useMemo, useState } from 'react';
-import { TooltipProvider } from '@radix-ui/react-tooltip';
+import { forwardRef, useCallback, useEffect, useMemo, useState } from "react";
+import { TooltipProvider } from "@radix-ui/react-tooltip";
 
-import { SidebarContext, SidebarContextProps } from './context';
-import { useMobile } from '@/hooks/use-mobile';
-import { cn } from '@/lib/utils';
+import { SidebarContext, SidebarContextProps } from "./context";
+import { useMobile } from "@shared/hooks/use-mobile";
+import { cn } from "@shared/lib/utils";
 
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;
-const SIDEBAR_COOKIE_NAME = 'sidebar:state';
-const SIDEBAR_KEYBOARD_SHORTCUT = 'b';
+const SIDEBAR_COOKIE_NAME = "sidebar:state";
+const SIDEBAR_KEYBOARD_SHORTCUT = "b";
 
 export const SidebarProvider = forwardRef<
   HTMLDivElement,
-  React.ComponentProps<'div'> & {
+  React.ComponentProps<"div"> & {
     defaultOpen?: boolean;
     open?: boolean;
     onOpenChange?: (open: boolean) => void;
@@ -39,7 +39,7 @@ export const SidebarProvider = forwardRef<
       (value: boolean | ((value: boolean) => boolean)) => {
         if (setOpenProp) {
           return setOpenProp?.(
-            typeof value === 'function' ? value(open) : value,
+            typeof value === "function" ? value(open) : value,
           );
         }
 
@@ -69,13 +69,13 @@ export const SidebarProvider = forwardRef<
         }
       };
 
-      window.addEventListener('keydown', handleKeyDown);
-      return () => window.removeEventListener('keydown', handleKeyDown);
+      window.addEventListener("keydown", handleKeyDown);
+      return () => window.removeEventListener("keydown", handleKeyDown);
     }, [toggleSidebar]);
 
     // We add a state so that we can do data-state="expanded" or "collapsed".
     // This makes it easier to style the sidebar with Tailwind classes.
-    const state = open ? 'expanded' : 'collapsed';
+    const state = open ? "expanded" : "collapsed";
 
     const contextValue = useMemo<SidebarContextProps>(
       () => ({
@@ -103,8 +103,8 @@ export const SidebarProvider = forwardRef<
         <TooltipProvider delayDuration={0}>
           <div
             className={cn(
-              'group/sidebar-wrapper flex min-h-full min-w-fit',
-              'has-[[data-variant=inset]]:bg-sidebar',
+              "group/sidebar-wrapper flex min-h-full min-w-fit",
+              "has-[[data-variant=inset]]:bg-sidebar",
               className,
             )}
             ref={ref}
@@ -117,4 +117,4 @@ export const SidebarProvider = forwardRef<
     );
   },
 );
-SidebarProvider.displayName = 'SidebarProvider';
+SidebarProvider.displayName = "SidebarProvider";

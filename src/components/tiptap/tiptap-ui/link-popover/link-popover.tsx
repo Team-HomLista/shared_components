@@ -2,7 +2,7 @@ import { isNodeSelection, type Editor } from "@tiptap/react";
 import * as React from "react";
 
 // --- Hooks ---
-import { useTiptapEditor } from "../../../../../../../../gingerbread/shared/src/hooks/use-tiptap-editor";
+import { useTiptapEditor } from "@shared/hooks/use-tiptap-editor";
 
 // --- Icons ---
 import { CornerDownLeftIcon } from "@shared/components/tiptap/tiptap-icons/corner-down-left-icon";
@@ -11,7 +11,7 @@ import { LinkIcon } from "@shared/components/tiptap/tiptap-icons/link-icon";
 import { TrashIcon } from "@shared/components/tiptap/tiptap-icons/trash-icon";
 
 // --- Lib ---
-import { isMarkInSchema, sanitizeUrl } from "@/lib/tiptap-utils";
+import { isMarkInSchema, sanitizeUrl } from "@shared/lib/tiptap-utils";
 
 // --- UI Primitives ---
 import type { ButtonProps } from "@shared/components/tiptap/tiptap-ui-primitive/button";

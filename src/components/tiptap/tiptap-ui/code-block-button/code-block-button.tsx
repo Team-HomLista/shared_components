@@ -2,13 +2,13 @@ import { isNodeSelection, type Editor } from "@tiptap/react";
 import * as React from "react";
 
 // --- Hooks ---
-import { useTiptapEditor } from "../../../../../../../../gingerbread/shared/src/hooks/use-tiptap-editor";
+import { useTiptapEditor } from "@shared/hooks/use-tiptap-editor";
 
 // --- Icons ---
 import { CodeBlockIcon } from "@shared/components/tiptap/tiptap-icons/code-block-icon";
 
 // --- Lib ---
-import { isNodeInSchema } from "@/lib/tiptap-utils";
+import { isNodeInSchema } from "@shared/lib/tiptap-utils";
 
 // --- UI Primitives ---
 import type { ButtonProps } from "@shared/components/tiptap/tiptap-ui-primitive/button";

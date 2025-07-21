@@ -1,6 +1,6 @@
-import { forwardRef } from 'react';
-import { Input } from '../input';
-import { cn } from '@/lib/utils';
+import { forwardRef } from "react";
+import { Input } from "../input";
+import { cn } from "@shared/lib/utils";
 
 export const SidebarInput = forwardRef<
   React.ComponentRef<typeof Input>,
@@ -11,8 +11,8 @@ export const SidebarInput = forwardRef<
       ref={ref}
       data-sidebar="input"
       className={cn(
-        'h-8 w-full bg-background shadow-none',
-        'focus-visible:ring-sidebar-ring focus-visible:ring-2',
+        "bg-background h-8 w-full shadow-none",
+        "focus-visible:ring-sidebar-ring focus-visible:ring-2",
         className,
       )}
       {...props}
@@ -20,4 +20,4 @@ export const SidebarInput = forwardRef<
   );
 });
 
-SidebarInput.displayName = 'SidebarInput';
+SidebarInput.displayName = "SidebarInput";

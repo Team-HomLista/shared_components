@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@shared/lib/utils";
 import { FormItemContext } from "@shared/components/ui/form/form-context";
 import React from "react";
 

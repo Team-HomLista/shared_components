@@ -2,14 +2,14 @@ import { isNodeSelection, type Editor } from "@tiptap/react";
 import * as React from "react";
 
 // --- Hooks ---
-import { useTiptapEditor } from "../../../../../../../../gingerbread/shared/src/hooks/use-tiptap-editor";
+import { useTiptapEditor } from "@shared/hooks/use-tiptap-editor";
 
 // --- Icons ---
 import { ChevronDownIcon } from "@shared/components/tiptap/tiptap-icons/chevron-down-icon";
 import { HeadingIcon } from "@shared/components/tiptap/tiptap-icons/heading-icon";
 
 // --- Lib ---
-import { isNodeInSchema } from "@/lib/tiptap-utils";
+import { isNodeInSchema } from "@shared/lib/tiptap-utils";
 
 // --- Tiptap UI ---
 import {

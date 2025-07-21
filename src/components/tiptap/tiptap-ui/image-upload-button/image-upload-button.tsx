@@ -4,7 +4,7 @@ import { type Editor } from "@tiptap/react";
 import * as React from "react";
 
 // --- Hooks ---
-import { useTiptapEditor } from "@/hooks/use-tiptap-editor";
+import { useTiptapEditor } from "@shared/hooks/use-tiptap-editor";
 
 // --- Icons ---
 import { ImagePlusIcon } from "@shared/components/tiptap/tiptap-icons/image-plus-icon";

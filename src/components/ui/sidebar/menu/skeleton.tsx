@@ -1,10 +1,10 @@
-import { forwardRef, useMemo } from 'react';
-import { cn } from '@/lib/utils';
-import { Skeleton } from '../../skeleton';
+import { forwardRef, useMemo } from "react";
+import { cn } from "@shared/lib/utils";
+import { Skeleton } from "../../skeleton";
 
 export const SidebarMenuSkeleton = forwardRef<
   HTMLDivElement,
-  React.ComponentProps<'div'> & {
+  React.ComponentProps<"div"> & {
     showIcon?: boolean;
   }
 >(({ className, showIcon = false, ...props }, ref) => {
@@ -17,7 +17,7 @@ export const SidebarMenuSkeleton = forwardRef<
     <div
       ref={ref}
       data-sidebar="menu-skeleton"
-      className={cn('flex h-8 items-center gap-2 rounded-md px-2', className)}
+      className={cn("flex h-8 items-center gap-2 rounded-md px-2", className)}
       {...props}
     >
       {showIcon && (
@@ -31,7 +31,7 @@ export const SidebarMenuSkeleton = forwardRef<
         data-sidebar="menu-skeleton-text"
         style={
           {
-            '--skeleton-width': width,
+            "--skeleton-width": width,
           } as React.CSSProperties
         }
       />
@@ -39,4 +39,4 @@ export const SidebarMenuSkeleton = forwardRef<
   );
 });
 
-SidebarMenuSkeleton.displayName = 'SidebarMenuSkeleton';
+SidebarMenuSkeleton.displayName = "SidebarMenuSkeleton";

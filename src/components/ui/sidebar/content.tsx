@@ -1,17 +1,17 @@
-import { forwardRef } from 'react';
-import { cn } from '@/lib/utils';
+import { forwardRef } from "react";
+import { cn } from "@shared/lib/utils";
 
 export const SidebarContent = forwardRef<
   HTMLDivElement,
-  React.ComponentProps<'div'>
+  React.ComponentProps<"div">
 >(({ className, ...props }, ref) => {
   return (
     <div
       ref={ref}
       data-sidebar="content"
       className={cn(
-        'flex min-h-0 flex-1 flex-col gap-2',
-        'group-data-[collapsible=icon]:overflow-hidden',
+        "flex min-h-0 flex-1 flex-col gap-2",
+        "group-data-[collapsible=icon]:overflow-hidden",
         className,
       )}
       {...props}
@@ -19,4 +19,4 @@ export const SidebarContent = forwardRef<
   );
 });
 
-SidebarContent.displayName = 'SidebarContent';
+SidebarContent.displayName = "SidebarContent";

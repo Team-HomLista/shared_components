@@ -1,21 +1,21 @@
-import { cn } from '@/lib/utils';
-import { forwardRef } from 'react';
+import { cn } from "@shared/lib/utils";
+import { forwardRef } from "react";
 
 export const SidebarInset = forwardRef<
   HTMLDivElement,
-  React.ComponentProps<'main'>
+  React.ComponentProps<"main">
 >(({ className, ...props }, ref) => {
   return (
     <main
       ref={ref}
       className={cn(
-        'relative flex min-h-svh flex-1 flex-col bg-background',
-        'peer-data-[variant=inset]:min-h-[calc(100svh-theme(spacing.8))]',
-        'md:peer-data-[variant=inset]:m-2',
-        'md:peer-data-[state=collapsed]:peer-data-[variant=inset]:ml-2',
-        'md:peer-data-[variant=inset]:ml-0',
-        'md:peer-data-[variant=inset]:rounded-xl',
-        'md:peer-data-[variant=inset]:shadow',
+        "bg-background relative flex min-h-svh flex-1 flex-col",
+        "peer-data-[variant=inset]:min-h-[calc(100svh-theme(spacing.8))]",
+        "md:peer-data-[variant=inset]:m-2",
+        "md:peer-data-[state=collapsed]:peer-data-[variant=inset]:ml-2",
+        "md:peer-data-[variant=inset]:ml-0",
+        "md:peer-data-[variant=inset]:rounded-xl",
+        "md:peer-data-[variant=inset]:shadow",
         className,
       )}
       {...props}
@@ -23,4 +23,4 @@ export const SidebarInset = forwardRef<
   );
 });
 
-SidebarInset.displayName = 'SidebarInset';
+SidebarInset.displayName = "SidebarInset";

@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@shared/lib/utils";
 import { useFormField } from "@shared/components/ui/form/hooks/use-form-field";
 
 export function FormDescription({

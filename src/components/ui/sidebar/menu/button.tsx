@@ -1,15 +1,15 @@
-import { forwardRef } from 'react';
-import { VariantProps } from 'class-variance-authority';
-import { Slot } from '@radix-ui/react-slot';
+import { forwardRef } from "react";
+import { VariantProps } from "class-variance-authority";
+import { Slot } from "@radix-ui/react-slot";
 
-import { cn } from '@/lib/utils';
-import { sidebarMenuButtonVariants } from '../variants';
-import { useSidebar } from '..';
-import { Tooltip, TooltipContent, TooltipTrigger } from '../../tooltip';
+import { cn } from "@shared/lib/utils";
+import { sidebarMenuButtonVariants } from "../variants";
+import { useSidebar } from "..";
+import { Tooltip, TooltipContent, TooltipTrigger } from "../../tooltip";
 
 export const SidebarMenuButton = forwardRef<
   HTMLButtonElement,
-  React.ComponentProps<'button'> & {
+  React.ComponentProps<"button"> & {
     asChild?: boolean;
     isActive?: boolean;
     tooltip?: string | React.ComponentProps<typeof TooltipContent>;
@@ -19,15 +19,15 @@ export const SidebarMenuButton = forwardRef<
     {
       asChild = false,
       isActive = false,
-      variant = 'default',
-      size = 'default',
+      variant = "default",
+      size = "default",
       tooltip,
       className,
       ...props
     },
     ref,
   ) => {
-    const Comp = asChild ? Slot : 'button';
+    const Comp = asChild ? Slot : "button";
     const { isMobile, state } = useSidebar();
 
     const button = (
@@ -45,7 +45,7 @@ export const SidebarMenuButton = forwardRef<
       return button;
     }
 
-    if (typeof tooltip === 'string') {
+    if (typeof tooltip === "string") {
       tooltip = {
         children: tooltip,
       };
@@ -57,7 +57,7 @@ export const SidebarMenuButton = forwardRef<
         <TooltipContent
           side="right"
           align="center"
-          hidden={state !== 'collapsed' || isMobile}
+          hidden={state !== "collapsed" || isMobile}
           {...tooltip}
         />
       </Tooltip>
@@ -65,4 +65,4 @@ export const SidebarMenuButton = forwardRef<
   },
 );
 
-SidebarMenuButton.displayName = 'SidebarMenuButton';
+SidebarMenuButton.displayName = "SidebarMenuButton";
