@@ -1,5 +1,5 @@
 {
-  "include": [".astro/types.d.ts", "**/*"],
+  "include": ["**/*"],
   "exclude": ["dist"],
   "compilerOptions": {
     "jsx": "react-jsx",
@@ -18,7 +18,7 @@
     "verbatimModuleSyntax": false,
     "baseUrl": ".",
     "paths": {
-      "@shared/*": ["./src/*"]
+      "@shared/*": ["./*"]
     }
   }
 }

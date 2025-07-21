@@ -21,6 +21,7 @@ import { FormPhone } from "@shared/components/ui/form/elements/form-phone";
 import { FormRadioGroup } from "@shared/components/ui/form/elements/form-radio-group";
 import { FormSelector } from "@shared/components/ui/form/elements/form-selector";
 import { FormSwitchProminent } from "@shared/components/ui/form/elements/form-switch-prominent";
+import { useFormField } from "@shared/components/ui/form/hooks/use-form-field";
 
 const Form = FormProvider as typeof FormProvider & {
   Item: typeof FormItem;
@@ -64,4 +65,13 @@ Form.Selector = FormSelector;
 Form.IdentitySelector = FormIdentitySelector;
 Form.SwitchProminent = FormSwitchProminent;
 
-export { Form };
+export {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+  useFormField,
+};
