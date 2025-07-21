@@ -1,4 +1,4 @@
-import { Card } from "@/components/ui/card";
+import { Card } from "@shared/components/ui/card";
 import { PropertyTag } from "@/types/property";
 import {
   Star,

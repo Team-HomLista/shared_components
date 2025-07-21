@@ -3,7 +3,7 @@ import {
   PropertyCarousel,
   PropertyCarouselProps,
 } from "@/components/property-carousel";
-import { Button } from "@/components/ui/button";
+import { Button } from "@shared/components/ui/button";
 import { SectionHeader } from "@/components/section-header";
 import Link from "next/link";
 

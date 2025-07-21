@@ -1,5 +1,8 @@
 import { FC, ReactNode } from "react";
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import {
+  ToggleGroup,
+  ToggleGroupItem,
+} from "@shared/components/ui/toggle-group";
 
 interface LabeledToggleGroupProps {
   label: string;

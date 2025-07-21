@@ -5,7 +5,7 @@ import {
   DrawerContent,
   DrawerHeader,
   DrawerTitle,
-} from "@/components/ui/drawer";
+} from "@shared/components/ui/drawer";
 import type { SmallFormData, LeadFormData } from "./schemas";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { LeadForm } from "./form";

@@ -6,9 +6,9 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
+} from "@shared/components/ui/dialog";
+import { Button } from "@shared/components/ui/button";
+import { Card } from "@shared/components/ui/card";
 import { Copy, MapPinnedIcon, PrinterIcon, Share2Icon } from "lucide-react";
 import { FC, useCallback, useEffect, useState } from "react";
 import { formatPrice } from "@/app/utils/price-formatter";
@@ -37,7 +37,7 @@ export const PropertyMainInfo: FC<PropertyMainInfoProps> = ({
   location,
   tags,
 }) => {
-  const { isLiked, toggleLike } = useLike();
+  // const { isLiked, toggleLike } = useLike();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const { isCopied, copyToClipboard, resetCopyStatus } = useCopyToClipboard();
 
@@ -58,23 +58,26 @@ export const PropertyMainInfo: FC<PropertyMainInfoProps> = ({
     window.print();
   };
 
-  const likeProperty = useCallback(async () => {
-    await PropertyService.addPropertyToFavorites(uuid);
-    console.log("Property liked");
-  }, []);
+  /**
+   * TODO: Hacer cuando este dispobible el login
+   */
+  // const likeProperty = useCallback(async () => {
+  //   await PropertyService.addPropertyToFavorites(uuid);
+  //   console.log("Property liked");
+  // }, []);
 
-  const unlikeProperty = useCallback(async () => {
-    await PropertyService.removePropertyFromFavorites(uuid);
-    console.log("Property unliked");
-  }, []);
+  // const unlikeProperty = useCallback(async () => {
+  //   await PropertyService.removePropertyFromFavorites(uuid);
+  //   console.log("Property unliked");
+  // }, []);
 
-  useEffect(() => {
-    if (isLiked) {
-      likeProperty();
-    } else {
-      unlikeProperty();
-    }
-  }, [isLiked]);
+  // useEffect(() => {
+  //   if (isLiked) {
+  //     likeProperty();
+  //   } else {
+  //     unlikeProperty();
+  //   }
+  // }, [isLiked]);
 
   return (
     <div className="sm:pt-6 lg:pt-6.5">
@@ -83,7 +86,7 @@ export const PropertyMainInfo: FC<PropertyMainInfoProps> = ({
           {title}
         </h2>
         <div className="relative ml-auto flex flex-row items-center justify-end gap-2 pt-2 sm:gap-4 lg:gap-8">
-          <LikeButton isLiked={isLiked} onClick={toggleLike} />
+          {/* <LikeButton isLiked={isLiked} onClick={toggleLike} /> */}
           <PrinterIcon
             className="h-5 w-5 cursor-pointer text-black sm:h-6 sm:w-6"
             onClick={handlePrint}
@@ -116,7 +119,6 @@ export const PropertyMainInfo: FC<PropertyMainInfoProps> = ({
                 </Card>
                 <Button
                   variant="default"
-                  corner="squared"
                   className="bg-primary border-primary border px-3 py-2 text-white"
                   onClick={handleCopyUrl}
                 >

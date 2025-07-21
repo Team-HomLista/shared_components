@@ -2,7 +2,7 @@
 import { SectionHeader } from "@/components/section-header";
 import { StarRating } from "@/components/star-rating";
 import { Pagination } from "@/components/pagination";
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@shared/components/ui/card";
 import { FC, useState } from "react";
 
 interface Testimonial {

@@ -6,15 +6,15 @@ import {
   FormField,
   FormItem,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+} from "@shared/components/ui/form";
+import { Input } from "@shared/components/ui/input";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from "@shared/components/ui/select";
 import { controlsSchema } from "../Schema";
 import { BuildingType } from "@/types/enums/building-type";
 import { TransactionType } from "@/types/enums/transaction-type";
@@ -22,7 +22,7 @@ import { ArrowUpDown, Search } from "lucide-react";
 import { Filters } from "./filters";
 import { UseFormReturn } from "react-hook-form";
 import { z } from "zod";
-import { Button } from "@/components/ui/button";
+import { Button } from "@shared/components/ui/button";
 import { BreadcrumbPagination } from "@/components/breadcrumb-index";
 
 export interface ControlsSectionProps {

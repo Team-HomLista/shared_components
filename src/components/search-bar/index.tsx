@@ -1,15 +1,15 @@
 "use client";
 import { FC, useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Button } from "@shared/components/ui/button";
+import { Input } from "@shared/components/ui/input";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { Text } from "@/components/ui/text";
+} from "@shared/components/ui/select";
+import { Text } from "@shared/components/ui/text";
 import { Search } from "lucide-react";
 import Link from "next/link";
 import { BuildingType } from "@/types/enums/building-type";

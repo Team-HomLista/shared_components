@@ -1,7 +1,7 @@
 "use client";
 
 import { Navbar } from "@/components/navbar";
-import { Button } from "@/components/ui/button";
+import { Button } from "@shared/components/ui/button";
 import { Component, ReactNode } from "react";
 
 interface ErrorBoundaryState {

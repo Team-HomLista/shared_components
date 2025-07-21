@@ -4,7 +4,7 @@ import {
   SelectValue,
   SelectContent,
   SelectItem,
-} from "@/components/ui/select";
+} from "@shared/components/ui/select";
 import { FC } from "react";
 
 export interface FilterSelectProps {

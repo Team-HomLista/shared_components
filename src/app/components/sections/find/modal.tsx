@@ -1,5 +1,9 @@
 "use client";
-import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+} from "@shared/components/ui/dialog";
 import { LeadForm } from "./form";
 import type { SmallFormData, LeadFormData } from "./schemas";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";

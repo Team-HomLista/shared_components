@@ -22,4 +22,26 @@ export class GuestService {
       user_id: number;
     };
   }
+
+  static async makeLead(guest_id: number) {
+    const response = await fetch("/api/guest/lead", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        guest_id,
+      }),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      console.error(new Error(`GuestService.makeLead: ${errorData}`));
+    }
+
+    return (await response.json()) as {
+      lead_id: number;
+    };
+  }
 }
