@@ -1,4 +1,4 @@
-import { useFileUpload } from "@/hooks/use-file-upload";
+import { useFileUpload } from "@shared/hooks/use-file-upload";
 import { Button } from "@shared/components/ui/button";
 import { CircleUserRoundIcon } from "lucide-react";
 import { FC, useEffect, useState } from "react";
