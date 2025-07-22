@@ -1,11 +1,11 @@
 import { Navbar } from "@/components/navbar";
-import { UnderConstruction } from "@/components/under-construction";
+import { Container } from "./container";
 
 export default function TerminosYCondicionesPage() {
   return (
     <>
       <Navbar variant="default" />
-      <UnderConstruction />
+      <Container />
     </>
   );
 }

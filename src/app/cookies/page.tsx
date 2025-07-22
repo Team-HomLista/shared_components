@@ -1,12 +1,11 @@
 import { Navbar } from "@/components/navbar";
-import { UnderConstruction } from "@/components/under-construction";
-import Cookies from "./cookies";
+import { Container } from "./container";
 
 export default function CookiesPage() {
   return (
     <>
       <Navbar variant="default" />
-      <Cookies />
+      <Container />
     </>
   );
 }
