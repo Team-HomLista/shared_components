@@ -8,12 +8,10 @@ const nextConfig: NextConfig = {
     }
     return config;
   },
-  experimental: {
-    turbo: {
-      resolveAlias: {
-        "@": "src",
-        "@shared": "shared_components/src",
-      },
+  turbopack: {
+    resolveAlias: {
+      "@": "src",
+      "@shared": "shared_components/src",
     },
   },
   images: {
