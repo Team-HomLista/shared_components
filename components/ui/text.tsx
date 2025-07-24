@@ -1,22 +1,19 @@
-import { FC, HTMLAttributes, ReactNode } from "react";
-import { cva, VariantProps } from "class-variance-authority";
-import { UrlObject } from "url";
 import { cn } from "@shared/lib/utils";
+import { cva, VariantProps } from "class-variance-authority";
+import { FC, HTMLAttributes, ReactNode } from "react";
+import { UrlObject } from "url";
 
 export const textVariants = cva(cn(""), {
   variants: {
     variant: {
-      /** Should be used for module titles or main titles in other types of
-       * views. */
-      bigTitle: cn(""),
       /** Default equals to description. */
-      default: cn("text-sm font-normal text-muted-foreground"),
+      default: cn("text-muted-foreground text-sm font-normal"),
       /** Should be used for any descriptive text. */
-      description: cn("text-sm font-normal text-muted-foreground"),
+      description: cn("text-muted-foreground text-sm font-normal"),
       /** Should be for controls or form labelss. */
       label: cn(""),
       /** Should be used for text that could perform a redirection. */
-      link: cn("text-sm font-normal text-muted-foreground underline"),
+      link: cn("text-muted-foreground text-sm font-normal underline"),
       /** Should be used for sections in body content interfaces like forms. */
       section: cn(""),
       /** Should be used in secondary interfaces or cases where the text
@@ -29,7 +26,7 @@ export const textVariants = cva(cn(""), {
       subtitle: cn(""),
       /** Should be used for titles in layout sections inside a module or
        * inside body content interfaces. */
-      title: cn("text-2xl font-semibold text-foreground"),
+      title: cn("text-foreground text-2xl font-semibold"),
     },
   },
   defaultVariants: {
@@ -52,12 +49,6 @@ export const Text: FC<TextProps> = ({
   ...props
 }) => {
   switch (variant) {
-    case "bigTitle":
-      return (
-        <h1 {...props} className={cn(textVariants({ variant, className }))}>
-          {children}
-        </h1>
-      );
     case "description":
       return (
         <p {...props} className={cn(textVariants({ variant, className }))}>
