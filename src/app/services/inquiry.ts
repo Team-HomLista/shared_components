@@ -2,10 +2,10 @@ import { LeadFormData } from "@/app/components/sections/find/schemas";
 
 export class InquiryService {
   static async postGeneral(
-    leadId: number,
+    anonymous_id: string,
     data: Omit<LeadFormData, "contactConsent" | "dataConsent">,
   ) {
-    const url = `api/leads/${leadId}/inquiry`;
+    const url = `api/leads/inquiry`;
 
     const response = await fetch(url, {
       method: "POST",
@@ -13,7 +13,7 @@ export class InquiryService {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-      body: JSON.stringify({ ...data, type: "GENERAL" }),
+      body: JSON.stringify({ anonymous_id, ...data, type: "GENERAL" }),
     });
 
     if (!response.ok) {

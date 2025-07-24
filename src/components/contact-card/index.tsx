@@ -1,6 +1,6 @@
 import { Mail } from "lucide-react";
-import { Card, CardContent } from "../ui/card";
-import { Badge } from "../ui/badge";
+import { Card, CardContent } from "@shared/components/ui/card";
+import { Badge } from "@shared/components/ui/badge";
 import { FC } from "react";
 
 interface ContactCardProps {

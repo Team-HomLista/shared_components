@@ -1,6 +1,6 @@
 "use client";
 import { FC } from "react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@shared/components/ui/button";
 import {
   Sheet,
   SheetContent,
@@ -8,10 +8,10 @@ import {
   SheetTrigger,
   SheetFooter,
   SheetClose,
-} from "@/components/ui/sheet";
-import { Slider } from "@/components/ui/slider";
+} from "@shared/components/ui/sheet";
+import { Slider } from "@shared/components/ui/slider";
 import { SubmitHandler, UseFormReturn } from "react-hook-form";
-import { Form } from "@/components/ui/form";
+import { Form } from "@shared/components/ui/form";
 import { FilterSelect } from "./components/select";
 import { DimensionInput } from "./components/DimensionInput";
 import { LabeledSelect } from "./components/LabeledSelect";

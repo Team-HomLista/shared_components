@@ -4,10 +4,10 @@ import {
   Tooltip,
   TooltipTrigger,
   TooltipContent,
-} from "@/components/ui/tooltip";
+} from "@shared/components/ui/tooltip";
 import { amenityIcons } from "./amenity-icons";
 import { HelpCircle, ChevronDown, ChevronUp } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@shared/components/ui/button";
 
 interface AmenityDetailsProps {
   property: DetailedProperty;

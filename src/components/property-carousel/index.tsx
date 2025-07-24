@@ -6,7 +6,7 @@ import {
   CarouselItem,
   CarouselPrevious,
   CarouselNext,
-} from "@/components/ui/carousel";
+} from "@shared/components/ui/carousel";
 import { PropertyCardItem, PropertyCardItemProps } from "../property-card";
 
 export interface PropertyCarouselProps

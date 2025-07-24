@@ -2,6 +2,10 @@
 import { useEffect } from "react";
 import { Thumbmark } from "@thumbmarkjs/thumbmarkjs";
 import { GuestService } from "./services/guest";
+import {
+  FINGERPRINT_STORAGE_KEY,
+  IDENTIFICATIONS_STORAGE_KEY,
+} from "@/constants/localstorage";
 
 // Extend the Navigator interface to include deviceMemory
 declare global {
@@ -9,9 +13,6 @@ declare global {
     deviceMemory?: number;
   }
 }
-
-const FINGERPRINT_STORAGE_KEY = "FINGERPRINT";
-const IDENTIFICATIONS_STORAGE_KEY = "IDENTIFICATIONS";
 
 export const Fingerprinting = () => {
   const saveFingerprint = async (fingerprint: string) => {
@@ -40,7 +41,7 @@ export const Fingerprinting = () => {
     const storedFingerprint = localStorage.getItem(FINGERPRINT_STORAGE_KEY);
     const identification = localStorage.getItem(IDENTIFICATIONS_STORAGE_KEY);
 
-    if (storedFingerprint && JSON.parse(identification ?? "{}")?.user_uuid) {
+    if (storedFingerprint && JSON.parse(identification ?? "{}")?.user_id) {
       return;
     }
 

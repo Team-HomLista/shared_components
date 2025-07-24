@@ -1,8 +1,8 @@
 import { SectionHeader } from "@/components/section-header";
 import { FC, useState, useEffect } from "react";
 import React from "react";
-import { Text } from "@/components/ui/text";
-import { Button } from "@/components/ui/button";
+import { Text } from "@shared/components/ui/text";
+import { Button } from "@shared/components/ui/button";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 

@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Text } from "../ui/text";
+import { Text } from "@shared/components/ui/text";
 import { TransactionType } from "@/types/enums/transaction-type";
 
 export interface PropertyCardBannerProps {

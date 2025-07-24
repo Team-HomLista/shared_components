@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "@shared/components/ui/button";
 import { ArrowRightIcon } from "lucide-react";
 import { FC } from "react";
 

@@ -4,8 +4,8 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
-import { Button } from "@/components/ui/button";
+} from "@shared/components/ui/accordion";
+import { Button } from "@shared/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { FC } from "react";
 

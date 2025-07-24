@@ -1,18 +1,24 @@
+import { BuildingType } from "@/types/enums/building-type";
+import { TransactionType } from "@/types/enums/transaction-type";
 import { z } from "zod";
 
 export const smallFormSchema = z.object({
-  property_type: z
-    .string()
-    .min(
-      1,
-      "No seleccionaste un tipo de propiedad. Selecciona uno para continuar.",
-    ),
-  location: z
-    .string()
-    .min(1, "No seleccionaste una ubicación. Elige una para continuar."),
-  search_type: z
-    .string()
-    .min(1, "No especificaste el tipo de búsqueda. Indica uno para continuar."),
+  building_type: z.nativeEnum(BuildingType, {
+    errorMap: () => ({
+      message: "No has seleccionado ningún tipo de propiedad.",
+    }),
+  }),
+  state: z
+    .string({ required_error: "No has ingresado el estado." })
+    .nonempty("El nombre del estado no puede estar vacio."),
+  city: z
+    .string({ required_error: "No has ingresado la ciudad." })
+    .nonempty("El nombre de la ciudad no puede estar vacio."),
+  transaction_type_group: z.nativeEnum(TransactionType, {
+    errorMap: () => ({
+      message: "No has ingresado ningún tipo de transacción para la propiedad.",
+    }),
+  }),
   budget: z
     .number()
     .min(
@@ -22,24 +28,7 @@ export const smallFormSchema = z.object({
 });
 
 export const leadFormSchema = z.object({
-  property_type: z
-    .string()
-    .min(
-      1,
-      "No seleccionaste un tipo de propiedad. Selecciona uno para continuar.",
-    ),
-  location: z
-    .string()
-    .min(1, "No seleccionaste una ubicación. Elige una para continuar."),
-  search_type: z
-    .string()
-    .min(1, "No especificaste el tipo de búsqueda. Indica uno para continuar."),
-  budget: z
-    .number()
-    .min(
-      500000,
-      "El presupuesto es insuficiente. Ingresa al menos $500,000 MXN.",
-    ),
+  ...smallFormSchema.shape,
   lada: z
     .string()
     .min(1, "No seleccionaste un código de país. Elige uno para continuar."),

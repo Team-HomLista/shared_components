@@ -1,4 +1,4 @@
-import { Badge } from "@/components/ui/badge";
+import { Badge } from "@shared/components/ui/badge";
 import { FC } from "react";
 
 interface BasicHeroProps {

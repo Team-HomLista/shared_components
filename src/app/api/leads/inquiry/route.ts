@@ -4,18 +4,13 @@ interface RequestBody {
   anonymous_id: string;
 }
 
-export async function POST(
-  request: Request,
-  { params }: { params: Promise<{ leadId: number }> },
-) {
+export async function POST(request: Request) {
   try {
-    const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL;
-    const HARD_KEY = String(process.env.NEXT_PUBLIC_HARD_KEY);
+    const SERVER_URL = process.env.SERVER_URL;
+    const HARD_KEY = String(process.env.HARD_KEY);
 
     const body = (await request.json()) as RequestBody;
-    const { leadId } = await params;
-
-    const url = `${SERVER_URL}/api/leads/${leadId}/inquiries/store`;
+    const url = `${SERVER_URL}/api/leads/inquiries`;
 
     const response = await fetch(url, {
       method: "POST",

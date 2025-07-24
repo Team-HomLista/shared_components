@@ -4,24 +4,15 @@ import { SectionHeader } from "@/components/section-header";
 import { useState } from "react";
 import { LeadFormResponsive } from "./lead-form-responsive";
 import { FindSmallForm } from "./small-form";
+import { SmallFormData } from "./schemas";
 
 interface FindSectionProps {}
 
 export const FindSection = ({}: FindSectionProps) => {
   const [showLeadForm, setShowLeadForm] = useState(false);
-  const [formData, setFormData] = useState<{
-    property_type: string;
-    location: string;
-    search_type: string;
-    budget: number;
-  } | null>(null);
+  const [formData, setFormData] = useState<SmallFormData | null>(null);
 
-  const handleSmallFormComplete = (data: {
-    property_type: string;
-    location: string;
-    search_type: string;
-    budget: number;
-  }) => {
+  const handleSmallFormComplete = (data: SmallFormData) => {
     setFormData(data);
     setShowLeadForm(true);
   };

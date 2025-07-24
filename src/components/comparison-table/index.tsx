@@ -6,19 +6,23 @@ import {
   TableRow,
   TableBody,
   TableCell,
-} from "../ui/table";
-import { Button } from "../ui/button";
+} from "@shared/components/ui/table";
+import { Button } from "@shared/components/ui/button";
 import { Check, X } from "lucide-react";
 import { ComparisonSection } from "@/types/plan-info";
 import { Fragment, useState } from "react";
-import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@shared/components/ui/tooltip";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../ui/select";
+} from "@shared/components/ui/select";
 
 interface ComparisonTableProps {
   sections: ComparisonSection[];

@@ -9,7 +9,7 @@ import {
 } from "./information";
 import Link from "next/link";
 import { LikeButton } from "@/components/like-button";
-import { Card, CardContent, CardHeader } from "../ui/card";
+import { Card, CardContent, CardHeader } from "@shared/components/ui/card";
 
 export interface PropertyCardItemProps
   extends Pick<PropertyCardTagProps, "tag"> {
@@ -63,11 +63,11 @@ export const PropertyCardItem: FC<PropertyCardItemProps> = ({
                 <PropertyCardTag tag={tag} />
               </div>
               <div className="absolute top-2 right-2">
-                <LikeButton
+                {/* <LikeButton
                   isLiked={isLiked}
                   onClick={handleLike}
                   className="h-7 w-7"
-                />
+                /> */}
               </div>
               <div className="absolute right-0 bottom-0 left-0">
                 <PropertyCardBanner {...banner} />

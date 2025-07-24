@@ -18,7 +18,7 @@ import {
   formatPropertyLocation,
 } from "@/app/utils/property-transformers";
 import { PropertyCarousel } from "@/components/property-carousel";
-import { Button } from "@/components/ui/button";
+import { Button } from "@shared/components/ui/button";
 import { SearchIcon } from "lucide-react";
 import { LocationNearby } from "./sections/location";
 import { NearbyLocation } from "@/app/utils/location-utils";
