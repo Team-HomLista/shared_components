@@ -1,8 +1,8 @@
 import { SectionHeader } from "@/components/section-header";
 import { FC, useState, useEffect } from "react";
 import React from "react";
-import { Text } from "@/components/ui/text";
-import { Button } from "@/components/ui/button";
+import { Text } from "@shared/components/ui/text";
+import { Button } from "@shared/components/ui/button";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 
@@ -39,7 +39,7 @@ export const CitiesGrid: FC<CitiesGridProps> = ({ cities }) => {
           <Link
             key={index}
             className="group gradient-border city-card-entrance relative block overflow-hidden rounded-2xl opacity-0 shadow-lg transition-all duration-500 hover:shadow-2xl"
-            href={`/properties?city=${city.name}`}
+            href={`/propiedades?city=${city.name}`}
             style={{
               animationDelay: `${index * 100}ms`,
               animationFillMode: "forwards",
@@ -73,7 +73,7 @@ export const CitiesGrid: FC<CitiesGridProps> = ({ cities }) => {
 
                 {/* Animated CTA */}
                 <div className="flex transform items-center space-x-3 opacity-0 transition-all duration-500 group-hover:opacity-100">
-                  <div className="from-secondary to-accent h-0.5 w-8 rounded-full bg-gradient-to-r transition-all duration-500 group-hover:w-12" />
+                  <div className="from-secondary to-secondary/50 h-0.5 w-8 rounded-full bg-gradient-to-r transition-all duration-500 group-hover:w-12" />
                   <Text className="text-sm font-medium whitespace-nowrap text-white/90">
                     Ver propiedades
                   </Text>

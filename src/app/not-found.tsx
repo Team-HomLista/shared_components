@@ -1,6 +1,6 @@
 import { Navbar } from "@/components/navbar";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { Button } from "@shared/components/ui/button";
 
 export default function NotFound() {
   return (
@@ -32,12 +32,7 @@ export default function NotFound() {
           </p>
 
           {/* Responsive button */}
-          <Button
-            asChild
-            size="lg"
-            variant="default"
-            className="w-full max-w-xs px-6 py-3 text-sm font-semibold transition-all duration-300 hover:scale-105 sm:w-auto sm:max-w-none sm:px-8 sm:py-4 sm:text-base lg:px-10 lg:text-lg"
-          >
+          <Button asChild size="lg">
             <Link href="/">Volver al inicio</Link>
           </Button>
 

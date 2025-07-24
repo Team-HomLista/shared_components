@@ -1,12 +1,12 @@
 import { FC } from "react";
-import { Input } from "@/components/ui/input";
+import { Input } from "@shared/components/ui/input";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from "@shared/components/ui/select";
 
 interface DimensionInputProps {
   label: string;
@@ -34,13 +34,13 @@ export const DimensionInput: FC<DimensionInputProps> = ({
     <label>{label}</label>
     <div className="flex w-full flex-row">
       <Input
-        className="border-secondary flex rounded-l-md rounded-r-none border-r-0"
+        className="flex rounded-l-md rounded-r-none border-r-0"
         placeholder={placeholder}
         value={value}
         onChange={(e) => onValueChange && onValueChange(e.target.value)}
       />
       <Select value={unit} onValueChange={onUnitChange}>
-        <SelectTrigger className="border-secondary rounded-l-none rounded-r-md">
+        <SelectTrigger className="rounded-l-none rounded-r-md">
           <SelectValue placeholder={"m²"}>
             {unit || (
               <>

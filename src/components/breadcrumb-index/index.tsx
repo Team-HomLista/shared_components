@@ -6,7 +6,7 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
+} from "@shared/components/ui/breadcrumb";
 import { usePathname } from "next/navigation";
 
 interface BreadcrumbPaginationProps {
@@ -52,7 +52,7 @@ export const BreadcrumbPagination: FC<BreadcrumbPaginationProps> = ({
               <>
                 <BreadcrumbSeparator />
                 <BreadcrumbItem>
-                  <BreadcrumbPage className="inline-block max-w-[200px] sm:max-w-[300px] md:max-w-[400px] lg:max-w-[500px] overflow-hidden text-ellipsis whitespace-nowrap">
+                  <BreadcrumbPage className="inline-block max-w-[200px] overflow-hidden text-ellipsis whitespace-nowrap sm:max-w-[300px] md:max-w-[400px] lg:max-w-[500px]">
                     {propertyTitle || "Detalles de propiedad"}
                   </BreadcrumbPage>
                 </BreadcrumbItem>

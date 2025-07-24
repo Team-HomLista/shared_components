@@ -1,5 +1,8 @@
 import { FC, ReactNode } from "react";
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import {
+  ToggleGroup,
+  ToggleGroupItem,
+} from "@shared/components/ui/toggle-group";
 
 interface LabeledToggleGroupProps {
   label: string;
@@ -22,7 +25,7 @@ export const LabeledToggleGroup: FC<LabeledToggleGroupProps> = ({
       type="single"
       value={value}
       onValueChange={onChange}
-      className={className + " border-secondary border-1"}
+      className={className}
     >
       {options.map((opt) => (
         <ToggleGroupItem key={opt.value} value={opt.value}>

@@ -11,7 +11,8 @@ const nextConfig: NextConfig = {
   experimental: {
     turbo: {
       resolveAlias: {
-        // Add any specific aliases if needed
+        "@": "src",
+        "@shared": "shared_components/src",
       },
     },
   },

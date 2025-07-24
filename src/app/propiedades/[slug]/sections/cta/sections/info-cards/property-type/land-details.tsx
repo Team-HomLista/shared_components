@@ -6,7 +6,7 @@ import { FeatureGrid } from "./feature-grid";
 export const LandDetails: FC<FeatureDetailProps> = ({ buildingSize }) => {
   const features = [
     createFeature(
-      <RulerDimensionLineIcon className="text-secondary h-6 w-6" />,
+      <RulerDimensionLineIcon className="h-6 w-6" />,
       "Área del terreno:",
       buildingSize,
       true,

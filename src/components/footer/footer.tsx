@@ -1,6 +1,6 @@
 import { Divider } from "@/components/divider";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Button } from "@shared/components/ui/button";
+import { Input } from "@shared/components/ui/input";
 import { SocialMediaIcons } from "./socialMediaIcons";
 import { FC } from "react";
 import Link from "next/link";
@@ -37,7 +37,7 @@ export const Footer: FC<FooterProps> = ({}) => {
     {
       src: "/socialMedia-svg/telegram.svg",
       alt: "Telegram",
-      link: "@Red_HomLista",
+      link: "https://t.me/Red_HomLista",
     },
     {
       src: "/socialMedia-svg/linkedin.svg",
@@ -61,7 +61,7 @@ export const Footer: FC<FooterProps> = ({}) => {
             placeholder="nombre@correo.com"
             className="border-secondary w-full border-2 bg-white text-black sm:flex-1"
           />
-          <Button corner={"squared"} className="w-full sm:w-auto">
+          <Button variant="secondary" className="w-full sm:w-auto">
             Subscribirse
           </Button>
         </div>
@@ -85,7 +85,7 @@ export const Footer: FC<FooterProps> = ({}) => {
             <div className="flex flex-col gap-4 font-medium">
               <li>
                 <Link
-                  href="/properties?search_type=BUY"
+                  href="/propiedades?search_type=BUY"
                   className="hover:text-secondary underline transition-colors"
                 >
                   Comprar
@@ -93,7 +93,7 @@ export const Footer: FC<FooterProps> = ({}) => {
               </li>
               <li>
                 <Link
-                  href="/properties?search_type=RENT"
+                  href="/propiedades?search_type=RENT"
                   className="hover:text-secondary underline transition-colors"
                 >
                   Rentar

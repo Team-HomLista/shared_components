@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 @plugin "tailwindcss-animate";
+@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -14,13 +15,13 @@
   --popover-foreground: oklch(0.145 0 0);
   --primary: oklch(25.7% 0.0828 256.49);
   --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(74.19% 0.0969 205.58);
+  --secondary: #55bdc9;
   --secondary-foreground: oklch(0.205 0 0);
   --terciary: oklch(92.12% 0.0406 210);
   --terciary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(78.65% 0.1875 154.23);
+  --accent: #F4F4F5;
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.922 0 0);
@@ -120,6 +121,7 @@
   * {
     @apply border-border outline-ring/50 font-sans;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -129,6 +131,7 @@
   0% {
     transform: translateX(0%);
   }
+
   100% {
     transform: translateX(-50%);
   }
@@ -136,7 +139,8 @@
 
 .animate-marquee {
   animation: marquee linear infinite;
-  animation-duration: 5s; /* Duración para mobile (más rápida) */
+  animation-duration: 5s;
+  /* Duración para mobile (más rápida) */
 }
 
 /* Duración más lenta para desktop */
@@ -147,11 +151,13 @@
 }
 
 @keyframes housito-bounce {
+
   0%,
   100% {
     transform: translateY(0);
     animation-timing-function: ease-in;
   }
+
   60% {
     transform: translateY(-32px);
     animation-timing-function: ease-out;
@@ -167,26 +173,31 @@
   0% {
     background-position: -200px 0;
   }
+
   100% {
     background-position: calc(200px + 100%) 0;
   }
 }
 
 @keyframes float {
+
   0%,
   100% {
     transform: translateY(0px);
   }
+
   50% {
     transform: translateY(-10px);
   }
 }
 
 @keyframes gradient-x {
+
   0%,
   100% {
     transform: translateX(0%);
   }
+
   50% {
     transform: translateX(100%);
   }
@@ -197,6 +208,7 @@
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -204,12 +216,10 @@
 }
 
 .city-card-shimmer {
-  background: linear-gradient(
-    110deg,
-    transparent 40%,
-    rgba(255, 255, 255, 0.1) 50%,
-    transparent 60%
-  );
+  background: linear-gradient(110deg,
+      transparent 40%,
+      rgba(255, 255, 255, 0.1) 50%,
+      transparent 60%);
   background-size: 200px 100%;
   animation: shimmer 2s infinite;
 }
@@ -270,16 +280,17 @@
 
 /* Accessibility improvements */
 @media (prefers-reduced-motion: reduce) {
+
   .city-card-shimmer,
   .city-card-float,
   .city-card-entrance {
     animation: none;
   }
-  
+
   .group:hover img {
     transform: scale(1.05);
   }
-  
+
   .group:hover {
     transform: translateY(-4px);
   }

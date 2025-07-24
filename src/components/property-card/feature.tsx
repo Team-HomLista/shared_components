@@ -21,7 +21,9 @@ export const PropertyCardTag: FC<PropertyCardTagProps> = ({ tag }) => {
     <div
       className={cn(
         "flex h-full w-fit justify-center rounded-[30px] border-1 border-white bg-white px-2 py-0.5 text-sm",
-        isFeature ? "bg-accent border-primary border-2" : "border-1 bg-white",
+        isFeature
+          ? "bg-accent text-accent-foreground border-primary border-2"
+          : "border-1 bg-white",
       )}
     >
       {tag == PropertyCardTagType.Featured && "destacado"}

@@ -18,7 +18,7 @@ import {
   formatPropertyLocation,
 } from "@/app/utils/property-transformers";
 import { PropertyCarousel } from "@/components/property-carousel";
-import { Button } from "@/components/ui/button";
+import { Button } from "@shared/components/ui/button";
 import { SearchIcon } from "lucide-react";
 import { LocationNearby } from "./sections/location";
 import { NearbyLocation } from "@/app/utils/location-utils";
@@ -95,7 +95,7 @@ export const PropertyDetailContainer: FC<PropertyDetailContainerProps> = ({
           </div>
           <div className="flex-shrink-0">
             <Link href={getSimilarPropertiesUrl()}>
-              <Button className="bg-secondary" corner={"squared"}>
+              <Button>
                 <SearchIcon className="h-4 w-4" />
                 <p>Ver Propiedades Similares</p>
               </Button>
@@ -108,7 +108,7 @@ export const PropertyDetailContainer: FC<PropertyDetailContainerProps> = ({
           </div>
           <div className="mb-6">
             <Link href={getSimilarPropertiesUrl()}>
-              <Button className="bg-secondary w-full" corner={"squared"}>
+              <Button className="w-full">
                 <SearchIcon className="h-4 w-4" />
                 <p>Ver Propiedades Similares</p>
               </Button>
@@ -118,6 +118,7 @@ export const PropertyDetailContainer: FC<PropertyDetailContainerProps> = ({
         <div className="hidden lg:block">
           <ImageGallery multimedia={property.multimedia} />
           <PropertyMainInfo
+            uuid={property.uuid}
             title={property.title}
             price={propertyPrice}
             location={propertyLocation}
@@ -148,6 +149,7 @@ export const PropertyDetailContainer: FC<PropertyDetailContainerProps> = ({
             )}
           </div>
           <PropertyMainInfo
+            uuid={property.uuid}
             title={property.title}
             price={propertyPrice}
             location={propertyLocation}

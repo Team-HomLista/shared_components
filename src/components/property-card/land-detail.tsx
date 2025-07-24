@@ -17,9 +17,9 @@ export const PropertyCardLandDetail: FC<PropertyFeatureDetailProps> = ({
   value,
 }) => {
   return (
-    <div className="flex items-center justify-center gap-2">
+    <div className="flex items-center justify-center gap-2 text-neutral-500">
       {Icon && <Icon />}
-      <span className="text-sm font-medium text-black">{value}</span>
+      <span className="text-sm font-medium">{value}</span>
     </div>
   );
 };

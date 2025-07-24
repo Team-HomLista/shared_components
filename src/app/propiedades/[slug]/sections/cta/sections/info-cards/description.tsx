@@ -1,7 +1,7 @@
 "use client";
 
 import { DetailedProperty } from "@/types/property";
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 
 interface PropertyDescriptionProps {
   property: DetailedProperty;
@@ -10,15 +10,28 @@ interface PropertyDescriptionProps {
 export const PropertyDescription: FC<PropertyDescriptionProps> = ({
   property,
 }) => {
-  if (!property.description) return null;
+  const [descripcionSegura, setDescripcionSegura] = useState("");
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && property.description) {
+      const DOMPurify = require("dompurify");
+      const sanitized = DOMPurify.sanitize(property.description);
+      setDescripcionSegura(sanitized);
+    }
+  }, [property.description]);
+
+  if (!descripcionSegura) return null;
 
   return (
     <>
       <div className="flex items-center gap-2">
-         <h3 className="text-lg font-semibold mb-3">Descripción</h3>
+        <h3 className="mb-3 text-lg font-semibold">Descripción</h3>
       </div>
       <div className="flex flex-col gap-2">
-        <p className="leading-relaxed font-light text-[#09090B]">{property.description}</p>
+        <div
+          className="prose prose-slate prose-headings:text-[#09090B] prose-p:text-[#09090B] prose-p:leading-relaxed prose-p:font-light prose-strong:text-[#09090B] prose-ul:text-[#09090B] prose-ol:text-[#09090B] prose-li:text-[#09090B] max-w-none"
+          dangerouslySetInnerHTML={{ __html: descripcionSegura }}
+        />
       </div>
     </>
   );

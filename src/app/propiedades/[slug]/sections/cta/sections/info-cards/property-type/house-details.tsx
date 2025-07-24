@@ -20,34 +20,32 @@ export const HouseDetails: FC<FeatureDetailProps> = ({
 }) => {
   const features = [
     createFeature(
-      <RulerDimensionLineIcon className="text-secondary h-6 w-6" />,
+      <RulerDimensionLineIcon className="h-6 w-6" />,
       "Área del terreno:",
       buildingSize,
       true,
     ),
     createFeature(
-      <CarIcon className="text-secondary h-6 w-6" />,
+      <CarIcon className="h-6 w-6" />,
       "Estacionamientos:",
       parkingSlots,
     ),
+    createFeature(<ToiletIcon className="h-6 w-6" />, "Baños:", bathrooms),
     createFeature(
-      <ToiletIcon className="text-secondary h-6 w-6" />,
-      "Baños:",
-      bathrooms,
-    ),
-    createFeature(
-      <ChartAreaIcon className="text-secondary h-6 w-6" />,
+      <ChartAreaIcon className="h-6 w-6" />,
       "Construcción:",
       landSize,
       true,
     ),
-    yearBuilt ? {
-      icon: <CalendarIcon className="text-secondary h-6 w-6" />,
-      text: "Año:",
-      value: yearBuilt.toString()
-    } : null,
+    yearBuilt
+      ? {
+          icon: <CalendarIcon className="h-6 w-6" />,
+          text: "Año:",
+          value: yearBuilt.toString(),
+        }
+      : null,
     createFeature(
-      <BedDoubleIcon className="text-secondary h-6 w-6" />,
+      <BedDoubleIcon className="h-6 w-6" />,
       "Habitaciones:",
       rooms,
     ),

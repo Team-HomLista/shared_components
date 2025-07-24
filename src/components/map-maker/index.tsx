@@ -14,15 +14,11 @@ export interface FormLocationProps {
 }
 
 const DEFAULT_CENTER: lanLng = { lat: 19.432608, lng: -99.133209 };
-const DEFAULT_ZOOM = 12;
-const PROPERTY_ZOOM = 15;
+const DEFAULT_ZOOM = 15;
 
 export function MapMarker({ initialCamera, coordinates }: FormLocationProps) {
-  const center = {
-    lat: Number(coordinates?.lat ?? DEFAULT_CENTER.lat),
-    lng: Number(coordinates?.lng ?? DEFAULT_CENTER.lng),
-  };
-  const zoom = coordinates ? PROPERTY_ZOOM : DEFAULT_ZOOM;
+  const center = coordinates || DEFAULT_CENTER;
+  const zoom = DEFAULT_ZOOM;
 
   const camera = initialCamera || { center, zoom };
 

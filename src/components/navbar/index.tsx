@@ -1,6 +1,6 @@
 "use client";
 import React, { FC, useState } from "react";
-import { Button } from "../ui/button";
+import { Button } from "@shared/components/ui/button";
 import Image from "next/image";
 import {
   NavigationMenu,
@@ -9,13 +9,13 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu";
+} from "@shared/components/ui/navigation-menu";
 import {
   Sheet,
   SheetContent,
   SheetTrigger,
   SheetTitle,
-} from "@/components/ui/sheet";
+} from "@shared/components/ui/sheet";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
@@ -109,9 +109,9 @@ export const Navbar: FC<navbarProps> = ({ variant = "default" }) => {
       </Link>
 
       {/* Desktop Navigation */}
-      <div className="hidden lg:flex lg:items-center lg:space-x-8">
+      <div className="hidden px-6 lg:flex lg:items-center lg:space-x-8">
         <NavigationMenu>
-          <NavigationMenuList className="mr-8">
+          <NavigationMenuList>
             <NavigationMenuItem>
               <NavigationMenuTrigger className="text-primary-foreground text-md bg-transparent">
                 Comprar
@@ -163,14 +163,14 @@ export const Navbar: FC<navbarProps> = ({ variant = "default" }) => {
                 </ul>
               </NavigationMenuContent>
             </NavigationMenuItem>
-            <NavigationMenuItem className="text-primary-foreground bg-transparent">
-              <NavigationMenuLink asChild>
+            <NavigationMenuItem className="text-primary-foreground text-md bg-transparent">
+              <NavigationMenuLink asChild className="text-md font-medium">
                 <Link href="/planes">Vende con nosotros</Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
-        <Button>Acceder</Button>
+        {/* <Button variant="secondary">Iniciar Sesión</Button> */}
       </div>
 
       {/* Mobile Menu Button */}
@@ -263,14 +263,13 @@ export const Navbar: FC<navbarProps> = ({ variant = "default" }) => {
               </div>
 
               {/* Login Button */}
-              <div className="">
-                <Button
-                  className="mb-12 w-fit"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Acceder
-                </Button>
-              </div>
+              {/* <Button
+                className="mb-12 w-fit"
+                variant="secondary"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Iniciar Sesión
+              </Button> */}
             </div>
           </SheetContent>
         </Sheet>

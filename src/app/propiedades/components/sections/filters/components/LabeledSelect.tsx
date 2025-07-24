@@ -5,7 +5,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from "@shared/components/ui/select";
 
 interface LabeledSelectProps {
   label: string;
@@ -27,9 +27,7 @@ export const LabeledSelect: FC<LabeledSelectProps> = ({
   <div>
     <label>{label}</label>
     <Select value={value} onValueChange={onChange}>
-      <SelectTrigger
-        className={className + " border-secondary w-full rounded-md"}
-      >
+      <SelectTrigger className={className + " w-full"}>
         <SelectValue placeholder={placeholder} />
       </SelectTrigger>
       <SelectContent>

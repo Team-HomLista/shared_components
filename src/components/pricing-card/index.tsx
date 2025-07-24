@@ -1,6 +1,6 @@
 import { Check } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "../ui/card";
+import { Button } from "@shared/components/ui/button";
+import { Card, CardContent } from "@shared/components/ui/card";
 import { cn } from "@/lib/utils";
 
 interface PricingCardProps {
@@ -26,30 +26,27 @@ export function PricingCard({
     <Card
       className={cn(
         "border-3",
-        isPopular ? "border-accent" : "border-secondary",
+        isPopular ? "border-secondary" : "border-primary",
       )}
     >
-      <CardContent className="flex flex-col">
-        <div className="flex w-full flex-col items-center justify-center">
-          <h3 className="mb-2 text-xl font-semibold">{title}</h3>
-          <div className="mb-4">
+      <CardContent className="flex flex-col gap-4">
+        <div className="flex w-full flex-col items-center justify-center gap-2">
+          <h3 className="text-xl font-semibold">{title}</h3>
+
+          <div>
             <span className="text-primary text-3xl font-bold">{price}</span>
             {priceDetail && (
               <span className="ml-1 text-sm text-gray-500">{priceDetail}</span>
             )}
           </div>
-          <p className="mb-6 flex h-full text-black">{description}</p>
-          <Button
-            size={"lg"}
-            className={`mb-6 px-4 ${
-              isPopular
-                ? "bg-accent hover:bg-accent/80 text-foreground font-semibold"
-                : "bg-secondary hover:bg-primary/80"
-            }`}
-          >
+
+          <p className="flex h-full text-black">{description}</p>
+
+          <Button size={"lg"} variant={isPopular ? "secondary" : "default"}>
             {buttonText}
           </Button>
         </div>
+
         <div className="flex w-full flex-col items-start gap-1">
           {features.map((feature, index) => (
             <div className="flex items-start gap-2 py-1.5" key={index}>

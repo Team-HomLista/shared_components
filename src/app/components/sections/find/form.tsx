@@ -1,8 +1,8 @@
 "use client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { Button } from "@/components/ui/button";
-import { Text } from "@/components/ui/text";
+import { Button } from "@shared/components/ui/button";
+import { Text } from "@shared/components/ui/text";
 import {
   Form,
   FormControl,
@@ -10,7 +10,7 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
+} from "@shared/components/ui/form";
 import { LeadFormData, leadFormSchema, SmallFormData } from "./schemas";
 import { InquiryService } from "@/app/services/inquiry";
 import {
@@ -19,10 +19,15 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { Slider } from "@/components/ui/slider";
-import { Input } from "@/components/ui/input";
-import { Checkbox } from "@/components/ui/checkbox";
+} from "@shared/components/ui/select";
+import { Slider } from "@shared/components/ui/slider";
+import { Input } from "@shared/components/ui/input";
+import { Checkbox } from "@shared/components/ui/checkbox";
+import { FINGERPRINT_STORAGE_KEY } from "@/constants/localstorage";
+import { BUILDING_TYPE_ES } from "@/constants/building-type";
+import { TRANSACTION_TYPE_GROUP_ES } from "@/constants/transaction-type";
+import { useEffect, useState } from "react";
+import { getCities, getStates } from "@/app/services/propertyLocations";
 
 interface LeadFormProps {
   initialData: SmallFormData;
@@ -35,6 +40,9 @@ export const LeadForm = ({
   onClose,
   onSubmitSuccess,
 }: LeadFormProps) => {
+  const [states, setStates] = useState<string[]>([]);
+  const [cities, setCities] = useState<string[]>([]);
+
   const form = useForm<LeadFormData>({
     resolver: zodResolver(leadFormSchema),
     defaultValues: {
@@ -47,20 +55,39 @@ export const LeadForm = ({
     },
   });
 
-  const onSubmit = (data: LeadFormData) => {
-    let identifications = localStorage.getItem("IDENTIFICATIONS");
+  const stateValue = form.watch("state");
 
-    if (identifications !== null) {
-      const parsedIdentifications = JSON.parse(identifications) as {
-        guest_id: number;
-        lead_id: number;
-        user_id: number;
-      };
-      InquiryService.postGeneral(parsedIdentifications.lead_id, data);
+  const onSubmit = (data: LeadFormData) => {
+    let anonymousId = localStorage.getItem(FINGERPRINT_STORAGE_KEY);
+
+    if (anonymousId !== null) {
+      InquiryService.postGeneral(anonymousId, data);
     }
     onSubmitSuccess?.(data);
     onClose();
   };
+
+  async function getAllStates() {
+    const states = await getStates();
+    setStates(states);
+  }
+
+  async function getAllCities() {
+    // TODO: SETEAR EL VALOR DE LA CIUDAD POR DEFAULT
+    form.setValue("city", "");
+    const cities = await getCities(stateValue);
+    setCities(cities);
+  }
+
+  useEffect(() => {
+    getAllStates();
+  }, []);
+
+  useEffect(() => {
+    if (stateValue) {
+      getAllCities();
+    }
+  }, [stateValue]);
 
   return (
     <Form {...form}>
@@ -68,10 +95,9 @@ export const LeadForm = ({
         onSubmit={form.handleSubmit(onSubmit)}
         className="flex flex-col items-center justify-evenly gap-4 pb-8"
       >
-        {/* Property type field */}
         <FormField
           control={form.control}
-          name="property_type"
+          name="building_type"
           render={({ field }) => (
             <FormItem className="flex w-full max-w-[428px] flex-col items-start">
               <FormLabel>
@@ -80,43 +106,77 @@ export const LeadForm = ({
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
                   <SelectTrigger className="w-full bg-white">
-                    <SelectValue placeholder="Propiedad" />
+                    <SelectValue placeholder="Selecciona el tipo de propiedad que buscas" />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent position="popper">
-                  <SelectItem value="casas">Casas</SelectItem>
-                  <SelectItem value="departamentos">Departamentos</SelectItem>
-                  <SelectItem value="terrenos">Terrenos</SelectItem>
-                  <SelectItem value="locales">Locales</SelectItem>
+                  {Object.entries(BUILDING_TYPE_ES).map(([type, label]) => (
+                    <SelectItem key={type} value={type}>
+                      {label}
+                    </SelectItem>
+                  ))}
                 </SelectContent>
               </Select>
               <FormMessage />
             </FormItem>
           )}
         />
-        {/* Location field */}
+        {/* Estado field */}
         <FormField
           control={form.control}
-          name="location"
+          name="state"
           render={({ field }) => (
             <FormItem className="flex w-full max-w-[428px] flex-col items-start">
               <FormLabel>
-                <Text variant="label">Ubicación</Text>
+                <Text variant="label">Estado</Text>
               </FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
+              <Select
+                onValueChange={field.onChange}
+                defaultValue={field.value}
+                value={field.value}
+              >
                 <FormControl>
                   <SelectTrigger className="w-full bg-white">
-                    <SelectValue placeholder="Ubicación" />
+                    <SelectValue placeholder="Selecciona el estado donde buscas tu propiedad" />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent position="popper">
-                  <SelectItem value="cancun">Cancún</SelectItem>
-                  <SelectItem value="playa-del-carmen">
-                    Playa del Carmen
-                  </SelectItem>
-                  <SelectItem value="ciudad-de-mexico">
-                    Ciudad de México
-                  </SelectItem>
+                  {states.map((state, index) => (
+                    <SelectItem key={index} value={state}>
+                      {state}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        {/* Ciudad field */}
+        <FormField
+          control={form.control}
+          name="city"
+          render={({ field }) => (
+            <FormItem className="flex w-full max-w-[428px] flex-col items-start">
+              <FormLabel>
+                <Text variant="label">Ciudad</Text>
+              </FormLabel>
+              <Select
+                onValueChange={field.onChange}
+                defaultValue={field.value}
+                value={field.value}
+              >
+                <FormControl>
+                  <SelectTrigger className="w-full bg-white">
+                    <SelectValue placeholder="Selecciona la ciudad donde buscas tu propiedad" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent position="popper">
+                  {cities.map((city, index) => (
+                    <SelectItem key={index} value={city}>
+                      {city}
+                    </SelectItem>
+                  ))}
                 </SelectContent>
               </Select>
               <FormMessage />
@@ -126,7 +186,7 @@ export const LeadForm = ({
         {/* Search type field */}
         <FormField
           control={form.control}
-          name="search_type"
+          name="transaction_type_group"
           render={({ field }) => (
             <FormItem className="flex w-full max-w-[428px] flex-col items-start">
               <FormLabel>
@@ -135,12 +195,17 @@ export const LeadForm = ({
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
                   <SelectTrigger className="w-full bg-white">
-                    <SelectValue placeholder="Compra" />
+                    <SelectValue placeholder="Selecciona el tipo de búsqueda" />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent position="popper">
-                  <SelectItem value="compra">Compra</SelectItem>
-                  <SelectItem value="renta">Renta</SelectItem>
+                  {Object.entries(TRANSACTION_TYPE_GROUP_ES).map(
+                    ([type, label]) => (
+                      <SelectItem key={type} value={type}>
+                        {label}
+                      </SelectItem>
+                    ),
+                  )}
                 </SelectContent>
               </Select>
               <FormMessage />
@@ -210,11 +275,7 @@ export const LeadForm = ({
                   )}
                 />
                 <FormControl>
-                  <Input
-                    placeholder="Número de WhatsApp"
-                    {...field}
-                    className="border-secondary border-2"
-                  />
+                  <Input placeholder="Número de WhatsApp" {...field} />
                 </FormControl>
               </div>
               <FormMessage />
@@ -231,11 +292,7 @@ export const LeadForm = ({
                 <Text variant="label">Correo electrónico</Text>
               </FormLabel>
               <FormControl>
-                <Input
-                  placeholder="nombre@correo.com"
-                  {...field}
-                  className="border-secondary border-2"
-                />
+                <Input placeholder="nombre@correo.com" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

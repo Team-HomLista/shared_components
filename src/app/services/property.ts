@@ -61,7 +61,7 @@ export class PropertyService {
     const HARD_KEY = String(process.env.HARD_KEY);
 
     const url = new URL(`${SERVER_URL}/api/properties/featured`);
-    
+
     if (limit !== undefined) {
       url.searchParams.append("limit", String(limit));
     }
@@ -88,11 +88,11 @@ export class PropertyService {
     }
 
     const data = (await response.json()).data as Array<Property>;
-    
+
     if (limit !== undefined && data.length > limit) {
       return data.slice(0, limit);
     }
-    
+
     return data;
   }
 
@@ -124,11 +124,67 @@ export class PropertyService {
     }
 
     const data = await response.json();
-    
+
     if (!data.data) {
-      throw new Error('Property not found');
+      throw new Error("Property not found");
     }
-    
+
     return data.data as DetailedProperty;
+  }
+
+  static async addPropertyToFavorites(uuid: string) {
+    const SERVER_URL = process.env.SERVER_URL;
+    const HARD_KEY = String(process.env.HARD_KEY);
+    const url = `${SERVER_URL}/api/properties/${uuid}/favorite`;
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-HARD-KEY": HARD_KEY,
+        Accept: "application/json",
+      },
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      console.error(
+        new Error(
+          `PropertyService.addPropertyToFavorites: ${JSON.stringify(errorData)}`,
+        ),
+      );
+      throw new Error(
+        `Failed to add property to favorites: ${response.status}`,
+      );
+    }
+
+    return await response.json();
+  }
+
+  static async removePropertyFromFavorites(uuid: string) {
+    const SERVER_URL = process.env.SERVER_URL;
+    const HARD_KEY = String(process.env.HARD_KEY);
+    const url = `${SERVER_URL}/api/properties/${uuid}/favorite`;
+    const response = await fetch(url, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        "X-HARD-KEY": HARD_KEY,
+        Accept: "application/json",
+      },
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      console.error(
+        new Error(
+          `PropertyService.removePropertyFromFavorites: ${JSON.stringify(errorData)}`,
+        ),
+      );
+      throw new Error(
+        `Failed to remove property from favorites: ${response.status}`,
+      );
+    }
+
+    return await response.json();
   }
 }

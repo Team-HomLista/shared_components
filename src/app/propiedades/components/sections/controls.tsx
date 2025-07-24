@@ -6,15 +6,15 @@ import {
   FormField,
   FormItem,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+} from "@shared/components/ui/form";
+import { Input } from "@shared/components/ui/input";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from "@shared/components/ui/select";
 import { controlsSchema } from "../Schema";
 import { BuildingType } from "@/types/enums/building-type";
 import { TransactionType } from "@/types/enums/transaction-type";
@@ -22,7 +22,7 @@ import { ArrowUpDown, Search } from "lucide-react";
 import { Filters } from "./filters";
 import { UseFormReturn } from "react-hook-form";
 import { z } from "zod";
-import { Button } from "@/components/ui/button";
+import { Button } from "@shared/components/ui/button";
 import { BreadcrumbPagination } from "@/components/breadcrumb-index";
 
 export interface ControlsSectionProps {
@@ -65,7 +65,6 @@ export const ControlsSection: FC<ControlsSectionProps> = ({
                       <FormControl>
                         <Input
                           placeholder="Buscar por palabras clave"
-                          className="border-secondary w-full border-2"
                           {...field}
                         />
                       </FormControl>
@@ -141,7 +140,7 @@ export const ControlsSection: FC<ControlsSectionProps> = ({
                     </FormItem>
                   )}
                 />
-                <Button className="font-normal" type="button">
+                <Button className="font-normal" variant="outline" type="button">
                   <ArrowUpDown className="mr-1 size-5!" />
                   Ordenar por <span className="font-bold">Relevancia</span>
                 </Button>
@@ -166,7 +165,6 @@ export const ControlsSection: FC<ControlsSectionProps> = ({
                     <FormControl>
                       <Input
                         placeholder="Buscar por palabras clave"
-                        className="border-secondary w-full border-2"
                         {...field}
                       />
                     </FormControl>
@@ -192,11 +190,11 @@ export const ControlsSection: FC<ControlsSectionProps> = ({
             </div>
           </form>
         </Form>
-        <div className="border-secondary flex w-full border"></div>
+        <div className="border-primary flex w-full border"></div>
 
         {/* Mobile sorting button - appears below divider */}
         <div className="flex justify-end md:hidden">
-          <Button variant="ghost" className="font-normal" type="button">
+          <Button variant="outline" className="font-normal" type="button">
             <ArrowUpDown className="mr-1 size-5!" />
             Ordenar por <span className="font-bold">Relevancia</span>
           </Button>

@@ -9,6 +9,7 @@ import {
 } from "./information";
 import Link from "next/link";
 import { LikeButton } from "@/components/like-button";
+import { Card, CardContent, CardHeader } from "@shared/components/ui/card";
 
 export interface PropertyCardItemProps
   extends Pick<PropertyCardTagProps, "tag"> {
@@ -37,7 +38,8 @@ export const PropertyCardItem: FC<PropertyCardItemProps> = ({
 }) => {
   const [isLiked, setIsLiked] = useState(false);
 
-  const handleLike = () => {
+  const handleLike = (e: any) => {
+    e.preventDefault();
     setIsLiked((prev) => !prev);
     onClickLike(0, !isLiked);
   };
@@ -45,33 +47,39 @@ export const PropertyCardItem: FC<PropertyCardItemProps> = ({
   const redirect = `/propiedades/${slug}`;
 
   return (
-    <div className="hover:bg-secondary/20 h-full w-full max-w-[360px] min-w-[260px] rounded-2xl p-2 transition-all duration-200 select-none sm:min-w-[280px]">
-      <div className="relative flex h-[240px] w-full flex-col justify-between">
-        <Link
-          className="absolute inset-0 cursor-pointer rounded-2xl"
-          href={redirect}
-        >
-          <Image
-            src={image}
-            alt=""
-            layout="fill"
-            objectFit="cover"
-            className="z-0 rounded-2xl"
-          />
-        </Link>
-        <div className="relative flex w-full items-center justify-between p-2">
-          <PropertyCardTag tag={tag} />
-          <LikeButton
-            isLiked={isLiked}
-            onClick={handleLike}
-            className="h-7 w-7"
-          />
-        </div>
-        <PropertyCardBanner {...banner} />
-      </div>
-      <Link className="w-full cursor-pointer" href={redirect}>
-        <PropertyCardInformation {...information} />
-      </Link>
-    </div>
+    <Link href={redirect}>
+      <Card className="gap-4 py-4">
+        <CardHeader className="flex w-full flex-col justify-between px-4">
+          <div className="relative aspect-square h-full w-full overflow-hidden rounded-2xl">
+            <Image
+              src={image}
+              alt=""
+              layout="fill"
+              className="rounded-none"
+              objectFit="cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent">
+              <div className="absolute top-2 left-2">
+                <PropertyCardTag tag={tag} />
+              </div>
+              <div className="absolute top-2 right-2">
+                {/* <LikeButton
+                  isLiked={isLiked}
+                  onClick={handleLike}
+                  className="h-7 w-7"
+                /> */}
+              </div>
+              <div className="absolute right-0 bottom-0 left-0">
+                <PropertyCardBanner {...banner} />
+              </div>
+            </div>
+          </div>
+        </CardHeader>
+
+        <CardContent className="px-4">
+          <PropertyCardInformation {...information} />
+        </CardContent>
+      </Card>
+    </Link>
   );
 };

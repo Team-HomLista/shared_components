@@ -6,7 +6,7 @@ import {
   CarouselItem,
   CarouselPrevious,
   CarouselNext,
-} from "@/components/ui/carousel";
+} from "@shared/components/ui/carousel";
 import { PropertyCardItem, PropertyCardItemProps } from "../property-card";
 
 export interface PropertyCarouselProps
@@ -27,11 +27,11 @@ export const PropertyCarousel: FC<PropertyCarouselProps> = ({
       <Carousel className="w-full" opts={{ align: "center", loop: true }}>
         <div className="flex w-full items-center gap-2 sm:gap-4">
           <CarouselPrevious className="static size-8 flex-shrink-0 translate-x-0 translate-y-0" />
-          <CarouselContent className="-ml-2 min-w-0 flex-1 sm:-ml-4">
+          <CarouselContent className="min-w-0 flex-1 px-4">
             {items.map((item, index) => (
               <CarouselItem
                 key={index}
-                className="basis-full pl-2 sm:pl-4 md:basis-1/2 lg:basis-1/3"
+                className="basis-full md:basis-1/2 lg:basis-1/3 xl:basis-1/4"
               >
                 <div className="flex justify-center">
                   <PropertyCardItem {...item} onClickLike={onClickLike} />
