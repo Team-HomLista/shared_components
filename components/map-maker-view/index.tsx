@@ -37,13 +37,11 @@ export function MapMarkerView({ markers }: FormLocationProps) {
       <Map
         mapId="MapWithMarker"
         className="aspect-[21/9] w-full overflow-hidden rounded-sm"
-        zoom={DEFAULT_ZOOM}
-        center={centerPosition}
         gestureHandling="greedy"
-        disableDefaultUI
+        center={centerPosition}
       >
         {markers?.map((marker) => (
-          <AdvancedMarker draggable position={marker.position} />
+          <AdvancedMarker position={marker.position} />
         ))}
       </Map>
     </div>
