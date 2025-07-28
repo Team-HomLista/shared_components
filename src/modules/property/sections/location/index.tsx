@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { NearbyItem } from "@/modules/property/sections/location/nearby-item";
 import { NearbyLocation } from "@/utils/location-utils";
-import { MapMarkerView } from "@shared/components/map-maker-view";
+import { MapMarkerView } from "@/shared/components/map-marker-view";
 
 export interface LocationNearbyProps {
   locationInfo: {
