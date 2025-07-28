@@ -1,9 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import type { Metadata, Viewport } from "next";
-import { Fingerprinting } from "./fingerprinting";
 import { Footer } from "@/components/footer/footer";
-import { useFingerprinting } from "@/hooks/useFingerprinting";
 import { ClientSide } from "./client-side";
 
 const inter = Inter({
