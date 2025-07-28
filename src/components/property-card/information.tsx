@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Text } from "@shared/components/ui/text";
-import { formatPrice } from "@/app/utils/price-formatter";
+import { formatPrice } from "@/utils/price-formatter";
 import { PropertyCardLandDetail } from "@/components/property-card/land-detail";
 import { BathIcon, BedIcon, CarIcon, RulerIcon } from "lucide-react";
 

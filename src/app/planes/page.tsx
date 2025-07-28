@@ -1,4 +1,4 @@
-import { SubscriptionPageContainer } from "./components/container";
+import { SubscriptionPageContainer } from "@/modules/subscriptions/container";
 
 export default function SuscriptionPage() {
   return <SubscriptionPageContainer />;

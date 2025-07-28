@@ -1,7 +1,7 @@
-import { PropertyService } from "@/app/services/property";
-import { PropertyDetailContainer } from "./container";
+import { getPropertyDetails, getFeaturedProperties } from "@/services/property";
+import { PropertyDetailContainer } from "@/modules/property/container";
 import { notFound } from "next/navigation";
-import { ErrorBoundary } from "@/app/components/ErrorBoundary";
+import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { Metadata } from "next";
 
 interface PageProps {
@@ -15,7 +15,7 @@ export async function generateMetadata({
   const { slug } = await params;
 
   try {
-    const property = await PropertyService.getPropertyDetails(slug);
+    const property = await getPropertyDetails(slug);
     return {
       title: `${property.title} - Propiedades`,
       description:
@@ -42,11 +42,15 @@ export default async function DetailedPropertiesPage({ params }: PageProps) {
 
   try {
     const [property, featuredProperties] = await Promise.all([
-      PropertyService.getPropertyDetails(slug),
-      PropertyService.getFeaturedProperties(10),
+      getPropertyDetails(slug),
+      getFeaturedProperties(10),
     ]);
     return (
-      <ErrorBoundary>
+      <ErrorBoundary
+        description={`No pudimos cargar los detalles de la propiedad. Esto puede
+                  deberse a un problema de conexión o la propiedad ya no está
+                  disponible.`}
+      >
         <PropertyDetailContainer
           property={property}
           propertyCarrusel={featuredProperties}

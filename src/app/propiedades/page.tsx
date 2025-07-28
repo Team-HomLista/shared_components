@@ -1,7 +1,7 @@
-import { FilterService } from "../services/filter";
-import { PropertyService } from "../services/property";
-import { cleanQueries } from "../utils/clean-queries";
-import { PropertiesSearchContainer } from "./components/container";
+import { FilterService } from "@/services/filter";
+import { getPropertiesBySearch } from "@/services/property";
+import { cleanQueries } from "@/utils/clean-queries";
+import { PropertiesSearchContainer } from "@/modules/properties/container";
 
 export default async function PropertiesPage({
   searchParams,
@@ -12,7 +12,7 @@ export default async function PropertiesPage({
     const queries = cleanQueries(await searchParams);
 
     const [paginated, filters] = await Promise.all([
-      PropertyService.getPropertiesBySearch(queries),
+      getPropertiesBySearch(queries),
       FilterService.getFilterOptions(),
     ]);
 
