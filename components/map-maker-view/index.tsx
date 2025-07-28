@@ -1,4 +1,4 @@
-import { AdvancedMarker, Map } from "@vis.gl/react-google-maps";
+import { AdvancedMarker, Map, APIProvider } from "@vis.gl/react-google-maps";
 import { useMemo } from "react";
 
 type LanLng = { lat: number; lng: number };
@@ -7,13 +7,14 @@ type MarkerType = {
 };
 
 export interface FormLocationProps {
+  apiKey: string;
   markers?: MarkerType[];
 }
 
 const DEFAULT_CENTER: LanLng = { lat: 19.432608, lng: -99.133209 };
 const DEFAULT_ZOOM = 15;
 
-export function MapMarkerView({ markers }: FormLocationProps) {
+export function MapMarkerView({ apiKey, markers }: FormLocationProps) {
   const centerPosition = useMemo(() => {
     const sumPosition =
       markers?.reduce(
@@ -34,17 +35,19 @@ export function MapMarkerView({ markers }: FormLocationProps) {
 
   return (
     <div className="flex w-full flex-1 flex-col gap-2 self-center">
-      <Map
-        mapId="MapWithMarker"
-        className="aspect-[21/9] w-full overflow-hidden rounded-sm"
-        gestureHandling="greedy"
-        defaultCenter={centerPosition}
-        defaultZoom={DEFAULT_ZOOM}
-      >
-        {markers?.map((marker) => (
-          <AdvancedMarker position={marker.position} />
-        ))}
-      </Map>
+      <APIProvider apiKey={apiKey}>
+        <Map
+          mapId="MapWithMarker"
+          className="aspect-[21/9] w-full overflow-hidden rounded-sm"
+          gestureHandling="greedy"
+          defaultCenter={centerPosition}
+          defaultZoom={DEFAULT_ZOOM}
+        >
+          {markers?.map((marker, index) => (
+            <AdvancedMarker key={index} position={marker.position} />
+          ))}
+        </Map>
+      </APIProvider>
     </div>
   );
 }
