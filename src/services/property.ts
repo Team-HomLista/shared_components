@@ -26,7 +26,6 @@ export async function getFeaturedProperties(limit?: number) {
     return data;
   } catch (error) {
     console.error(error);
-    return null;
   }
 }
 

@@ -73,7 +73,7 @@ export const LeadForm = ({
 
   async function getAllStates() {
     const states = await getStates();
-    setStates(states);
+    setStates(states ?? []);
   }
 
   async function getAllCities() {
