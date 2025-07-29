@@ -2,8 +2,6 @@
 import { Paginated } from "@/types/paginated";
 import { DetailedProperty, Property } from "@/types/property";
 import { PropertyQueryParams } from "@/types/property-query-params";
-import { getIdentifyToken, getSession } from "./session";
-import { headers } from "next/headers";
 import { fetchServer, getResponseData } from "@/lib/http-server";
 
 export async function getPropertiesBySearch(params?: PropertyQueryParams) {
@@ -12,26 +10,30 @@ export async function getPropertiesBySearch(params?: PropertyQueryParams) {
 }
 
 export async function getFeaturedProperties(limit?: number) {
-  const response = await fetchServer("/api/properties/featured", {
-    params: {
-      limit,
-    },
-  });
+  try {
+    const response = await fetchServer("/api/properties/featured", {
+      params: {
+        limit,
+      },
+    });
 
-  const data = await getResponseData<Array<Property>>(response);
+    const { data } = await getResponseData<Paginated<Property>>(response);
 
-  console.log({ data });
+    if (limit !== undefined && data.length > limit) {
+      return data.slice(0, limit);
+    }
 
-  if (limit !== undefined && data.length > limit) {
-    return data.slice(0, limit);
+    return data;
+  } catch (error) {
+    console.error(error);
+    return null;
   }
-
-  return data;
 }
 
 export async function getPropertyDetails(slug: string) {
   const response = await fetchServer(`/api/properties/${slug}`);
-  return getResponseData<DetailedProperty>(response);
+  const { data } = await getResponseData<{ data: DetailedProperty }>(response);
+  return data;
 }
 
 export async function addPropertyToFavorites(uuid: string) {

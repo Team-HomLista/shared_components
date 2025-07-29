@@ -29,8 +29,8 @@ export const LocationNearby: FC<LocationNearbyProps> = ({
               locationInfo && [
                 {
                   position: {
-                    lat: locationInfo.latitude as number,
-                    lng: locationInfo.longitude as number,
+                    lat: Number(locationInfo?.latitude ?? 0),
+                    lng: Number(locationInfo?.longitude ?? 0),
                   },
                 },
               ]

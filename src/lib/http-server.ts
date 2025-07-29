@@ -2,8 +2,6 @@
 import { getIdentifyToken } from "@/services/session";
 import { headers as clientHeaders } from "next/headers";
 
-const BASE_URL = process.env.SERVER_URL;
-
 type config = RequestInit & {
   params?: any;
   withIdentifyToken?: boolean;
@@ -20,7 +18,7 @@ export async function fetchServer(
   }: config = {},
 ) {
   try {
-    const url = new URL(`${BASE_URL}${path}`);
+    const url = new URL(`${process.env.SERVER_URL}${path}`);
 
     if (params) {
       Object.keys(params).forEach((key) =>
@@ -30,7 +28,7 @@ export async function fetchServer(
 
     const headers = await getHeaders(withIdentifyToken, headerInt);
 
-    return fetch(url.toString(), {
+    return await fetch(url.toString(), {
       method,
       headers,
       ...config,
@@ -49,7 +47,7 @@ export async function getResponseData<T>(response: Response): Promise<T> {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
-    return responseData.data as T;
+    return responseData as T;
   } catch (error) {
     throw new Error(`Error parsing JSON: ${error}`);
   }
