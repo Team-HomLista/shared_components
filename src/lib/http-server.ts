@@ -67,23 +67,16 @@ async function getHeaders(
 
   if (withIdentifyToken) {
     const headerList = await clientHeaders();
-    const headersReq: RequestHeaders = {};
-    headerList.forEach((value, key) => {
-      headersReq[key] = value;
-    });
-    const clientIp = requestIp.getClientIp({
-      headers: headersReq,
-    });
-
+    /// TODO: Obtener la ip real del cliente.
+    /// NOTA: Debido a que usamos proxy nginx no podemos obtener la ip real del cliente directamente.
+    const realIp = headerList.get("x-real-ip");
+    const forwardedFor = headerList.get("x-forwarded-for");
     const userAgent = headerList.get("user-agent");
     const IDENTIFY_TOKEN = (await getIdentifyToken()) ?? "";
 
-    const realIp = headerList.get("x-real-ip");
-    const forwardedFor = headerList.get("x-forwarded-for");
-
     headers = {
-      "x-real-ip": clientIp ?? "",
-      "x-forwarded-for": clientIp ?? "",
+      "x-real-ip": realIp ?? "",
+      "x-forwarded-for": forwardedFor ?? "",
       "user-agent": userAgent ?? "",
       "X-IDENTIFY-TOKEN": IDENTIFY_TOKEN,
       ...headers,
