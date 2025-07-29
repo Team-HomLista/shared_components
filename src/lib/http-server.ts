@@ -1,6 +1,7 @@
 "use server";
 import { getIdentifyToken } from "@/services/session";
 import { headers as clientHeaders } from "next/headers";
+import requestIp, { RequestHeaders } from "request-ip";
 
 type config = RequestInit & {
   params?: any;
@@ -65,13 +66,19 @@ async function getHeaders(
   };
 
   if (withIdentifyToken) {
+    const headerList = await clientHeaders();
+    const headersReq: RequestHeaders = {};
+    headerList.forEach((value, key) => {
+      headersReq[key] = value;
+    });
+    const clientIp = requestIp.getClientIp({
+      headers: headersReq,
+    });
+    const userAgent = headerList.get("user-agent");
     const IDENTIFY_TOKEN = (await getIdentifyToken()) ?? "";
-    const clientHeadersReq = await clientHeaders();
-    const forwardedFor = clientHeadersReq.get("x-forwarded-for");
-    const userAgent = clientHeadersReq.get("user-agent");
 
     headers = {
-      "x-forwarded-for": forwardedFor ?? "",
+      "x-forwarded-for": clientIp ?? "",
       "user-agent": userAgent ?? "",
       "X-IDENTIFY-TOKEN": IDENTIFY_TOKEN,
       ...headers,
