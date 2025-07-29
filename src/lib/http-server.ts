@@ -74,10 +74,22 @@ async function getHeaders(
     const clientIp = requestIp.getClientIp({
       headers: headersReq,
     });
+
     const userAgent = headerList.get("user-agent");
     const IDENTIFY_TOKEN = (await getIdentifyToken()) ?? "";
 
+    const realIp = headerList.get("x-real-ip");
+    const forwardedFor = headerList.get("x-forwarded-for");
+
+    console.log({
+      clientIp,
+      realIp,
+      forwardedFor,
+      headersReq,
+    });
+
     headers = {
+      "x-real-ip": clientIp ?? "",
       "x-forwarded-for": clientIp ?? "",
       "user-agent": userAgent ?? "",
       "X-IDENTIFY-TOKEN": IDENTIFY_TOKEN,
