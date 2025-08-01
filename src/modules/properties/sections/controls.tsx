@@ -28,6 +28,7 @@ import { BreadcrumbPagination } from "@/components/breadcrumb-index";
 export interface ControlsSectionProps {
   form: UseFormReturn<z.infer<typeof controlsSchema>>;
   onFormSubmit: (data: z.infer<typeof controlsSchema>) => void;
+  onClearFilters: () => void;
   stateOptions: { value: string; label: string }[];
   cityOptions: { value: string; label: string }[];
   neighborhoodOptions: { value: string; label: string }[];
@@ -36,6 +37,7 @@ export interface ControlsSectionProps {
 export const ControlsSection: FC<ControlsSectionProps> = ({
   form,
   onFormSubmit,
+  onClearFilters,
   stateOptions,
   cityOptions,
   neighborhoodOptions,
@@ -151,6 +153,9 @@ export const ControlsSection: FC<ControlsSectionProps> = ({
                   neighborhoodOptions={neighborhoodOptions}
                   onSubmit={onSubmit}
                 />
+                <Button onClick={onClearFilters} type="button">
+                  Limpiar filtros
+                </Button>
               </div>
             </div>
 
@@ -186,6 +191,9 @@ export const ControlsSection: FC<ControlsSectionProps> = ({
                   neighborhoodOptions={neighborhoodOptions}
                   onSubmit={onSubmit}
                 />
+                <Button onClick={onClearFilters} type="button">
+                  Limpiar filtros
+                </Button>
               </div>
             </div>
           </form>

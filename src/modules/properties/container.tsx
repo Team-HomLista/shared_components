@@ -121,12 +121,18 @@ export const PropertiesSearchContainer: FC<PropertiesSearchContainerProps> = ({
     router.push(`/propiedades?${params}`);
   };
 
+  const handleClearFilters = () => {
+    form.reset();
+    router.push("/propiedades");
+  };
+
   return (
     <>
       <Navbar variant="default" />
       <ControlsSection
         form={form}
         onFormSubmit={handleFormSubmit}
+        onClearFilters={handleClearFilters}
         stateOptions={stateOptions}
         cityOptions={cityOptions}
         neighborhoodOptions={neighborhoodOptions}
