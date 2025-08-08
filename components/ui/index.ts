@@ -40,4 +40,7 @@ export * from "./skeleton";
 export * from "./slider";
 export * from "./sonner";
 export * from "./tabs";
+export * from "./tag";
+export * from "./textarea";
+export * from "./toggle";
 export * from "./tooltip";
