@@ -1,5 +1,4 @@
 import {
-  Button,
   Dialog,
   DialogContent,
   DialogDescription,
@@ -7,17 +6,29 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@shared/components/ui";
-import { createContext, useContext, useMemo, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
+/**
+ * Represents the state of a dialog component
+ */
 type DialogState = {
+  /** Controls dialog visibility */
   isOpen: boolean;
+  /** Controls dialog visibility */
   showCloseButton?: boolean;
+  /** Dialog title text */
   title?: string;
+  /** Dialog description text */
   description?: string;
+  /** Custom React content to display in dialog body */
   content?: React.ReactNode;
+  /** Custom React content to display in dialog footer */
   footer?: React.ReactNode;
 };
 
+/**
+ * Context for managing dialog state across components
+ */
 export const DialogContext = createContext<{
   state: DialogState;
   setState: React.Dispatch<React.SetStateAction<DialogState>>;
@@ -28,6 +39,10 @@ export const DialogContext = createContext<{
   setState: () => {},
 });
 
+/**
+ * Provider component that wraps your application to enable dialog functionality
+ * @param children - Child components that will have access to the dialog
+ */
 export const DialogProvider = ({ children }: { children: React.ReactNode }) => {
   const [dialogState, setDialogState] = useState<DialogState>({
     isOpen: false,
@@ -70,36 +85,51 @@ export const DialogProvider = ({ children }: { children: React.ReactNode }) => {
 type UseDialogProps = Omit<DialogState, "isOpen">;
 
 /**
- * Hook to manage dialog state
+ * Custom hook for showing and closing dialogs
  *
- * @param {UseDialogProps} { title, description, content, footer }
- * @returns {
- *  showDialog: (state?: UseDialogProps) => void;
- *  closeDialog: () => void;
- * }
+ * @param initialProps - Default dialog properties (optional)
+ * @returns { showDialog, closeDialog } - Functions to control the dialog
  *
- * @example
- * // Define dialog with initial state
- * const { showDialog, closeDialog } = useDialog({
- *  title: "test",
- *  description: "test",
- *  content: <div>test</div>,
- *  footer: <div>test</div>,
- *  showCloseButton: true,
- * });
- * // To show dialog
- * showDialog();
- * // To close dialog
- * closeDialog();
- * // To show dialog with custom state
+ * Basic usage:
+ * ```tsx
+ * const { showDialog, closeDialog } = useDialog();
+ *
+ * // Show dialog with basic content
  * showDialog({
- *  title: "test",
- *  description: "test",
- *  content: <div>test</div>,
- *  footer: <div>test</div>,
- *  showCloseButton: true,
+ *   title: "Notification",
+ *   description: "Operation completed successfully!"
  * });
  *
+ * // Show complex dialog
+ * showDialog({
+ *   title: "Delete Item",
+ *   description: "This action cannot be undone",
+ *   content: <ItemPreview item={selectedItem} />,
+ *   footer: (
+ *     <>
+ *       <Button onClick={closeDialog}>Cancel</Button>
+ *       <Button variant="destructive" onClick={handleDelete}>
+ *         Delete
+ *       </Button>
+ *     </>
+ *   ),
+ *   showCloseButton: false
+ * });
+ * ```
+ *
+ * Pre-configured dialog example:
+ * ```tsx
+ * const confirmDialog = useDialog({
+ *   title: "Confirmation",
+ *   showCloseButton: true
+ * });
+ *
+ * // Then use with custom content:
+ * confirmDialog.showDialog({
+ *   description: "Are you sure?",
+ *   content: <p>This will delete all your data</p>
+ * });
+ * ```
  */
 export const useDialog = (initialProps: UseDialogProps = {}) => {
   const { setState: setDialogContextState } = useContext(DialogContext);
@@ -114,92 +144,6 @@ export const useDialog = (initialProps: UseDialogProps = {}) => {
 
   return {
     showDialog,
-    closeDialog,
-  };
-};
-
-type UseConfirmDialogProps = {
-  confirmText?: string;
-  cancelText?: string;
-  confirmBtnProps?: React.ComponentProps<typeof Button>;
-  cancelBtnProps?: React.ComponentProps<typeof Button>;
-  onConfirm: () => void;
-  onCancel?: () => void;
-} & Omit<DialogState, "isOpen" | "footer">;
-
-/**
- * Hook to show a confirm dialog
- * @param {UseConfirmDialogProps} props
- * @returns {showDialog: (state?: UseDialogProps) => void, closeDialog: () => void}
- * @example
- * // Define dialog with initial state
- * const { showDialog, closeDialog } = useConfirmDialog({
- *  title: "Confirmar",
- *  description: "¿Deseas realmente excluir este item?",
- *  onConfirm: () => console.log("Confirmado"),
- *  onCancel: () => console.log("Cancelado"),
- * });
- * // Show dialog
- * showDialog();
- * // Close dialog
- * closeDialog();
- * // Show dialog with custom state
- * showDialog({
- *  title: "Confirmar",
- *  description: "¿Deseas realmente excluir este item?",
- * });
- *
- */
-export const useConfirmDialog = ({
-  confirmText,
-  cancelText,
-  confirmBtnProps,
-  cancelBtnProps,
-  onConfirm,
-  onCancel,
-  ...initialProps
-}: UseConfirmDialogProps) => {
-  const { showDialog, closeDialog } = useDialog(initialProps);
-
-  const footer = useMemo(() => {
-    const handleConfirm = () => {
-      onConfirm();
-      closeDialog();
-    };
-
-    const handleCancel = () => {
-      onCancel?.();
-      closeDialog();
-    };
-
-    return (
-      <>
-        <Button variant="outline" {...cancelBtnProps} onClick={handleCancel}>
-          {cancelText ?? "Cancelar"}
-        </Button>
-        <Button {...confirmBtnProps} onClick={handleConfirm}>
-          {confirmText ?? "Confirmar"}
-        </Button>
-      </>
-    );
-  }, [
-    confirmText,
-    cancelText,
-    confirmBtnProps,
-    cancelBtnProps,
-    onConfirm,
-    onCancel,
-  ]);
-
-  const showConfirmDialog = (props: Partial<UseConfirmDialogProps> = {}) => {
-    showDialog({
-      ...props,
-      footer,
-    });
-  };
-
-  return {
-    showDialog: showConfirmDialog,
     closeDialog,
   };
 };
