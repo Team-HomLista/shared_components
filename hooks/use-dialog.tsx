@@ -6,7 +6,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@shared/components/ui";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 /**
  * Represents the state of a dialog component
@@ -14,12 +14,14 @@ import { createContext, useContext, useState } from "react";
 type DialogState = {
   /** Controls dialog visibility */
   isOpen: boolean;
-  /** Controls dialog visibility */
+  /** show close button */
   showCloseButton?: boolean;
+  /** Prevent closing dialog when clicking outside of it */
+  preventCloseOnOutsideClick?: boolean;
   /** Dialog title text */
-  title?: string;
+  title?: React.ReactNode;
   /** Dialog description text */
-  description?: string;
+  description?: React.ReactNode;
   /** Custom React content to display in dialog body */
   content?: React.ReactNode;
   /** Custom React content to display in dialog footer */
@@ -48,8 +50,15 @@ export const DialogProvider = ({ children }: { children: React.ReactNode }) => {
     isOpen: false,
   });
 
-  const { isOpen, showCloseButton, title, description, content, footer } =
-    dialogState;
+  const {
+    isOpen,
+    showCloseButton,
+    title,
+    description,
+    content,
+    footer,
+    preventCloseOnOutsideClick,
+  } = dialogState;
 
   const handleOpenChange = (isOpen: boolean) => {
     setDialogState((prev) => ({
@@ -63,7 +72,16 @@ export const DialogProvider = ({ children }: { children: React.ReactNode }) => {
       value={{ state: dialogState, setState: setDialogState }}
     >
       <Dialog open={isOpen} onOpenChange={handleOpenChange}>
-        <DialogContent showCloseButton={showCloseButton}>
+        <DialogContent
+          showCloseButton={showCloseButton}
+          {...(preventCloseOnOutsideClick
+            ? {
+                onEscapeKeyDown: (e) => e.preventDefault(),
+                onPointerDownOutside: (e) => e.preventDefault(),
+                onInteractOutside: (e) => e.preventDefault(),
+              }
+            : {})}
+        >
           <DialogHeader>
             {title && <DialogTitle>{title}</DialogTitle>}
             {description && (
@@ -82,7 +100,9 @@ export const DialogProvider = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-type UseDialogProps = Omit<DialogState, "isOpen">;
+type UseDialogProps = Omit<DialogState, "isOpen"> & {
+  onClose?: () => void;
+};
 
 /**
  * Custom hook for showing and closing dialogs
@@ -131,8 +151,11 @@ type UseDialogProps = Omit<DialogState, "isOpen">;
  * });
  * ```
  */
-export const useDialog = (initialProps: UseDialogProps = {}) => {
-  const { setState: setDialogContextState } = useContext(DialogContext);
+export const useDialog = ({
+  onClose,
+  ...initialProps
+}: UseDialogProps = {}) => {
+  const { state, setState: setDialogContextState } = useContext(DialogContext);
 
   function showDialog(state: UseDialogProps = {}) {
     setDialogContextState({ ...initialProps, ...state, isOpen: true });
@@ -141,6 +164,12 @@ export const useDialog = (initialProps: UseDialogProps = {}) => {
   function closeDialog() {
     setDialogContextState((prev) => ({ ...prev, isOpen: false }));
   }
+
+  useEffect(() => {
+    if (!state.isOpen) {
+      onClose?.();
+    }
+  }, [state.isOpen]);
 
   return {
     showDialog,

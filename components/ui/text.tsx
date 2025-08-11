@@ -13,10 +13,10 @@ export const textVariants = cva(cn(""), {
       default: cn("text-muted-foreground text-sm font-normal"),
       /** Should be used for titles in layout sections inside a module or
        * inside body content interfaces. */
-      title: cn("text-foreground text-2xl font-semibold"),
+      title: cn("text-2xl font-semibold"),
       /** Should be used for subtitles in layout sections inside a module or
        * inside body content interfaces. */
-      subtitle: cn(""),
+      subtitle: cn("text-lg font-medium"),
       /** Should be used for any descriptive text. */
       description: cn("text-muted-foreground text-sm font-normal"),
       /** Should be used for sections in body content interfaces like forms. */

@@ -19,9 +19,9 @@ type AlertDialogState = {
   /** Controls dialog visibility */
   isOpen: boolean;
   /** Dialog title text */
-  title?: string;
+  title?: React.ReactNode;
   /** Dialog description text */
-  description?: string;
+  description?: React.ReactNode;
   /** Custom React content to display in dialog body */
   content?: React.ReactNode;
   /** Confirm button text (default: "Confirmar") */
