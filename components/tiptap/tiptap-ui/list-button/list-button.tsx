@@ -1,22 +1,14 @@
 "use client";
 
-import { isNodeSelection, type Editor } from "@tiptap/react";
-import * as React from "react";
-
-// --- Hooks ---
-import { useTiptapEditor } from "@shared/hooks/use-tiptap-editor";
-
-// --- Icons ---
 import { ListIcon } from "@shared/components/tiptap/tiptap-icons/list-icon";
 import { ListOrderedIcon } from "@shared/components/tiptap/tiptap-icons/list-ordered-icon";
 import { ListTodoIcon } from "@shared/components/tiptap/tiptap-icons/list-todo-icon";
-
-// --- Lib ---
-import { isNodeInSchema } from "@shared/lib/tiptap-utils";
-
-// --- UI Primitives ---
 import type { ButtonProps } from "@shared/components/tiptap/tiptap-ui-primitive/button";
 import { Button } from "@shared/components/tiptap/tiptap-ui-primitive/button";
+import { useTiptapEditor } from "@shared/hooks/use-tiptap-editor";
+import { isNodeInSchema } from "@shared/lib/tiptap-utils";
+import { isNodeSelection, type Editor } from "@tiptap/react";
+import * as React from "react";
 
 export type ListType = "bulletList" | "orderedList" | "taskList";
 
@@ -50,24 +42,24 @@ export const listOptions: ListOption[] = [
   {
     label: "Bullet List",
     type: "bulletList",
-    icon: ListIcon,
+    icon: ListIcon
   },
   {
     label: "Ordered List",
     type: "orderedList",
-    icon: ListOrderedIcon,
+    icon: ListOrderedIcon
   },
   {
     label: "Task List",
     type: "taskList",
-    icon: ListTodoIcon,
-  },
+    icon: ListTodoIcon
+  }
 ];
 
 export const listShortcutKeys: Record<ListType, string> = {
   bulletList: "Ctrl-Shift-8",
   orderedList: "Ctrl-Shift-7",
-  taskList: "Ctrl-Shift-9",
+  taskList: "Ctrl-Shift-9"
 };
 
 export function canToggleList(editor: Editor | null, type: ListType): boolean {
@@ -135,10 +127,7 @@ export function shouldShowListButton(params: {
   }
 
   if (hideWhenUnavailable) {
-    if (
-      isNodeSelection(editor.state.selection) ||
-      !canToggleList(editor, type)
-    ) {
+    if (isNodeSelection(editor.state.selection) || !canToggleList(editor, type)) {
       return false;
     }
   }
@@ -156,7 +145,7 @@ export function useListState(editor: Editor | null, type: ListType) {
     listInSchema,
     listOption,
     isActive,
-    shortcutKey,
+    shortcutKey
   };
 }
 
@@ -172,13 +161,10 @@ export const ListButton = React.forwardRef<HTMLButtonElement, ListButtonProps>(
       children,
       ...buttonProps
     },
-    ref,
+    ref
   ) => {
     const editor = useTiptapEditor(providedEditor);
-    const { listInSchema, listOption, isActive, shortcutKey } = useListState(
-      editor,
-      type,
-    );
+    const { listInSchema, listOption, isActive, shortcutKey } = useListState(editor, type);
 
     const Icon = listOption?.icon || ListIcon;
 
@@ -190,7 +176,7 @@ export const ListButton = React.forwardRef<HTMLButtonElement, ListButtonProps>(
           toggleList(editor, type);
         }
       },
-      [onClick, editor, type],
+      [onClick, editor, type]
     );
 
     const show = React.useMemo(() => {
@@ -198,7 +184,7 @@ export const ListButton = React.forwardRef<HTMLButtonElement, ListButtonProps>(
         editor,
         type,
         hideWhenUnavailable,
-        listInSchema,
+        listInSchema
       });
     }, [editor, type, hideWhenUnavailable, listInSchema]);
 
@@ -230,7 +216,7 @@ export const ListButton = React.forwardRef<HTMLButtonElement, ListButtonProps>(
         )}
       </Button>
     );
-  },
+  }
 );
 
 ListButton.displayName = "ListButton";

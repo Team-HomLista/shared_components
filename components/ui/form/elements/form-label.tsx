@@ -1,8 +1,7 @@
 import * as LabelPrimitive from "@radix-ui/react-label";
-
-import { cn } from "@shared/lib/utils";
 import { useFormField } from "@shared/components/ui/form/hooks/use-form-field";
 import { Label } from "@shared/components/ui/label";
+import { cn } from "@shared/lib/utils";
 
 export function FormLabel({
   className,

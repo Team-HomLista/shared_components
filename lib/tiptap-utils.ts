@@ -9,10 +9,7 @@ export const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
  * @param editor - The editor instance
  * @returns boolean indicating if the mark exists in the schema
  */
-export const isMarkInSchema = (
-  markName: string,
-  editor: Editor | null,
-): boolean => {
+export const isMarkInSchema = (markName: string, editor: Editor | null): boolean => {
   if (!editor?.schema) return false;
   return editor.schema.spec.marks.get(markName) !== undefined;
 };
@@ -23,10 +20,7 @@ export const isMarkInSchema = (
  * @param editor - The editor instance
  * @returns boolean indicating if the node exists in the schema
  */
-export const isNodeInSchema = (
-  nodeName: string,
-  editor: Editor | null,
-): boolean => {
+export const isNodeInSchema = (nodeName: string, editor: Editor | null): boolean => {
   if (!editor?.schema) return false;
   return editor.schema.spec.nodes.get(nodeName) !== undefined;
 };
@@ -38,10 +32,7 @@ export const isNodeInSchema = (
  * @param markName - The name of the mark to look for (e.g., "highlight", "link").
  * @returns The attributes of the active mark, or `null` if the mark is not active.
  */
-export function getActiveMarkAttrs(
-  editor: Editor | null,
-  markName: string,
-): Attrs | null {
+export function getActiveMarkAttrs(editor: Editor | null, markName: string): Attrs | null {
   if (!editor) return null;
   const { state } = editor;
   const marks = state.storedMarks || state.selection.$from.marks();
@@ -109,9 +100,7 @@ export function findNodePosition(props: {
     return true;
   });
 
-  return foundPos !== -1 && foundNode !== null
-    ? { pos: foundPos, node: foundNode }
-    : null;
+  return foundPos !== -1 && foundNode !== null ? { pos: foundPos, node: foundNode } : null;
 }
 
 /**
@@ -124,7 +113,7 @@ export function findNodePosition(props: {
 export const handleImageUpload = async (
   file: File,
   onProgress?: (event: { progress: number }) => void,
-  abortSignal?: AbortSignal,
+  abortSignal?: AbortSignal
 ): Promise<string> => {
   // Validate file
   if (!file) {
@@ -132,9 +121,7 @@ export const handleImageUpload = async (
   }
 
   if (file.size > MAX_FILE_SIZE) {
-    throw new Error(
-      `File size exceeds maximum allowed (${MAX_FILE_SIZE / (1024 * 1024)}MB)`,
-    );
+    throw new Error(`File size exceeds maximum allowed (${MAX_FILE_SIZE / (1024 * 1024)}MB)`);
   }
 
   // For demo/testing: Simulate upload progress
@@ -158,10 +145,7 @@ export const handleImageUpload = async (
  * @param abortSignal Optional AbortSignal for cancelling the conversion
  * @returns Promise resolving to the base64 representation of the file
  */
-export const convertFileToBase64 = (
-  file: File,
-  abortSignal?: AbortSignal,
-): Promise<string> => {
+export const convertFileToBase64 = (file: File, abortSignal?: AbortSignal): Promise<string> => {
   if (!file) {
     return Promise.reject(new Error("No file provided"));
   }
@@ -190,8 +174,7 @@ export const convertFileToBase64 = (
       }
     };
 
-    reader.onerror = (error) =>
-      reject(new Error(`File reading error: ${error}`));
+    reader.onerror = (error) => reject(new Error(`File reading error: ${error}`));
     reader.readAsDataURL(file);
   });
 };
@@ -219,10 +202,7 @@ const ATTR_WHITESPACE =
   // eslint-disable-next-line no-control-regex
   /[\u0000-\u0020\u00A0\u1680\u180E\u2000-\u2029\u205F\u3000]/g;
 
-export function isAllowedUri(
-  uri: string | undefined,
-  protocols?: ProtocolConfig,
-) {
+export function isAllowedUri(uri: string | undefined, protocols?: ProtocolConfig) {
   const allowedProtocols: string[] = [
     "http",
     "https",
@@ -233,13 +213,12 @@ export function isAllowedUri(
     "callto",
     "sms",
     "cid",
-    "xmpp",
+    "xmpp"
   ];
 
   if (protocols) {
     protocols.forEach((protocol) => {
-      const nextProtocol =
-        typeof protocol === "string" ? protocol : protocol.scheme;
+      const nextProtocol = typeof protocol === "string" ? protocol : protocol.scheme;
 
       if (nextProtocol) {
         allowedProtocols.push(nextProtocol);
@@ -249,21 +228,18 @@ export function isAllowedUri(
 
   return (
     !uri ||
-    uri.replace(ATTR_WHITESPACE, "").match(
-      new RegExp(
-        // eslint-disable-next-line no-useless-escape
-        `^(?:(?:${allowedProtocols.join("|")}):|[^a-z]|[a-z0-9+.\-]+(?:[^a-z+.\-:]|$))`,
-        "i",
-      ),
-    )
+    uri
+      .replace(ATTR_WHITESPACE, "")
+      .match(
+        new RegExp(
+          `^(?:(?:${allowedProtocols.join("|")}):|[^a-z]|[a-z0-9+.-]+(?:[^a-z+.-:]|$))`,
+          "i"
+        )
+      )
   );
 }
 
-export function sanitizeUrl(
-  inputUrl: string,
-  baseUrl: string,
-  protocols?: ProtocolConfig,
-): string {
+export function sanitizeUrl(inputUrl: string, baseUrl: string, protocols?: ProtocolConfig): string {
   try {
     const url = new URL(inputUrl, baseUrl);
 

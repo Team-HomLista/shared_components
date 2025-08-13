@@ -1,4 +1,3 @@
-import { cn } from "@shared/lib/utils";
 import { FormItem } from "@shared/components/ui/form/elements/fomr-item";
 import { FormControl } from "@shared/components/ui/form/elements/form-control";
 import { FormDescription } from "@shared/components/ui/form/elements/form-description";
@@ -6,6 +5,7 @@ import { FormField } from "@shared/components/ui/form/elements/form-field";
 import { FormLabel } from "@shared/components/ui/form/elements/form-label";
 import { FormMessage } from "@shared/components/ui/form/elements/form-message";
 import { Switch } from "@shared/components/ui/switch";
+import { cn } from "@shared/lib/utils";
 import { Control, FieldPath, FieldValues } from "react-hook-form";
 
 export interface FormSwitchProminentProps<TFieldValues extends FieldValues> {
@@ -19,7 +19,7 @@ export const FormSwitchProminent = <TFieldValues extends FieldValues>({
   control,
   description,
   label,
-  name,
+  name
 }: FormSwitchProminentProps<TFieldValues>) => {
   return (
     <FormField
@@ -34,10 +34,10 @@ export const FormSwitchProminent = <TFieldValues extends FieldValues>({
                   "order-1 h-6 w-10 after:absolute after:inset-0",
                   "[&_span]:size-5",
                   "data-[state=checked]:[&_span]:translate-x-[18px]",
-                  "data-[state=checked]:[&_span]:rtl:-translate-x-2",
+                  "data-[state=checked]:[&_span]:rtl:-translate-x-2"
                 )}
                 checked={field.value}
-                onCheckedChange={field.onChange}
+                onCheckedChange={(value) => field.onChange(value)}
                 onClick={() => field.onChange(!field.value)}
               />
               <div className="grid grow gap-2">

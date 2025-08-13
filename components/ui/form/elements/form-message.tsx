@@ -1,18 +1,11 @@
-import { cn } from "@shared/lib/utils";
 import { useFormField } from "@shared/components/ui/form/hooks/use-form-field";
+import { cn } from "@shared/lib/utils";
 import { useController } from "react-hook-form";
 
-export function DisplayErrorMessage({
-  className,
-  children,
-  ...props
-}: React.ComponentProps<"p">) {
+export function DisplayErrorMessage({ className, children, ...props }: React.ComponentProps<"p">) {
   return (
     <p
-      className={cn(
-        "text-destructive text-sm group-[.hide-error-message]:hidden",
-        className,
-      )}
+      className={cn("text-destructive text-sm group-[.hide-error-message]:hidden", className)}
       {...props}
     >
       {children}
@@ -30,11 +23,7 @@ export function ErrorMessage({ name, ...props }: ErrorMessageProps) {
     return null;
   }
 
-  return (
-    <DisplayErrorMessage {...props}>
-      {fieldState.error.message}
-    </DisplayErrorMessage>
-  );
+  return <DisplayErrorMessage {...props}>{fieldState.error.message}</DisplayErrorMessage>;
 }
 
 export function FormMessage(props: React.ComponentProps<"p">) {
@@ -56,10 +45,7 @@ interface FormMultiFormMessageProps extends React.ComponentProps<"p"> {
   names: string[];
 }
 
-export function FormMultiFormMessage({
-  names,
-  ...props
-}: FormMultiFormMessageProps) {
+export function FormMultiFormMessage({ names, ...props }: FormMultiFormMessageProps) {
   return (
     <div>
       {names.map((name) => (

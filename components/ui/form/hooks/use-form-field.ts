@@ -1,7 +1,4 @@
-import {
-  FormFieldContext,
-  FormItemContext,
-} from "@shared/components/ui/form/form-context";
+import { FormFieldContext, FormItemContext } from "@shared/components/ui/form/form-context";
 import { useContext } from "react";
 import { useFormContext, useFormState } from "react-hook-form";
 
@@ -24,6 +21,6 @@ export const useFormField = () => {
     formItemId: `${id}-form-item`,
     formDescriptionId: `${id}-form-item-description`,
     formMessageId: `${id}-form-item-message`,
-    ...fieldState,
+    ...fieldState
   };
 };

@@ -1,11 +1,9 @@
-import * as React from "react";
-
 import * as ProgressPrimitive from "@radix-ui/react-progress";
 import { Text } from "@shared/components/ui/text";
 import { cn } from "@shared/lib/utils";
+import * as React from "react";
 
-interface AdvancedProgressProps
-  extends React.ComponentProps<typeof ProgressPrimitive.Root> {
+interface AdvancedProgressProps extends React.ComponentProps<typeof ProgressPrimitive.Root> {
   text?: string;
 }
 
@@ -21,10 +19,7 @@ function AdvancedProgress({
   return (
     <ProgressPrimitive.Root
       data-slot="progress"
-      className={cn(
-        "bg-primary/20 relative h-5 w-full overflow-hidden rounded-full",
-        className,
-      )}
+      className={cn("bg-primary/20 relative h-5 w-full overflow-hidden rounded-full", className)}
       max={max}
       getValueLabel={getValueLabel}
       {...props}

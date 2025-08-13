@@ -12,7 +12,7 @@ import {
   SelectItem,
   SelectLabel,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 } from "@shared/components/ui/select";
 import { HTMLProps } from "react";
 import { Control, Controller, FieldPath, FieldValues } from "react-hook-form";
@@ -39,7 +39,7 @@ export const FormPhone = <TFieldValues extends FieldValues>({
   control,
   description,
   fields,
-  title,
+  title
 }: FormPhoneProps<TFieldValues>) => {
   return (
     <FormField
@@ -80,11 +80,7 @@ export const FormPhone = <TFieldValues extends FieldValues>({
                 control={control}
                 name={fields.extension.name}
                 render={({ field }) => (
-                  <Input
-                    className="w-[150px] flex-none"
-                    {...fields.extension}
-                    {...field}
-                  />
+                  <Input className="w-[150px] flex-none" {...fields.extension} {...field} />
                 )}
               />
             </div>

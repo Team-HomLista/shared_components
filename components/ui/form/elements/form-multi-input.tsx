@@ -24,7 +24,7 @@ export const FormMultiInput = <TFieldValues extends FieldValues>({
   control,
   description,
   inputs,
-  title,
+  title
 }: FormMultiInputProps<TFieldValues>) => {
   return (
     <div className="flex flex-col gap-2">
@@ -42,11 +42,7 @@ export const FormMultiInput = <TFieldValues extends FieldValues>({
               return (
                 <FormItem {...(formItem ?? {})}>
                   <FormControl>
-                    <Input
-                      {...inputProps}
-                      {...field}
-                      value={field.value ?? ""}
-                    />
+                    <Input {...inputProps} {...field} value={field.value ?? ""} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

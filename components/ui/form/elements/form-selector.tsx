@@ -1,6 +1,3 @@
-import { ReactNode } from "react";
-import { Control, FieldPath, FieldValues } from "react-hook-form";
-
 import { FormItem } from "@shared/components/ui/form/elements/fomr-item";
 import { FormControl } from "@shared/components/ui/form/elements/form-control";
 import { FormDescription } from "@shared/components/ui/form/elements/form-description";
@@ -12,8 +9,10 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 } from "@shared/components/ui/select";
+import { ReactNode } from "react";
+import { Control, FieldPath, FieldValues } from "react-hook-form";
 
 interface Item {
   value: string;
@@ -39,7 +38,7 @@ export const FormSelector = <TFieldValues extends FieldValues>({
   placeholder,
   items,
   children,
-  className,
+  className
 }: FormSelectorProps<TFieldValues>) => {
   return (
     <FormField
@@ -49,7 +48,7 @@ export const FormSelector = <TFieldValues extends FieldValues>({
         <FormItem>
           <FormLabel>{title}</FormLabel>
           <FormDescription>{description}</FormDescription>
-          <Select onValueChange={field.onChange} defaultValue={field.value}>
+          <Select onValueChange={(value) => field.onChange(value)} defaultValue={field.value}>
             <FormControl>
               <SelectTrigger className={className}>
                 <SelectValue placeholder={placeholder} />

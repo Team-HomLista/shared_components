@@ -1,10 +1,7 @@
-import { cn } from "@shared/lib/utils";
 import { useFormField } from "@shared/components/ui/form/hooks/use-form-field";
+import { cn } from "@shared/lib/utils";
 
-export function FormDescription({
-  className,
-  ...props
-}: React.ComponentProps<"p">) {
+export function FormDescription({ className, ...props }: React.ComponentProps<"p">) {
   const { formDescriptionId } = useFormField();
 
   if (!props.children) return null;

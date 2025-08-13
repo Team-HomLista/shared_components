@@ -1,8 +1,6 @@
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@shared/components/ui/avatar";
+"use client";
+
+import { Avatar, AvatarFallback, AvatarImage } from "@shared/components/ui/avatar";
 import { FormItem } from "@shared/components/ui/form/elements/fomr-item";
 import { FormControl } from "@shared/components/ui/form/elements/form-control";
 import { FormDescription } from "@shared/components/ui/form/elements/form-description";
@@ -15,7 +13,7 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 } from "@shared/components/ui/select";
 import { useEffect, useRef, useState } from "react";
 import { Control, FieldPath, FieldValues } from "react-hook-form";
@@ -40,7 +38,7 @@ export const FormIdentitySelector = <TFieldValues extends FieldValues>({
   name,
   title,
   placeholder,
-  items,
+  items
 }: FormIdentitySelectorProps<TFieldValues>) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredItems, setFilteredItems] = useState(items);
@@ -48,7 +46,7 @@ export const FormIdentitySelector = <TFieldValues extends FieldValues>({
 
   useEffect(() => {
     const results = items.filter((item) =>
-      item.label.toLowerCase().includes(searchTerm.toLowerCase()),
+      item.label.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setFilteredItems(results);
   }, [searchTerm, items]);
@@ -69,7 +67,7 @@ export const FormIdentitySelector = <TFieldValues extends FieldValues>({
           <Select
             onValueChange={field.onChange}
             defaultValue={field.value?.toString() ?? undefined}
-            onOpenChange={(open: any) => {
+            onOpenChange={() => {
               inputRef?.current?.focus();
             }}
           >

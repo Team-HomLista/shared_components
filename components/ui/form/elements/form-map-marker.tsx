@@ -1,3 +1,5 @@
+"use client";
+
 import { FormItem } from "@shared/components/ui/form/elements/fomr-item";
 import { FormDescription } from "@shared/components/ui/form/elements/form-description";
 import { FormLabel } from "@shared/components/ui/form/elements/form-label";
@@ -6,16 +8,10 @@ import {
   AdvancedMarker,
   Map,
   MapCameraChangedEvent,
-  MapCameraProps,
+  MapCameraProps
 } from "@vis.gl/react-google-maps";
 import { useCallback, useEffect, useState } from "react";
-import {
-  Control,
-  FieldPath,
-  FieldValues,
-  useController,
-  useFormContext,
-} from "react-hook-form";
+import { Control, FieldPath, FieldValues, useController, useFormContext } from "react-hook-form";
 
 type lanLng = { lat: number; lng: number };
 
@@ -30,7 +26,7 @@ export interface FormLocationProps<TFieldValues extends FieldValues> {
 
 const INITIAL_CAMERA = {
   center: { lat: 19.432608, lng: -99.133209 },
-  zoom: 12,
+  zoom: 12
 };
 
 export function FormMapMarker<TFieldValues extends FieldValues>({
@@ -39,24 +35,24 @@ export function FormMapMarker<TFieldValues extends FieldValues>({
   description,
   initialCamera = INITIAL_CAMERA,
   latitudeName,
-  longitudeName,
+  longitudeName
 }: FormLocationProps<TFieldValues>) {
   const [cameraProps, setCameraProps] = useState<MapCameraProps>(initialCamera);
 
   const { setValue } = useFormContext<TFieldValues>();
   const {
     field: latitudeField,
-    fieldState: { invalid: isLatitudeInvalid },
+    fieldState: { invalid: isLatitudeInvalid }
   } = useController({
     name: latitudeName,
-    control,
+    control
   });
   const {
     field: longitudeField,
-    fieldState: { invalid: isLongitudeInvalid },
+    fieldState: { invalid: isLongitudeInvalid }
   } = useController({
     name: longitudeName,
-    control,
+    control
   });
 
   const isDirty = latitudeField.value || longitudeField.value;
@@ -64,21 +60,19 @@ export function FormMapMarker<TFieldValues extends FieldValues>({
 
   const position = {
     lat: Number(latitudeField.value ?? 0),
-    lng: Number(longitudeField.value ?? 0),
+    lng: Number(longitudeField.value ?? 0)
   };
 
   const setLatLng = useCallback(
     (latLng: lanLng, shouldCenter: boolean = false) => {
-      setValue(
-        latitudeField.name,
-        latLng.lat as TFieldValues[keyof TFieldValues],
-        { shouldDirty: true, shouldValidate: true },
-      );
-      setValue(
-        longitudeField.name,
-        latLng.lng as TFieldValues[keyof TFieldValues],
-        { shouldDirty: true, shouldValidate: true },
-      );
+      setValue(latitudeField.name, latLng.lat as TFieldValues[keyof TFieldValues], {
+        shouldDirty: true,
+        shouldValidate: true
+      });
+      setValue(longitudeField.name, latLng.lng as TFieldValues[keyof TFieldValues], {
+        shouldDirty: true,
+        shouldValidate: true
+      });
 
       if (!shouldCenter) return;
 
@@ -86,12 +80,12 @@ export function FormMapMarker<TFieldValues extends FieldValues>({
         return { ...prevState, center: latLng };
       });
     },
-    [setValue, setCameraProps],
+    [setValue, setCameraProps]
   );
 
   const handleCameraChange = useCallback(
     (ev: MapCameraChangedEvent) => setCameraProps(ev.detail),
-    [],
+    []
   );
 
   useEffect(() => {
@@ -100,8 +94,8 @@ export function FormMapMarker<TFieldValues extends FieldValues>({
         ...prevCameraProps,
         center: {
           lat: Number(latitudeField.value ?? prevCameraProps.center.lat),
-          lng: Number(longitudeField.value ?? prevCameraProps.center.lng),
-        },
+          lng: Number(longitudeField.value ?? prevCameraProps.center.lng)
+        }
       };
     });
   }, []);

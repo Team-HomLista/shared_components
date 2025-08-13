@@ -1,10 +1,5 @@
-import { isNodeSelection, type Editor } from "@tiptap/react";
-import * as React from "react";
-
-// --- Hooks ---
-import { useTiptapEditor } from "@shared/hooks/use-tiptap-editor";
-
 // --- Icons ---
+
 import { BoldIcon } from "@shared/components/tiptap/tiptap-icons/bold-icon";
 import { Code2Icon } from "@shared/components/tiptap/tiptap-icons/code2-icon";
 import { ItalicIcon } from "@shared/components/tiptap/tiptap-icons/italic-icon";
@@ -12,13 +7,15 @@ import { StrikeIcon } from "@shared/components/tiptap/tiptap-icons/strike-icon";
 import { SubscriptIcon } from "@shared/components/tiptap/tiptap-icons/subscript-icon";
 import { SuperscriptIcon } from "@shared/components/tiptap/tiptap-icons/superscript-icon";
 import { UnderlineIcon } from "@shared/components/tiptap/tiptap-icons/underline-icon";
-
-// --- Lib ---
-import { isMarkInSchema } from "@shared/lib/tiptap-utils";
-
 // --- UI Primitives ---
 import type { ButtonProps } from "@shared/components/tiptap/tiptap-ui-primitive/button";
 import { Button } from "@shared/components/tiptap/tiptap-ui-primitive/button";
+// --- Hooks ---
+import { useTiptapEditor } from "@shared/hooks/use-tiptap-editor";
+// --- Lib ---
+import { isMarkInSchema } from "@shared/lib/tiptap-utils";
+import { isNodeSelection, type Editor } from "@tiptap/react";
+import * as React from "react";
 
 export type Mark =
   | "bold"
@@ -55,7 +52,7 @@ export const markIcons = {
   strike: StrikeIcon,
   code: Code2Icon,
   superscript: SuperscriptIcon,
-  subscript: SubscriptIcon,
+  subscript: SubscriptIcon
 };
 
 export const markShortcutKeys: Partial<Record<Mark, string>> = {
@@ -65,7 +62,7 @@ export const markShortcutKeys: Partial<Record<Mark, string>> = {
   strike: "Ctrl-Shift-s",
   code: "Ctrl-e",
   superscript: "Ctrl-.",
-  subscript: "Ctrl-,",
+  subscript: "Ctrl-,"
 };
 
 export function canToggleMark(editor: Editor | null, type: Mark): boolean {
@@ -91,7 +88,7 @@ export function toggleMark(editor: Editor | null, type: Mark): void {
 export function isMarkButtonDisabled(
   editor: Editor | null,
   type: Mark,
-  userDisabled: boolean = false,
+  userDisabled: boolean = false
 ): boolean {
   if (!editor) return true;
   if (userDisabled) return true;
@@ -113,10 +110,7 @@ export function shouldShowMarkButton(params: {
   }
 
   if (hideWhenUnavailable) {
-    if (
-      isNodeSelection(editor.state.selection) ||
-      !canToggleMark(editor, type)
-    ) {
+    if (isNodeSelection(editor.state.selection) || !canToggleMark(editor, type)) {
       return false;
     }
   }
@@ -128,11 +122,7 @@ export function getFormattedMarkName(type: Mark): string {
   return type.charAt(0).toUpperCase() + type.slice(1);
 }
 
-export function useMarkState(
-  editor: Editor | null,
-  type: Mark,
-  disabled: boolean = false,
-) {
+export function useMarkState(editor: Editor | null, type: Mark, disabled: boolean = false) {
   const markInSchema = isMarkInSchema(type, editor);
   const isDisabled = isMarkButtonDisabled(editor, type, disabled);
   const isActive = isMarkActive(editor, type);
@@ -147,7 +137,7 @@ export function useMarkState(
     isActive,
     Icon,
     shortcutKey,
-    formattedName,
+    formattedName
   };
 }
 
@@ -164,18 +154,15 @@ export const MarkButton = React.forwardRef<HTMLButtonElement, MarkButtonProps>(
       children,
       ...buttonProps
     },
-    ref,
+    ref
   ) => {
     const editor = useTiptapEditor(providedEditor);
 
-    const {
-      markInSchema,
-      isDisabled,
-      isActive,
-      Icon,
-      shortcutKey,
-      formattedName,
-    } = useMarkState(editor, type, disabled);
+    const { markInSchema, isDisabled, isActive, Icon, shortcutKey, formattedName } = useMarkState(
+      editor,
+      type,
+      disabled
+    );
 
     const handleClick = React.useCallback(
       (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -185,7 +172,7 @@ export const MarkButton = React.forwardRef<HTMLButtonElement, MarkButtonProps>(
           toggleMark(editor, type);
         }
       },
-      [onClick, isDisabled, editor, type],
+      [onClick, isDisabled, editor, type]
     );
 
     const show = React.useMemo(() => {
@@ -193,7 +180,7 @@ export const MarkButton = React.forwardRef<HTMLButtonElement, MarkButtonProps>(
         editor,
         type,
         hideWhenUnavailable,
-        markInSchema,
+        markInSchema
       });
     }, [editor, type, hideWhenUnavailable, markInSchema]);
 
@@ -227,7 +214,7 @@ export const MarkButton = React.forwardRef<HTMLButtonElement, MarkButtonProps>(
         )}
       </Button>
     );
-  },
+  }
 );
 
 MarkButton.displayName = "MarkButton";

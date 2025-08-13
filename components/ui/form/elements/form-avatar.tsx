@@ -1,3 +1,5 @@
+"use client";
+
 import { AvatarUploader } from "@shared/components/avatar-uploader";
 import { FormItem } from "@shared/components/ui/form/elements/fomr-item";
 import { FormControl } from "@shared/components/ui/form/elements/form-control";
@@ -18,7 +20,7 @@ export const FormAvatar = <TFieldValues extends FieldValues>({
   control,
   name,
   label,
-  description,
+  description
 }: FormAvatarProps<TFieldValues>) => {
   return (
     <FormField
@@ -30,6 +32,7 @@ export const FormAvatar = <TFieldValues extends FieldValues>({
             <FormLabel>{label}</FormLabel>
             <FormDescription>{description}</FormDescription>
             <FormControl>
+              {}
               <AvatarUploader onChange={field.onChange} preview={field.value} />
             </FormControl>
             <FormMessage />

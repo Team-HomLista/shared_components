@@ -1,9 +1,8 @@
 import { Slot } from "@radix-ui/react-slot";
-import { cva, type VariantProps } from "class-variance-authority";
-import * as React from "react";
-
 import { cn } from "@shared/lib/utils";
+import { cva, type VariantProps } from "class-variance-authority";
 import { X } from "lucide-react";
+import * as React from "react";
 import { JSX, JSXElementConstructor } from "react";
 
 export const tagVariants = cva(
@@ -12,20 +11,20 @@ export const tagVariants = cva(
     variants: {
       variant: {
         default: "border-transparent bg-background hover:bg-accent",
-        outline: "border bg-background hover:bg-accent",
+        outline: "border bg-background hover:bg-accent"
       },
       size: {
         default:
           "py-0.5 text-xs **:data-[slot=tag-close-button-icon]:size-3 **:data-[slot=tag-count]:text-xs **:data-[slot=tag-count]:px-1 **:data-[slot=tag-count]:px-1 **:data-[slot=tag-count]:h-4",
         md: "py-0.5 text-sm **:data-[slot=tag-close-button-icon]:size-3.5 **:data-[slot=tag-count]:text-sm **:data-[slot=tag-count]:px-1 **:data-[slot=tag-count]:h-[calc(var(--spacing)*4.5)]",
-        lg: "py-1 text-sm **:data-[slot=tag-close-button-icon]:size-4 **:data-[slot=tag-count]:text-sm **:data-[slot=tag-count]:px-1.5 **:data-[slot=tag-count]:h-5",
-      },
+        lg: "py-1 text-sm **:data-[slot=tag-close-button-icon]:size-4 **:data-[slot=tag-count]:text-sm **:data-[slot=tag-count]:px-1.5 **:data-[slot=tag-count]:h-5"
+      }
     },
     defaultVariants: {
       variant: "default",
-      size: "default",
-    },
-  },
+      size: "default"
+    }
+  }
 );
 
 export function Tag({
@@ -34,22 +33,15 @@ export function Tag({
   size,
   asChild = false,
   ...props
-}: React.ComponentProps<"span"> &
-  VariantProps<typeof tagVariants> & { asChild?: boolean }) {
+}: React.ComponentProps<"span"> & VariantProps<typeof tagVariants> & { asChild?: boolean }) {
   const Comp = asChild ? Slot : "span";
 
   return (
-    <Comp
-      data-slot="tag"
-      className={cn(tagVariants({ variant, size, className }))}
-      {...props}
-    />
+    <Comp data-slot="tag" className={cn(tagVariants({ variant, size, className }))} {...props} />
   );
 }
 
-export function TagCloseButton<
-  T extends keyof JSX.IntrinsicElements | JSXElementConstructor<any>,
->({
+export function TagCloseButton<T extends keyof JSX.IntrinsicElements | JSXElementConstructor<any>>({
   as = "button",
   className,
   ...props
@@ -61,7 +53,7 @@ export function TagCloseButton<
       data-slot="tag-close-button"
       className={cn(
         "text-muted-foreground hover:bg-accent focus-visible:ring-ring rounded-sm p-0.5",
-        className,
+        className
       )}
       {...props}
     >
@@ -70,16 +62,13 @@ export function TagCloseButton<
   );
 }
 
-export function TagCount({
-  className,
-  ...props
-}: React.ComponentProps<"span">) {
+export function TagCount({ className, ...props }: React.ComponentProps<"span">) {
   return (
     <span
       data-slot="tag-count"
       className={cn(
         "bg-muted text-muted-foreground flex items-center rounded-sm text-xs font-medium",
-        className,
+        className
       )}
       {...props}
     />

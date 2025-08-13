@@ -8,8 +8,7 @@ import { Input } from "@shared/components/ui/input";
 import { HTMLProps } from "react";
 import { Control, FieldPath, FieldValues } from "react-hook-form";
 
-interface FormInputProps<TFieldValues extends FieldValues>
-  extends HTMLProps<HTMLInputElement> {
+interface FormInputProps<TFieldValues extends FieldValues> extends HTMLProps<HTMLInputElement> {
   control: Control<TFieldValues>;
   description?: string;
   name: FieldPath<TFieldValues>;

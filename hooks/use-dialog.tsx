@@ -1,10 +1,12 @@
+"use client";
+
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogFooter,
   DialogHeader,
-  DialogTitle,
+  DialogTitle
 } from "@shared/components/ui";
 import { createContext, useContext, useEffect, useState } from "react";
 
@@ -36,9 +38,9 @@ export const DialogContext = createContext<{
   setState: React.Dispatch<React.SetStateAction<DialogState>>;
 }>({
   state: {
-    isOpen: false,
+    isOpen: false
   },
-  setState: () => {},
+  setState: () => {}
 });
 
 /**
@@ -47,7 +49,7 @@ export const DialogContext = createContext<{
  */
 export const DialogProvider = ({ children }: { children: React.ReactNode }) => {
   const [dialogState, setDialogState] = useState<DialogState>({
-    isOpen: false,
+    isOpen: false
   });
 
   const {
@@ -57,20 +59,18 @@ export const DialogProvider = ({ children }: { children: React.ReactNode }) => {
     description,
     content,
     footer,
-    preventCloseOnOutsideClick,
+    preventCloseOnOutsideClick
   } = dialogState;
 
   const handleOpenChange = (isOpen: boolean) => {
     setDialogState((prev) => ({
       ...prev,
-      isOpen,
+      isOpen
     }));
   };
 
   return (
-    <DialogContext.Provider
-      value={{ state: dialogState, setState: setDialogState }}
-    >
+    <DialogContext.Provider value={{ state: dialogState, setState: setDialogState }}>
       <Dialog open={isOpen} onOpenChange={handleOpenChange}>
         <DialogContent
           showCloseButton={showCloseButton}
@@ -78,15 +78,13 @@ export const DialogProvider = ({ children }: { children: React.ReactNode }) => {
             ? {
                 onEscapeKeyDown: (e) => e.preventDefault(),
                 onPointerDownOutside: (e) => e.preventDefault(),
-                onInteractOutside: (e) => e.preventDefault(),
+                onInteractOutside: (e) => e.preventDefault()
               }
             : {})}
         >
           <DialogHeader>
             {title && <DialogTitle>{title}</DialogTitle>}
-            {description && (
-              <DialogDescription>{description}</DialogDescription>
-            )}
+            {description && <DialogDescription>{description}</DialogDescription>}
           </DialogHeader>
 
           {content}
@@ -151,10 +149,7 @@ type UseDialogProps = Omit<DialogState, "isOpen"> & {
  * });
  * ```
  */
-export const useDialog = ({
-  onClose,
-  ...initialProps
-}: UseDialogProps = {}) => {
+export const useDialog = ({ onClose, ...initialProps }: UseDialogProps = {}) => {
   const { state, setState: setDialogContextState } = useContext(DialogContext);
 
   function showDialog(state: UseDialogProps = {}) {
@@ -173,6 +168,6 @@ export const useDialog = ({
 
   return {
     showDialog,
-    closeDialog,
+    closeDialog
   };
 };

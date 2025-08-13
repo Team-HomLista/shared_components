@@ -1,5 +1,6 @@
-import "@shared/components/tiptap/tiptap-ui-primitive/separator/separator.scss";
 import * as React from "react";
+
+import "@shared/components/tiptap/tiptap-ui-primitive/separator/separator.scss";
 
 type Orientation = "horizontal" | "vertical";
 
@@ -9,12 +10,8 @@ export interface SeparatorProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export const Separator = React.forwardRef<HTMLDivElement, SeparatorProps>(
-  (
-    { decorative, orientation = "vertical", className = "", ...divProps },
-    ref,
-  ) => {
-    const ariaOrientation =
-      orientation === "vertical" ? orientation : undefined;
+  ({ decorative, orientation = "vertical", className = "", ...divProps }, ref) => {
+    const ariaOrientation = orientation === "vertical" ? orientation : undefined;
     const semanticProps = decorative
       ? { role: "none" }
       : { "aria-orientation": ariaOrientation, role: "separator" };
@@ -28,7 +25,7 @@ export const Separator = React.forwardRef<HTMLDivElement, SeparatorProps>(
         ref={ref}
       />
     );
-  },
+  }
 );
 
 Separator.displayName = "Separator";

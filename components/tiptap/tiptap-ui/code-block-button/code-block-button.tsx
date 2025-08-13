@@ -1,18 +1,10 @@
-import { isNodeSelection, type Editor } from "@tiptap/react";
-import * as React from "react";
-
-// --- Hooks ---
-import { useTiptapEditor } from "@shared/hooks/use-tiptap-editor";
-
-// --- Icons ---
 import { CodeBlockIcon } from "@shared/components/tiptap/tiptap-icons/code-block-icon";
-
-// --- Lib ---
-import { isNodeInSchema } from "@shared/lib/tiptap-utils";
-
-// --- UI Primitives ---
 import type { ButtonProps } from "@shared/components/tiptap/tiptap-ui-primitive/button";
 import { Button } from "@shared/components/tiptap/tiptap-ui-primitive/button";
+import { useTiptapEditor } from "@shared/hooks/use-tiptap-editor";
+import { isNodeInSchema } from "@shared/lib/tiptap-utils";
+import { isNodeSelection, type Editor } from "@tiptap/react";
+import * as React from "react";
 
 export interface CodeBlockButtonProps extends Omit<ButtonProps, "type"> {
   /**
@@ -53,7 +45,7 @@ export function toggleCodeBlock(editor: Editor | null): boolean {
 export function isCodeBlockButtonDisabled(
   editor: Editor | null,
   canToggle: boolean,
-  userDisabled: boolean = false,
+  userDisabled: boolean = false
 ): boolean {
   if (!editor) return true;
   if (userDisabled) return true;
@@ -85,7 +77,7 @@ export function shouldShowCodeBlockButton(params: {
 export function useCodeBlockState(
   editor: Editor | null,
   disabled: boolean = false,
-  hideWhenUnavailable: boolean = false,
+  hideWhenUnavailable: boolean = false
 ) {
   const nodeInSchema = isNodeInSchema("codeBlock", editor);
 
@@ -99,9 +91,9 @@ export function useCodeBlockState(
         editor,
         hideWhenUnavailable,
         nodeInSchema,
-        canToggle,
+        canToggle
       }),
-    [editor, hideWhenUnavailable, nodeInSchema, canToggle],
+    [editor, hideWhenUnavailable, nodeInSchema, canToggle]
   );
 
   const handleToggle = React.useCallback(() => {
@@ -122,14 +114,11 @@ export function useCodeBlockState(
     shouldShow,
     handleToggle,
     shortcutKey,
-    label,
+    label
   };
 }
 
-export const CodeBlockButton = React.forwardRef<
-  HTMLButtonElement,
-  CodeBlockButtonProps
->(
+export const CodeBlockButton = React.forwardRef<HTMLButtonElement, CodeBlockButtonProps>(
   (
     {
       editor: providedEditor,
@@ -141,18 +130,12 @@ export const CodeBlockButton = React.forwardRef<
       children,
       ...buttonProps
     },
-    ref,
+    ref
   ) => {
     const editor = useTiptapEditor(providedEditor);
 
-    const {
-      isDisabled,
-      isActive,
-      shouldShow,
-      handleToggle,
-      shortcutKey,
-      label,
-    } = useCodeBlockState(editor, disabled, hideWhenUnavailable);
+    const { isDisabled, isActive, shouldShow, handleToggle, shortcutKey, label } =
+      useCodeBlockState(editor, disabled, hideWhenUnavailable);
 
     const handleClick = React.useCallback(
       (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -162,7 +145,7 @@ export const CodeBlockButton = React.forwardRef<
           handleToggle();
         }
       },
-      [onClick, isDisabled, handleToggle],
+      [onClick, isDisabled, handleToggle]
     );
 
     if (!shouldShow || !editor || !editor.isEditable) {
@@ -195,7 +178,7 @@ export const CodeBlockButton = React.forwardRef<
         )}
       </Button>
     );
-  },
+  }
 );
 
 CodeBlockButton.displayName = "CodeBlockButton";

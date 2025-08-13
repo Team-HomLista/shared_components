@@ -12,10 +12,11 @@ import {
   useFloating,
   useInteractions,
   useMergeRefs,
-  useRole,
+  useRole
 } from "@floating-ui/react";
-import "@shared/components/tiptap/tiptap-ui-primitive/popover/popover.scss";
 import * as React from "react";
+
+import "@shared/components/tiptap/tiptap-ui-primitive/popover/popover.scss";
 
 type PopoverContextValue = ReturnType<typeof usePopover> & {
   setLabelId: (id: string | undefined) => void;
@@ -24,7 +25,7 @@ type PopoverContextValue = ReturnType<typeof usePopover> & {
     side: "top" | "right" | "bottom" | "left",
     align: "start" | "center" | "end",
     sideOffset?: number,
-    alignOffset?: number,
+    alignOffset?: number
   ) => void;
 };
 
@@ -61,13 +62,13 @@ function usePopover({
   side = "bottom",
   align = "center",
   sideOffset = 4,
-  alignOffset = 0,
+  alignOffset = 0
 }: PopoverOptions = {}) {
   const [uncontrolledOpen, setUncontrolledOpen] = React.useState(initialOpen);
   const [labelId, setLabelId] = React.useState<string>();
   const [descriptionId, setDescriptionId] = React.useState<string>();
   const [currentPlacement, setCurrentPlacement] = React.useState<Placement>(
-    `${side}-${align}` as Placement,
+    `${side}-${align}` as Placement
   );
   const [offsets, setOffsets] = React.useState({ sideOffset, alignOffset });
 
@@ -78,17 +79,17 @@ function usePopover({
     () => [
       offset({
         mainAxis: offsets.sideOffset,
-        crossAxis: offsets.alignOffset,
+        crossAxis: offsets.alignOffset
       }),
       flip({
         fallbackAxisSideDirection: "end",
-        crossAxis: false,
+        crossAxis: false
       }),
       shift({
-        limiter: limitShift({ offset: offsets.sideOffset }),
-      }),
+        limiter: limitShift({ offset: offsets.sideOffset })
+      })
     ],
-    [offsets.sideOffset, offsets.alignOffset],
+    [offsets.sideOffset, offsets.alignOffset]
   );
 
   const floating = useFloating({
@@ -96,13 +97,13 @@ function usePopover({
     open,
     onOpenChange: setOpen,
     whileElementsMounted: autoUpdate,
-    middleware,
+    middleware
   });
 
   const interactions = useInteractions([
     useClick(floating.context),
     useDismiss(floating.context),
-    useRole(floating.context),
+    useRole(floating.context)
   ]);
 
   const updatePosition = React.useCallback(
@@ -110,17 +111,17 @@ function usePopover({
       newSide: "top" | "right" | "bottom" | "left",
       newAlign: "start" | "center" | "end",
       newSideOffset?: number,
-      newAlignOffset?: number,
+      newAlignOffset?: number
     ) => {
       setCurrentPlacement(`${newSide}-${newAlign}` as Placement);
       if (newSideOffset !== undefined || newAlignOffset !== undefined) {
         setOffsets({
           sideOffset: newSideOffset ?? offsets.sideOffset,
-          alignOffset: newAlignOffset ?? offsets.alignOffset,
+          alignOffset: newAlignOffset ?? offsets.alignOffset
         });
       }
     },
-    [offsets.sideOffset, offsets.alignOffset],
+    [offsets.sideOffset, offsets.alignOffset]
   );
 
   return React.useMemo(
@@ -134,67 +135,55 @@ function usePopover({
       descriptionId,
       setLabelId,
       setDescriptionId,
-      updatePosition,
+      updatePosition
     }),
-    [
-      open,
-      setOpen,
-      interactions,
-      floating,
-      modal,
-      labelId,
-      descriptionId,
-      updatePosition,
-    ],
+    [open, setOpen, interactions, floating, modal, labelId, descriptionId, updatePosition]
   );
 }
 
 function Popover({ children, modal = false, ...options }: PopoverProps) {
   const popover = usePopover({ modal, ...options });
-  return (
-    <PopoverContext.Provider value={popover}>
-      {children}
-    </PopoverContext.Provider>
-  );
+  return <PopoverContext.Provider value={popover}>{children}</PopoverContext.Provider>;
 }
 
 interface TriggerElementProps extends React.HTMLProps<HTMLElement> {
   asChild?: boolean;
 }
 
-const PopoverTrigger = React.forwardRef<HTMLElement, TriggerElementProps>(
-  function PopoverTrigger({ children, asChild = false, ...props }, propRef) {
-    const context = usePopoverContext();
-    const childrenRef = React.isValidElement(children)
-      ? parseInt(React.version, 10) >= 19
-        ? (children.props as any).ref
-        : (children as any).ref
-      : undefined;
-    const ref = useMergeRefs([context.refs.setReference, propRef, childrenRef]);
+const PopoverTrigger = React.forwardRef<HTMLElement, TriggerElementProps>(function PopoverTrigger(
+  { children, asChild = false, ...props },
+  propRef
+) {
+  const context = usePopoverContext();
+  const childrenRef = React.isValidElement(children)
+    ? parseInt(React.version, 10) >= 19
+      ? (children.props as any).ref
+      : (children as any).ref
+    : undefined;
+  const ref = useMergeRefs([context.refs.setReference, propRef, childrenRef]);
 
-    if (asChild && React.isValidElement(children)) {
-      return React.cloneElement(
-        children,
-        context.getReferenceProps({
-          ref,
-          ...props,
-          ...(children.props as any),
-          "data-state": context.open ? "open" : "closed",
-        }),
-      );
-    }
-
-    return (
-      <button
-        ref={ref}
-        data-state={context.open ? "open" : "closed"}
-        {...context.getReferenceProps(props)}
-      >
-        {children}
-      </button>
+  if (asChild && React.isValidElement(children)) {
+    return React.cloneElement(
+      children,
+      context.getReferenceProps({
+        ref,
+        ...props,
+        ...(children.props as any),
+        "data-state": context.open ? "open" : "closed"
+      })
     );
-  },
-);
+  }
+
+  return (
+    <button
+      ref={ref}
+      data-state={context.open ? "open" : "closed"}
+      {...context.getReferenceProps(props)}
+    >
+      {children}
+    </button>
+  );
+});
 
 interface PopoverContentProps extends React.HTMLProps<HTMLDivElement> {
   side?: "top" | "right" | "bottom" | "left";
@@ -221,7 +210,7 @@ const PopoverContent = React.forwardRef<HTMLDivElement, PopoverContentProps>(
       children,
       ...props
     },
-    propRef,
+    propRef
   ) {
     const context = usePopoverContext();
     const childrenRef = React.isValidElement(children)
@@ -243,7 +232,7 @@ const PopoverContent = React.forwardRef<HTMLDivElement, PopoverContentProps>(
         position: context.strategy,
         top: context.y ?? 0,
         left: context.x ?? 0,
-        ...style,
+        ...style
       },
       "aria-labelledby": context.labelId,
       "aria-describedby": context.descriptionId,
@@ -251,14 +240,14 @@ const PopoverContent = React.forwardRef<HTMLDivElement, PopoverContentProps>(
       "data-side": side,
       "data-align": align,
       "data-state": context.context.open ? "open" : "closed",
-      ...context.getFloatingProps(props),
+      ...context.getFloatingProps(props)
     };
 
     const content =
       asChild && React.isValidElement(children) ? (
         React.cloneElement(children, {
           ...contentProps,
-          ...(children.props as any),
+          ...(children.props as any)
         })
       ) : (
         <div {...contentProps}>{children}</div>
@@ -275,7 +264,7 @@ const PopoverContent = React.forwardRef<HTMLDivElement, PopoverContentProps>(
     }
 
     return wrappedContent;
-  },
+  }
 );
 
 PopoverTrigger.displayName = "PopoverTrigger";

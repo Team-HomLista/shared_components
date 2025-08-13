@@ -17,19 +17,18 @@ import TaskList from "@tiptap/extension-task-list";
 import TextAlign from "@tiptap/extension-text-align";
 import Underline from "@tiptap/extension-underline";
 import GlobalDragHandle from "tiptap-extension-global-drag-handle";
+
 import { RichTextEditor } from ".";
 
 const meta = {
   title: "Components/RichTextEditor",
-  component: RichTextEditor,
+  component: RichTextEditor
 };
 
 const Container: React.FC<React.ComponentProps<"p">> = ({ children }) => {
   return (
     <div className="m-6 flex flex-1 items-center justify-center">
-      <div className="max-h-96 max-w-2xl flex-1 overflow-y-auto">
-        {children}
-      </div>
+      <div className="max-h-96 max-w-2xl flex-1 overflow-y-auto">{children}</div>
     </div>
   );
 };
@@ -115,11 +114,11 @@ const EXTENSIONS = [
   Highlight.configure({ multicolor: true }),
   Underline,
   Table.configure({
-    resizable: true,
+    resizable: true
   }),
   TableRow,
   TableHeader,
-  TableCell,
+  TableCell
 ];
 
 export default meta;
@@ -134,15 +133,15 @@ const TemplateDefault: Story = {
         </RichTextEditor.Wrapper>
       </RichTextEditor>
     </Container>
-  ),
+  )
 };
 
 export const Default: Story = {
   ...TemplateDefault,
   args: {
     content: CONTENT,
-    extensions: EXTENSIONS,
-  },
+    extensions: EXTENSIONS
+  }
 };
 
 const TemplateWithToolbar: Story = {
@@ -152,9 +151,7 @@ const TemplateWithToolbar: Story = {
         <RichTextEditor {...args}>
           <RichTextEditor.Toolbar variant="fixed">
             <RichTextEditor.ToolbarGroup>
-              <ListDropdownMenu
-                types={["bulletList", "orderedList", "taskList"]}
-              />
+              <ListDropdownMenu types={["bulletList", "orderedList", "taskList"]} />
               <BlockquoteButton />
             </RichTextEditor.ToolbarGroup>
 
@@ -189,21 +186,21 @@ const TemplateWithToolbar: Story = {
         </RichTextEditor>
       </Container>
     );
-  },
+  }
 };
 
 export const withToolbar: Story = {
   ...TemplateWithToolbar,
   args: {
     content: CONTENT,
-    extensions: EXTENSIONS,
-  },
+    extensions: EXTENSIONS
+  }
 };
 
 export const asBlock: Story = {
   ...TemplateWithToolbar,
   args: {
     content: CONTENT,
-    extensions: [...EXTENSIONS, GlobalDragHandle],
-  },
+    extensions: [...EXTENSIONS, GlobalDragHandle]
+  }
 };

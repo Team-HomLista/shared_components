@@ -1,3 +1,5 @@
+"use client";
+
 import {
   AlertDialog,
   AlertDialogAction,
@@ -7,7 +9,7 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  Button,
+  Button
 } from "@shared/components/ui";
 import { Loader2 } from "lucide-react";
 import { createContext, useContext, useState } from "react";
@@ -46,26 +48,22 @@ export const AlertDialogContext = createContext<{
   setState: React.Dispatch<React.SetStateAction<AlertDialogState>>;
 }>({
   state: {
-    isOpen: false,
+    isOpen: false
   },
-  setState: () => {},
+  setState: () => {}
 });
 
 /**
  * Provider component that wraps your application to enable alert dialog functionality
  * @param children - Child components that will have access to the alert dialog
  */
-export const AlertDialogProvider = ({
-  children,
-}: {
-  children: React.ReactNode;
-}) => {
+export const AlertDialogProvider = ({ children }: { children: React.ReactNode }) => {
   const [alertDialogState, setAlertDialogState] = useState<AlertDialogState>({
-    isOpen: false,
+    isOpen: false
   });
   const [isLoading, setIsLoading] = useState({
     confirm: false,
-    cancel: false,
+    cancel: false
   });
 
   const {
@@ -78,13 +76,13 @@ export const AlertDialogProvider = ({
     confirmBtnProps,
     cancelBtnProps,
     onConfirm,
-    onCancel,
+    onCancel
   } = alertDialogState;
 
   const handleOpenChange = (isOpen: boolean) => {
     setAlertDialogState((prev) => ({
       ...prev,
-      isOpen,
+      isOpen
     }));
   };
 
@@ -105,16 +103,12 @@ export const AlertDialogProvider = ({
   };
 
   return (
-    <AlertDialogContext.Provider
-      value={{ state: alertDialogState, setState: setAlertDialogState }}
-    >
+    <AlertDialogContext.Provider value={{ state: alertDialogState, setState: setAlertDialogState }}>
       <AlertDialog open={isOpen} onOpenChange={handleOpenChange}>
         <AlertDialogContent>
           <AlertDialogHeader>
             {title && <AlertDialogTitle>{title}</AlertDialogTitle>}
-            {description && (
-              <AlertDialogDescription>{description}</AlertDialogDescription>
-            )}
+            {description && <AlertDialogDescription>{description}</AlertDialogDescription>}
           </AlertDialogHeader>
 
           {content}
@@ -192,8 +186,7 @@ type UseAlertDialogProps = Omit<AlertDialogState, "isOpen">;
  * });
  */
 export const useAlertDialog = (initialProps: UseAlertDialogProps = {}) => {
-  const { setState: setAlertDialogContextState } =
-    useContext(AlertDialogContext);
+  const { setState: setAlertDialogContextState } = useContext(AlertDialogContext);
 
   /**
    * Opens dialog with merged configuration (initial props + override options)
@@ -210,6 +203,6 @@ export const useAlertDialog = (initialProps: UseAlertDialogProps = {}) => {
 
   return {
     showDialog,
-    closeDialog,
+    closeDialog
   };
 };

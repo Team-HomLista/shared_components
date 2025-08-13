@@ -1,25 +1,11 @@
-import { isNodeSelection, type Editor } from "@tiptap/react";
-import * as React from "react";
-
-// --- Hooks ---
-import { useTiptapEditor } from "@shared/hooks/use-tiptap-editor";
-
-// --- Icons ---
 import { ChevronDownIcon } from "@shared/components/tiptap/tiptap-icons/chevron-down-icon";
 import { HeadingIcon } from "@shared/components/tiptap/tiptap-icons/heading-icon";
-
-// --- Lib ---
-import { isNodeInSchema } from "@shared/lib/tiptap-utils";
-
-// --- Tiptap UI ---
 import {
   getFormattedHeadingName,
   HeadingButton,
   headingIcons,
-  type Level,
+  type Level
 } from "@shared/components/tiptap/tiptap-ui/heading-button/heading-button";
-
-// --- UI Primitives ---
 import type { ButtonProps } from "@shared/components/tiptap/tiptap-ui-primitive/button";
 import { Button } from "@shared/components/tiptap/tiptap-ui-primitive/button";
 import {
@@ -27,8 +13,12 @@ import {
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
-  DropdownMenuTrigger,
+  DropdownMenuTrigger
 } from "@shared/components/tiptap/tiptap-ui-primitive/dropdown-menu";
+import { useTiptapEditor } from "@shared/hooks/use-tiptap-editor";
+import { isNodeInSchema } from "@shared/lib/tiptap-utils";
+import { isNodeSelection, type Editor } from "@tiptap/react";
+import * as React from "react";
 
 export interface HeadingDropdownMenuProps extends Omit<ButtonProps, "type"> {
   editor?: Editor | null;
@@ -54,15 +44,15 @@ export function HeadingDropdownMenu({
       setIsOpen(open);
       onOpenChange?.(open);
     },
-    [onOpenChange],
+    [onOpenChange]
   );
 
   const getActiveIcon = React.useCallback(() => {
     if (!editor) return <HeadingIcon className="tiptap-button-icon" />;
 
-    const activeLevel = levels.find((level) =>
-      editor.isActive("heading", { level }),
-    ) as Level | undefined;
+    const activeLevel = levels.find((level) => editor.isActive("heading", { level })) as
+      | Level
+      | undefined;
 
     if (!activeLevel) return <HeadingIcon className="tiptap-button-icon" />;
 
@@ -72,9 +62,7 @@ export function HeadingDropdownMenu({
 
   const canToggleAnyHeading = React.useCallback((): boolean => {
     if (!editor) return false;
-    return levels.some((level) =>
-      editor.can().toggleNode("heading", "paragraph", { level }),
-    );
+    return levels.some((level) => editor.can().toggleNode("heading", "paragraph", { level }));
   }, [editor, levels]);
 
   const isDisabled = !canToggleAnyHeading();

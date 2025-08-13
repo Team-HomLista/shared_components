@@ -1,77 +1,66 @@
 "use client";
 
+import type { ButtonProps } from "@shared/components/tiptap/tiptap-ui-primitive/button";
+import { Button } from "@shared/components/tiptap/tiptap-ui-primitive/button";
+import { useTiptapEditor } from "@shared/hooks/use-tiptap-editor";
+import { findNodePosition, isEmptyNode, isMarkInSchema } from "@shared/lib/tiptap-utils";
 import type { Node } from "@tiptap/pm/model";
 import { isNodeSelection, type Editor } from "@tiptap/react";
 import * as React from "react";
 
-// --- Hooks ---
-import { useTiptapEditor } from "@shared/hooks/use-tiptap-editor";
-
-// --- Lib ---
-import {
-  findNodePosition,
-  isEmptyNode,
-  isMarkInSchema,
-} from "@shared/lib/tiptap-utils";
-
-// --- UI Primitives ---
-import type { ButtonProps } from "@shared/components/tiptap/tiptap-ui-primitive/button";
-import { Button } from "@shared/components/tiptap/tiptap-ui-primitive/button";
-
-// --- Styles ---
 import "@shared/components/tiptap/tiptap-ui/color-highlight-button/color-highlight-button.scss";
 
 export const HIGHLIGHT_COLORS = [
   {
     label: "Default background",
     value: "var(--tt-bg-color)",
-    border: "var(--tt-bg-color-contrast)",
+    border: "var(--tt-bg-color-contrast)"
   },
   {
     label: "Gray background",
     value: "var(--tt-color-highlight-gray)",
-    border: "var(--tt-color-highlight-gray-contrast)",
+    border: "var(--tt-color-highlight-gray-contrast)"
   },
   {
     label: "Brown background",
     value: "var(--tt-color-highlight-brown)",
-    border: "var(--tt-color-highlight-brown-contrast)",
+    border: "var(--tt-color-highlight-brown-contrast)"
   },
   {
     label: "Orange background",
     value: "var(--tt-color-highlight-orange)",
-    border: "var(--tt-color-highlight-orange-contrast)",
+    border: "var(--tt-color-highlight-orange-contrast)"
   },
   {
     label: "Yellow background",
     value: "var(--tt-color-highlight-yellow)",
-    border: "var(--tt-color-highlight-yellow-contrast)",
+    border: "var(--tt-color-highlight-yellow-contrast)"
   },
   {
     label: "Green background",
     value: "var(--tt-color-highlight-green)",
-    border: "var(--tt-color-highlight-green-contrast)",
+    border: "var(--tt-color-highlight-green-contrast)"
   },
   {
     label: "Blue background",
     value: "var(--tt-color-highlight-blue)",
-    border: "var(--tt-color-highlight-blue-contrast)",
+    border: "var(--tt-color-highlight-blue-contrast)"
   },
   {
     label: "Purple background",
     value: "var(--tt-color-highlight-purple)",
-    border: "var(--tt-color-highlight-purple-contrast)",
+    border: "var(--tt-color-highlight-purple-contrast)"
   },
   {
     label: "Pink background",
     value: "var(--tt-color-highlight-pink)",
-    border: "var(--tt-color-highlight-pink-contrast)",
+    border: "var(--tt-color-highlight-pink-contrast)"
   },
   {
     label: "Red background",
     value: "var(--tt-color-highlight-red)",
-    border: "var(--tt-color-highlight-red-contrast)",
-  },
+    border: "var(--tt-color-highlight-red-contrast)"
+  }
 ];
 
 export interface ColorHighlightButtonProps extends Omit<ButtonProps, "type"> {
@@ -122,10 +111,7 @@ export function canToggleHighlight(editor: Editor | null): boolean {
 /**
  * Checks if highlight is active in the current selection
  */
-export function isHighlightActive(
-  editor: Editor | null,
-  color: string,
-): boolean {
+export function isHighlightActive(editor: Editor | null, color: string): boolean {
   if (!editor) return false;
   return editor.isActive("highlight", { color });
 }
@@ -137,7 +123,7 @@ export function toggleHighlight(
   editor: Editor | null,
   color: string,
   node?: Node | null,
-  nodePos?: number | null,
+  nodePos?: number | null
 ): void {
   if (!editor) return;
 
@@ -151,10 +137,7 @@ export function toggleHighlight(
     } else if (node) {
       const foundPos = findNodePosition({ editor, node });
       if (foundPos) {
-        chain
-          .setNodeSelection(foundPos.pos)
-          .toggleMark("highlight", { color })
-          .run();
+        chain.setNodeSelection(foundPos.pos).toggleMark("highlight", { color }).run();
       } else {
         chain.toggleMark("highlight", { color }).run();
       }
@@ -173,14 +156,12 @@ export function toggleHighlight(
  */
 export function isColorHighlightButtonDisabled(
   editor: Editor | null,
-  userDisabled: boolean = false,
+  userDisabled: boolean = false
 ): boolean {
   if (!editor || userDisabled) return true;
 
   const isIncompatibleContext =
-    editor.isActive("code") ||
-    editor.isActive("codeBlock") ||
-    editor.isActive("imageUpload");
+    editor.isActive("code") || editor.isActive("codeBlock") || editor.isActive("imageUpload");
 
   return isIncompatibleContext || !canToggleHighlight(editor);
 }
@@ -191,15 +172,12 @@ export function isColorHighlightButtonDisabled(
 export function shouldShowColorHighlightButton(
   editor: Editor | null,
   hideWhenUnavailable: boolean,
-  highlightInSchema: boolean,
+  highlightInSchema: boolean
 ): boolean {
   if (!highlightInSchema || !editor) return false;
 
   if (hideWhenUnavailable) {
-    if (
-      isNodeSelection(editor.state.selection) ||
-      !canToggleHighlight(editor)
-    ) {
+    if (isNodeSelection(editor.state.selection) || !canToggleHighlight(editor)) {
       return false;
     }
   }
@@ -214,37 +192,29 @@ export function useHighlightState(
   editor: Editor | null,
   color: string,
   disabled: boolean = false,
-  hideWhenUnavailable: boolean = false,
+  hideWhenUnavailable: boolean = false
 ) {
   const highlightInSchema = isMarkInSchema("highlight", editor);
   const isDisabled = isColorHighlightButtonDisabled(editor, disabled);
   const isActive = isHighlightActive(editor, color);
 
   const shouldShow = React.useMemo(
-    () =>
-      shouldShowColorHighlightButton(
-        editor,
-        hideWhenUnavailable,
-        highlightInSchema,
-      ),
-    [editor, hideWhenUnavailable, highlightInSchema],
+    () => shouldShowColorHighlightButton(editor, hideWhenUnavailable, highlightInSchema),
+    [editor, hideWhenUnavailable, highlightInSchema]
   );
 
   return {
     highlightInSchema,
     isDisabled,
     isActive,
-    shouldShow,
+    shouldShow
   };
 }
 
 /**
  * ColorHighlightButton component for TipTap editor
  */
-export const ColorHighlightButton = React.forwardRef<
-  HTMLButtonElement,
-  ColorHighlightButtonProps
->(
+export const ColorHighlightButton = React.forwardRef<HTMLButtonElement, ColorHighlightButtonProps>(
   (
     {
       editor: providedEditor,
@@ -261,14 +231,14 @@ export const ColorHighlightButton = React.forwardRef<
       style,
       ...buttonProps
     },
-    ref,
+    ref
   ) => {
     const editor = useTiptapEditor(providedEditor);
     const { isDisabled, isActive, shouldShow } = useHighlightState(
       editor,
       color,
       disabled,
-      hideWhenUnavailable,
+      hideWhenUnavailable
     );
 
     const handleClick = React.useCallback(
@@ -280,16 +250,16 @@ export const ColorHighlightButton = React.forwardRef<
           onApplied?.(color);
         }
       },
-      [color, editor, isDisabled, node, nodePos, onClick, onApplied],
+      [color, editor, isDisabled, node, nodePos, onClick, onApplied]
     );
 
     const buttonStyle = React.useMemo(
       () =>
         ({
           ...style,
-          "--highlight-color": color,
+          "--highlight-color": color
         }) as React.CSSProperties,
-      [color, style],
+      [color, style]
     );
 
     if (!shouldShow || !editor || !editor.isEditable) {
@@ -324,7 +294,7 @@ export const ColorHighlightButton = React.forwardRef<
         )}
       </Button>
     );
-  },
+  }
 );
 
 ColorHighlightButton.displayName = "ColorHighlightButton";

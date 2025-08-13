@@ -1,17 +1,11 @@
 "use client";
 
-import { type Editor } from "@tiptap/react";
-import * as React from "react";
-
-// --- Hooks ---
-import { useTiptapEditor } from "@shared/hooks/use-tiptap-editor";
-
-// --- Icons ---
 import { ImagePlusIcon } from "@shared/components/tiptap/tiptap-icons/image-plus-icon";
-
-// --- UI Primitives ---
 import type { ButtonProps } from "@shared/components/tiptap/tiptap-ui-primitive/button";
 import { Button } from "@shared/components/tiptap/tiptap-ui-primitive/button";
+import { useTiptapEditor } from "@shared/hooks/use-tiptap-editor";
+import { type Editor } from "@tiptap/react";
+import * as React from "react";
 
 export interface ImageUploadButtonProps extends ButtonProps {
   editor?: Editor | null;
@@ -19,25 +13,19 @@ export interface ImageUploadButtonProps extends ButtonProps {
   extensionName?: string;
 }
 
-export function isImageActive(
-  editor: Editor | null,
-  extensionName: string,
-): boolean {
+export function isImageActive(editor: Editor | null, extensionName: string): boolean {
   if (!editor) return false;
   return editor.isActive(extensionName);
 }
 
-export function insertImage(
-  editor: Editor | null,
-  extensionName: string,
-): boolean {
+export function insertImage(editor: Editor | null, extensionName: string): boolean {
   if (!editor) return false;
 
   return editor
     .chain()
     .focus()
     .insertContent({
-      type: extensionName,
+      type: extensionName
     })
     .run();
 }
@@ -45,7 +33,7 @@ export function insertImage(
 export function useImageUploadButton(
   editor: Editor | null,
   extensionName: string = "imageUpload",
-  disabled: boolean = false,
+  disabled: boolean = false
 ) {
   const isActive = isImageActive(editor, extensionName);
   const handleInsertImage = React.useCallback(() => {
@@ -55,14 +43,11 @@ export function useImageUploadButton(
 
   return {
     isActive,
-    handleInsertImage,
+    handleInsertImage
   };
 }
 
-export const ImageUploadButton = React.forwardRef<
-  HTMLButtonElement,
-  ImageUploadButtonProps
->(
+export const ImageUploadButton = React.forwardRef<HTMLButtonElement, ImageUploadButtonProps>(
   (
     {
       editor: providedEditor,
@@ -74,14 +59,10 @@ export const ImageUploadButton = React.forwardRef<
       children,
       ...buttonProps
     },
-    ref,
+    ref
   ) => {
     const editor = useTiptapEditor(providedEditor);
-    const { isActive, handleInsertImage } = useImageUploadButton(
-      editor,
-      extensionName,
-      disabled,
-    );
+    const { isActive, handleInsertImage } = useImageUploadButton(editor, extensionName, disabled);
 
     const handleClick = React.useCallback(
       (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -91,7 +72,7 @@ export const ImageUploadButton = React.forwardRef<
           handleInsertImage();
         }
       },
-      [onClick, disabled, handleInsertImage],
+      [onClick, disabled, handleInsertImage]
     );
 
     if (!editor || !editor.isEditable) {
@@ -121,7 +102,7 @@ export const ImageUploadButton = React.forwardRef<
         )}
       </Button>
     );
-  },
+  }
 );
 
 ImageUploadButton.displayName = "ImageUploadButton";

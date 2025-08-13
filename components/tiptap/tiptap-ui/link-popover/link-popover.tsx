@@ -1,29 +1,20 @@
-import { isNodeSelection, type Editor } from "@tiptap/react";
-import * as React from "react";
-
-// --- Hooks ---
-import { useTiptapEditor } from "@shared/hooks/use-tiptap-editor";
-
-// --- Icons ---
 import { CornerDownLeftIcon } from "@shared/components/tiptap/tiptap-icons/corner-down-left-icon";
 import { ExternalLinkIcon } from "@shared/components/tiptap/tiptap-icons/external-link-icon";
 import { LinkIcon } from "@shared/components/tiptap/tiptap-icons/link-icon";
 import { TrashIcon } from "@shared/components/tiptap/tiptap-icons/trash-icon";
-
-// --- Lib ---
-import { isMarkInSchema, sanitizeUrl } from "@shared/lib/tiptap-utils";
-
-// --- UI Primitives ---
 import type { ButtonProps } from "@shared/components/tiptap/tiptap-ui-primitive/button";
 import { Button } from "@shared/components/tiptap/tiptap-ui-primitive/button";
 import {
   Popover,
   PopoverContent,
-  PopoverTrigger,
+  PopoverTrigger
 } from "@shared/components/tiptap/tiptap-ui-primitive/popover";
 import { Separator } from "@shared/components/tiptap/tiptap-ui-primitive/separator";
+import { useTiptapEditor } from "@shared/hooks/use-tiptap-editor";
+import { isMarkInSchema, sanitizeUrl } from "@shared/lib/tiptap-utils";
+import { isNodeSelection, type Editor } from "@tiptap/react";
+import * as React from "react";
 
-// --- Styles ---
 import "@shared/components/tiptap/tiptap-ui/link-popover/link-popover.scss";
 
 export interface LinkHandlerProps {
@@ -101,7 +92,7 @@ export const useLinkHandler = (props: LinkHandlerProps) => {
     setUrl,
     setLink,
     removeLink,
-    isActive: editor?.isActive("link") || false,
+    isActive: editor?.isActive("link") || false
   };
 };
 
@@ -122,7 +113,7 @@ export const LinkButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {children || <LinkIcon className="tiptap-button-icon" />}
       </Button>
     );
-  },
+  }
 );
 
 export const LinkContent: React.FC<{
@@ -131,19 +122,13 @@ export const LinkContent: React.FC<{
   const editor = useTiptapEditor(providedEditor);
 
   const linkHandler = useLinkHandler({
-    editor: editor,
+    editor
   });
 
   return <LinkMain {...linkHandler} />;
 };
 
-const LinkMain: React.FC<LinkMainProps> = ({
-  url,
-  setUrl,
-  setLink,
-  removeLink,
-  isActive,
-}) => {
+const LinkMain: React.FC<LinkMainProps> = ({ url, setUrl, setLink, removeLink, isActive }) => {
   const handleKeyDown = (event: React.KeyboardEvent) => {
     if (event.key === "Enter") {
       event.preventDefault();
@@ -254,9 +239,9 @@ export function LinkPopover({
   const onLinkActive = () => setIsOpen(autoOpenOnLinkActive);
 
   const linkHandler = useLinkHandler({
-    editor: editor,
+    editor,
     onSetLink,
-    onLinkActive,
+    onLinkActive
   });
 
   const isDisabled = React.useMemo(() => {
@@ -281,7 +266,7 @@ export function LinkPopover({
       setIsOpen(nextIsOpen);
       onOpenChange?.(nextIsOpen);
     },
-    [onOpenChange],
+    [onOpenChange]
   );
 
   const show = React.useMemo(() => {

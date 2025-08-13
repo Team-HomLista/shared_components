@@ -1,4 +1,3 @@
-import { cn } from "@shared/lib/utils";
 import { FormItem } from "@shared/components/ui/form/elements/fomr-item";
 import { FormControl } from "@shared/components/ui/form/elements/form-control";
 import { FormDescription } from "@shared/components/ui/form/elements/form-description";
@@ -11,8 +10,9 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 } from "@shared/components/ui/select";
+import { cn } from "@shared/lib/utils";
 import { HTMLProps, ReactNode } from "react";
 import { Control, FieldPath, FieldValues } from "react-hook-form";
 
@@ -29,8 +29,7 @@ interface SelectField<TFieldValues extends FieldValues> {
   buildItem?: (item: Item) => ReactNode;
 }
 
-interface InputField<TFieldValues extends FieldValues>
-  extends HTMLProps<HTMLInputElement> {
+interface InputField<TFieldValues extends FieldValues> extends HTMLProps<HTMLInputElement> {
   name: FieldPath<TFieldValues>;
   placeholder?: string;
 }
@@ -54,7 +53,7 @@ export const FormInputWithSelector = <TFieldValues extends FieldValues>({
   description,
   className,
   inverted,
-  fields,
+  fields
 }: FormInputWithSelectorProps<TFieldValues>) => {
   const InputField = (
     <FormField
@@ -65,7 +64,7 @@ export const FormInputWithSelector = <TFieldValues extends FieldValues>({
           <Input
             className={cn({
               "rounded-r-none": !inverted,
-              "rounded-l-none": inverted,
+              "rounded-l-none": inverted
             })}
             {...field}
             {...fields.input}
@@ -85,9 +84,9 @@ export const FormInputWithSelector = <TFieldValues extends FieldValues>({
               className={cn(
                 {
                   "rounded-r-none border-r-0": inverted,
-                  "rounded-l-none border-l-0": !inverted,
+                  "rounded-l-none border-l-0": !inverted
                 },
-                fields.select.className,
+                fields.select.className
               )}
             >
               <SelectValue placeholder={fields.select.placeholder} />

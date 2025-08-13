@@ -3,28 +3,28 @@ import TrailingNode from "@shared/components/tiptap/tiptap-extension/trailing-no
 import { ArrowLeftIcon } from "@shared/components/tiptap/tiptap-icons/arrow-left-icon";
 import { HighlighterIcon } from "@shared/components/tiptap/tiptap-icons/highlighter-icon";
 import { LinkIcon } from "@shared/components/tiptap/tiptap-icons/link-icon";
-import { Button } from "@shared/components/tiptap/tiptap-ui-primitive/button";
-import {
-  ToolbarGroup,
-  ToolbarSeparator,
-} from "@shared/components/tiptap/tiptap-ui-primitive/toolbar";
 import { BlockquoteButton } from "@shared/components/tiptap/tiptap-ui/blockquote-button";
 import { CodeBlockButton } from "@shared/components/tiptap/tiptap-ui/code-block-button";
 import {
   ColorHighlightPopover,
   ColorHighlightPopoverButton,
-  ColorHighlightPopoverContent,
+  ColorHighlightPopoverContent
 } from "@shared/components/tiptap/tiptap-ui/color-highlight-popover";
 import { HeadingDropdownMenu } from "@shared/components/tiptap/tiptap-ui/heading-dropdown-menu";
 import {
   LinkButton,
   LinkContent,
-  LinkPopover,
+  LinkPopover
 } from "@shared/components/tiptap/tiptap-ui/link-popover";
 import { ListDropdownMenu } from "@shared/components/tiptap/tiptap-ui/list-dropdown-menu";
 import { MarkButton } from "@shared/components/tiptap/tiptap-ui/mark-button";
 import { TextAlignButton } from "@shared/components/tiptap/tiptap-ui/text-align-button";
 import { UndoRedoButton } from "@shared/components/tiptap/tiptap-ui/undo-redo-button";
+import { Button } from "@shared/components/tiptap/tiptap-ui-primitive/button";
+import {
+  ToolbarGroup,
+  ToolbarSeparator
+} from "@shared/components/tiptap/tiptap-ui-primitive/toolbar";
 import { Highlight, HighlightOptions } from "@tiptap/extension-highlight";
 import Link from "@tiptap/extension-link";
 import TaskItem, { TaskItemOptions } from "@tiptap/extension-task-item";
@@ -34,12 +34,13 @@ import Typography from "@tiptap/extension-typography";
 import Underline from "@tiptap/extension-underline";
 import { useState } from "react";
 import GlobalDragHandle from "tiptap-extension-global-drag-handle";
+
 import { RichTextEditor, RichTextEditorRootProps } from ".";
 
 export const MainToolbarContent = ({
   onHighlighterClick,
   onLinkClick,
-  isMobile,
+  isMobile
 }: {
   onHighlighterClick: () => void;
   onLinkClick: () => void;
@@ -91,7 +92,7 @@ export const MainToolbarContent = ({
 
 export const MobileToolbarContent = ({
   type,
-  onBack,
+  onBack
 }: {
   type: "highlighter" | "link";
   onBack: () => void;
@@ -110,11 +111,7 @@ export const MobileToolbarContent = ({
 
     <ToolbarSeparator />
 
-    {type === "highlighter" ? (
-      <ColorHighlightPopoverContent />
-    ) : (
-      <LinkContent />
-    )}
+    {type === "highlighter" ? <ColorHighlightPopoverContent /> : <LinkContent />}
   </>
 );
 
@@ -135,9 +132,7 @@ export const RichTextEditorSimple = ({
   extensions = [],
   ...props
 }: RichTextEditorSimpleProps) => {
-  const [mobileView, setMobileView] = useState<"main" | "highlighter" | "link">(
-    "main",
-  );
+  const [mobileView, setMobileView] = useState<"main" | "highlighter" | "link">("main");
 
   return (
     <RichTextEditor
@@ -153,7 +148,7 @@ export const RichTextEditorSimple = ({
         TrailingNode,
         Link.configure(),
         GlobalDragHandle,
-        ...extensions,
+        ...extensions
       ]}
     >
       <RichTextEditor.Toolbar>

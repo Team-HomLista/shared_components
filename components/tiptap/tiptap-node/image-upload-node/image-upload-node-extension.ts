@@ -4,7 +4,7 @@ import { mergeAttributes, Node, ReactNodeViewRenderer } from "@tiptap/react";
 export type UploadFunction = (
   file: File,
   onProgress?: (event: { progress: number }) => void,
-  abortSignal?: AbortSignal,
+  abortSignal?: AbortSignal
 ) => Promise<string>;
 
 export interface ImageUploadNodeOptions {
@@ -67,21 +67,21 @@ export const ImageUploadNode = Node.create<ImageUploadNodeOptions>({
       maxSize: 0,
       upload: undefined,
       onError: undefined,
-      onSuccess: undefined,
+      onSuccess: undefined
     };
   },
 
   addAttributes() {
     return {
       accept: {
-        default: this.options.accept,
+        default: this.options.accept
       },
       limit: {
-        default: this.options.limit,
+        default: this.options.limit
       },
       maxSize: {
-        default: this.options.maxSize,
-      },
+        default: this.options.maxSize
+      }
     };
   },
 
@@ -90,10 +90,7 @@ export const ImageUploadNode = Node.create<ImageUploadNodeOptions>({
   },
 
   renderHTML({ HTMLAttributes }) {
-    return [
-      "div",
-      mergeAttributes({ "data-type": "image-upload" }, HTMLAttributes),
-    ];
+    return ["div", mergeAttributes({ "data-type": "image-upload" }, HTMLAttributes)];
   },
 
   addNodeView() {
@@ -107,9 +104,9 @@ export const ImageUploadNode = Node.create<ImageUploadNodeOptions>({
         ({ commands }) => {
           return commands.insertContent({
             type: this.name,
-            attrs: options,
+            attrs: options
           });
-        },
+        }
     };
   },
 
@@ -122,11 +119,7 @@ export const ImageUploadNode = Node.create<ImageUploadNodeOptions>({
         const { selection } = editor.state;
         const { nodeAfter } = selection.$from;
 
-        if (
-          nodeAfter &&
-          nodeAfter.type.name === "imageUpload" &&
-          editor.isActive("imageUpload")
-        ) {
+        if (nodeAfter && nodeAfter.type.name === "imageUpload" && editor.isActive("imageUpload")) {
           const nodeEl = editor.view.nodeDOM(selection.$from.pos);
           if (nodeEl && nodeEl instanceof HTMLElement) {
             // Since NodeViewWrapper is wrapped with a div, we need to click the first child
@@ -138,9 +131,9 @@ export const ImageUploadNode = Node.create<ImageUploadNodeOptions>({
           }
         }
         return false;
-      },
+      }
     };
-  },
+  }
 });
 
 export default ImageUploadNode;

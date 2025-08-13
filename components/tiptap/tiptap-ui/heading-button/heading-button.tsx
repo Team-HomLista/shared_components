@@ -1,23 +1,20 @@
-import { isNodeSelection, type Editor } from "@tiptap/react";
-import * as React from "react";
-
-// --- Hooks ---
-import { useTiptapEditor } from "@shared/hooks/use-tiptap-editor";
-
 // --- Icons ---
+
 import { HeadingFiveIcon } from "@shared/components/tiptap/tiptap-icons/heading-five-icon";
 import { HeadingFourIcon } from "@shared/components/tiptap/tiptap-icons/heading-four-icon";
 import { HeadingOneIcon } from "@shared/components/tiptap/tiptap-icons/heading-one-icon";
 import { HeadingSixIcon } from "@shared/components/tiptap/tiptap-icons/heading-six-icon";
 import { HeadingThreeIcon } from "@shared/components/tiptap/tiptap-icons/heading-three-icon";
 import { HeadingTwoIcon } from "@shared/components/tiptap/tiptap-icons/heading-two-icon";
-
-// --- Lib ---
-import { isNodeInSchema } from "@shared/lib/tiptap-utils";
-
 // --- UI Primitives ---
 import type { ButtonProps } from "@shared/components/tiptap/tiptap-ui-primitive/button";
 import { Button } from "@shared/components/tiptap/tiptap-ui-primitive/button";
+// --- Hooks ---
+import { useTiptapEditor } from "@shared/hooks/use-tiptap-editor";
+// --- Lib ---
+import { isNodeInSchema } from "@shared/lib/tiptap-utils";
+import { isNodeSelection, type Editor } from "@tiptap/react";
+import * as React from "react";
 
 export type Level = 1 | 2 | 3 | 4 | 5 | 6;
 
@@ -47,7 +44,7 @@ export const headingIcons = {
   3: HeadingThreeIcon,
   4: HeadingFourIcon,
   5: HeadingFiveIcon,
-  6: HeadingSixIcon,
+  6: HeadingSixIcon
 };
 
 export const headingShortcutKeys: Partial<Record<Level, string>> = {
@@ -56,7 +53,7 @@ export const headingShortcutKeys: Partial<Record<Level, string>> = {
   3: "Ctrl-Alt-3",
   4: "Ctrl-Alt-4",
   5: "Ctrl-Alt-5",
-  6: "Ctrl-Alt-6",
+  6: "Ctrl-Alt-6"
 };
 
 export function canToggleHeading(editor: Editor | null, level: Level): boolean {
@@ -87,7 +84,7 @@ export function toggleHeading(editor: Editor | null, level: Level): void {
 export function isHeadingButtonDisabled(
   editor: Editor | null,
   level: Level,
-  userDisabled: boolean = false,
+  userDisabled: boolean = false
 ): boolean {
   if (!editor) return true;
   if (userDisabled) return true;
@@ -120,11 +117,7 @@ export function getFormattedHeadingName(level: Level): string {
   return `Heading ${level}`;
 }
 
-export function useHeadingState(
-  editor: Editor | null,
-  level: Level,
-  disabled: boolean = false,
-) {
+export function useHeadingState(editor: Editor | null, level: Level, disabled: boolean = false) {
   const headingInSchema = isNodeInSchema("heading", editor);
   const isDisabled = isHeadingButtonDisabled(editor, level, disabled);
   const isActive = isHeadingActive(editor, level);
@@ -139,14 +132,11 @@ export function useHeadingState(
     isActive,
     Icon,
     shortcutKey,
-    formattedName,
+    formattedName
   };
 }
 
-export const HeadingButton = React.forwardRef<
-  HTMLButtonElement,
-  HeadingButtonProps
->(
+export const HeadingButton = React.forwardRef<HTMLButtonElement, HeadingButtonProps>(
   (
     {
       editor: providedEditor,
@@ -159,18 +149,12 @@ export const HeadingButton = React.forwardRef<
       children,
       ...buttonProps
     },
-    ref,
+    ref
   ) => {
     const editor = useTiptapEditor(providedEditor);
 
-    const {
-      headingInSchema,
-      isDisabled,
-      isActive,
-      Icon,
-      shortcutKey,
-      formattedName,
-    } = useHeadingState(editor, level, disabled);
+    const { headingInSchema, isDisabled, isActive, Icon, shortcutKey, formattedName } =
+      useHeadingState(editor, level, disabled);
 
     const handleClick = React.useCallback(
       (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -180,7 +164,7 @@ export const HeadingButton = React.forwardRef<
           toggleHeading(editor, level);
         }
       },
-      [onClick, isDisabled, editor, level],
+      [onClick, isDisabled, editor, level]
     );
 
     const show = React.useMemo(() => {
@@ -188,7 +172,7 @@ export const HeadingButton = React.forwardRef<
         editor,
         level,
         hideWhenUnavailable,
-        headingInSchema,
+        headingInSchema
       });
     }, [editor, level, hideWhenUnavailable, headingInSchema]);
 
@@ -222,7 +206,7 @@ export const HeadingButton = React.forwardRef<
         )}
       </Button>
     );
-  },
+  }
 );
 
 HeadingButton.displayName = "HeadingButton";

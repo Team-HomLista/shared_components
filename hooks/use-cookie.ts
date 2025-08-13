@@ -14,7 +14,7 @@ export default function useCookie(name: string, defaultValue: string) {
       Cookies.set(name, newValue, options);
       setValue(newValue);
     },
-    [name],
+    [name]
   );
 
   const deleteCookie = useCallback(() => {

@@ -1,10 +1,6 @@
 import { cn } from "@shared/lib/utils";
 import { cva, VariantProps } from "class-variance-authority";
-import {
-  ComponentPropsWithoutRef,
-  ElementType,
-  PropsWithChildren,
-} from "react";
+import { ComponentPropsWithoutRef, ElementType, PropsWithChildren } from "react";
 
 export const textVariants = cva(cn(""), {
   variants: {
@@ -27,15 +23,15 @@ export const textVariants = cva(cn(""), {
        * emphasis should be lower. Similar to description in styles. */
       small: cn(""),
       /** Same as description but with strong emphasis (bold). */
-      strong: cn(""),
-    },
+      strong: cn("")
+    }
   },
   defaultVariants: {
-    variant: "default",
-  },
+    variant: "default"
+  }
 });
 
-const defaultElement = "p";
+type DefaultElement = "p";
 
 export const textElement = {
   default: "p",
@@ -45,7 +41,7 @@ export const textElement = {
   section: "h2",
   label: "label",
   small: "p",
-  strong: "strong",
+  strong: "strong"
 };
 
 type PolymorphicAsProp<E extends ElementType> = {
@@ -56,17 +52,15 @@ type PolymorphicProps<E extends ElementType> = PropsWithChildren<
   ComponentPropsWithoutRef<E> & PolymorphicAsProp<E>
 >;
 
-type TextProps<E extends ElementType = typeof defaultElement> =
-  PolymorphicProps<E> &
-    VariantProps<typeof textVariants> & {
-      color?: "primary" | "secondary";
-    };
+type TextProps<E extends ElementType = DefaultElement> = PolymorphicProps<E> &
+  VariantProps<typeof textVariants> & {
+    color?: "primary" | "secondary";
+  };
 
-export const Text = <E extends ElementType = typeof defaultElement>({
+export const Text = <E extends ElementType = DefaultElement>({
   as,
   children,
   className,
-  href,
   variant = "default",
   ...props
 }: TextProps<E>) => {

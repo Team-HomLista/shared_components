@@ -1,4 +1,4 @@
-import { FormProvider } from "react-hook-form";
+"use client";
 
 import { FormItem } from "@shared/components/ui/form/elements/fomr-item";
 import { FormAvatar } from "@shared/components/ui/form/elements/form-avatar";
@@ -14,7 +14,7 @@ import {
   DisplayErrorMessage,
   FormHideErrorMessage,
   FormMessage,
-  FormMultiFormMessage,
+  FormMultiFormMessage
 } from "@shared/components/ui/form/elements/form-message";
 import { FormMultiInput } from "@shared/components/ui/form/elements/form-multi-input";
 import { FormPhone } from "@shared/components/ui/form/elements/form-phone";
@@ -22,6 +22,7 @@ import { FormRadioGroup } from "@shared/components/ui/form/elements/form-radio-g
 import { FormSelector } from "@shared/components/ui/form/elements/form-selector";
 import { FormSwitchProminent } from "@shared/components/ui/form/elements/form-switch-prominent";
 import { useFormField } from "@shared/components/ui/form/hooks/use-form-field";
+import { FormProvider } from "react-hook-form";
 
 const Form = FormProvider as typeof FormProvider & {
   Item: typeof FormItem;
@@ -73,5 +74,5 @@ export {
   FormItem,
   FormLabel,
   FormMessage,
-  useFormField,
+  useFormField
 };

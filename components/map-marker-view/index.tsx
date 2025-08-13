@@ -1,4 +1,4 @@
-import { AdvancedMarker, Map, APIProvider } from "@vis.gl/react-google-maps";
+import { AdvancedMarker, APIProvider, Map } from "@vis.gl/react-google-maps";
 import { useMemo } from "react";
 
 type LanLng = { lat: number; lng: number };
@@ -21,15 +21,15 @@ export function MapMarkerView({ apiKey, markers }: FormLocationProps) {
         (acc, marker) => {
           return {
             lat: acc.lat + marker.position.lat,
-            lng: acc.lng + marker.position.lng,
+            lng: acc.lng + marker.position.lng
           };
         },
-        { lat: 0, lng: 0 },
+        { lat: 0, lng: 0 }
       ) ?? DEFAULT_CENTER;
 
     return {
       lat: sumPosition?.lat / (markers?.length ?? 1),
-      lng: sumPosition?.lng / (markers?.length ?? 1),
+      lng: sumPosition?.lng / (markers?.length ?? 1)
     };
   }, [markers]);
 

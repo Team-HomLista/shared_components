@@ -1,4 +1,3 @@
-import { handleImageUpload, MAX_FILE_SIZE } from "@shared/lib/tiptap-utils";
 import { Selection } from "@shared/components/tiptap/tiptap-extension/selection-extension";
 import TrailingNode from "@shared/components/tiptap/tiptap-extension/trailing-node-extension";
 import { ArrowLeftIcon } from "@shared/components/tiptap/tiptap-icons/arrow-left-icon";
@@ -6,27 +5,28 @@ import { HighlighterIcon } from "@shared/components/tiptap/tiptap-icons/highligh
 import { LinkIcon } from "@shared/components/tiptap/tiptap-icons/link-icon";
 import {
   ImageUploadNode,
-  ImageUploadNodeOptions,
+  ImageUploadNodeOptions
 } from "@shared/components/tiptap/tiptap-node/image-upload-node";
-import { Button } from "@shared/components/tiptap/tiptap-ui-primitive/button";
 import { BlockquoteButton } from "@shared/components/tiptap/tiptap-ui/blockquote-button";
 import { CodeBlockButton } from "@shared/components/tiptap/tiptap-ui/code-block-button";
 import {
   ColorHighlightPopover,
   ColorHighlightPopoverButton,
-  ColorHighlightPopoverContent,
+  ColorHighlightPopoverContent
 } from "@shared/components/tiptap/tiptap-ui/color-highlight-popover";
 import { HeadingDropdownMenu } from "@shared/components/tiptap/tiptap-ui/heading-dropdown-menu";
 import { ImageUploadButton } from "@shared/components/tiptap/tiptap-ui/image-upload-button";
 import {
   LinkButton,
   LinkContent,
-  LinkPopover,
+  LinkPopover
 } from "@shared/components/tiptap/tiptap-ui/link-popover";
 import { ListDropdownMenu } from "@shared/components/tiptap/tiptap-ui/list-dropdown-menu";
 import { MarkButton } from "@shared/components/tiptap/tiptap-ui/mark-button";
 import { TextAlignButton } from "@shared/components/tiptap/tiptap-ui/text-align-button";
 import { UndoRedoButton } from "@shared/components/tiptap/tiptap-ui/undo-redo-button";
+import { Button } from "@shared/components/tiptap/tiptap-ui-primitive/button";
+import { handleImageUpload, MAX_FILE_SIZE } from "@shared/lib/tiptap-utils";
 import { Highlight, HighlightOptions } from "@tiptap/extension-highlight";
 import Image from "@tiptap/extension-image";
 import Link, { LinkOptions } from "@tiptap/extension-link";
@@ -39,12 +39,13 @@ import Typography from "@tiptap/extension-typography";
 import Underline from "@tiptap/extension-underline";
 import { useState } from "react";
 import GlobalDragHandle from "tiptap-extension-global-drag-handle";
+
 import { RichTextEditor, RichTextEditorRootProps } from ".";
 
 export const MainToolbarContent = ({
   onHighlighterClick,
   onLinkClick,
-  isMobile,
+  isMobile
 }: {
   onHighlighterClick: () => void;
   onLinkClick: () => void;
@@ -109,7 +110,7 @@ export const MainToolbarContent = ({
 
 export const MobileToolbarContent = ({
   type,
-  onBack,
+  onBack
 }: {
   type: "highlighter" | "link";
   onBack: () => void;
@@ -128,11 +129,7 @@ export const MobileToolbarContent = ({
 
     <RichTextEditor.ToolbarSeparator />
 
-    {type === "highlighter" ? (
-      <ColorHighlightPopoverContent />
-    ) : (
-      <LinkContent />
-    )}
+    {type === "highlighter" ? <ColorHighlightPopoverContent /> : <LinkContent />}
   </>
 );
 
@@ -157,15 +154,13 @@ export const RichTextEditorAdvanced = ({
     limit: 3,
     maxSize: MAX_FILE_SIZE,
     upload: handleImageUpload,
-    onError: (error) => console.error("Upload failed:", error),
+    onError: (error) => console.error("Upload failed:", error)
   },
   linkOptions = { openOnClick: false },
   extensions = [],
   ...props
 }: RichTextEditorAdvancedProps) => {
-  const [mobileView, setMobileView] = useState<"main" | "highlighter" | "link">(
-    "main",
-  );
+  const [mobileView, setMobileView] = useState<"main" | "highlighter" | "link">("main");
 
   return (
     <RichTextEditor
@@ -185,7 +180,7 @@ export const RichTextEditorAdvanced = ({
         TrailingNode,
         Link.configure(linkOptions),
         GlobalDragHandle,
-        ...extensions,
+        ...extensions
       ]}
     >
       <RichTextEditor.Toolbar>
