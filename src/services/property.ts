@@ -1,8 +1,8 @@
 "use server";
+import { fetchServer, getResponseData } from "@/lib/http-server";
 import { Paginated } from "@/types/paginated";
 import { DetailedProperty, Property } from "@/types/property";
 import { PropertyQueryParams } from "@/types/property-query-params";
-import { fetchServer, getResponseData } from "@/lib/http-server";
 
 export async function getPropertiesBySearch(params?: PropertyQueryParams) {
   const response = await fetchServer("/api/properties/search", { params });
@@ -13,8 +13,8 @@ export async function getFeaturedProperties(limit?: number) {
   try {
     const response = await fetchServer("/api/properties/featured", {
       params: {
-        limit,
-      },
+        limit
+      }
     });
 
     const { data } = await getResponseData<Paginated<Property>>(response);
@@ -37,14 +37,14 @@ export async function getPropertyDetails(slug: string) {
 
 export async function addPropertyToFavorites(uuid: string) {
   const response = await fetchServer(`/api/properties/${uuid}/favorite`, {
-    method: "POST",
+    method: "POST"
   });
   return getResponseData<DetailedProperty>(response);
 }
 
 export async function removePropertyFromFavorites(uuid: string) {
   const response = await fetchServer(`/api/properties/${uuid}/favorite`, {
-    method: "DELETE",
+    method: "DELETE"
   });
   return getResponseData<DetailedProperty>(response);
 }

@@ -1,4 +1,4 @@
 export enum TransactionTypeGroup {
   BUY = "BUY",
-  RENT = "RENT",
+  RENT = "RENT"
 }

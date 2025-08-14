@@ -1,17 +1,10 @@
 "use client";
 
-import {
-  Drawer,
-  DrawerContent,
-  DrawerHeader,
-  DrawerTitle,
-} from "@shared/components/ui/drawer";
-import type {
-  SmallFormData,
-  LeadFormData,
-} from "@/modules/home/sections/find/schemas";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+import { Drawer, DrawerContent, DrawerHeader, DrawerTitle } from "@shared/components/ui/drawer";
+
 import { LeadForm } from "@/modules/home/sections/find/form";
+import type { SmallFormData, LeadFormData } from "@/modules/home/sections/find/schemas";
 
 interface LeadFormDrawerProps {
   open: boolean;
@@ -24,7 +17,7 @@ export const LeadFormDrawer = ({
   open,
   onOpenChange,
   initialData,
-  onSubmitSuccess,
+  onSubmitSuccess
 }: LeadFormDrawerProps) => {
   const handleSubmit = (data: LeadFormData) => {
     onSubmitSuccess?.(data);

@@ -1,13 +1,14 @@
-import { FaqItem } from "@/modules/subscriptions/faq/types";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
-  AccordionTrigger,
+  AccordionTrigger
 } from "@shared/components/ui/accordion";
 import { Button } from "@shared/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { FC } from "react";
+
+import { FaqItem } from "@/modules/subscriptions/faq/types";
 
 interface FAQProps {
   faqs: FaqItem[];
@@ -36,9 +37,7 @@ export const FaqSection: FC<FAQProps> = ({ faqs }: FAQProps) => {
               value={`item-${index + 1}`}
               className="bg-secondary/30 border-secondary/60 rounded-sm border-2 px-4 sm:px-6"
             >
-              <AccordionTrigger className="text-lg sm:text-xl">
-                {faq.title}
-              </AccordionTrigger>
+              <AccordionTrigger className="text-lg sm:text-xl">{faq.title}</AccordionTrigger>
               <AccordionContent className="text-base sm:text-lg">
                 {faq.description}
               </AccordionContent>

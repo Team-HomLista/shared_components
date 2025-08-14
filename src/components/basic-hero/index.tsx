@@ -7,11 +7,7 @@ interface BasicHeroProps {
   lastUpdated: string;
 }
 
-export const BasicHeroSection: FC<BasicHeroProps> = ({
-  policyName,
-  description,
-  lastUpdated,
-}) => {
+export const BasicHeroSection: FC<BasicHeroProps> = ({ policyName, description, lastUpdated }) => {
   return (
     <div className="from-primary via-primary to-primary/90 relative overflow-hidden bg-gradient-to-b">
       <div className="relative container mx-auto px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">

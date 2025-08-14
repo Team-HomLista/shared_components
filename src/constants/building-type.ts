@@ -6,5 +6,5 @@ export const BUILDING_TYPE_ES = {
   [BuildingType.COMMERCIAL]: "Comercial",
   [BuildingType.LAND]: "Terreno",
   [BuildingType.PENTHOUSE]: "Penthouse",
-  [BuildingType.STUDIO]: "Estudio",
+  [BuildingType.STUDIO]: "Estudio"
 } as const satisfies Record<BuildingType, string>;

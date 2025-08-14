@@ -1,13 +1,14 @@
-import { FeatureItem } from "@/components/feature-item";
 import {
   ActivityIcon,
   BotIcon,
   Building2Icon,
   LayoutTemplateIcon,
   SendIcon,
-  StarIcon,
+  StarIcon
 } from "lucide-react";
 import { FC } from "react";
+
+import { FeatureItem } from "@/components/feature-item";
 
 interface HomlistaFeaturesSectionProps {}
 
@@ -20,8 +21,8 @@ export const HomlistaFeaturesSection: FC<HomlistaFeaturesSectionProps> = () => {
             Funcionalidades diseñadas para el éxito inmobiliario
           </h2>
           <p className="max-w-xl text-xl text-gray-600">
-            Todas las herramientas que necesitas para captar leads gestionar
-            clientes y cerrar más ventas
+            Todas las herramientas que necesitas para captar leads gestionar clientes y cerrar más
+            ventas
           </p>
         </div>
 

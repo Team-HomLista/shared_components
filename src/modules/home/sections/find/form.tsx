@@ -1,36 +1,33 @@
 "use client";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
 import { Button } from "@shared/components/ui/button";
-import { Text } from "@shared/components/ui/text";
+import { Checkbox } from "@shared/components/ui/checkbox";
 import {
   Form,
   FormControl,
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
+  FormMessage
 } from "@shared/components/ui/form";
-import {
-  LeadFormData,
-  leadFormSchema,
-  SmallFormData,
-} from "@/modules/home/sections/find/schemas";
-import { InquiryService } from "@/services/inquiry";
+import { Input } from "@shared/components/ui/input";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 } from "@shared/components/ui/select";
 import { Slider } from "@shared/components/ui/slider";
-import { Input } from "@shared/components/ui/input";
-import { Checkbox } from "@shared/components/ui/checkbox";
-import { FINGERPRINT_STORAGE_KEY } from "@/constants/localstorage";
-import { BUILDING_TYPE_ES } from "@/constants/building-type";
-import { TRANSACTION_TYPE_GROUP_ES } from "@/constants/transaction-type";
+import { Text } from "@shared/components/ui/text";
 import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+
+import { BUILDING_TYPE_ES } from "@/constants/building-type";
+import { FINGERPRINT_STORAGE_KEY } from "@/constants/localstorage";
+import { TRANSACTION_TYPE_GROUP_ES } from "@/constants/transaction-type";
+import { LeadFormData, leadFormSchema, SmallFormData } from "@/modules/home/sections/find/schemas";
+import { InquiryService } from "@/services/inquiry";
 import { getCities, getStates } from "@/services/propertyLocations";
 
 interface LeadFormProps {
@@ -39,11 +36,7 @@ interface LeadFormProps {
   onSubmitSuccess?: (data: LeadFormData) => void;
 }
 
-export const LeadForm = ({
-  initialData,
-  onClose,
-  onSubmitSuccess,
-}: LeadFormProps) => {
+export const LeadForm = ({ initialData, onClose, onSubmitSuccess }: LeadFormProps) => {
   const [states, setStates] = useState<string[]>([]);
   const [cities, setCities] = useState<string[]>([]);
 
@@ -55,14 +48,14 @@ export const LeadForm = ({
       whatsapp: "",
       email: "",
       contactConsent: false,
-      dataConsent: false,
-    },
+      dataConsent: false
+    }
   });
 
   const stateValue = form.watch("state");
 
   const onSubmit = (data: LeadFormData) => {
-    let anonymousId = localStorage.getItem(FINGERPRINT_STORAGE_KEY);
+    const anonymousId = localStorage.getItem(FINGERPRINT_STORAGE_KEY);
 
     if (anonymousId !== null) {
       InquiryService.postGeneral(anonymousId, data);
@@ -134,11 +127,7 @@ export const LeadForm = ({
               <FormLabel>
                 <Text variant="label">Estado</Text>
               </FormLabel>
-              <Select
-                onValueChange={field.onChange}
-                defaultValue={field.value}
-                value={field.value}
-              >
+              <Select onValueChange={field.onChange} defaultValue={field.value} value={field.value}>
                 <FormControl>
                   <SelectTrigger className="w-full bg-white">
                     <SelectValue placeholder="Selecciona el estado donde buscas tu propiedad" />
@@ -165,11 +154,7 @@ export const LeadForm = ({
               <FormLabel>
                 <Text variant="label">Ciudad</Text>
               </FormLabel>
-              <Select
-                onValueChange={field.onChange}
-                defaultValue={field.value}
-                value={field.value}
-              >
+              <Select onValueChange={field.onChange} defaultValue={field.value} value={field.value}>
                 <FormControl>
                   <SelectTrigger className="w-full bg-white">
                     <SelectValue placeholder="Selecciona la ciudad donde buscas tu propiedad" />
@@ -203,13 +188,11 @@ export const LeadForm = ({
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent position="popper">
-                  {Object.entries(TRANSACTION_TYPE_GROUP_ES).map(
-                    ([type, label]) => (
-                      <SelectItem key={type} value={type}>
-                        {label}
-                      </SelectItem>
-                    ),
-                  )}
+                  {Object.entries(TRANSACTION_TYPE_GROUP_ES).map(([type, label]) => (
+                    <SelectItem key={type} value={type}>
+                      {label}
+                    </SelectItem>
+                  ))}
                 </SelectContent>
               </Select>
               <FormMessage />
@@ -225,7 +208,7 @@ export const LeadForm = ({
               field.value?.toLocaleString?.("es-MX", {
                 style: "currency",
                 currency: "MXN",
-                minimumFractionDigits: 0,
+                minimumFractionDigits: 0
               }) || "$0";
 
             return (
@@ -262,10 +245,7 @@ export const LeadForm = ({
                   control={form.control}
                   name="lada"
                   render={({ field: phoneField }) => (
-                    <Select
-                      onValueChange={phoneField.onChange}
-                      defaultValue={phoneField.value}
-                    >
+                    <Select onValueChange={phoneField.onChange} defaultValue={phoneField.value}>
                       <FormControl>
                         <SelectTrigger className="w-fit">
                           <SelectValue placeholder="Código" />
@@ -309,16 +289,13 @@ export const LeadForm = ({
           render={({ field }) => (
             <FormItem className="flex w-full max-w-[428px] flex-row items-start space-y-0 space-x-3 rounded-md px-4 pt-4">
               <FormControl>
-                <Checkbox
-                  checked={field.value}
-                  onCheckedChange={field.onChange}
-                />
+                <Checkbox checked={field.value} onCheckedChange={field.onChange} />
               </FormControl>
               <div className="space-y-1 leading-none">
                 <FormLabel>Consiento ser contactado por un asesor</FormLabel>
                 <p className="text-muted-foreground text-sm">
-                  Autorizo que un asesor certificado me contacte para brindarme
-                  asistencia personalizada
+                  Autorizo que un asesor certificado me contacte para brindarme asistencia
+                  personalizada
                 </p>
               </div>
             </FormItem>
@@ -331,17 +308,13 @@ export const LeadForm = ({
           render={({ field }) => (
             <FormItem className="flex w-full max-w-[428px] flex-row items-start space-y-0 space-x-3 rounded-md px-4">
               <FormControl>
-                <Checkbox
-                  checked={field.value}
-                  onCheckedChange={field.onChange}
-                />
+                <Checkbox checked={field.value} onCheckedChange={field.onChange} />
               </FormControl>
               <div className="space-y-1 leading-none">
                 <FormLabel>Autorizo el uso de mis datos personales</FormLabel>
                 <p className="text-muted-foreground text-sm">
-                  Acepto el tratamiento de mis datos personales conforme a la
-                  Política de Privacidad y la Ley Federal de Protección de Datos
-                  Personales (LFDPDP)
+                  Acepto el tratamiento de mis datos personales conforme a la Política de Privacidad
+                  y la Ley Federal de Protección de Datos Personales (LFDPDP)
                 </p>
               </div>
             </FormItem>

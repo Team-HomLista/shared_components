@@ -1,5 +1,4 @@
 import { Card } from "@shared/components/ui/card";
-import { PropertyTag } from "@/types/property";
 import {
   Star,
   Home,
@@ -10,9 +9,11 @@ import {
   Gavel,
   Sparkles,
   Tag as TagIcon,
-  Percent,
+  Percent
 } from "lucide-react";
 import { FC } from "react";
+
+import { PropertyTag } from "@/types/property";
 
 export interface PropertyTagsProps {
   tags: Array<PropertyTag>;
@@ -66,7 +67,7 @@ export const PropertyTags: FC<PropertyTagsProps> = ({ tags }) => {
           paddingTop: "4px",
           paddingBottom: "4px",
           paddingLeft: "8px",
-          paddingRight: "8px",
+          paddingRight: "8px"
         }}
         title={tag.description || tag.name}
       >

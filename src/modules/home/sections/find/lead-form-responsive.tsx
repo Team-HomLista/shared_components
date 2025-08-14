@@ -1,12 +1,9 @@
 "use client";
 
 import { useIsMobile } from "@/hooks/useIsMobile";
-import {
-  LeadFormData,
-  SmallFormData,
-} from "@/modules/home/sections/find/schemas";
-import { LeadFormModal } from "@/modules/home/sections/find/modal";
 import { LeadFormDrawer } from "@/modules/home/sections/find/drawer";
+import { LeadFormModal } from "@/modules/home/sections/find/modal";
+import { SmallFormData } from "@/modules/home/sections/find/schemas";
 
 interface LeadFormResponsiveProps {
   open: boolean;
@@ -17,21 +14,13 @@ interface LeadFormResponsiveProps {
 export const LeadFormResponsive = ({
   open,
   onOpenChange,
-  initialData,
+  initialData
 }: LeadFormResponsiveProps) => {
   const isDesktop = useIsMobile();
 
   return isDesktop ? (
-    <LeadFormModal
-      open={open}
-      onOpenChange={onOpenChange}
-      initialData={initialData}
-    />
+    <LeadFormModal open={open} onOpenChange={onOpenChange} initialData={initialData} />
   ) : (
-    <LeadFormDrawer
-      open={open}
-      onOpenChange={onOpenChange}
-      initialData={initialData}
-    />
+    <LeadFormDrawer open={open} onOpenChange={onOpenChange} initialData={initialData} />
   );
 };

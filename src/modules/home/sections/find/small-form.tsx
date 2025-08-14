@@ -1,32 +1,30 @@
 "use client";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import * as z from "zod";
-import { Text } from "@shared/components/ui/text";
+import { Button } from "@shared/components/ui/button";
 import {
   Form,
   FormControl,
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
+  FormMessage
 } from "@shared/components/ui/form";
-import { Button } from "@shared/components/ui/button";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 } from "@shared/components/ui/select";
 import { Slider } from "@shared/components/ui/slider";
-import {
-  SmallFormData,
-  smallFormSchema,
-} from "@/modules/home/sections/find/schemas";
+import { Text } from "@shared/components/ui/text";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
+
 import { BUILDING_TYPE_ES } from "@/constants/building-type";
 import { TRANSACTION_TYPE_GROUP_ES } from "@/constants/transaction-type";
-import { useEffect, useState } from "react";
+import { SmallFormData, smallFormSchema } from "@/modules/home/sections/find/schemas";
 import { getCities, getStates } from "@/services/propertyLocations";
 
 interface FindSmallFormProps {
@@ -40,8 +38,8 @@ export const FindSmallForm = ({ onComplete }: FindSmallFormProps) => {
   const form = useForm<z.infer<typeof smallFormSchema>>({
     resolver: zodResolver(smallFormSchema),
     defaultValues: {
-      budget: 5000000,
-    },
+      budget: 5000000
+    }
   });
 
   const stateValue = form.watch("state");
@@ -73,10 +71,7 @@ export const FindSmallForm = ({ onComplete }: FindSmallFormProps) => {
 
   return (
     <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="flex flex-col items-center gap-4"
-      >
+      <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col items-center gap-4">
         <FormField
           control={form.control}
           name="building_type"
@@ -85,6 +80,7 @@ export const FindSmallForm = ({ onComplete }: FindSmallFormProps) => {
               <FormLabel>
                 <Text variant="label">Tipo de propiedad</Text>
               </FormLabel>
+              {}
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
                   <SelectTrigger className="w-full bg-white">
@@ -112,11 +108,7 @@ export const FindSmallForm = ({ onComplete }: FindSmallFormProps) => {
               <FormLabel>
                 <Text variant="label">Estado</Text>
               </FormLabel>
-              <Select
-                onValueChange={field.onChange}
-                defaultValue={field.value}
-                value={field.value}
-              >
+              <Select onValueChange={field.onChange} defaultValue={field.value} value={field.value}>
                 <FormControl>
                   <SelectTrigger className="w-full bg-white">
                     <SelectValue placeholder="Selecciona el estado donde buscas tu propiedad" />
@@ -143,11 +135,7 @@ export const FindSmallForm = ({ onComplete }: FindSmallFormProps) => {
               <FormLabel>
                 <Text variant="label">Ciudad</Text>
               </FormLabel>
-              <Select
-                onValueChange={field.onChange}
-                defaultValue={field.value}
-                value={field.value}
-              >
+              <Select onValueChange={field.onChange} defaultValue={field.value} value={field.value}>
                 <FormControl>
                   <SelectTrigger className="w-full bg-white">
                     <SelectValue placeholder="Selecciona la ciudad donde buscas tu propiedad" />
@@ -174,6 +162,7 @@ export const FindSmallForm = ({ onComplete }: FindSmallFormProps) => {
               <FormLabel>
                 <Text variant="label">Tipo de búsqueda</Text>
               </FormLabel>
+              {}
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
                   <SelectTrigger className="w-full bg-white">
@@ -181,13 +170,11 @@ export const FindSmallForm = ({ onComplete }: FindSmallFormProps) => {
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent position="popper">
-                  {Object.entries(TRANSACTION_TYPE_GROUP_ES).map(
-                    ([type, label]) => (
-                      <SelectItem key={type} value={type}>
-                        {label}
-                      </SelectItem>
-                    ),
-                  )}
+                  {Object.entries(TRANSACTION_TYPE_GROUP_ES).map(([type, label]) => (
+                    <SelectItem key={type} value={type}>
+                      {label}
+                    </SelectItem>
+                  ))}
                 </SelectContent>
               </Select>
               <FormMessage />
@@ -203,7 +190,7 @@ export const FindSmallForm = ({ onComplete }: FindSmallFormProps) => {
               field.value?.toLocaleString?.("es-MX", {
                 style: "currency",
                 currency: "MXN",
-                minimumFractionDigits: 0,
+                minimumFractionDigits: 0
               }) || "$0";
 
             return (

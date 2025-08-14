@@ -1,7 +1,8 @@
 "use client";
 
-import { associateLogos } from "@/dummy/associateLogos";
 import Image from "next/image";
+
+import { associateLogos } from "@/dummy/associateLogos";
 
 export const AssociatesMarqueeLogo = () => {
   const logos = [...associateLogos, ...associateLogos];
@@ -11,10 +12,7 @@ export const AssociatesMarqueeLogo = () => {
       <div className="relative w-full">
         <div className="animate-marquee flex gap-12 whitespace-nowrap">
           {logos.map((logo, index) => (
-            <div
-              key={index}
-              className="flex h-24 w-40 flex-shrink-0 items-center justify-center"
-            >
+            <div key={index} className="flex h-24 w-40 flex-shrink-0 items-center justify-center">
               <Image
                 src={logo.url}
                 alt={String(index)}

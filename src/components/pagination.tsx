@@ -13,7 +13,7 @@ export const Pagination: React.FC<PaginationProps> = ({
   currentPage,
   totalPages,
   onClickPrev,
-  onClickNext,
+  onClickNext
 }) => {
   return (
     <div className="mx-auto flex max-w-[512px] flex-row items-center justify-center gap-2 px-16 py-8">

@@ -14,7 +14,7 @@ export async function getStates() {
 
 export async function getCities(state: string) {
   const response = await fetchServer("/api/properties/locations/cities", {
-    params: { state },
+    params: { state }
   });
   return await getResponseData<string[]>(response);
 }

@@ -1,10 +1,11 @@
-import { SearchBar } from "@/components/search-bar";
 import Image from "next/image";
 import { FC } from "react";
 
+import { SearchBar } from "@/components/search-bar";
+
 interface HeroSectionProps {}
 
-export const HeroSection: FC<HeroSectionProps> = ({}) => {
+export const HeroSection: FC<HeroSectionProps> = () => {
   return (
     <section className="relative -mt-22 flex min-h-screen w-full flex-col items-start px-4 pt-24 pb-8 sm:px-8 lg:px-32">
       <Image
@@ -23,9 +24,8 @@ export const HeroSection: FC<HeroSectionProps> = ({}) => {
             Deja que nosotros encontremos el hogar que mereces
           </h1>
           <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl">
-            El primer portal en méxico con anunciantes certificados potenciado
-            con IA. Compra, vende o invierte: tu futuro inmobiliario comienza
-            aquí
+            El primer portal en méxico con anunciantes certificados potenciado con IA. Compra, vende
+            o invierte: tu futuro inmobiliario comienza aquí
           </h2>
         </div>
       </div>

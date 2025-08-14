@@ -35,10 +35,7 @@ export function buildSearchQueryParams(params: PropertyQueryParams): string {
     queryParams.append("distance_km", params.distance_km);
   }
 
-  if (
-    params.construction_year !== undefined &&
-    params.construction_year !== ""
-  ) {
+  if (params.construction_year !== undefined && params.construction_year !== "") {
     queryParams.append("construction_year", params.construction_year);
   }
 

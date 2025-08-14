@@ -1,22 +1,17 @@
 "use client";
-import { useEffect } from "react";
 import { Thumbmark } from "@thumbmarkjs/thumbmarkjs";
+import { useEffect } from "react";
+
+import { FINGERPRINT_STORAGE_KEY, IDENTIFICATIONS_STORAGE_KEY } from "@/constants/localstorage";
 import { identifyGuest } from "@/services/guest";
-import {
-  FINGERPRINT_STORAGE_KEY,
-  IDENTIFICATIONS_STORAGE_KEY,
-} from "@/constants/localstorage";
 
 export const useFingerprinting = () => {
   const saveFingerprint = async (fingerprint: string) => {
     try {
-      let response = await identifyGuest(fingerprint);
+      const response = await identifyGuest(fingerprint);
 
       localStorage.setItem(FINGERPRINT_STORAGE_KEY, fingerprint);
-      localStorage.setItem(
-        IDENTIFICATIONS_STORAGE_KEY,
-        JSON.stringify(response),
-      );
+      localStorage.setItem(IDENTIFICATIONS_STORAGE_KEY, JSON.stringify(response));
     } catch (apiError) {
       console.error("Error posting fallback fingerprint:", apiError);
       localStorage.removeItem(IDENTIFICATIONS_STORAGE_KEY);

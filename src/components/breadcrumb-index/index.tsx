@@ -1,21 +1,19 @@
-import { FC } from "react";
 import {
   Breadcrumb as PaginationBreadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbPage,
-  BreadcrumbSeparator,
+  BreadcrumbSeparator
 } from "@shared/components/ui/breadcrumb";
 import { usePathname } from "next/navigation";
+import { FC } from "react";
 
 interface BreadcrumbPaginationProps {
   propertyTitle?: string;
 }
 
-export const BreadcrumbPagination: FC<BreadcrumbPaginationProps> = ({
-  propertyTitle,
-}) => {
+export const BreadcrumbPagination: FC<BreadcrumbPaginationProps> = ({ propertyTitle }) => {
   const pathname = usePathname();
   const pathParts = pathname?.split("/").filter(Boolean);
   const isPropertiesPage = pathParts?.[0] === "propiedades";

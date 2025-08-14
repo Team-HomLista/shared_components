@@ -1,6 +1,6 @@
-import { FC } from "react";
-import Link from "next/link";
 import { Button } from "@shared/components/ui/button";
+import Link from "next/link";
+import { FC } from "react";
 
 export interface UnnderConstructionProps {}
 
@@ -43,9 +43,7 @@ export const UnderConstruction: FC<UnnderConstructionProps> = () => {
 
         {/* Additional responsive spacing */}
         <div className="mt-8 sm:mt-12 lg:mt-16">
-          <p className="text-muted-foreground/60 text-xs sm:text-sm">
-            Gracias por tu paciencia
-          </p>
+          <p className="text-muted-foreground/60 text-xs sm:text-sm">Gracias por tu paciencia</p>
         </div>
       </div>
     </div>

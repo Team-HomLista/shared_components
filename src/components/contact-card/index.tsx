@@ -1,6 +1,6 @@
-import { Mail } from "lucide-react";
-import { Card, CardContent } from "@shared/components/ui/card";
 import { Badge } from "@shared/components/ui/badge";
+import { Card, CardContent } from "@shared/components/ui/card";
+import { Mail } from "lucide-react";
 import { FC } from "react";
 
 interface ContactCardProps {
@@ -8,10 +8,7 @@ interface ContactCardProps {
   description?: string;
 }
 
-export const ContactCardSection: FC<ContactCardProps> = ({
-  subtitle,
-  description,
-}) => {
+export const ContactCardSection: FC<ContactCardProps> = ({ subtitle, description }) => {
   return (
     <Card className="group from-primary via-primary to-primary/90 hover:shadow-3xl border-0 bg-gradient-to-br shadow-2xl transition-all duration-300">
       <CardContent className="relative overflow-hidden p-8 sm:p-10 lg:p-12">

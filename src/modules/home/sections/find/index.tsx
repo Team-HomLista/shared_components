@@ -1,14 +1,13 @@
 "use client";
 
-import { SectionHeader } from "@/components/section-header";
 import { useState } from "react";
+
+import { SectionHeader } from "@/components/section-header";
 import { LeadFormResponsive } from "@/modules/home/sections/find/lead-form-responsive";
-import { FindSmallForm } from "@/modules/home/sections/find/small-form";
 import { SmallFormData } from "@/modules/home/sections/find/schemas";
+import { FindSmallForm } from "@/modules/home/sections/find/small-form";
 
-interface FindSectionProps {}
-
-export const FindSection = ({}: FindSectionProps) => {
+export const FindSection = () => {
   const [showLeadForm, setShowLeadForm] = useState(false);
   const [formData, setFormData] = useState<SmallFormData | null>(null);
 

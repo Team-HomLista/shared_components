@@ -1,11 +1,9 @@
-import { FC } from "react";
-import {
-  PropertyCarousel,
-  PropertyCarouselProps,
-} from "@/components/property-carousel";
 import { Button } from "@shared/components/ui/button";
-import { SectionHeader } from "@/components/section-header";
 import Link from "next/link";
+import { FC } from "react";
+
+import { PropertyCarousel, PropertyCarouselProps } from "@/components/property-carousel";
+import { SectionHeader } from "@/components/section-header";
 
 export interface DiscoverSectionProps extends PropertyCarouselProps {}
 
@@ -14,10 +12,7 @@ export interface DiscoverSectionProps extends PropertyCarouselProps {}
  * a section for discovering properties. It includes a header with a title,
  * description, and a button, as well as a carousel to showcase property items.
  */
-export const DiscoverSection: FC<DiscoverSectionProps> = ({
-  items,
-  onClickLike,
-}) => {
+export const DiscoverSection: FC<DiscoverSectionProps> = ({ items, onClickLike }) => {
   return (
     <section className="flex h-full w-full flex-col items-start pb-8 lg:pb-14">
       <SectionHeader

@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback } from "react";
 
 interface UseCopyToClipboardReturn {
   /** Whether the text was successfully copied */
@@ -11,11 +11,11 @@ interface UseCopyToClipboardReturn {
 
 /**
  * Custom hook for copy to clipboard functionality with auto-reset
- * 
+ *
  * @example
  * ```typescript
  * const { isCopied, copyToClipboard } = useCopyToClipboard();
- * 
+ *
  * const handleCopy = async () => {
  *   const success = await copyToClipboard('Hello World');
  *   if (success) {
@@ -23,7 +23,7 @@ interface UseCopyToClipboardReturn {
  *   }
  * };
  * ```
- * 
+ *
  * @returns Object with copy functionality and status
  */
 export function useCopyToClipboard(): UseCopyToClipboardReturn {
@@ -33,15 +33,15 @@ export function useCopyToClipboard(): UseCopyToClipboardReturn {
     try {
       await navigator.clipboard.writeText(text);
       setIsCopied(true);
-      
+
       // Reset copied status after 2 seconds
       setTimeout(() => {
         setIsCopied(false);
       }, 2000);
-      
+
       return true;
     } catch (error) {
-      console.error('Failed to copy to clipboard:', error);
+      console.error("Failed to copy to clipboard:", error);
       setIsCopied(false);
       return false;
     }
@@ -54,6 +54,6 @@ export function useCopyToClipboard(): UseCopyToClipboardReturn {
   return {
     isCopied,
     copyToClipboard,
-    resetCopyStatus,
+    resetCopyStatus
   };
 }

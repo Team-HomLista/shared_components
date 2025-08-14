@@ -1,24 +1,23 @@
 "use client";
 import { FC } from "react";
-import { useHome } from "@/modules/home/use-home";
+
+import { Navbar } from "@/components/navbar";
 import {
   CitiesSection,
   DiscoverSection,
   FindSection,
   HeroSection,
   PartnersSection,
-  TestimonialsSection,
+  TestimonialsSection
 } from "@/modules/home/sections";
-import { Navbar } from "@/components/navbar";
+import { useHome } from "@/modules/home/use-home";
 import { Property } from "@/types/property";
 
 export interface HomepageContainerProps {
   properties: Array<Property>;
 }
 
-export const HomepageContainer: FC<HomepageContainerProps> = ({
-  properties,
-}) => {
+export const HomepageContainer: FC<HomepageContainerProps> = ({ properties }) => {
   const { onClickLike, items } = useHome({ properties });
 
   return (

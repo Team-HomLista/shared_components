@@ -1,6 +1,8 @@
-import React, { Children, FC, ReactNode } from "react";
-import { Divider } from "../divider";
+import React, { FC, ReactNode } from "react";
+
 import { cn } from "@/lib/utils";
+
+import { Divider } from "../divider";
 
 /**
  * Props for the SectionHeader component.
@@ -45,14 +47,14 @@ export const SectionHeader: FC<SectionHeaderProps> = ({
   children,
   orientation = "right",
   title,
-  description,
+  description
 }) => {
   return (
     <div
       className={cn(
         "flex w-full items-center justify-center gap-8 px-8 py-8 lg:gap-16 lg:px-32 lg:py-16",
         "flex-col lg:flex-row",
-        orientation === "right" ? "lg:flex-row" : "lg:flex-row-reverse",
+        orientation === "right" ? "lg:flex-row" : "lg:flex-row-reverse"
       )}
     >
       <div className="flex w-full flex-col">
@@ -60,7 +62,7 @@ export const SectionHeader: FC<SectionHeaderProps> = ({
           className={cn(
             "mx-6 text-4xl leading-tight font-medium text-black lg:text-6xl lg:leading-[64px]",
             "text-center lg:text-left",
-            orientation === "left" ? "lg:text-right" : "lg:text-left",
+            orientation === "left" ? "lg:text-right" : "lg:text-left"
           )}
         >
           {title}

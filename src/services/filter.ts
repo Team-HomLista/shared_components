@@ -12,17 +12,13 @@ export class FilterService {
       headers: {
         "Content-Type": "application/json",
         "X-HARD-KEY": HARD_KEY,
-        Accept: "application/json",
-      },
+        Accept: "application/json"
+      }
     });
 
     if (!response.ok) {
       const errorData = await response.json();
-      console.error(
-        new Error(
-          `FilterService.getFilterOptions: ${JSON.stringify(errorData)}`,
-        ),
-      );
+      console.error(new Error(`FilterService.getFilterOptions: ${JSON.stringify(errorData)}`));
       throw errorData;
     }
 

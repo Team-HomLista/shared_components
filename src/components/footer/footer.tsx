@@ -1,58 +1,58 @@
-import { Divider } from "@/components/divider";
 import { Button } from "@shared/components/ui/button";
 import { Input } from "@shared/components/ui/input";
-import { SocialMediaIcons } from "./socialMediaIcons";
-import { FC } from "react";
 import Link from "next/link";
+import { FC } from "react";
+
+import { Divider } from "@/components/divider";
+
+import { SocialMediaIcons } from "./socialMediaIcons";
 
 interface FooterProps {}
 
-export const Footer: FC<FooterProps> = ({}) => {
+export const Footer: FC<FooterProps> = () => {
   const socialMediaIcons = [
     {
       src: "/socialMedia-svg/whatsapp.svg",
       alt: "WhatsApp",
-      link: "https://wa.me/529982286242",
+      link: "https://wa.me/529982286242"
     },
     {
       src: "/socialMedia-svg/facebook.svg",
       alt: "Facebook",
-      link: "https://www.facebook.com/HomLista",
+      link: "https://www.facebook.com/HomLista"
     },
     {
       src: "/socialMedia-svg/instagram.svg",
       alt: "Instagram",
-      link: "https://www.instagram.com/homlista/",
+      link: "https://www.instagram.com/homlista/"
     },
     {
       src: "/socialMedia-svg/youtube.svg",
       alt: "YouTube",
-      link: "https://www.youtube.com/channel/UCLQSEcRaLc4D_tdnBsCNWcw",
+      link: "https://www.youtube.com/channel/UCLQSEcRaLc4D_tdnBsCNWcw"
     },
     {
       src: "/socialMedia-svg/x.svg",
       alt: "Twitter",
-      link: "https://x.com/HomLista",
+      link: "https://x.com/HomLista"
     },
     {
       src: "/socialMedia-svg/telegram.svg",
       alt: "Telegram",
-      link: "https://t.me/Red_HomLista",
+      link: "https://t.me/Red_HomLista"
     },
     {
       src: "/socialMedia-svg/linkedin.svg",
       alt: "LinkedIn",
-      link: "https://www.linkedin.com/company/homlista/",
-    },
+      link: "https://www.linkedin.com/company/homlista/"
+    }
   ];
 
   return (
     <footer className="bg-primary h-full w-full px-4 py-4 text-white sm:px-8 sm:py-6 lg:px-32 lg:py-8">
       <div className="flex flex-col items-center justify-center gap-8 pb-8 lg:flex-row lg:items-end lg:gap-32">
         <div className="w-full items-center justify-center text-center lg:text-left">
-          <h1 className="text-xl sm:text-2xl lg:text-[28px]">
-            Entérate de todo lo nuevo
-          </h1>
+          <h1 className="text-xl sm:text-2xl lg:text-[28px]">Entérate de todo lo nuevo</h1>
           <Divider direction={"right"} colorScheme="white" />
         </div>
         <div className="flex w-full flex-col items-center justify-center gap-4 sm:flex-row lg:w-full">
@@ -75,8 +75,8 @@ export const Footer: FC<FooterProps> = ({}) => {
           />
           Ubicación
           <li className="mt-4 font-medium">
-            SUEÑITZA SA de CV, Plaza La Roca - Coworking Colabora - 77560 Cancún
-            - Quintana Roo - MEXICO
+            SUEÑITZA SA de CV, Plaza La Roca - Coworking Colabora - 77560 Cancún - Quintana Roo -
+            MEXICO
           </li>
         </ul>
         <div className="grid w-full grid-cols-2 gap-8 sm:grid-cols-3 lg:flex lg:w-auto lg:flex-row lg:gap-16">
@@ -100,10 +100,7 @@ export const Footer: FC<FooterProps> = ({}) => {
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/planes"
-                  className="hover:text-secondary underline transition-colors"
-                >
+                <Link href="/planes" className="hover:text-secondary underline transition-colors">
                   Vender
                 </Link>
               </li>
@@ -121,26 +118,17 @@ export const Footer: FC<FooterProps> = ({}) => {
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/faq"
-                  className="hover:text-secondary underline transition-colors"
-                >
+                <Link href="/faq" className="hover:text-secondary underline transition-colors">
                   FAQ
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/ayuda"
-                  className="hover:text-secondary underline transition-colors"
-                >
+                <Link href="/ayuda" className="hover:text-secondary underline transition-colors">
                   Ayuda
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/contacto"
-                  className="hover:text-secondary underline transition-colors"
-                >
+                <Link href="/contacto" className="hover:text-secondary underline transition-colors">
                   Contacto
                 </Link>
               </li>
@@ -150,18 +138,12 @@ export const Footer: FC<FooterProps> = ({}) => {
             Recursos
             <div className="flex flex-col gap-4 font-medium">
               <li>
-                <Link
-                  href="/blog"
-                  className="hover:text-secondary underline transition-colors"
-                >
+                <Link href="/blog" className="hover:text-secondary underline transition-colors">
                   Blog
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/noticias"
-                  className="hover:text-secondary underline transition-colors"
-                >
+                <Link href="/noticias" className="hover:text-secondary underline transition-colors">
                   Noticias
                 </Link>
               </li>
@@ -171,10 +153,7 @@ export const Footer: FC<FooterProps> = ({}) => {
             Agencias y agentes
             <div className="flex flex-col gap-4 font-medium">
               <li>
-                <Link
-                  href="/planes"
-                  className="hover:text-secondary underline transition-colors"
-                >
+                <Link href="/planes" className="hover:text-secondary underline transition-colors">
                   Planes y precios
                 </Link>
               </li>
@@ -208,10 +187,7 @@ export const Footer: FC<FooterProps> = ({}) => {
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/cookies"
-                  className="hover:text-secondary underline transition-colors"
-                >
+                <Link href="/cookies" className="hover:text-secondary underline transition-colors">
                   Cookies
                 </Link>
               </li>

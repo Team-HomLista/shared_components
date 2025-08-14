@@ -1,5 +1,4 @@
 import { Card } from "@shared/components/ui/card";
-import { PropertyTag } from "@/types/property";
 import {
   Star,
   Home,
@@ -10,9 +9,11 @@ import {
   Gavel,
   Sparkles,
   Tag as TagIcon,
-  Percent,
+  Percent
 } from "lucide-react";
 import { FC } from "react";
+
+import { PropertyTag } from "@/types/property";
 
 export interface PropertyTagsCompactProps {
   tags: Array<PropertyTag>;
@@ -50,16 +51,14 @@ const getTagIcon = (tagType: string) => {
 export const PropertyTagsCompact: FC<PropertyTagsCompactProps> = ({
   tags,
   maxTags = 3,
-  showRemarkableOnly = false,
+  showRemarkableOnly = false
 }) => {
   if (!tags || tags.length === 0) {
     return null;
   }
 
   // Filter and limit tags
-  const filteredTags = showRemarkableOnly
-    ? tags.filter((tag) => tag.isRemarkable)
-    : tags;
+  const filteredTags = showRemarkableOnly ? tags.filter((tag) => tag.isRemarkable) : tags;
 
   const displayTags = filteredTags.slice(0, maxTags);
   const remainingCount = filteredTags.length - maxTags;

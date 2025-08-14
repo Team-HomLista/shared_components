@@ -1,7 +1,8 @@
 "use client";
+import { useEffect, useState } from "react";
+
 import { PropertyCardItemProps } from "@/components/property-card";
 import { Property } from "@/types/property";
-import { useEffect, useState } from "react";
 
 export interface UseHomeProps {
   properties: Array<Property>;
@@ -37,9 +38,7 @@ export interface UseHomeReturn {
  * ```
  */
 export const useHome = ({ properties }: UseHomeProps): UseHomeReturn => {
-  const [items, setItems] = useState<
-    Array<Omit<PropertyCardItemProps, "onClickLike">>
-  >([]);
+  const [items, setItems] = useState<Array<Omit<PropertyCardItemProps, "onClickLike">>>([]);
 
   useEffect(() => {
     setItems(
@@ -51,7 +50,7 @@ export const useHome = ({ properties }: UseHomeProps): UseHomeReturn => {
             location: property.city,
             price: {
               currency: property.price_currency,
-              value: property.price,
+              value: property.price
             },
             title: property.title,
             details: {
@@ -59,17 +58,17 @@ export const useHome = ({ properties }: UseHomeProps): UseHomeReturn => {
               building_size: property.building_size,
               land_size: property.land_size,
               parking_slots: property.parking_slots,
-              rooms: property.rooms,
-            },
+              rooms: property.rooms
+            }
           },
           image: property.cover_image,
-          slug: property.slug,
+          slug: property.slug
         };
-      }),
+      })
     );
   }, []);
 
-  const onClickLike = (index: number, isLiked: boolean) => {};
+  const onClickLike = () => {};
 
   return { items, onClickLike };
 };

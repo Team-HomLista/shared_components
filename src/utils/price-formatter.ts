@@ -14,10 +14,7 @@
  * console.log(formattedPrice); // "$12,345.67 USD"
  * ```
  */
-export const formatPrice = (price: {
-  value: number;
-  currency: string;
-}): string => {
+export const formatPrice = (price: { value: number; currency: string }): string => {
   const [integerPart, decimalPart] = price.value.toString().split(".");
   const formattedInteger = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 

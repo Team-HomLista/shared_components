@@ -1,8 +1,9 @@
 "use client";
 
-import { Navbar } from "@/components/navbar";
 import { Button } from "@shared/components/ui/button";
 import { Component, ReactNode } from "react";
+
+import { Navbar } from "@/components/navbar";
 
 interface ErrorBoundaryState {
   hasError: boolean;
@@ -17,10 +18,7 @@ interface ErrorBoundaryProps {
   onError?: (error: Error, errorInfo: any) => void;
 }
 
-export class ErrorBoundary extends Component<
-  ErrorBoundaryProps,
-  ErrorBoundaryState
-> {
+export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
   constructor(props: ErrorBoundaryProps) {
     super(props);
     this.state = { hasError: false };
@@ -55,13 +53,8 @@ export class ErrorBoundary extends Component<
                     "No pudimos cargar esta página. Por favor, intenta de nuevo más tarde."}
                 </p>
                 <div className="flex justify-center gap-4">
-                  <Button onClick={() => window.location.reload()}>
-                    Intentar de nuevo
-                  </Button>
-                  <Button
-                    variant="outline"
-                    onClick={() => window.history.back()}
-                  >
+                  <Button onClick={() => window.location.reload()}>Intentar de nuevo</Button>
+                  <Button variant="outline" onClick={() => window.history.back()}>
                     Regresar
                   </Button>
                 </div>

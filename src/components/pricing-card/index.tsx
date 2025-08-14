@@ -1,6 +1,7 @@
-import { Check } from "lucide-react";
 import { Button } from "@shared/components/ui/button";
 import { Card, CardContent } from "@shared/components/ui/card";
+import { Check } from "lucide-react";
+
 import { cn } from "@/lib/utils";
 
 interface PricingCardProps {
@@ -20,24 +21,17 @@ export function PricingCard({
   features,
   buttonText,
   isPopular = false,
-  priceDetail,
+  priceDetail
 }: PricingCardProps) {
   return (
-    <Card
-      className={cn(
-        "border-3",
-        isPopular ? "border-secondary" : "border-primary",
-      )}
-    >
+    <Card className={cn("border-3", isPopular ? "border-secondary" : "border-primary")}>
       <CardContent className="flex flex-col gap-4">
         <div className="flex w-full flex-col items-center justify-center gap-2">
           <h3 className="text-xl font-semibold">{title}</h3>
 
           <div>
             <span className="text-primary text-3xl font-bold">{price}</span>
-            {priceDetail && (
-              <span className="ml-1 text-sm text-gray-500">{priceDetail}</span>
-            )}
+            {priceDetail && <span className="ml-1 text-sm text-gray-500">{priceDetail}</span>}
           </div>
 
           <p className="flex h-full text-black">{description}</p>

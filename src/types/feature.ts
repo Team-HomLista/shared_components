@@ -42,7 +42,7 @@ export enum Feature {
   Terrace = "sunset",
   CableTV = "tv",
   OceanView = "waves",
-  WiFi = "wifi",
+  WiFi = "wifi"
 }
 
 export interface PropertyFeature {

@@ -1,6 +1,7 @@
-import { cn } from "@/lib/utils";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { FC } from "react";
+
+import { cn } from "@/lib/utils";
 
 /**
  * Props for the Divider component.
@@ -26,43 +27,29 @@ export interface DividerProps {
  * @param {DividerProps} props - The props for the Divider component.
  * @returns {JSX.Element} The rendered Divider component.
  */
-export const Divider: FC<DividerProps> = ({
-  direction,
-  colorScheme = "default",
-}) => {
+export const Divider: FC<DividerProps> = ({ direction, colorScheme = "default" }) => {
   const isWhite = colorScheme === "white";
 
   return (
     <div
       className={cn(
         "flex w-full items-center",
-        direction == "left" ? "flex-row-reverse" : "flex-row"
+        direction === "left" ? "flex-row-reverse" : "flex-row"
       )}
     >
       {/* Horizontal line */}
-      <div
-        className={cn(
-          "h-[1px] w-full",
-          isWhite ? "bg-white/50" : "bg-primary/50"
-        )}
-      />
+      <div className={cn("h-[1px] w-full", isWhite ? "bg-white/50" : "bg-primary/50")} />
       {/* Arrow icon container */}
       <div
         className={cn(
-          "border rounded-full p-2",
-          isWhite
-            ? "border-white/50 bg-primary text-white"
-            : "border-primary/50"
+          "rounded-full border p-2",
+          isWhite ? "bg-primary border-white/50 text-white" : "border-primary/50"
         )}
       >
-        {direction == "left" ? (
-          <ArrowLeft
-            className={cn("size-4", isWhite ? "text-white" : "text-primary")}
-          />
+        {direction === "left" ? (
+          <ArrowLeft className={cn("size-4", isWhite ? "text-white" : "text-primary")} />
         ) : (
-          <ArrowRight
-            className={cn("size-4", isWhite ? "text-white" : "text-primary")}
-          />
+          <ArrowRight className={cn("size-4", isWhite ? "text-white" : "text-primary")} />
         )}
       </div>
     </div>

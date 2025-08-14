@@ -2,5 +2,5 @@ export enum TransactionType {
   BUY = "BUY",
   RENT = "RENT",
   DEVELOPMENT = "DEVELOPMENT",
-  AUCTION = "AUCTION",
+  AUCTION = "AUCTION"
 }

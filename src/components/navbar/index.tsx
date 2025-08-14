@@ -1,77 +1,73 @@
 "use client";
-import React, { FC, useState } from "react";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { Button } from "@shared/components/ui/button";
-import Image from "next/image";
 import {
   NavigationMenu,
   NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
+  NavigationMenuTrigger
 } from "@shared/components/ui/navigation-menu";
-import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-  SheetTitle,
-} from "@shared/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@shared/components/ui/sheet";
+import { Menu } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
+import React, { FC, useState } from "react";
+
 import { cn } from "@/lib/utils";
-import { Menu, X } from "lucide-react";
-import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 const buy: { title: string; href: string }[] = [
   {
     title: "Casas en venta",
-    href: "/properties?transaction_type=BUY&property_type=HOUSE",
+    href: "/properties?transaction_type=BUY&property_type=HOUSE"
   },
   {
     title: "Departamentos en venta",
-    href: "/properties?transaction_type=BUY&property_type=DEPARTMENT",
+    href: "/properties?transaction_type=BUY&property_type=DEPARTMENT"
   },
   {
     title: "Terrenos y Lotes en venta",
-    href: "/properties?transaction_type=BUY&property_type=LAND",
+    href: "/properties?transaction_type=BUY&property_type=LAND"
   },
   {
     title: "Locales comerciales en venta",
-    href: "/properties?transaction_type=BUY&property_type=COMMERCIAL",
-  },
+    href: "/properties?transaction_type=BUY&property_type=COMMERCIAL"
+  }
 ];
 
 const rent: { title: string; href: string }[] = [
   {
     title: "Casas en renta",
-    href: "/properties?transaction_type=RENT&property_type=HOUSE",
+    href: "/properties?transaction_type=RENT&property_type=HOUSE"
   },
   {
     title: "Departamentos en renta",
-    href: "/properties?transaction_type=RENT&property_type=DEPARTMENT",
+    href: "/properties?transaction_type=RENT&property_type=DEPARTMENT"
   },
   {
     title: "Terrenos y Lotes en renta",
-    href: "/properties?transaction_type=RENT&property_type=LAND",
+    href: "/properties?transaction_type=RENT&property_type=LAND"
   },
   {
     title: "Locales comerciales en renta",
-    href: "/properties?transaction_type=RENT&property_type=COMMERCIAL",
-  },
+    href: "/properties?transaction_type=RENT&property_type=COMMERCIAL"
+  }
 ];
 
 const services: { title: string; href: string }[] = [
   {
     title: "Mapa de propiedades",
-    href: "/mapa-propiedades",
+    href: "/mapa-propiedades"
   },
   {
     title: "Guías inmobiliarias",
-    href: "/guias-inmobiliarias",
+    href: "/guias-inmobiliarias"
   },
   {
     title: "Buscar propiedades",
-    href: "/properties",
-  },
+    href: "/properties"
+  }
 ];
 
 interface navbarProps {
@@ -90,19 +86,16 @@ export const Navbar: FC<navbarProps> = ({ variant = "default" }) => {
     <nav
       className={cn(
         "flex flex-row items-center justify-between p-6",
-        variant === "default" &&
-          "bg-primary sticky top-0 right-0 left-0 z-50 w-full lg:px-32",
+        variant === "default" && "bg-primary sticky top-0 right-0 left-0 z-50 w-full lg:px-32",
         variant === "float" &&
-          "bg-primary/85 sticky inset-x-0 top-3 z-50 mx-4 max-w-5xl rounded-2xl backdrop-blur-sm lg:m-auto",
+          "bg-primary/85 sticky inset-x-0 top-3 z-50 mx-4 max-w-5xl rounded-2xl backdrop-blur-sm lg:m-auto"
       )}
     >
       {/* Logo */}
       <Link href={"/"}>
         <Image
           alt="navbar_logo"
-          src={
-            "https://cannele-bucket.nyc3.cdn.digitaloceanspaces.com/shared/icons/navbar.png"
-          }
+          src={"https://cannele-bucket.nyc3.cdn.digitaloceanspaces.com/shared/icons/navbar.png"}
           width={178}
           height={30}
         />
@@ -196,9 +189,7 @@ export const Navbar: FC<navbarProps> = ({ variant = "default" }) => {
             <div className="flex min-h-full flex-col space-y-6 p-4 pt-8">
               {/* Comprar Section */}
               <div className="space-y-3">
-                <h3 className="text-primary-foreground text-lg font-semibold">
-                  Comprar
-                </h3>
+                <h3 className="text-primary-foreground text-lg font-semibold">Comprar</h3>
                 <div className="space-y-2 pl-4">
                   {buy.map((item) => (
                     <Link
@@ -215,9 +206,7 @@ export const Navbar: FC<navbarProps> = ({ variant = "default" }) => {
 
               {/* Rentar Section */}
               <div className="space-y-3">
-                <h3 className="text-primary-foreground text-lg font-semibold">
-                  Rentar
-                </h3>
+                <h3 className="text-primary-foreground text-lg font-semibold">Rentar</h3>
                 <div className="space-y-2 pl-4">
                   {rent.map((item) => (
                     <Link
@@ -234,9 +223,7 @@ export const Navbar: FC<navbarProps> = ({ variant = "default" }) => {
 
               {/* Servicios Section */}
               <div className="space-y-3">
-                <h3 className="text-primary-foreground text-lg font-semibold">
-                  Servicios
-                </h3>
+                <h3 className="text-primary-foreground text-lg font-semibold">Servicios</h3>
                 <div className="space-y-2 pl-4">
                   {services.map((item) => (
                     <Link
@@ -278,32 +265,29 @@ export const Navbar: FC<navbarProps> = ({ variant = "default" }) => {
   );
 };
 
-const ListItem = React.forwardRef<
-  React.ComponentRef<"a">,
-  React.ComponentPropsWithoutRef<"a">
->(({ className, title, children, ...props }, ref) => {
-  return (
-    <li>
-      <NavigationMenuLink asChild>
-        <Link
-          ref={ref}
-          href={{}}
-          className={cn(
-            "hover:bg-accent hover:text-accent-foreground",
-            "focus:bg-accent focus:text-accent-foreground",
-            "block space-y-1 rounded-md p-3 leading-none no-underline",
-            "transition-colors outline-none select-none",
-            className,
-          )}
-          {...props}
-        >
-          <div className="text-left text-sm leading-none font-medium">
-            {title}
-          </div>
-        </Link>
-      </NavigationMenuLink>
-    </li>
-  );
-});
+const ListItem = React.forwardRef<React.ComponentRef<"a">, React.ComponentPropsWithoutRef<"a">>(
+  ({ className, title, ...props }, ref) => {
+    return (
+      <li>
+        <NavigationMenuLink asChild>
+          <Link
+            ref={ref}
+            href={{}}
+            className={cn(
+              "hover:bg-accent hover:text-accent-foreground",
+              "focus:bg-accent focus:text-accent-foreground",
+              "block space-y-1 rounded-md p-3 leading-none no-underline",
+              "transition-colors outline-none select-none",
+              className
+            )}
+            {...props}
+          >
+            <div className="text-left text-sm leading-none font-medium">{title}</div>
+          </Link>
+        </NavigationMenuLink>
+      </li>
+    );
+  }
+);
 
 ListItem.displayName = "ListItem";

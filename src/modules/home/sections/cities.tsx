@@ -1,10 +1,10 @@
-import { SectionHeader } from "@/components/section-header";
-import { FC, useState, useEffect } from "react";
-import React from "react";
-import { Text } from "@shared/components/ui/text";
 import { Button } from "@shared/components/ui/button";
-import Link from "next/link";
+import { Text } from "@shared/components/ui/text";
 import { ChevronRight } from "lucide-react";
+import Link from "next/link";
+import React, { FC, useState, useEffect } from "react";
+
+import { SectionHeader } from "@/components/section-header";
 
 interface City {
   name: string;
@@ -42,7 +42,7 @@ export const CitiesGrid: FC<CitiesGridProps> = ({ cities }) => {
             href={`/propiedades?city=${city.name}`}
             style={{
               animationDelay: `${index * 100}ms`,
-              animationFillMode: "forwards",
+              animationFillMode: "forwards"
             }}
           >
             {/* Image Container */}
@@ -92,72 +92,72 @@ export const CitiesGrid: FC<CitiesGridProps> = ({ cities }) => {
 
 interface CitiesSectionProps {}
 
-export const CitiesSection: FC<CitiesSectionProps> = ({}) => {
+export const CitiesSection: FC<CitiesSectionProps> = () => {
   const cities = [
     {
       name: "Ciudad de México",
-      image: "/images/Cities-assets/CDMX.png",
+      image: "/images/Cities-assets/CDMX.png"
     },
     {
       name: "Guadalajara",
-      image: "/images/Cities-assets/Guadalajara.png",
+      image: "/images/Cities-assets/Guadalajara.png"
     },
     {
       name: "Monterrey",
-      image: "/images/Cities-assets/Monterrey.png",
+      image: "/images/Cities-assets/Monterrey.png"
     },
     {
       name: "Puebla",
-      image: "/images/Cities-assets/Puebla.png",
+      image: "/images/Cities-assets/Puebla.png"
     },
     {
       name: "Cancún",
-      image: "/images/Cities-assets/Cancun.png",
+      image: "/images/Cities-assets/Cancun.png"
     },
     {
       name: "Acapulco",
-      image: "/images/Cities-assets/Acapulco.png",
+      image: "/images/Cities-assets/Acapulco.png"
     },
     {
       name: "Tijuana",
-      image: "/images/Cities-assets/Tijuana.png",
+      image: "/images/Cities-assets/Tijuana.png"
     },
     {
       name: "Querétaro",
-      image: "/images/Cities-assets/Queretaro.png",
+      image: "/images/Cities-assets/Queretaro.png"
     },
     {
       name: "Mérida",
-      image: "/images/Cities-assets/Merida.png",
+      image: "/images/Cities-assets/Merida.png"
     },
     {
       name: "Mazatlán",
-      image: "/images/Cities-assets/Mazatlan.png",
+      image: "/images/Cities-assets/Mazatlan.png"
     },
     {
       name: "Tulum",
-      image: "/images/Cities-assets/Tulum.png",
+      image: "/images/Cities-assets/Tulum.png"
     },
     {
       name: "Veracruz",
-      image: "/images/Cities-assets/Veracruz.png",
+      image: "/images/Cities-assets/Veracruz.png"
     },
     {
       name: "Cabo San Lucas",
-      image: "/images/Cities-assets/Cabo San Lucas.png",
+      image: "/images/Cities-assets/Cabo San Lucas.png"
     },
     {
       name: "La Paz",
-      image: "/images/Cities-assets/La Paz.png",
+      image: "/images/Cities-assets/La Paz.png"
     },
     {
       name: "Oaxaca",
-      image: "/images/Cities-assets/Oaxaca.png",
+      image: "/images/Cities-assets/Oaxaca.png"
     },
     {
       name: "Tamaulipas",
-      image: "/images/Cities-assets/Tamaulipas.png",
-    },
+      image: "/images/Cities-assets/Tamaulipas.png"
+    }
   ];
 
   return (
@@ -196,13 +196,11 @@ export const CitiesSection: FC<CitiesSectionProps> = ({}) => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
           <div className="text-center">
             <Button asChild>
-              <Link href="/contactos">
-                ¿No encuentras tu ciudad? Contáctanos
-              </Link>
+              <Link href="/contactos">¿No encuentras tu ciudad? Contáctanos</Link>
             </Button>
             <p className="mx-auto mt-4 max-w-md text-sm text-gray-500">
-              Estamos expandiendo constantemente a nuevas ubicaciones. ¡Déjanos
-              saber dónde te gustaría encontrar propiedades!
+              Estamos expandiendo constantemente a nuevas ubicaciones. ¡Déjanos saber dónde te
+              gustaría encontrar propiedades!
             </p>
           </div>
         </div>

@@ -1,7 +1,7 @@
 "use server";
-import { getIdentifyToken } from "@/services/session";
 import { headers as clientHeaders } from "next/headers";
-import requestIp, { RequestHeaders } from "request-ip";
+
+import { getIdentifyToken } from "@/services/session";
 
 type config = RequestInit & {
   params?: any;
@@ -10,21 +10,13 @@ type config = RequestInit & {
 
 export async function fetchServer(
   path: string,
-  {
-    method = "GET",
-    params,
-    withIdentifyToken = true,
-    headers: headerInt,
-    ...config
-  }: config = {},
+  { method = "GET", params, withIdentifyToken = true, headers: headerInt, ...config }: config = {}
 ) {
   try {
     const url = new URL(`${process.env.SERVER_URL}${path}`);
 
     if (params) {
-      Object.keys(params).forEach((key) =>
-        url.searchParams.append(key, params[key]),
-      );
+      Object.keys(params).forEach((key) => url.searchParams.append(key, params[key]));
     }
 
     const headers = await getHeaders(withIdentifyToken, headerInt);
@@ -32,7 +24,7 @@ export async function fetchServer(
     return await fetch(url.toString(), {
       method,
       headers,
-      ...config,
+      ...config
     });
   } catch (error) {
     console.error("Error fetching data:", error);
@@ -54,15 +46,12 @@ export async function getResponseData<T>(response: Response): Promise<T> {
   }
 }
 
-async function getHeaders(
-  withIdentifyToken: boolean,
-  headerInt: HeadersInit = {},
-) {
+async function getHeaders(withIdentifyToken: boolean, headerInt: HeadersInit = {}) {
   let headers: HeadersInit = {
     "X-Hard-Key": process.env.HARD_KEY ?? "",
     "Content-Type": "application/json",
     Accept: "application/json",
-    ...headerInt,
+    ...headerInt
   };
 
   if (withIdentifyToken) {
@@ -79,7 +68,7 @@ async function getHeaders(
       "x-forwarded-for": forwardedFor ?? "",
       "user-agent": userAgent ?? "",
       "X-IDENTIFY-TOKEN": IDENTIFY_TOKEN,
-      ...headers,
+      ...headers
     };
   }
 

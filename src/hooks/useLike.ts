@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback } from "react";
 
 interface UseLikeReturn {
   /** Current liked state */
@@ -40,6 +40,6 @@ export function useLike(initialLiked: boolean = false): UseLikeReturn {
   return {
     isLiked,
     toggleLike,
-    setLiked,
+    setLiked
   };
 }

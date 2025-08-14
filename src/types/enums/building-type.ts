@@ -4,5 +4,5 @@ export enum BuildingType {
   COMMERCIAL = "COMMERCIAL",
   LAND = "LAND",
   PENTHOUSE = "PENTHOUSE",
-  STUDIO = "STUDIO",
+  STUDIO = "STUDIO"
 }

@@ -1,16 +1,16 @@
 "use client";
-import React, { FC } from "react";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselPrevious,
-  CarouselNext,
+  CarouselNext
 } from "@shared/components/ui/carousel";
+import React, { FC } from "react";
+
 import { PropertyCardItem, PropertyCardItemProps } from "../property-card";
 
-export interface PropertyCarouselProps
-  extends Pick<PropertyCardItemProps, "onClickLike"> {
+export interface PropertyCarouselProps extends Pick<PropertyCardItemProps, "onClickLike"> {
   items: Array<Omit<PropertyCardItemProps, "onClickLike">>;
 }
 
@@ -18,10 +18,7 @@ export interface PropertyCarouselProps
  * users to scroll through a list of properties and interact with them, such as
  * liking a property.
  */
-export const PropertyCarousel: FC<PropertyCarouselProps> = ({
-  items,
-  onClickLike,
-}) => {
+export const PropertyCarousel: FC<PropertyCarouselProps> = ({ items, onClickLike }) => {
   return (
     <div className="mx-auto w-full max-w-7xl overflow-hidden px-4 sm:px-6 lg:px-8">
       <Carousel className="w-full" opts={{ align: "center", loop: true }}>

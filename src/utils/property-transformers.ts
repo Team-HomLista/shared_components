@@ -1,8 +1,4 @@
-import {
-  DetailedProperty,
-  PropertyPrice,
-  PropertyPriceType,
-} from "@/types/property";
+import { DetailedProperty, PropertyPrice, PropertyPriceType } from "@/types/property";
 
 /**
  * Transform a detailed property into a PropertyPrice object
@@ -10,14 +6,12 @@ import {
  * @param property - The detailed property object
  * @returns PropertyPrice object with normalized pricing data
  */
-export function transformPropertyPrice(
-  property: DetailedProperty,
-): PropertyPrice {
+export function transformPropertyPrice(property: DetailedProperty): PropertyPrice {
   return {
     type: PropertyPriceType.Normal,
     after: null,
     current: property?.price ?? 0,
-    currency: property?.price_currency ?? "USD",
+    currency: property?.price_currency ?? "USD"
   };
 }
 
@@ -28,7 +22,7 @@ export function transformPropertyPrice(
  * @returns Formatted location string
  */
 export function formatPropertyLocation(
-  property: Pick<DetailedProperty, "state" | "city" | "neighborhood">,
+  property: Pick<DetailedProperty, "state" | "city" | "neighborhood">
 ): string {
   return `${property.state}, ${property.city}, ${property.neighborhood}`;
 }

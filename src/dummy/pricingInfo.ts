@@ -1,4 +1,3 @@
-import { ComparisonSection } from "@/types/plan-info";
 import {
   BellIcon,
   BellPlusIcon,
@@ -32,8 +31,10 @@ import {
   StarIcon,
   UserIcon,
   UsersIcon,
-  WandIcon,
+  WandIcon
 } from "lucide-react";
+
+import { ComparisonSection } from "@/types/plan-info";
 
 export const pricingInfo: Array<ComparisonSection> = [
   {
@@ -47,7 +48,7 @@ export const pricingInfo: Array<ComparisonSection> = [
         free: "1",
         agent: "1",
         agency: "1-4",
-        agencyVIP: "1-10",
+        agencyVIP: "1-10"
       },
       {
         Icon: SearchIcon,
@@ -55,7 +56,7 @@ export const pricingInfo: Array<ComparisonSection> = [
         free: true,
         agent: true,
         agency: true,
-        agencyVIP: true,
+        agencyVIP: true
       },
       {
         Icon: MessageCircleIcon,
@@ -63,7 +64,7 @@ export const pricingInfo: Array<ComparisonSection> = [
         free: true,
         agent: true,
         agency: true,
-        agencyVIP: true,
+        agencyVIP: true
       },
       {
         Icon: PencilIcon,
@@ -71,9 +72,9 @@ export const pricingInfo: Array<ComparisonSection> = [
         free: true,
         agent: true,
         agency: true,
-        agencyVIP: true,
-      },
-    ],
+        agencyVIP: true
+      }
+    ]
   },
   {
     title: "PUBLICAR ANUNCIOS",
@@ -84,7 +85,7 @@ export const pricingInfo: Array<ComparisonSection> = [
         free: "1",
         agent: "Ilimitadas",
         agency: "Ilimitadas",
-        agencyVIP: "Ilimitadas",
+        agencyVIP: "Ilimitadas"
       },
       {
         Icon: BotIcon,
@@ -92,7 +93,7 @@ export const pricingInfo: Array<ComparisonSection> = [
         free: "Limitado para 1 anuncio",
         agent: "Ilimitadas",
         agency: "Ilimitadas",
-        agencyVIP: "Ilimitadas",
+        agencyVIP: "Ilimitadas"
       },
       {
         Icon: CameraIcon,
@@ -100,7 +101,7 @@ export const pricingInfo: Array<ComparisonSection> = [
         free: "5",
         agent: "Ilimitadas",
         agency: "Ilimitadas",
-        agencyVIP: "Ilimitadas",
+        agencyVIP: "Ilimitadas"
       },
       {
         Icon: FileScanIcon,
@@ -108,7 +109,7 @@ export const pricingInfo: Array<ComparisonSection> = [
         free: false,
         agent: true,
         agency: true,
-        agencyVIP: true,
+        agencyVIP: true
       },
       {
         Icon: SearchIcon,
@@ -116,7 +117,7 @@ export const pricingInfo: Array<ComparisonSection> = [
         free: false,
         agent: true,
         agency: true,
-        agencyVIP: true,
+        agencyVIP: true
       },
       {
         Icon: PackageOpenIcon,
@@ -124,9 +125,9 @@ export const pricingInfo: Array<ComparisonSection> = [
         free: false,
         agent: true,
         agency: true,
-        agencyVIP: true,
-      },
-    ],
+        agencyVIP: true
+      }
+    ]
   },
   {
     title: "VISIBILIDAD",
@@ -137,7 +138,7 @@ export const pricingInfo: Array<ComparisonSection> = [
         free: false,
         agent: true,
         agency: true,
-        agencyVIP: true,
+        agencyVIP: true
       },
       {
         Icon: StarIcon,
@@ -145,7 +146,7 @@ export const pricingInfo: Array<ComparisonSection> = [
         free: false,
         agent: "3",
         agency: "8",
-        agencyVIP: "12",
+        agencyVIP: "12"
       },
       {
         Icon: ForwardIcon,
@@ -153,9 +154,9 @@ export const pricingInfo: Array<ComparisonSection> = [
         free: false,
         agent: true,
         agency: true,
-        agencyVIP: true,
-      },
-    ],
+        agencyVIP: true
+      }
+    ]
   },
   {
     title: "WHITE LABEL",
@@ -166,7 +167,7 @@ export const pricingInfo: Array<ComparisonSection> = [
         free: false,
         agent: true,
         agency: true,
-        agencyVIP: true,
+        agencyVIP: true
       },
       {
         Icon: WandIcon,
@@ -174,9 +175,9 @@ export const pricingInfo: Array<ComparisonSection> = [
         free: false,
         agent: "3",
         agency: "3",
-        agencyVIP: "3",
-      },
-    ],
+        agencyVIP: "3"
+      }
+    ]
   },
   {
     title: "MULTI PORTALES",
@@ -187,9 +188,9 @@ export const pricingInfo: Array<ComparisonSection> = [
         free: false,
         agent: true,
         agency: true,
-        agencyVIP: true,
-      },
-    ],
+        agencyVIP: true
+      }
+    ]
   },
   {
     title: "LEADS",
@@ -200,7 +201,7 @@ export const pricingInfo: Array<ComparisonSection> = [
         free: false,
         agent: true,
         agency: true,
-        agencyVIP: true,
+        agencyVIP: true
       },
       {
         Icon: SendIcon,
@@ -208,7 +209,7 @@ export const pricingInfo: Array<ComparisonSection> = [
         free: false,
         agent: true,
         agency: true,
-        agencyVIP: true,
+        agencyVIP: true
       },
       {
         Icon: CircleDotIcon,
@@ -216,9 +217,9 @@ export const pricingInfo: Array<ComparisonSection> = [
         free: false,
         agent: true,
         agency: true,
-        agencyVIP: true,
-      },
-    ],
+        agencyVIP: true
+      }
+    ]
   },
   {
     title: "SOPORTE & GESTIÓN",
@@ -229,7 +230,7 @@ export const pricingInfo: Array<ComparisonSection> = [
         free: false,
         agent: true,
         agency: true,
-        agencyVIP: true,
+        agencyVIP: true
       },
       {
         Icon: ChartPieIcon,
@@ -237,7 +238,7 @@ export const pricingInfo: Array<ComparisonSection> = [
         free: "Demo",
         agent: true,
         agency: true,
-        agencyVIP: true,
+        agencyVIP: true
       },
       {
         Icon: ChartLineIcon,
@@ -245,7 +246,7 @@ export const pricingInfo: Array<ComparisonSection> = [
         free: "Demo",
         agent: true,
         agency: true,
-        agencyVIP: true,
+        agencyVIP: true
       },
       {
         Icon: GraduationCapIcon,
@@ -253,7 +254,7 @@ export const pricingInfo: Array<ComparisonSection> = [
         free: false,
         agent: true,
         agency: true,
-        agencyVIP: true,
+        agencyVIP: true
       },
       {
         Icon: RefreshCcwIcon,
@@ -261,7 +262,7 @@ export const pricingInfo: Array<ComparisonSection> = [
         free: false,
         agent: true,
         agency: true,
-        agencyVIP: true,
+        agencyVIP: true
       },
       {
         Icon: MessageCircleIcon,
@@ -269,7 +270,7 @@ export const pricingInfo: Array<ComparisonSection> = [
         free: true,
         agent: true,
         agency: true,
-        agencyVIP: true,
+        agencyVIP: true
       },
       {
         Icon: HeadphonesIcon,
@@ -277,9 +278,9 @@ export const pricingInfo: Array<ComparisonSection> = [
         free: true,
         agent: true,
         agency: true,
-        agencyVIP: true,
-      },
-    ],
+        agencyVIP: true
+      }
+    ]
   },
   {
     title: "ANUNCIOS",
@@ -290,7 +291,7 @@ export const pricingInfo: Array<ComparisonSection> = [
         free: true,
         agent: true,
         agency: true,
-        agencyVIP: true,
+        agencyVIP: true
       },
       {
         Icon: MessageCircleIcon,
@@ -298,7 +299,7 @@ export const pricingInfo: Array<ComparisonSection> = [
         free: true,
         agent: true,
         agency: true,
-        agencyVIP: true,
+        agencyVIP: true
       },
       {
         Icon: LightbulbIcon,
@@ -306,7 +307,7 @@ export const pricingInfo: Array<ComparisonSection> = [
         free: true,
         agent: true,
         agency: true,
-        agencyVIP: true,
+        agencyVIP: true
       },
       {
         Icon: BellIcon,
@@ -314,7 +315,7 @@ export const pricingInfo: Array<ComparisonSection> = [
         free: true,
         agent: true,
         agency: true,
-        agencyVIP: true,
+        agencyVIP: true
       },
       {
         Icon: BellPlusIcon,
@@ -322,7 +323,7 @@ export const pricingInfo: Array<ComparisonSection> = [
         free: true,
         agent: true,
         agency: true,
-        agencyVIP: true,
+        agencyVIP: true
       },
       {
         Icon: HeartIcon,
@@ -330,7 +331,7 @@ export const pricingInfo: Array<ComparisonSection> = [
         free: true,
         agent: true,
         agency: true,
-        agencyVIP: true,
+        agencyVIP: true
       },
       {
         Icon: UsersIcon,
@@ -338,7 +339,7 @@ export const pricingInfo: Array<ComparisonSection> = [
         free: true,
         agent: true,
         agency: true,
-        agencyVIP: true,
+        agencyVIP: true
       },
       {
         Icon: StarIcon,
@@ -346,7 +347,7 @@ export const pricingInfo: Array<ComparisonSection> = [
         free: true,
         agent: true,
         agency: true,
-        agencyVIP: true,
+        agencyVIP: true
       },
       {
         Icon: DownloadIcon,
@@ -354,7 +355,7 @@ export const pricingInfo: Array<ComparisonSection> = [
         free: true,
         agent: true,
         agency: true,
-        agencyVIP: true,
+        agencyVIP: true
       },
       {
         Icon: BellRingIcon,
@@ -362,7 +363,7 @@ export const pricingInfo: Array<ComparisonSection> = [
         free: false,
         agent: true,
         agency: true,
-        agencyVIP: true,
+        agencyVIP: true
       },
       {
         Icon: PuzzleIcon,
@@ -370,7 +371,7 @@ export const pricingInfo: Array<ComparisonSection> = [
         free: false,
         agent: true,
         agency: true,
-        agencyVIP: true,
+        agencyVIP: true
       },
       {
         Icon: BotIcon,
@@ -378,8 +379,8 @@ export const pricingInfo: Array<ComparisonSection> = [
         free: false,
         agent: true,
         agency: true,
-        agencyVIP: true,
-      },
-    ],
-  },
+        agencyVIP: true
+      }
+    ]
+  }
 ];

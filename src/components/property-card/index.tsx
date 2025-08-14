@@ -1,18 +1,14 @@
 "use client";
-import { FC, useState } from "react";
-import Image from "next/image";
-import { PropertyCardTag, PropertyCardTagProps } from "./feature";
-import { PropertyCardBanner, PropertyCardBannerProps } from "./banner";
-import {
-  PropertyCardInformation,
-  PropertyCardInformationProps,
-} from "./information";
-import Link from "next/link";
-import { LikeButton } from "@/components/like-button";
 import { Card, CardContent, CardHeader } from "@shared/components/ui/card";
+import Image from "next/image";
+import Link from "next/link";
+import { FC } from "react";
 
-export interface PropertyCardItemProps
-  extends Pick<PropertyCardTagProps, "tag"> {
+import { PropertyCardBanner, PropertyCardBannerProps } from "./banner";
+import { PropertyCardTag, PropertyCardTagProps } from "./feature";
+import { PropertyCardInformation, PropertyCardInformationProps } from "./information";
+
+export interface PropertyCardItemProps extends Pick<PropertyCardTagProps, "tag"> {
   information: PropertyCardInformationProps;
   banner: Pick<PropertyCardBannerProps, "transaction">;
   image: string;
@@ -33,16 +29,16 @@ export const PropertyCardItem: FC<PropertyCardItemProps> = ({
   tag,
   banner,
   information,
-  slug,
-  onClickLike,
+  slug
+  // onClickLike,
 }) => {
-  const [isLiked, setIsLiked] = useState(false);
+  // const [isLiked, setIsLiked] = useState(false);
 
-  const handleLike = (e: any) => {
-    e.preventDefault();
-    setIsLiked((prev) => !prev);
-    onClickLike(0, !isLiked);
-  };
+  // const handleLike = (e: any) => {
+  //   e.preventDefault();
+  //   setIsLiked((prev) => !prev);
+  //   onClickLike(0, !isLiked);
+  // };
 
   const redirect = `/propiedades/${slug}`;
 
@@ -51,13 +47,7 @@ export const PropertyCardItem: FC<PropertyCardItemProps> = ({
       <Card className="gap-4 py-4">
         <CardHeader className="flex w-full flex-col justify-between px-4">
           <div className="relative aspect-square h-full w-full overflow-hidden rounded-2xl">
-            <Image
-              src={image}
-              alt=""
-              layout="fill"
-              className="rounded-none"
-              objectFit="cover"
-            />
+            <Image src={image} alt="" layout="fill" className="rounded-none" objectFit="cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent">
               <div className="absolute top-2 left-2">
                 <PropertyCardTag tag={tag} />

@@ -1,12 +1,13 @@
 "use server";
-import { createSession } from "./session";
 import { fetchServer, getResponseData } from "@/lib/http-server";
 
-export async function identifyGuest(anonymous_id: string) {
+import { createSession } from "./session";
+
+export async function identifyGuest(anonymousId: string) {
   const response = await fetchServer("/api/guest/identify", {
     method: "POST",
-    body: JSON.stringify({ anonymous_id }),
-    withIdentifyToken: false,
+    body: JSON.stringify({ anonymous_id: anonymousId }),
+    withIdentifyToken: false
   });
 
   const data = await getResponseData<{
@@ -17,17 +18,17 @@ export async function identifyGuest(anonymous_id: string) {
 
   await createSession({
     userId: data.user_id,
-    anonymousId: anonymous_id,
+    anonymousId
   });
 
   return data;
 }
 
-export async function makeLead(guest_id: number) {
+export async function makeLead(guestId: number) {
   const response = await fetchServer("/api/guest/lead", {
     method: "POST",
-    body: JSON.stringify({ guest_id }),
-    withIdentifyToken: false,
+    body: JSON.stringify({ guest_id: guestId }),
+    withIdentifyToken: false
   });
 
   return await getResponseData<{

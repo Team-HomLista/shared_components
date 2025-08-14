@@ -1,5 +1,4 @@
 "use client";
-import { FC, useState } from "react";
 import { Button } from "@shared/components/ui/button";
 import { Input } from "@shared/components/ui/input";
 import {
@@ -7,11 +6,13 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 } from "@shared/components/ui/select";
 import { Text } from "@shared/components/ui/text";
 import { Search } from "lucide-react";
 import Link from "next/link";
+import { FC, useState } from "react";
+
 import { BuildingType } from "@/types/enums/building-type";
 import { TransactionType } from "@/types/enums/transaction-type";
 
@@ -23,10 +24,8 @@ export interface SearchBarProps {}
  * field for entering the city, and a button to trigger the search.
  */
 export const SearchBar: FC<SearchBarProps> = () => {
-  const [propertyType, setPropertyType] =
-    useState<keyof typeof BuildingType>("HOUSE");
-  const [searchType, setSearchType] =
-    useState<keyof typeof TransactionType>("BUY");
+  const [propertyType, setPropertyType] = useState<keyof typeof BuildingType>("HOUSE");
+  const [searchType, setSearchType] = useState<keyof typeof TransactionType>("BUY");
   const [city, setCity] = useState("");
 
   return (
@@ -37,18 +36,14 @@ export const SearchBar: FC<SearchBarProps> = () => {
           <Text variant="label">Tipo de propiedad</Text>
           <Select
             value={propertyType}
-            onValueChange={(v) =>
-              setPropertyType(v as keyof typeof BuildingType)
-            }
+            onValueChange={(v) => setPropertyType(v as keyof typeof BuildingType)}
           >
             <SelectTrigger className="w-full bg-white md:w-[200px]">
               <SelectValue placeholder="Propiedad" />
             </SelectTrigger>
             <SelectContent position="popper">
               <SelectItem value={BuildingType.HOUSE}>Casas</SelectItem>
-              <SelectItem value={BuildingType.DEPARTMENT}>
-                Departamentos
-              </SelectItem>
+              <SelectItem value={BuildingType.DEPARTMENT}>Departamentos</SelectItem>
               <SelectItem value={BuildingType.LAND}>Terrenos</SelectItem>
               <SelectItem value={BuildingType.COMMERCIAL}>Locales</SelectItem>
             </SelectContent>
@@ -60,9 +55,7 @@ export const SearchBar: FC<SearchBarProps> = () => {
           <Text variant="label">Tipo de búsqueda</Text>
           <Select
             value={searchType}
-            onValueChange={(v) =>
-              setSearchType(v as keyof typeof TransactionType)
-            }
+            onValueChange={(v) => setSearchType(v as keyof typeof TransactionType)}
           >
             <SelectTrigger className="w-full bg-white md:w-[200px]">
               <SelectValue placeholder="Búsqueda" />

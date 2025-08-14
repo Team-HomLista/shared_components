@@ -2,8 +2,8 @@ import { LeadFormData } from "@/modules/home/sections/find/schemas";
 
 export class InquiryService {
   static async postGeneral(
-    anonymous_id: string,
-    data: Omit<LeadFormData, "contactConsent" | "dataConsent">,
+    anonymousId: string,
+    data: Omit<LeadFormData, "contactConsent" | "dataConsent">
   ) {
     const url = `api/leads/inquiry`;
 
@@ -11,9 +11,13 @@ export class InquiryService {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json",
+        Accept: "application/json"
       },
-      body: JSON.stringify({ anonymous_id, ...data, type: "GENERAL" }),
+      body: JSON.stringify({
+        anonymous_id: anonymousId,
+        ...data,
+        type: "GENERAL"
+      })
     });
 
     if (!response.ok) {

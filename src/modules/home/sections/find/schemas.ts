@@ -1,12 +1,13 @@
+import { z } from "zod";
+
 import { BuildingType } from "@/types/enums/building-type";
 import { TransactionType } from "@/types/enums/transaction-type";
-import { z } from "zod";
 
 export const smallFormSchema = z.object({
   building_type: z.nativeEnum(BuildingType, {
     errorMap: () => ({
-      message: "No has seleccionado ningún tipo de propiedad.",
-    }),
+      message: "No has seleccionado ningún tipo de propiedad."
+    })
   }),
   state: z
     .string({ required_error: "No has ingresado el estado." })
@@ -16,43 +17,25 @@ export const smallFormSchema = z.object({
     .nonempty("El nombre de la ciudad no puede estar vacio."),
   transaction_type_group: z.nativeEnum(TransactionType, {
     errorMap: () => ({
-      message: "No has ingresado ningún tipo de transacción para la propiedad.",
-    }),
+      message: "No has ingresado ningún tipo de transacción para la propiedad."
+    })
   }),
-  budget: z
-    .number()
-    .min(
-      500000,
-      "El presupuesto es insuficiente. Ingresa al menos $500,000 MXN.",
-    ),
+  budget: z.number().min(500000, "El presupuesto es insuficiente. Ingresa al menos $500,000 MXN.")
 });
 
 export const leadFormSchema = z.object({
   ...smallFormSchema.shape,
-  lada: z
-    .string()
-    .min(1, "No seleccionaste un código de país. Elige uno para continuar."),
+  lada: z.string().min(1, "No seleccionaste un código de país. Elige uno para continuar."),
   whatsapp: z
     .string()
-    .min(
-      10,
-      "El número de WhatsApp es incorrecto. Ingresa uno válido con al menos 10 dígitos.",
-    ),
-  email: z
-    .string()
-    .email("El correo electrónico es inválido. Ingresa uno correcto."),
+    .min(10, "El número de WhatsApp es incorrecto. Ingresa uno válido con al menos 10 dígitos."),
+  email: z.string().email("El correo electrónico es inválido. Ingresa uno correcto."),
   contactConsent: z
     .boolean()
-    .refine(
-      (val) => val,
-      "No diste tu consentimiento para el contacto. Acepta para continuar.",
-    ),
+    .refine((val) => val, "No diste tu consentimiento para el contacto. Acepta para continuar."),
   dataConsent: z
     .boolean()
-    .refine(
-      (val) => val,
-      "No autorizaste el uso de tus datos. Autoriza para continuar.",
-    ),
+    .refine((val) => val, "No autorizaste el uso de tus datos. Autoriza para continuar.")
 });
 
 export type SmallFormData = z.infer<typeof smallFormSchema>;

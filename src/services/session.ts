@@ -1,8 +1,9 @@
 "use server";
 
+import { cookies } from "next/headers";
+
 import { decrypt, encrypt } from "@/lib/session";
 import { SessionPayload } from "@/types/session-payload";
-import { cookies } from "next/headers";
 
 export async function createSession(payload: SessionPayload) {
   const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
@@ -14,7 +15,7 @@ export async function createSession(payload: SessionPayload) {
     secure: true,
     expires: expiresAt,
     sameSite: "lax",
-    path: "/",
+    path: "/"
   });
 
   return session;

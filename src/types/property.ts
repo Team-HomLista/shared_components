@@ -101,7 +101,7 @@ export interface PropertyAgency {
 export enum PropertyPriceType {
   Normal = "Normal",
   Offer = "Offer",
-  PriceReduction = "PriceReduction",
+  PriceReduction = "PriceReduction"
 }
 
 export interface PropertyPrice {

@@ -1,8 +1,9 @@
-import { FC } from "react";
 import { Text } from "@shared/components/ui/text";
-import { formatPrice } from "@/utils/price-formatter";
-import { PropertyCardLandDetail } from "@/components/property-card/land-detail";
 import { BathIcon, BedIcon, CarIcon, RulerIcon } from "lucide-react";
+import { FC } from "react";
+
+import { PropertyCardLandDetail } from "@/components/property-card/land-detail";
+import { formatPrice } from "@/utils/price-formatter";
 
 export interface PropertyCardInformationProps {
   /** The title of the property (e.g., "Modern Apartment").
@@ -33,13 +34,11 @@ export const PropertyCardInformation: FC<PropertyCardInformationProps> = ({
   title,
   location,
   price,
-  details: { rooms, bathrooms, parking_slots, building_size },
+  details: { rooms, bathrooms, parking_slots: parkingSlots, building_size: buildingSize }
 }) => {
   return (
     <div className="flex flex-col gap-2">
-      <Text className="text-primary line-clamp-2 text-sm font-medium break-words">
-        {title}
-      </Text>
+      <Text className="text-primary line-clamp-2 text-sm font-medium break-words">{title}</Text>
       <Text className="text-primary line-clamp-1 text-base font-medium break-words">
         {formatPrice(price)}
       </Text>
@@ -47,10 +46,8 @@ export const PropertyCardInformation: FC<PropertyCardInformationProps> = ({
       <div className="flex flex-wrap gap-4">
         <PropertyCardLandDetail Icon={BedIcon} value={rooms} />
         <PropertyCardLandDetail Icon={BathIcon} value={bathrooms} />
-        <PropertyCardLandDetail Icon={CarIcon} value={parking_slots} />
-        {building_size && (
-          <PropertyCardLandDetail Icon={RulerIcon} value={building_size} />
-        )}
+        <PropertyCardLandDetail Icon={CarIcon} value={parkingSlots} />
+        {buildingSize && <PropertyCardLandDetail Icon={RulerIcon} value={buildingSize} />}
         {/* <PropertyCardLandDetail Icon={ShowerHeadIcon} value={} /> */}
       </div>
     </div>

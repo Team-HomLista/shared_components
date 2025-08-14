@@ -1,9 +1,10 @@
 "use client";
-import { SectionHeader } from "@/components/section-header";
-import { StarRating } from "@/components/star-rating";
-import { Pagination } from "@/components/pagination";
 import { Card, CardHeader, CardContent } from "@shared/components/ui/card";
 import { FC, useState } from "react";
+
+import { Pagination } from "@/components/pagination";
+import { SectionHeader } from "@/components/section-header";
+import { StarRating } from "@/components/star-rating";
 
 interface Testimonial {
   id: number;
@@ -17,67 +18,67 @@ const testimonials: Testimonial[] = [
     id: 1,
     name: "María González",
     rating: 5,
-    text: "Excelente servicio, encontré la casa de mis sueños en tiempo récord. Los agentes son muy profesionales y conocen perfectamente el mercado.",
+    text: "Excelente servicio, encontré la casa de mis sueños en tiempo récord. Los agentes son muy profesionales y conocen perfectamente el mercado."
   },
   {
     id: 2,
     name: "Carlos Hernández",
     rating: 5,
-    text: "Vendí mi departamento en menos de un mes gracias a su estrategia de marketing. Superaron mis expectativas completamente.",
+    text: "Vendí mi departamento en menos de un mes gracias a su estrategia de marketing. Superaron mis expectativas completamente."
   },
   {
     id: 3,
     name: "Ana Martínez",
     rating: 5,
-    text: "El proceso de compra fue muy sencillo y transparente. Me acompañaron en cada paso y resolvieron todas mis dudas.",
+    text: "El proceso de compra fue muy sencillo y transparente. Me acompañaron en cada paso y resolvieron todas mis dudas."
   },
   {
     id: 4,
     name: "José Luis Ramírez",
     rating: 5,
-    text: "Increíble atención al cliente. Me ayudaron a encontrar la propiedad perfecta para mi familia en la zona que buscaba.",
+    text: "Increíble atención al cliente. Me ayudaron a encontrar la propiedad perfecta para mi familia en la zona que buscaba."
   },
   {
     id: 5,
     name: "Patricia López",
     rating: 5,
-    text: "Su conocimiento del mercado inmobiliario es impresionante. Negociaron un excelente precio para mi nueva casa.",
+    text: "Su conocimiento del mercado inmobiliario es impresionante. Negociaron un excelente precio para mi nueva casa."
   },
   {
     id: 6,
     name: "Roberto Sánchez",
     rating: 5,
-    text: "Profesionalismo de primera. Desde la primera cita hasta la entrega de llaves, todo fue perfecto.",
+    text: "Profesionalismo de primera. Desde la primera cita hasta la entrega de llaves, todo fue perfecto."
   },
   {
     id: 7,
     name: "Laura Jiménez",
     rating: 5,
-    text: "Recomiendo ampliamente sus servicios. Son honestos, trabajadores y realmente se preocupan por sus clientes.",
+    text: "Recomiendo ampliamente sus servicios. Son honestos, trabajadores y realmente se preocupan por sus clientes."
   },
   {
     id: 8,
     name: "Fernando Torres",
     rating: 5,
-    text: "La mejor experiencia inmobiliaria que he tenido. Hicieron que comprar mi primera casa fuera muy fácil.",
+    text: "La mejor experiencia inmobiliaria que he tenido. Hicieron que comprar mi primera casa fuera muy fácil."
   },
   {
     id: 9,
     name: "Carmen Morales",
     rating: 5,
-    text: "Servicio excepcional desde el primer contacto. Me ayudaron a encontrar exactamente lo que necesitaba.",
+    text: "Servicio excepcional desde el primer contacto. Me ayudaron a encontrar exactamente lo que necesitaba."
   },
   {
     id: 10,
     name: "Diego Mendoza",
     rating: 5,
-    text: "Muy satisfecho con el resultado. Vendieron mi propiedad rápidamente y al precio que esperaba.",
-  },
+    text: "Muy satisfecho con el resultado. Vendieron mi propiedad rápidamente y al precio que esperaba."
+  }
 ];
 
 interface TestimonialsSectionProps {}
 
-export const TestimonialsSection: FC<TestimonialsSectionProps> = ({}) => {
+export const TestimonialsSection: FC<TestimonialsSectionProps> = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const testimonialsPerPage = 1;

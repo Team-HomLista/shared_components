@@ -2,9 +2,7 @@ import { LucideProps } from "lucide-react";
 import { FC, ForwardRefExoticComponent, RefAttributes } from "react";
 
 export interface PropertyFeatureDetailProps {
-  Icon: ForwardRefExoticComponent<
-    Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>
-  >;
+  Icon: ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>;
   value: string | number;
 }
 
@@ -12,10 +10,7 @@ export interface PropertyFeatureDetailProps {
  * corresponding icons. This utility is used to visually display property
  * features such as rooms, bathrooms, parking slots, etc.
  */
-export const PropertyCardLandDetail: FC<PropertyFeatureDetailProps> = ({
-  Icon,
-  value,
-}) => {
+export const PropertyCardLandDetail: FC<PropertyFeatureDetailProps> = ({ Icon, value }) => {
   return (
     <div className="flex items-center justify-center gap-2 text-neutral-500">
       {Icon && <Icon />}

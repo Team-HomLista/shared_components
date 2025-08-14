@@ -1,28 +1,25 @@
 "use client";
+import { Button } from "@shared/components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue
+} from "@shared/components/ui/select";
 import {
   Table,
   TableHead,
   TableHeader,
   TableRow,
   TableBody,
-  TableCell,
+  TableCell
 } from "@shared/components/ui/table";
-import { Button } from "@shared/components/ui/button";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@shared/components/ui/tooltip";
 import { Check, X } from "lucide-react";
-import { ComparisonSection } from "@/types/plan-info";
 import { Fragment, useState } from "react";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@shared/components/ui/tooltip";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@shared/components/ui/select";
+
+import { ComparisonSection } from "@/types/plan-info";
 
 interface ComparisonTableProps {
   sections: ComparisonSection[];
@@ -34,7 +31,7 @@ const planInfo = {
   free: { name: "Perfil gratuito", price: "$0 MXN", description: "/ MES" },
   agent: { name: "Asesor", price: "$1,580 MXN", description: "/ MES" },
   agency: { name: "Agencia", price: "$3,000 MXN", description: "/ MES" },
-  agencyVIP: { name: "Agencia VIP", price: "$4,200 MXN", description: "/ MES" },
+  agencyVIP: { name: "Agencia VIP", price: "$4,200 MXN", description: "/ MES" }
 };
 
 export function ComparisonTable({ sections }: ComparisonTableProps) {
@@ -99,10 +96,7 @@ export function ComparisonTable({ sections }: ComparisonTableProps) {
               <Fragment key={index}>
                 {/* Section Title */}
                 <TableRow>
-                  <TableCell
-                    colSpan={5}
-                    className="bg-[#ddf1f4] pl-6 text-left text-xl font-bold"
-                  >
+                  <TableCell colSpan={5} className="bg-[#ddf1f4] pl-6 text-left text-xl font-bold">
                     {section.title}
                   </TableCell>
                 </TableRow>
@@ -120,9 +114,7 @@ export function ComparisonTable({ sections }: ComparisonTableProps) {
                             </span>
                           </TooltipTrigger>
                           <TooltipContent>
-                            <p className="max-w-[200px] text-sm">
-                              {item.infoDescription}
-                            </p>
+                            <p className="max-w-[200px] text-sm">{item.infoDescription}</p>
                           </TooltipContent>
                         </Tooltip>
                       )}
@@ -180,9 +172,7 @@ export function ComparisonTable({ sections }: ComparisonTableProps) {
         {/* Plan Selector */}
         <div className="sticky top-0 z-10 bg-white px-6 pt-8 pb-6">
           <div className="mb-6">
-            <h2 className="mb-6 text-center text-xl font-semibold">
-              PLANES DE HOMLISTA
-            </h2>
+            <h2 className="mb-6 text-center text-xl font-semibold">PLANES DE HOMLISTA</h2>
             <Select
               value={selectedPlan}
               onValueChange={(value: PlanType) => setSelectedPlan(value)}
@@ -190,12 +180,9 @@ export function ComparisonTable({ sections }: ComparisonTableProps) {
               <SelectTrigger className="h-auto min-h-[60px] w-full p-4">
                 <SelectValue>
                   <div className="flex flex-col items-start gap-1 text-left">
-                    <span className="text-base font-semibold">
-                      {planInfo[selectedPlan].name}
-                    </span>
+                    <span className="text-base font-semibold">{planInfo[selectedPlan].name}</span>
                     <span className="text-sm text-gray-500">
-                      {planInfo[selectedPlan].price}{" "}
-                      {planInfo[selectedPlan].description}
+                      {planInfo[selectedPlan].price} {planInfo[selectedPlan].description}
                     </span>
                   </div>
                 </SelectValue>
@@ -203,34 +190,26 @@ export function ComparisonTable({ sections }: ComparisonTableProps) {
               <SelectContent className="w-full">
                 <SelectItem value="free" className="h-auto p-4">
                   <div className="flex w-full flex-col items-start gap-1">
-                    <span className="text-base font-semibold">
-                      Perfil gratuito
-                    </span>
+                    <span className="text-base font-semibold">Perfil gratuito</span>
                     <span className="text-sm text-gray-500">$0 MXN / MES</span>
                   </div>
                 </SelectItem>
                 <SelectItem value="agent" className="h-auto p-4">
                   <div className="flex w-full flex-col items-start gap-1">
                     <span className="text-base font-semibold">Asesor</span>
-                    <span className="text-sm text-gray-500">
-                      $1,580 MXN / MES
-                    </span>
+                    <span className="text-sm text-gray-500">$1,580 MXN / MES</span>
                   </div>
                 </SelectItem>
                 <SelectItem value="agency" className="h-auto p-4">
                   <div className="flex w-full flex-col items-start gap-1">
                     <span className="text-base font-semibold">Agencia</span>
-                    <span className="text-sm text-gray-500">
-                      $3,000 MXN / MES
-                    </span>
+                    <span className="text-sm text-gray-500">$3,000 MXN / MES</span>
                   </div>
                 </SelectItem>
                 <SelectItem value="agencyVIP" className="h-auto p-4">
                   <div className="flex w-full flex-col items-start gap-1">
                     <span className="text-base font-semibold">Agencia VIP</span>
-                    <span className="text-sm text-gray-500">
-                      $4,200 MXN / MES
-                    </span>
+                    <span className="text-sm text-gray-500">$4,200 MXN / MES</span>
                   </div>
                 </SelectItem>
               </SelectContent>
@@ -239,9 +218,7 @@ export function ComparisonTable({ sections }: ComparisonTableProps) {
 
           {/* Selected Plan Info */}
           <div className="flex flex-col items-center justify-center rounded-xl border border-gray-200 bg-gray-50 p-6">
-            <h3 className="mb-3 text-lg font-semibold">
-              {planInfo[selectedPlan].name}
-            </h3>
+            <h3 className="mb-3 text-lg font-semibold">{planInfo[selectedPlan].name}</h3>
             <div className="mb-5">
               <span className="text-primary text-2xl font-bold">
                 {planInfo[selectedPlan].price}
@@ -286,12 +263,8 @@ export function ComparisonTable({ sections }: ComparisonTableProps) {
                     <TableRow key={itemIndex}>
                       <TableCell className="w-1/2 p-3 align-top font-medium">
                         <div className="flex items-start gap-2 text-wrap">
-                          {item.Icon && (
-                            <item.Icon className="mt-0.5 h-4 w-4 flex-shrink-0" />
-                          )}
-                          <span className="min-w-0 flex-1 text-sm text-clip">
-                            {item.name}
-                          </span>
+                          {item.Icon && <item.Icon className="mt-0.5 h-4 w-4 flex-shrink-0" />}
+                          <span className="min-w-0 flex-1 text-sm text-clip">{item.name}</span>
                           {item.Information && item.infoDescription && (
                             <Tooltip>
                               <TooltipTrigger asChild>
@@ -300,9 +273,7 @@ export function ComparisonTable({ sections }: ComparisonTableProps) {
                                 </span>
                               </TooltipTrigger>
                               <TooltipContent>
-                                <p className="max-w-[200px] text-sm">
-                                  {item.infoDescription}
-                                </p>
+                                <p className="max-w-[200px] text-sm">{item.infoDescription}</p>
                               </TooltipContent>
                             </Tooltip>
                           )}
@@ -313,17 +284,11 @@ export function ComparisonTable({ sections }: ComparisonTableProps) {
                         {(() => {
                           const value = item[selectedPlan];
                           if (typeof value === "string") {
-                            return (
-                              <span className="text-sm text-wrap">{value}</span>
-                            );
+                            return <span className="text-sm text-wrap">{value}</span>;
                           } else if (value) {
-                            return (
-                              <Check className="text-accent mx-auto h-5 w-5" />
-                            );
+                            return <Check className="text-accent mx-auto h-5 w-5" />;
                           } else {
-                            return (
-                              <X className="mx-auto h-5 w-5 text-gray-400" />
-                            );
+                            return <X className="mx-auto h-5 w-5 text-gray-400" />;
                           }
                         })()}
                       </TableCell>

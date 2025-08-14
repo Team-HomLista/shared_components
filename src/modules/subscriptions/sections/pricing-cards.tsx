@@ -1,4 +1,5 @@
 import { FC } from "react";
+
 import { PricingCard } from "@/components/pricing-card";
 
 interface PricingCardProps {}
@@ -9,13 +10,11 @@ export const PricingCardSection: FC<PricingCardProps> = () => {
       <div className="container mx-auto px-4">
         <div className="mx-auto mb-16 flex w-full flex-col items-center text-center">
           <h2 className="mb-6 max-w-3xl text-3xl font-bold md:text-4xl">
-            Descubre los precios y planes de HomLista para hacer crecer tu
-            negocio inmobiliario
+            Descubre los precios y planes de HomLista para hacer crecer tu negocio inmobiliario
           </h2>
           <p className="max-w-xl text-xl text-gray-600">
-            Desde planes individuales hasta opciones avanzadas para agencias…
-            Encuentra el plan que se adapta a tus necesidades y alcanza nuevos
-            niveles de éxito
+            Desde planes individuales hasta opciones avanzadas para agencias… Encuentra el plan que
+            se adapta a tus necesidades y alcanza nuevos niveles de éxito
           </p>
         </div>
 
@@ -32,7 +31,7 @@ export const PricingCardSection: FC<PricingCardProps> = () => {
               "WhatsApp con tus leads en tiempo real",
               "3 Anuncios destacados",
               "Comparte tus anuncios en tus redes sociales",
-              "Hasta 10 leads de compradores cada mes",
+              "Hasta 10 leads de compradores cada mes"
             ]}
           />
           <PricingCard
@@ -51,7 +50,7 @@ export const PricingCardSection: FC<PricingCardProps> = () => {
               "8 anuncios destacados",
               "Herramientas colaborativas",
               "Gestión de equipos",
-              "Grupo WhatsApp dedicado",
+              "Grupo WhatsApp dedicado"
             ]}
           />
           <PricingCard
@@ -60,7 +59,7 @@ export const PricingCardSection: FC<PricingCardProps> = () => {
             priceDetail="/mes"
             description="¡Exclusividad y potencia para cerrar más ventas!"
             buttonText="Suscribirse a plan Agencia VIP"
-            isPopular={true}
+            isPopular
             features={[
               "Propiedades ilimitadas",
               "Optimización SEO",
@@ -72,7 +71,7 @@ export const PricingCardSection: FC<PricingCardProps> = () => {
               "Herramientas colaborativas",
               "Gestión de equipos",
               "Grupo WhatsApp dedicado",
-              "Soporte técnico prioritario",
+              "Soporte técnico prioritario"
             ]}
           />
         </div>

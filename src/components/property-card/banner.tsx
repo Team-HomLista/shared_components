@@ -1,14 +1,13 @@
-import { FC } from "react";
 import { Text } from "@shared/components/ui/text";
+import { FC } from "react";
+
 import { TransactionType } from "@/types/enums/transaction-type";
 
 export interface PropertyCardBannerProps {
   transaction: keyof typeof TransactionType;
 }
 
-export const PropertyCardBanner: FC<PropertyCardBannerProps> = ({
-  transaction,
-}) => {
+export const PropertyCardBanner: FC<PropertyCardBannerProps> = ({ transaction }) => {
   const transactionType = () => {
     switch (transaction) {
       case TransactionType.BUY:

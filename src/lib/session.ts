@@ -16,7 +16,7 @@ export async function encrypt<T extends {}>(payload: T) {
 export async function decrypt(session: string | undefined = "") {
   try {
     const { payload } = await jwtVerify(session, encodedKey, {
-      algorithms: [alg],
+      algorithms: [alg]
     });
 
     return payload;

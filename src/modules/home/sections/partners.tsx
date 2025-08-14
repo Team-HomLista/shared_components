@@ -1,10 +1,11 @@
+import { FC } from "react";
+
 import { AssociatesMarqueeLogo } from "@/components/associates-carousel";
 import { SectionHeader } from "@/components/section-header";
-import { FC } from "react";
 
 interface PartnersSectionProps {}
 
-export const PartnersSection: FC<PartnersSectionProps> = ({}) => {
+export const PartnersSection: FC<PartnersSectionProps> = () => {
   return (
     <section>
       <SectionHeader
