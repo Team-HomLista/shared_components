@@ -5,7 +5,6 @@ import { FC } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-import { Navbar } from "@/components/navbar";
 import { Paginated } from "@/types/paginated";
 import { Property } from "@/types/property";
 import { LocationFilters } from "@/types/property-filter";
@@ -130,7 +129,6 @@ export const PropertiesSearchContainer: FC<PropertiesSearchContainerProps> = ({
 
   return (
     <>
-      <Navbar variant="default" />
       <ControlsSection
         form={form}
         onFormSubmit={handleFormSubmit}

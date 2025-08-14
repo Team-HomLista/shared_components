@@ -1,10 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
+import { PropsWithChildren } from "react";
+
+import { WebsiteLayout } from "@/components/layouts/website/website-layout";
 import "@/styles/website.css";
-
-import { Footer } from "@/components/footer/footer";
-
-import { ClientSide } from "./client-side";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -35,14 +34,12 @@ export const viewport: Viewport = {
   userScalable: false
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="es">
       <body className={`${inter.variable} flex min-h-screen flex-col antialiased`}>
-        <main className="flex flex-1 flex-col">{children}</main>
-        <Footer />
+        <WebsiteLayout>{children}</WebsiteLayout>
       </body>
-      <ClientSide />
     </html>
   );
 }

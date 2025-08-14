@@ -1,7 +1,7 @@
 import { Button } from "@shared/components/ui/button";
 import Link from "next/link";
 
-import { Navbar } from "@/components/navbar";
+import { Navbar } from "@/components/layouts/website/navbar";
 
 export default function NotFound() {
   return (
@@ -45,19 +45,19 @@ export default function NotFound() {
 
             <div className="flex flex-col justify-center gap-3 sm:flex-row sm:gap-6">
               <Link
-                href="/propiedades"
+                href="/properties"
                 className="text-primary hover:text-primary/80 text-sm underline underline-offset-3 transition-colors"
               >
                 Ver propiedades
               </Link>
               <Link
-                href="/ayuda"
+                href="/help"
                 className="text-primary hover:text-primary/80 text-sm underline underline-offset-3 transition-colors"
               >
                 Centro de ayuda
               </Link>
               <Link
-                href="/contacto"
+                href="/contact"
                 className="text-primary hover:text-primary/80 text-sm underline underline-offset-3 transition-colors"
               >
                 Contáctanos

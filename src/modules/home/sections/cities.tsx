@@ -196,7 +196,7 @@ export const CitiesSection: FC<CitiesSectionProps> = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
           <div className="text-center">
             <Button asChild>
-              <Link href="/contactos">¿No encuentras tu ciudad? Contáctanos</Link>
+              <Link href="/contact">¿No encuentras tu ciudad? Contáctanos</Link>
             </Button>
             <p className="mx-auto mt-4 max-w-md text-sm text-gray-500">
               Estamos expandiendo constantemente a nuevas ubicaciones. ¡Déjanos saber dónde te

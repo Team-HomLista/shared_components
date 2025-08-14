@@ -5,7 +5,6 @@ import Link from "next/link";
 import { FC, useState } from "react";
 
 import { BreadcrumbPagination } from "@/components/breadcrumb-index";
-import { Navbar } from "@/components/navbar";
 import { PropertyCarousel } from "@/components/property-carousel";
 import { DetailedProperty, Property, PropertyLocationDetail } from "@/types/property";
 import { PropertyQueryParams } from "@/types/property-query-params";
@@ -80,7 +79,6 @@ export const PropertyDetailContainer: FC<PropertyDetailContainerProps> = ({
     })) ?? [];
   return (
     <>
-      <Navbar variant="default" />
       <div className="px-4 sm:px-6 md:px-8 lg:px-16 xl:px-32 2xl:px-64">
         <div className="hidden min-w-0 flex-row items-end justify-between gap-4 sm:mb-8 sm:flex sm:gap-6 lg:gap-8">
           <div className="min-w-0 flex-1">

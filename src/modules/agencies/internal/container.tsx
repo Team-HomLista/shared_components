@@ -31,7 +31,6 @@ import { ReviewsSection } from "@/components/advisor_profiles/ReviewsSection";
 import { Specialties } from "@/components/advisor_profiles/Specialties";
 import { VideoCard } from "@/components/advisor_profiles/VideoCard";
 import { Zones } from "@/components/advisor_profiles/Zones";
-import { Navbar } from "@/components/navbar";
 
 interface AgenciesContainerProps {
   slug: string;
@@ -202,93 +201,90 @@ export const AgenciesContainer: FC<AgenciesContainerProps> = ({ slug }) => {
   const router = useRouter();
 
   return (
-    <>
-      <Navbar variant="default" />
-      <div className="mx-auto flex max-w-7xl flex-col items-center gap-8 px-4">
-        <div className="flex w-full items-center justify-between">
-          <Button variant="link" onClick={() => router.back()}>
-            <ChevronLeft /> <span>Back</span>
-          </Button>
+    <div className="mx-auto flex max-w-7xl flex-col items-center gap-8 px-4">
+      <div className="flex w-full items-center justify-between">
+        <Button variant="link" onClick={() => router.back()}>
+          <ChevronLeft /> <span>Back</span>
+        </Button>
 
-          <div className="flex items-center gap-2">
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon">
-                  <Share2 />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuItem>
-                  <Facebook />
-                  <span>Facebook</span>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Twitter />
-                  <span>Twitter</span>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Linkedin />
-                  <span>LinkedIn</span>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+        <div className="flex items-center gap-2">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" size="icon">
+                <Share2 />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuItem>
+                <Facebook />
+                <span>Facebook</span>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Twitter />
+                <span>Twitter</span>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Linkedin />
+                <span>LinkedIn</span>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
 
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon">
-                  <MoreHorizontal />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuItem>
-                  <Flag />
-                  <span>Reportar problema</span>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </div>
-        </div>
-
-        <div className="container">
-          <div className="flex flex-col gap-6 lg:flex-row">
-            <div className="flex-1 space-y-8">
-              <Header
-                imageUrl="/images/carlos.jpg"
-                name="Real Estate Property"
-                role="Agencia"
-                location="Cancún, Quintana Roo"
-                languages="Español, Inglés, Francés"
-                experience="25 años de experiencia"
-              />
-              <Certificate
-                license="2908-0809-8080"
-                placeOfIssue="Cancún, Quintana Roo"
-                dateOfIssue="Abril 20, 2000"
-              />
-              <About
-                title="Acerca de Real Estate Property"
-                description="Somos un equipo de agentes certificados..."
-              />
-              <AgentTeam agents={agentsData} />
-              <Specialties specialties={specialtiesData} />
-              <Zones zones={zonesData} />
-              <APIProvider apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY!}>
-                <PropertiesMap propiedades={propiedades} />
-              </APIProvider>
-              <PropertiesSection
-                propertiesForSale={propertiesForSale}
-                propertiesForRent={propertiesForRent}
-              />
-              <ReviewsSection reviews={reviewsData} />
-            </div>
-
-            <aside className="w-full space-y-8 lg:w-xs">
-              <ContactCard type="agency" contactDetails={contactInfo} socialLinks={socialMedia} />
-              <VideoCard {...videoData} />
-            </aside>
-          </div>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" size="icon">
+                <MoreHorizontal />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuItem>
+                <Flag />
+                <span>Reportar problema</span>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       </div>
-    </>
+
+      <div className="container">
+        <div className="flex flex-col gap-6 lg:flex-row">
+          <div className="flex-1 space-y-8">
+            <Header
+              imageUrl="/images/carlos.jpg"
+              name="Real Estate Property"
+              role="Agencia"
+              location="Cancún, Quintana Roo"
+              languages="Español, Inglés, Francés"
+              experience="25 años de experiencia"
+            />
+            <Certificate
+              license="2908-0809-8080"
+              placeOfIssue="Cancún, Quintana Roo"
+              dateOfIssue="Abril 20, 2000"
+            />
+            <About
+              title="Acerca de Real Estate Property"
+              description="Somos un equipo de agentes certificados..."
+            />
+            <AgentTeam agents={agentsData} />
+            <Specialties specialties={specialtiesData} />
+            <Zones zones={zonesData} />
+            <APIProvider apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY!}>
+              <PropertiesMap propiedades={propiedades} />
+            </APIProvider>
+            <PropertiesSection
+              propertiesForSale={propertiesForSale}
+              propertiesForRent={propertiesForRent}
+            />
+            <ReviewsSection reviews={reviewsData} />
+          </div>
+
+          <aside className="w-full space-y-8 lg:w-xs">
+            <ContactCard type="agency" contactDetails={contactInfo} socialLinks={socialMedia} />
+            <VideoCard {...videoData} />
+          </aside>
+        </div>
+      </div>
+    </div>
   );
 };
