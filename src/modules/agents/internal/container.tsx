@@ -1,14 +1,14 @@
 "use client";
 
+import { FC } from "react";
 import { useRouter } from "next/navigation";
-import { About } from "@/components/profiles/About";
-import { Certificate } from "@/components/profiles/Certificate";
-import { ContactCard } from "@/components/profiles/ContactCard";
-import { Header } from "@/components/profiles/Header";
-import { Specialties } from "@/components/profiles/Specialties";
-import { VideoCard } from "@/components/profiles/VideoCard";
-import { Zones } from "@/components/profiles/Zones";
-import { AgentTeam } from "@/components/profiles/AgentTeam";
+import { About } from "@/components/advisor_profiles/About";
+import { Certificate } from "@/components/advisor_profiles/Certificate";
+import { ContactCard } from "@/components/advisor_profiles/ContactCard";
+import { Header } from "@/components/advisor_profiles/Header";
+import { Specialties } from "@/components/advisor_profiles/Specialties";
+import { VideoCard } from "@/components/advisor_profiles/VideoCard";
+import { Zones } from "@/components/advisor_profiles/Zones";
 import { Navbar } from "@/components/navbar";
 import { APIProvider } from "@vis.gl/react-google-maps";
 import {
@@ -27,49 +27,18 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
 } from "@shared/components/ui/dropdown-menu";
-import { PropertiesMap } from "@/components/profiles/PropertiesMap";
-import PropertiesSection from "@/components/profiles/PropertiesSection";
-import { ReviewsSection } from "@/components/profiles/ReviewsSection";
+import { PropertiesMap } from "@/components/advisor_profiles/PropertiesMap";
+import PropertiesSection from "@/components/advisor_profiles/PropertiesSection";
+import { ReviewsSection } from "@/components/advisor_profiles/ReviewsSection";
+
+interface AgentContainerProps {
+  slug: string;
+}
 
 const propiedades = [
   { lat: 21.2515, lng: -89.6665, tipo: "venta" as const },
   { lat: 21.252, lng: -89.667, tipo: "renta" as const },
   { lat: 21.2525, lng: -89.666, tipo: "venta" as const },
-];
-
-const agentsData = [
-  {
-    id: 1,
-    name: "Carlos Mendoza",
-    experience: "5 años de experiencia",
-    recentSales: "2 ventas Recientes",
-    rating: 5.0,
-    image: "/images/carlos.jpg",
-  },
-  {
-    id: 2,
-    name: "Carolina Márquez",
-    experience: "6 años de experiencia",
-    recentSales: "3 ventas Recientes",
-    rating: 5.0,
-    image: "/images/carolina.jpg",
-  },
-  {
-    id: 3,
-    name: "Osvaldo García",
-    experience: "2 años de experiencia",
-    recentSales: "1 ventas Recientes",
-    rating: 5.0,
-    image: "/images/osvaldo.jpg",
-  },
-  {
-    id: 4,
-    name: "Olivia Lang",
-    experience: "2 años de experiencia",
-    recentSales: "6 ventas Recientes",
-    rating: 5.0,
-    image: "/images/olivia.jpg",
-  },
 ];
 
 const contactInfo = [
@@ -156,30 +125,21 @@ const reviewsData = [
   {
     id: 1,
     title: "Excelente Servicio",
-    content: `Fue nuestra primera vez comprando y vendiendo a la vez, e hizo todo lo posible para que todo fuera lo más sencillo posible. 
-Nos llevó a ver casas cuando nos convenía, responde los mensajes rápidamente y siempre sabe qué hacer para sortear cualquier obstáculo. 
-Nos dio muchos consejos durante todo el proceso y mantuvo una comunicación fluida en todo momento. 
-¡No puedo decir suficientes cosas buenas! ¡Estás en excelentes manos con Carlos!`,
+    content: "Fue nuestra primera vez comprando y vendiendo a la vez...",
     author: "Lisa María Hernández",
     date: "20 junio 2025",
   },
   {
     id: 2,
     title: "Agente Conocedor",
-    content: `Fue nuestra primera vez comprando y vendiendo a la vez, e hizo todo lo posible para que todo fuera lo más sencillo posible. 
-Nos llevó a ver casas cuando nos convenía, responde los mensajes rápidamente y siempre sabe qué hacer para sortear cualquier obstáculo. 
-Nos dio muchos consejos durante todo el proceso y mantuvo una comunicación fluida en todo momento. 
-¡No puedo decir suficientes cosas buenas! ¡Estás en excelentes manos con Carlos!`,
+    content: "Fue nuestra primera vez comprando y vendiendo a la vez...",
     author: "Lisa María Hernández",
     date: "20 junio 2025",
   },
   {
     id: 3,
     title: "Ampliamente Recomendable",
-    content: `Fue nuestra primera vez comprando y vendiendo a la vez, e hizo todo lo posible para que todo fuera lo más sencillo posible. 
-Nos llevó a ver casas cuando nos convenía, responde los mensajes rápidamente y siempre sabe qué hacer para sortear cualquier obstáculo. 
-Nos dio muchos consejos durante todo el proceso y mantuvo una comunicación fluida en todo momento. 
-¡No puedo decir suficientes cosas buenas! ¡Estás en excelentes manos con Carlos!`,
+    content: "Fue nuestra primera vez comprando y vendiendo a la vez...",
     author: "Lisa María Hernández",
     date: "20 junio 2025",
   },
@@ -209,27 +169,21 @@ const zonesData = [
   "Bacalar",
 ];
 
-export default function AgentsProfilesPage() {
+export const AgentContainer: FC<AgentContainerProps> = ({ slug }) => {
   const router = useRouter();
 
   return (
     <>
-      {/* Navbar superior */}
       <Navbar variant="default" />
 
-      {/* Contenido principal */}
       <div className="mx-auto flex max-w-7xl flex-col items-center gap-8 px-4">
         {/* Botones superiores */}
         <div className="flex w-full items-center justify-between">
-          {/* Botón de volver */}
           <Button variant="link" onClick={() => router.back()}>
-            <ChevronLeft />
-            <span>Back</span>
+            <ChevronLeft /> <span>Back</span>
           </Button>
 
-          {/* Botones de acciones */}
           <div className="flex items-center gap-2">
-            {/* Dropdown compartir */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="icon">
@@ -252,7 +206,6 @@ export default function AgentsProfilesPage() {
               </DropdownMenuContent>
             </DropdownMenu>
 
-            {/* Dropdown más opciones */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="icon">
@@ -269,37 +222,26 @@ export default function AgentsProfilesPage() {
           </div>
         </div>
 
-        {/* Contenedor principal de los componentes */}
         <div className="container">
           <div className="flex flex-col gap-6 lg:flex-row">
-            {/* Columna izquierda */}
             <div className="flex-1 space-y-8">
               <Header
                 imageUrl="/images/carlos.jpg"
-                name="Real Estate Property"
-                role="Agencia"
+                name="Carlos Mendoza"
+                role="Real Estate Property"
                 location="Cancún, Quintana Roo"
                 languages="Español, Inglés, Francés"
-                experience="25 años de experiencia"
+                experience="5 años de experiencia"
               />
-
               <Certificate
                 license="2908-0809-8080"
                 placeOfIssue="Cancún, Quintana Roo"
-                dateOfIssue="Abril 20, 2000"
+                dateOfIssue="Enero 20, 2025"
               />
-
               <About
-                title="Acerca de Real Estate Property"
-                description="Somos un equipo de agentes certificados (AMP, NAR) con más de 20 años transformando sueños inmobiliarios en realidades en el Caribe mexicano. Especializados en propiedades residenciales, inversiones vacacionales, luxury real estate y asesoría para expats, dominamos cada rincón del mercado: desde la vibrante Zona Hotelera hasta los exclusivos desarrollos de Puerto Cancún y la Riviera Maya.
-
-               Combinamos tecnología de vanguardia con un enfoque humano y personalizado, ofreciendo transacciones ágiles, transparentes y libres de estrés. ¿Buscas vender al mejor precio? ¿Invertir en un condominio frente al mar? ¿O encontrar el hogar perfecto para tu familia? Nosotros te guiamos paso a paso.
-
-              Reconocidos por ser la Mejor Agencia de Lujo en Cancún 2023, no solo cerramos tratos: construimos relaciones a largo plazo. ¡Conquista el mercado de Cancún con el squad que pone tus metas primero!
-
-              ¿Listo para empezar? Agenda una consulta gratuita hoy mismo."
+                title="Acerca de Carlos"
+                description="Como agente certificado y parte de Agencia Alpha, me especializo en ayudar a clientes a encontrar su hogar ideal o inversión perfecta..."
               />
-              <AgentTeam agents={agentsData} />
               <Specialties specialties={specialtiesData} />
               <Zones zones={zonesData} />
               <APIProvider
@@ -314,23 +256,14 @@ export default function AgentsProfilesPage() {
               <ReviewsSection reviews={reviewsData} />
             </div>
 
-            {/* Columna derecha */}
             <aside className="w-full space-y-8 lg:w-xs">
               <ContactCard
-                type="agency"
-                contactDetails={[
-                  { label: "Dirección:", value: "Cancún, Q. Roo" },
-                  { label: "Móvil:", value: "+52-5555-9999" },
-                  { label: "Oficina:", value: "+52-5380-2345" },
-                  { label: "Email:", value: "contacto@agencia.com" },
-                ]}
-                socialLinks={[
-                  { platform: "facebook", url: "https://facebook.com/agencia" },
-                  {
-                    platform: "linkedin",
-                    url: "https://linkedin.com/company/agencia",
-                  },
-                ]}
+                type="agent"
+                imageUrl="/images/carlos.jpg"
+                agentName="Carlos Mendoza"
+                agentCompany="Real Estate Agency"
+                contactDetails={contactInfo}
+                socialLinks={socialMedia}
               />
               <VideoCard {...videoData} />
             </aside>
@@ -339,4 +272,4 @@ export default function AgentsProfilesPage() {
       </div>
     </>
   );
-}
+};
