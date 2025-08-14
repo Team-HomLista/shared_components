@@ -1,16 +1,12 @@
 "use client";
 
-import { FC } from "react";
-import { useRouter } from "next/navigation";
-import { About } from "@/components/advisor_profiles/About";
-import { Certificate } from "@/components/advisor_profiles/Certificate";
-import { ContactCard } from "@/components/advisor_profiles/ContactCard";
-import { Header } from "@/components/advisor_profiles/Header";
-import { Specialties } from "@/components/advisor_profiles/Specialties";
-import { VideoCard } from "@/components/advisor_profiles/VideoCard";
-import { Zones } from "@/components/advisor_profiles/Zones";
-import { AgentTeam } from "@/components/advisor_profiles/AgentTeam";
-import { Navbar } from "@/components/navbar";
+import { Button } from "@shared/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem
+} from "@shared/components/ui/dropdown-menu";
 import { APIProvider } from "@vis.gl/react-google-maps";
 import {
   ChevronLeft,
@@ -19,18 +15,23 @@ import {
   Facebook,
   Twitter,
   Linkedin,
-  Flag,
+  Flag
 } from "lucide-react";
-import { Button } from "@shared/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuTrigger,
-  DropdownMenuContent,
-  DropdownMenuItem,
-} from "@shared/components/ui/dropdown-menu";
+import { useRouter } from "next/navigation";
+import { FC } from "react";
+
+import { About } from "@/components/advisor_profiles/About";
+import { AgentTeam } from "@/components/advisor_profiles/AgentTeam";
+import { Certificate } from "@/components/advisor_profiles/Certificate";
+import { ContactCard } from "@/components/advisor_profiles/ContactCard";
+import { Header } from "@/components/advisor_profiles/Header";
 import { PropertiesMap } from "@/components/advisor_profiles/PropertiesMap";
 import PropertiesSection from "@/components/advisor_profiles/PropertiesSection";
 import { ReviewsSection } from "@/components/advisor_profiles/ReviewsSection";
+import { Specialties } from "@/components/advisor_profiles/Specialties";
+import { VideoCard } from "@/components/advisor_profiles/VideoCard";
+import { Zones } from "@/components/advisor_profiles/Zones";
+import { Navbar } from "@/components/navbar";
 
 interface AgenciesContainerProps {
   slug: string;
@@ -39,7 +40,7 @@ interface AgenciesContainerProps {
 const propiedades = [
   { lat: 21.2515, lng: -89.6665, tipo: "venta" as const },
   { lat: 21.252, lng: -89.667, tipo: "renta" as const },
-  { lat: 21.2525, lng: -89.666, tipo: "venta" as const },
+  { lat: 21.2525, lng: -89.666, tipo: "venta" as const }
 ];
 
 const agentsData = [
@@ -49,7 +50,7 @@ const agentsData = [
     experience: "5 años de experiencia",
     recentSales: "2 ventas Recientes",
     rating: 5.0,
-    image: "/images/carlos.jpg",
+    image: "/images/carlos.jpg"
   },
   {
     id: 2,
@@ -57,7 +58,7 @@ const agentsData = [
     experience: "6 años de experiencia",
     recentSales: "3 ventas Recientes",
     rating: 5.0,
-    image: "/images/carolina.jpg",
+    image: "/images/carolina.jpg"
   },
   {
     id: 3,
@@ -65,7 +66,7 @@ const agentsData = [
     experience: "2 años de experiencia",
     recentSales: "1 ventas Recientes",
     rating: 5.0,
-    image: "/images/osvaldo.jpg",
+    image: "/images/osvaldo.jpg"
   },
   {
     id: 4,
@@ -73,15 +74,15 @@ const agentsData = [
     experience: "2 años de experiencia",
     recentSales: "6 ventas Recientes",
     rating: 5.0,
-    image: "/images/olivia.jpg",
-  },
+    image: "/images/olivia.jpg"
+  }
 ];
 
 const contactInfo = [
   { label: "Dirección:", value: "Cancún, Q. Roo" },
   { label: "Móvil:", value: "+52-5555-9999" },
   { label: "Oficina:", value: "+52-5380-2345" },
-  { label: "Email:", value: "contacto@agencia.com" },
+  { label: "Email:", value: "contacto@agencia.com" }
 ];
 
 type SocialPlatform = "facebook" | "instagram" | "linkedin" | "twitter";
@@ -95,7 +96,7 @@ const socialMedia: SocialLink[] = [
   { platform: "facebook", url: "https://facebook.com/miPerfil" },
   { platform: "instagram", url: "https://instagram.com/miPerfil" },
   { platform: "linkedin", url: "https://linkedin.com/in/miPerfil" },
-  { platform: "twitter", url: "https://twitter.com/miPerfil" },
+  { platform: "twitter", url: "https://twitter.com/miPerfil" }
 ];
 
 const propertiesForSale = [
@@ -106,7 +107,7 @@ const propertiesForSale = [
     location: "Cancún, Quintana Roo",
     details: { beds: 3, baths: 2, cars: 1, size: "180 m²" },
     amenities: ["alberca", "jardín", "estudio"],
-    status: ["Venta"],
+    status: ["Venta"]
   },
   {
     id: 2,
@@ -115,7 +116,7 @@ const propertiesForSale = [
     location: "Playa del Carmen, Quintana Roo",
     details: { beds: 4, baths: 3, cars: 2, size: "250 m²" },
     amenities: ["alberca", "terraza", "gimnasio"],
-    status: ["Venta", "Desarrollo"],
+    status: ["Venta", "Desarrollo"]
   },
   {
     id: 3,
@@ -124,8 +125,8 @@ const propertiesForSale = [
     location: "Tulum, Quintana Roo",
     details: { beds: 2, baths: 2, cars: 1, size: "120 m²" },
     amenities: ["seguridad", "jardín"],
-    status: ["Venta"],
-  },
+    status: ["Venta"]
+  }
 ];
 
 const propertiesForRent = [
@@ -136,7 +137,7 @@ const propertiesForRent = [
     location: "Playa del Carmen",
     details: { beds: 2, baths: 1, cars: 1, size: "90 m²" },
     amenities: ["balcón", "seguridad"],
-    status: ["Renta"],
+    status: ["Renta"]
   },
   {
     id: 102,
@@ -145,7 +146,7 @@ const propertiesForRent = [
     location: "Holbox, Quintana Roo",
     details: { beds: 3, baths: 2, cars: 2, size: "160 m²" },
     amenities: ["alberca", "vista al mar", "aire acondicionado"],
-    status: ["Renta"],
+    status: ["Renta"]
   },
   {
     id: 103,
@@ -154,8 +155,8 @@ const propertiesForRent = [
     location: "Cancún, Quintana Roo",
     details: { beds: 1, baths: 1, cars: 1, size: "80 m²" },
     amenities: ["gimnasio", "piscina"],
-    status: ["Renta"],
-  },
+    status: ["Renta"]
+  }
 ];
 
 const reviewsData = [
@@ -164,15 +165,15 @@ const reviewsData = [
     title: "Excelente Servicio",
     content: "Equipo altamente profesional, siempre atentos...",
     author: "Lisa María Hernández",
-    date: "20 junio 2025",
+    date: "20 junio 2025"
   },
   {
     id: 2,
     title: "Agencia Confiable",
     content: "Excelente asesoría, conocedores del mercado...",
     author: "Juan Pérez",
-    date: "15 mayo 2025",
-  },
+    date: "15 mayo 2025"
+  }
 ];
 
 const specialtiesData = [
@@ -181,12 +182,12 @@ const specialtiesData = [
   "Tasador de Bienes Raíces",
   "Arrendamiento de Locales",
   "Apartment brokerage",
-  "Tasador de Bienes Raíces",
+  "Tasador de Bienes Raíces"
 ];
 const videoData = {
   title: "Conoce nuestra Agencia",
   thumbnailUrl: "https://img.youtube.com/vi/SZEflIVnhH8/hqdefault.jpg",
-  videoUrl: "https://www.youtube.com/embed/SZEflIVnhH8",
+  videoUrl: "https://www.youtube.com/embed/SZEflIVnhH8"
 };
 const zonesData = [
   "Quintana Roo",
@@ -194,7 +195,7 @@ const zonesData = [
   "Holbox",
   "Playa del Carmen",
   "Cozumel",
-  "Bacalar",
+  "Bacalar"
 ];
 
 export const AgenciesContainer: FC<AgenciesContainerProps> = ({ slug }) => {
@@ -271,9 +272,7 @@ export const AgenciesContainer: FC<AgenciesContainerProps> = ({ slug }) => {
               <AgentTeam agents={agentsData} />
               <Specialties specialties={specialtiesData} />
               <Zones zones={zonesData} />
-              <APIProvider
-                apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY!}
-              >
+              <APIProvider apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY!}>
                 <PropertiesMap propiedades={propiedades} />
               </APIProvider>
               <PropertiesSection
@@ -284,11 +283,7 @@ export const AgenciesContainer: FC<AgenciesContainerProps> = ({ slug }) => {
             </div>
 
             <aside className="w-full space-y-8 lg:w-xs">
-              <ContactCard
-                type="agency"
-                contactDetails={contactInfo}
-                socialLinks={socialMedia}
-              />
+              <ContactCard type="agency" contactDetails={contactInfo} socialLinks={socialMedia} />
               <VideoCard {...videoData} />
             </aside>
           </div>

@@ -24,13 +24,13 @@ export default function PropertyCard({
   property,
   favorites,
   toggleFavorite,
-  badgeColors,
+  badgeColors
 }: PropertyCardProps) {
   return (
-    <Card className="overflow-hidden px-4 rounded-xl shadow-md border hover:shadow-lg transition">
+    <Card className="overflow-hidden rounded-xl border px-4 shadow-md transition hover:shadow-lg">
       {/* Imagen o Placeholder */}
-      <div className="relative bg-primary-foreground shadow-md  rounded-xl px-4">
-        <div className="h-52 w-full flex items-center justify-center text-foreground text-sm rounded-xl">
+      <div className="bg-primary-foreground relative rounded-xl px-4 shadow-md">
+        <div className="text-foreground flex h-52 w-full items-center justify-center rounded-xl text-sm">
           Imagen no disponible
         </div>
 
@@ -39,7 +39,7 @@ export default function PropertyCard({
           {property.status.map((status, idx) => (
             <span
               key={idx}
-              className="text-accent text-xs font-semibold px-3 py-1 rounded-full"
+              className="text-accent rounded-full px-3 py-1 text-xs font-semibold"
               style={{ backgroundColor: badgeColors[status] || "var(--color-sidebar-primary)" }}
             >
               {status}
@@ -58,7 +58,7 @@ export default function PropertyCard({
             viewBox="0 0 24 24"
             strokeWidth={2}
             stroke={favorites.includes(property.id) ? "red" : "currentColor"}
-            className="w-5 h-5"
+            className="h-5 w-5"
           >
             <path
               strokeLinecap="round"
@@ -71,14 +71,14 @@ export default function PropertyCard({
 
       {/* Contenido */}
       <div className="p-2">
-        <h3 className="text-base font-semibold line-clamp-2">{property.title}</h3>
-        <p className="text-lg font-bold mt-1">{property.price}</p>
-        <p className="text-sm text-gray-500 flex items-center gap-1 mt-1">
+        <h3 className="line-clamp-2 text-base font-semibold">{property.title}</h3>
+        <p className="mt-1 text-lg font-bold">{property.price}</p>
+        <p className="mt-1 flex items-center gap-1 text-sm text-gray-500">
           <MapPin size={14} /> {property.location}
         </p>
 
         {/* Detalles */}
-        <div className="flex justify-between items-center mt-3 text-gray-600 text-sm">
+        <div className="mt-3 flex items-center justify-between text-sm text-gray-600">
           <div className="flex items-center gap-1">
             <BedDouble size={16} /> {property.details.beds}
           </div>
@@ -94,9 +94,7 @@ export default function PropertyCard({
         </div>
 
         {/* Amenidades */}
-        <p className="text-sm text-gray-500 mt-2">
-          {property.amenities.join(", ")}
-        </p>
+        <p className="mt-2 text-sm text-gray-500">{property.amenities.join(", ")}</p>
       </div>
     </Card>
   );

@@ -1,5 +1,6 @@
-import { Button } from "@/shared/components/ui";
 import { Globe, Languages, Briefcase } from "lucide-react";
+
+import { Button } from "@/shared/components/ui";
 
 interface HeaderProps {
   imageUrl?: string;
@@ -10,25 +11,14 @@ interface HeaderProps {
   experience: string;
 }
 
-export function Header({
-  imageUrl,
-  name,
-  role,
-  location,
-  languages,
-  experience,
-}: HeaderProps) {
+export function Header({ imageUrl, name, role, location, languages, experience }: HeaderProps) {
   return (
     <div className="bg flex flex-col gap-4 rounded-xl border px-6 py-5 sm:flex-row sm:items-center sm:gap-6">
-      <div className="bg-primary-foreground text-foreground flex h-30 w-30 items-center justify-center rounded-full text-xl font-bold shadow-md overflow-hidden">
+      <div className="bg-primary-foreground text-foreground flex h-30 w-30 items-center justify-center overflow-hidden rounded-full text-xl font-bold shadow-md">
         {imageUrl ? (
-          <img
-            src={imageUrl}
-            alt={name}
-            className="h-full w-full object-cover"
-          />
+          <img src={imageUrl} alt={name} className="h-full w-full object-cover" />
         ) : (
-          <div className="flex items-center justify-center h-full w-full text-muted-foreground">
+          <div className="text-muted-foreground flex h-full w-full items-center justify-center">
             Placeholder
           </div>
         )}
@@ -36,10 +26,7 @@ export function Header({
 
       <div className="flex-1 space-y-1">
         <h1 className="text-foreground text-2xl font-semibold">{name}</h1>
-        <Button
-          variant="link"
-          className="h-auto p-0 text-sm font-medium text-ring"
-        >
+        <Button variant="link" className="text-ring h-auto p-0 text-sm font-medium">
           {role}
         </Button>
 

@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 
-import PropertyCard from "./PropertyCard";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/shared/components/ui/tabs";
+
+import PropertyCard from "./PropertyCard";
 
 interface Property {
   id: number;
@@ -22,21 +23,19 @@ interface PropertiesSectionProps {
 
 export default function PropertiesSection({
   propertiesForSale,
-  propertiesForRent,
+  propertiesForRent
 }: PropertiesSectionProps) {
   const [activeTab, setActiveTab] = useState("sale");
   const [favorites, setFavorites] = useState<number[]>([]);
 
   const toggleFavorite = (id: number) => {
-    setFavorites((prev) =>
-      prev.includes(id) ? prev.filter((fid) => fid !== id) : [...prev, id]
-    );
+    setFavorites((prev) => (prev.includes(id) ? prev.filter((fid) => fid !== id) : [...prev, id]));
   };
 
   const badgeColors: Record<string, string> = {
     Venta: "var(--color-sidebar-primary)",
     Desarrollo: "var(--color-sidebar-ring)",
-    Renta: "var(--color-sidebar-primary)",
+    Renta: "var(--color-sidebar-primary)"
   };
 
   return (
@@ -51,7 +50,7 @@ export default function PropertiesSection({
           </TabsTrigger>
         </TabsList>
 
-        <h2 className="mb-4 mt-4 font-bold">
+        <h2 className="mt-4 mb-4 font-bold">
           {activeTab === "sale"
             ? `En venta (${propertiesForSale.length})`
             : `En renta (${propertiesForRent.length})`}

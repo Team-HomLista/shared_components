@@ -38,11 +38,7 @@ export default [
           groups: ["builtin", "external", "internal", "parent", "sibling", "index"],
           pathGroups: [
             {
-              pattern: "@/**",
-              group: "internal"
-            },
-            {
-              pattern: "@shared/**",
+              pattern: "{@,@shared}/**",
               group: "internal"
             }
           ],

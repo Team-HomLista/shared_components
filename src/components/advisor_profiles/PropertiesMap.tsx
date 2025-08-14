@@ -15,13 +15,11 @@ export function PropertiesMap({ propiedades }: Props) {
     <section className="w-full space-y-4">
       {/* Título de sección */}
       <div>
-        <h2 className="font-semibold text-foreground">
-          Propiedades del Agente
-        </h2>
+        <h2 className="text-foreground font-semibold">Propiedades del Agente</h2>
       </div>
 
       {/* Mapa */}
-      <div className="w-full h-[400px] rounded-xl overflow-hidden relative shadow">
+      <div className="relative h-[400px] w-full overflow-hidden rounded-xl shadow">
         <Map
           zoom={17}
           center={{ lat: 21.2515, lng: -89.6665 }}
@@ -32,11 +30,7 @@ export function PropertiesMap({ propiedades }: Props) {
           {propiedades.map((p, i) => (
             <AdvancedMarker position={{ lat: p.lat, lng: p.lng }} key={i}>
               <Pin
-                background={
-                  p.tipo === "venta"
-                    ? "hsl(var(--foreground))"
-                    : "hsl(var(--ring))"
-                }
+                background={p.tipo === "venta" ? "hsl(var(--foreground))" : "hsl(var(--ring))"}
                 borderColor="hsl(var(--background))"
                 glyphColor="hsl(var(--background))"
                 scale={1.2}
@@ -46,13 +40,13 @@ export function PropertiesMap({ propiedades }: Props) {
         </Map>
 
         {/* Leyenda */}
-        <div className="absolute top-4 right-4 bg-background rounded-lg px-4 py-2 shadow flex gap-x-4 text-sm">
+        <div className="bg-background absolute top-4 right-4 flex gap-x-4 rounded-lg px-4 py-2 text-sm shadow">
           <div className="flex items-center gap-x-1">
-            <span className="size-3 rounded-full bg-foreground shadow-md "></span>
+            <span className="bg-foreground size-3 rounded-full shadow-md" />
             <span>En Venta</span>
           </div>
           <div className="flex items-center gap-x-1">
-            <span className="size-3 rounded-full bg-ring"></span>
+            <span className="bg-ring size-3 rounded-full" />
             <span>En Renta</span>
           </div>
         </div>

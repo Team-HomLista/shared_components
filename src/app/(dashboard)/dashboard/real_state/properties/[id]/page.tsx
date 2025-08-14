@@ -2,9 +2,9 @@
 import { use } from "react";
 
 import { getBreadcrumbFromMenuItem, useDashboard } from "@/hooks/useDashboard";
-import { ClientPageProps } from "@/types/next";
+import { PageProps } from "@/types/next";
 
-export default function Page({ params }: ClientPageProps<"id">) {
+export default function Page({ params }: PageProps<"id">) {
   const { id } = use(params);
 
   useDashboard({

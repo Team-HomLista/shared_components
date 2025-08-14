@@ -1,17 +1,17 @@
 "use client";
 
-import { useState } from "react";
 import { Button } from "@shared/components/ui/button";
 import {
   Dialog,
   DialogContent,
   DialogTrigger,
   DialogHeader,
-  DialogTitle,
+  DialogTitle
 } from "@shared/components/ui/dialog";
-import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
 import { Input } from "@shared/components/ui/input";
 import { Textarea } from "@shared/components/ui/textarea";
+import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
+import { useState } from "react";
 
 type ContactCardType = "agent" | "agency";
 
@@ -38,7 +38,7 @@ const iconMap = {
   facebook: Facebook,
   instagram: Instagram,
   linkedin: Linkedin,
-  twitter: Twitter,
+  twitter: Twitter
 };
 
 export function ContactCard({
@@ -47,7 +47,7 @@ export function ContactCard({
   agentName,
   agentCompany,
   contactDetails,
-  socialLinks = [],
+  socialLinks = []
 }: ContactCardProps) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -63,7 +63,7 @@ export function ContactCard({
         <img
           src={imageUrl}
           alt={`${agentName ?? "Agente"} logo`}
-          className="mx-auto mb-6 rounded-md shadow-md size-28 object-cover"
+          className="mx-auto mb-6 size-28 rounded-md object-cover shadow-md"
         />
       )}
 
@@ -114,9 +114,7 @@ export function ContactCard({
 
           <DialogContent className="max-w-md">
             <DialogHeader>
-              <DialogTitle>
-                Contactar {type === "agent" ? "al Agente" : "a la Agencia"}
-              </DialogTitle>
+              <DialogTitle>Contactar {type === "agent" ? "al Agente" : "a la Agencia"}</DialogTitle>
             </DialogHeader>
 
             {/* Contenido del formulario */}
@@ -131,7 +129,7 @@ export function ContactCard({
                       className="size-12 rounded-full object-cover"
                     />
                   ) : (
-                    <div className="bg-primary-foreground shadow-md text-muted-foreground flex size-12 items-center justify-center rounded-full text-sm font-medium">
+                    <div className="bg-primary-foreground text-muted-foreground flex size-12 items-center justify-center rounded-full text-sm font-medium shadow-md">
                       IMG
                     </div>
                   )}
@@ -159,8 +157,8 @@ export function ContactCard({
                 <label className="flex items-start gap-x-2">
                   <input type="checkbox" className="mt-1" />
                   <span>
-                    Al proporcionar su información de contacto a{" "}
-                    <strong>Homlista*</strong>, usted reconoce y acepta nuestra{" "}
+                    Al proporcionar su información de contacto a <strong>Homlista*</strong>, usted
+                    reconoce y acepta nuestra{" "}
                     <a
                       href="#"
                       className="text-primary underline"
@@ -169,17 +167,15 @@ export function ContactCard({
                     >
                       Política de Privacidad
                     </a>{" "}
-                    y da su consentimiento para recibir comunicaciones de
-                    marketing, incluyendo llamadas, mensajes de texto y correos
-                    electrónicos automatizados, algunos de los cuales pueden
-                    usar voces artificiales o pregrabadas. Este consentimiento
-                    no es necesario para comprar ningún producto o servicio y
-                    puede cancelar su suscripción en cualquier momento. Para
-                    cancelar su suscripción a los mensajes de texto, puede
-                    responder “detener” en cualquier momento. Para cancelar su
-                    suscripción a los correos electrónicos, puede hacer clic en
-                    el enlace para cancelar la suscripción que se incluye en los
-                    mismos. Pueden aplicarse tarifas por mensajes y datos.
+                    y da su consentimiento para recibir comunicaciones de marketing, incluyendo
+                    llamadas, mensajes de texto y correos electrónicos automatizados, algunos de los
+                    cuales pueden usar voces artificiales o pregrabadas. Este consentimiento no es
+                    necesario para comprar ningún producto o servicio y puede cancelar su
+                    suscripción en cualquier momento. Para cancelar su suscripción a los mensajes de
+                    texto, puede responder “detener” en cualquier momento. Para cancelar su
+                    suscripción a los correos electrónicos, puede hacer clic en el enlace para
+                    cancelar la suscripción que se incluye en los mismos. Pueden aplicarse tarifas
+                    por mensajes y datos.
                   </span>
                 </label>
               </div>
