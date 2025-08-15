@@ -13,7 +13,7 @@ import {
   CardTitle
 } from "@/shared/components/ui";
 
-export const FreeTrialSection = () => {
+export function FreeTrialSection() {
   return (
     <SectionInline title="Período de prueba sin compromiso" icon={Clock}>
       <Card>
@@ -87,4 +87,4 @@ export const FreeTrialSection = () => {
       </Alert>
     </SectionInline>
   );
-};
+}

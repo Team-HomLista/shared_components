@@ -4,7 +4,7 @@ import { ListWithIcon } from "@/components/list-with-icon";
 import { SectionInline } from "@/components/section-inline";
 import { Card, CardContent, CardHeader, CardTitle } from "@/shared/components/ui";
 
-export const AccountSuspensionSection = () => {
+export function AccountSuspensionSection() {
   return (
     <SectionInline
       title="Suspensión de cuentas sin derecho a reembolso"
@@ -32,4 +32,4 @@ export const AccountSuspensionSection = () => {
       </Card>
     </SectionInline>
   );
-};
+}

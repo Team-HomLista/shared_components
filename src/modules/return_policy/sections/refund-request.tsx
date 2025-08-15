@@ -12,7 +12,7 @@ import {
   CardTitle
 } from "@/shared/components/ui";
 
-export const RefundRequestSection = () => {
+export function RefundRequestSection() {
   return (
     <SectionInline title="Cómo solicitar un reembolso" icon={Mail}>
       <Card>
@@ -60,4 +60,4 @@ export const RefundRequestSection = () => {
       </Alert>
     </SectionInline>
   );
-};
+}

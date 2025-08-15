@@ -11,7 +11,7 @@ import {
   CardTitle
 } from "@/shared/components/ui";
 
-export const CancellationRenewalSection = () => {
+export function CancellationRenewalSection() {
   return (
     <SectionInline title="Cancelaciones y renovaciones" icon={RefreshCw} iconVariant="secondary">
       <Card>
@@ -49,4 +49,4 @@ export const CancellationRenewalSection = () => {
       </Alert>
     </SectionInline>
   );
-};
+}

@@ -21,7 +21,7 @@ const items: Array<ReactNode> = [
   "Se ha utilizado activamente la plataforma (publicaciones, contactos, funciones premium)."
 ];
 
-export const NoRefundCasesSection = () => {
+export function NoRefundCasesSection() {
   return (
     <SectionInline
       title="Casos donde NO aplica el reembolso"
@@ -42,4 +42,4 @@ export const NoRefundCasesSection = () => {
       </Card>
     </SectionInline>
   );
-};
+}

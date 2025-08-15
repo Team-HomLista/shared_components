@@ -1,6 +1,7 @@
 import { Badge } from "@shared/components/ui/badge";
 import { Settings, CheckCircle } from "lucide-react";
 
+import { ListWithIcon } from "@/components/list-with-icon";
 import { SectionInline } from "@/components/section-inline";
 import { Card, CardContent, CardHeader, CardTitle } from "@/shared/components/ui";
 
@@ -9,18 +10,20 @@ const TypesOfCookiesSection = () => {
     <SectionInline title="¿Qué tipos de cookies utilizamos?" icon={Settings}>
       <p>HomLista utiliza las siguientes categorías de cookies:</p>
 
-      <Card className="gap-3">
+      <Card>
         <CardHeader>
           <CardTitle>Cookies estrictamente necesarias</CardTitle>
         </CardHeader>
-        <CardContent className="flex flex-col">
-          Necesarias para el funcionamiento básico de la plataforma (ej. inicio de sesión,
-          navegación segura).
+        <CardContent className="flex flex-col gap-2">
+          <p>
+            Necesarias para el funcionamiento básico de la plataforma (ej. inicio de sesión,
+            navegación segura).
+          </p>
           <Badge>No requieren consentimiento</Badge>
         </CardContent>
       </Card>
 
-      <Card className="gap-3">
+      <Card>
         <CardHeader>
           <CardTitle>Cookies de rendimiento y analíticas</CardTitle>
         </CardHeader>
@@ -29,20 +32,22 @@ const TypesOfCookiesSection = () => {
             Permiten analizar el uso del sitio (ej. páginas más visitadas, tiempo de navegación).
           </p>
           <p className="font-medium">Herramientas utilizadas:</p>
-          <ul className="space-y-2">
-            <li className="flex items-start gap-3">
-              <CheckCircle className="text-primary flex-shrink-0" />
-              <span>Google Analytics</span>
-            </li>
-            <li className="flex items-start gap-3">
-              <CheckCircle className="text-primary flex-shrink-0" />
-              <span>Pixel de Meta (Facebook/Instagram)</span>
-            </li>
-          </ul>
+          <ListWithIcon
+            items={[
+              {
+                icon: CheckCircle,
+                text: "Google Analytics"
+              },
+              {
+                icon: CheckCircle,
+                text: "Pixel de Meta (Facebook/Instagram)"
+              }
+            ]}
+          />
         </CardContent>
       </Card>
 
-      <Card className="gap-3">
+      <Card>
         <CardHeader>
           <CardTitle>Cookies de funcionalidad</CardTitle>
         </CardHeader>
@@ -52,7 +57,7 @@ const TypesOfCookiesSection = () => {
         </CardContent>
       </Card>
 
-      <Card className="gap-3">
+      <Card>
         <CardHeader>
           <CardTitle>Cookies de marketing y publicidad</CardTitle>
         </CardHeader>

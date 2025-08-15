@@ -1,5 +1,6 @@
 import { Users, CheckCircle, Info } from "lucide-react";
 
+import { ListWithIcon } from "@/components/list-with-icon";
 import { SectionInline } from "@/components/section-inline";
 import { Alert, AlertDescription, AlertTitle, Card, CardContent } from "@/shared/components/ui";
 
@@ -8,20 +9,28 @@ const ThirdPartyCookiesSection = () => {
     <SectionInline title="Cookies propias y de terceros" icon={Users}>
       <Card>
         <CardContent className="flex flex-col gap-3">
-          <div className="flex items-start gap-3">
-            <CheckCircle className="text-primary flex-shrink-0" />
-            <p>
-              <strong>Cookies propias:</strong> gestionadas directamente por HomLista.
-            </p>
-          </div>
-          <div className="flex items-start gap-3">
-            <Info className="text-primary flex-shrink-0" />
-            <p>
-              <strong>Cookies de terceros:</strong> gestionadas por servicios como Google, Meta,
-              Hotjar, etc., que pueden recopilar información sobre tu navegación y comportamiento
-              para sus propias finalidades.
-            </p>
-          </div>
+          <ListWithIcon
+            items={[
+              {
+                icon: CheckCircle,
+                text: (
+                  <>
+                    <strong>Cookies propias:</strong> gestionadas directamente por HomLista.
+                  </>
+                )
+              },
+              {
+                icon: Info,
+                text: (
+                  <>
+                    <strong>Cookies de terceros:</strong> gestionadas por servicios como Google,
+                    Meta, Hotjar, etc., que pueden recopilar información sobre tu navegación y
+                    comportamiento para sus propias finalidades.
+                  </>
+                )
+              }
+            ]}
+          />
 
           <Alert>
             <Info />
