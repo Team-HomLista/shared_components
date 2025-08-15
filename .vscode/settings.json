@@ -8,5 +8,12 @@
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
   "editor.formatOnType": true,
-  "prettier.eslintIntegration": true
+  "prettier.eslintIntegration": true,
+  "workbench.editor.customLabels.patterns": {
+    "*/src/modules/**": "${dirname}/${filename}.${extname} - [Module]",
+    "*/src/components/**/index.tsx": "${dirname}/index - [Component]",
+    "*/src/components/**/*.tsx": "${filename} - [Component]",
+    "*/src/app/(website)/**/page.tsx": "${dirname} - [Website Page]",
+    "*/src/app/(dashboard)/**/page.tsx": "${dirname} - [Dashboard Page]"
+  }
 }
