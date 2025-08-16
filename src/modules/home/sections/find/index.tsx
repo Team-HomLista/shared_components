@@ -32,8 +32,8 @@ export const FindSection = () => {
       </div>
       <LeadFormResponsive
         open={showLeadForm}
-        onOpenChange={setShowLeadForm}
         initialData={formData}
+        onOpenChange={setShowLeadForm}
       />
     </section>
   );

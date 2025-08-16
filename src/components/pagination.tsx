@@ -20,9 +20,9 @@ export const Pagination: React.FC<PaginationProps> = ({
       <Button
         size="icon"
         className="h-6 w-6"
-        onClick={onClickPrev}
         disabled={currentPage === 1}
         aria-label="Página anterior"
+        onClick={onClickPrev}
       >
         <ChevronLeft />
       </Button>
@@ -36,9 +36,9 @@ export const Pagination: React.FC<PaginationProps> = ({
       <Button
         size="icon"
         className="h-6 w-6"
-        onClick={onClickNext}
         disabled={currentPage === totalPages}
         aria-label="Página siguiente"
+        onClick={onClickNext}
       >
         <ChevronRight />
       </Button>

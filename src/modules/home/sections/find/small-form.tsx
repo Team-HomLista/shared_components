@@ -71,7 +71,7 @@ export const FindSmallForm = ({ onComplete }: FindSmallFormProps) => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col items-center gap-4">
+      <form className="flex flex-col items-center gap-4" onSubmit={form.handleSubmit(onSubmit)}>
         <FormField
           control={form.control}
           name="building_type"
@@ -81,7 +81,7 @@ export const FindSmallForm = ({ onComplete }: FindSmallFormProps) => {
                 <Text variant="label">Tipo de propiedad</Text>
               </FormLabel>
               {}
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
+              <Select defaultValue={field.value} onValueChange={field.onChange}>
                 <FormControl>
                   <SelectTrigger className="w-full bg-white">
                     <SelectValue placeholder="Selecciona el tipo de propiedad que buscas" />
@@ -108,7 +108,7 @@ export const FindSmallForm = ({ onComplete }: FindSmallFormProps) => {
               <FormLabel>
                 <Text variant="label">Estado</Text>
               </FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value} value={field.value}>
+              <Select defaultValue={field.value} value={field.value} onValueChange={field.onChange}>
                 <FormControl>
                   <SelectTrigger className="w-full bg-white">
                     <SelectValue placeholder="Selecciona el estado donde buscas tu propiedad" />
@@ -135,7 +135,7 @@ export const FindSmallForm = ({ onComplete }: FindSmallFormProps) => {
               <FormLabel>
                 <Text variant="label">Ciudad</Text>
               </FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value} value={field.value}>
+              <Select defaultValue={field.value} value={field.value} onValueChange={field.onChange}>
                 <FormControl>
                   <SelectTrigger className="w-full bg-white">
                     <SelectValue placeholder="Selecciona la ciudad donde buscas tu propiedad" />
@@ -163,7 +163,7 @@ export const FindSmallForm = ({ onComplete }: FindSmallFormProps) => {
                 <Text variant="label">Tipo de búsqueda</Text>
               </FormLabel>
               {}
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
+              <Select defaultValue={field.value} onValueChange={field.onChange}>
                 <FormControl>
                   <SelectTrigger className="w-full bg-white">
                     <SelectValue placeholder="Selecciona el tipo de búsqueda" />
@@ -204,8 +204,8 @@ export const FindSmallForm = ({ onComplete }: FindSmallFormProps) => {
                     max={20000000}
                     step={100000}
                     value={[field.value || 5000000]}
-                    onValueChange={(value) => field.onChange(value[0])}
                     className="w-full"
+                    onValueChange={(value) => field.onChange(value[0])}
                   />
                 </FormControl>
                 <FormMessage />

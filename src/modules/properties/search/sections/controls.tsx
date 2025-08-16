@@ -48,7 +48,7 @@ export const ControlsSection: FC<ControlsSectionProps> = ({
       <div className="mx-auto flex w-full max-w-[1112px] flex-col gap-4 px-2 pt-8 md:px-0">
         <BreadcrumbPagination />
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-4">
+          <form className="flex flex-col gap-4" onSubmit={form.handleSubmit(onSubmit)}>
             {/* Desktop Layout */}
             <div className="hidden md:flex md:flex-col md:gap-4">
               {/* Input for keyword and search button */}
@@ -78,7 +78,7 @@ export const ControlsSection: FC<ControlsSectionProps> = ({
                   name="property_type"
                   render={({ field }) => (
                     <FormItem>
-                      <Select onValueChange={field.onChange} value={field.value || ""}>
+                      <Select value={field.value || ""} onValueChange={field.onChange}>
                         <FormControl>
                           <SelectTrigger className="w-[200px]">
                             <SelectValue placeholder="Tipo de propiedad" />
@@ -100,7 +100,7 @@ export const ControlsSection: FC<ControlsSectionProps> = ({
                   name="transaction_type"
                   render={({ field }) => (
                     <FormItem>
-                      <Select onValueChange={field.onChange} value={field.value || ""}>
+                      <Select value={field.value || ""} onValueChange={field.onChange}>
                         <FormControl>
                           <SelectTrigger className="w-[200px]">
                             <SelectValue placeholder="Tipo de transacción" />
@@ -126,7 +126,7 @@ export const ControlsSection: FC<ControlsSectionProps> = ({
                   neighborhoodOptions={neighborhoodOptions}
                   onSubmit={onSubmit}
                 />
-                <Button onClick={onClearFilters} type="button">
+                <Button type="button" onClick={onClearFilters}>
                   Limpiar filtros
                 </Button>
               </div>
@@ -161,7 +161,7 @@ export const ControlsSection: FC<ControlsSectionProps> = ({
                   neighborhoodOptions={neighborhoodOptions}
                   onSubmit={onSubmit}
                 />
-                <Button onClick={onClearFilters} type="button">
+                <Button type="button" onClick={onClearFilters}>
                   Limpiar filtros
                 </Button>
               </div>

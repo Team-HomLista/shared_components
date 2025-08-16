@@ -1,3 +1,4 @@
+import stylistic from "@stylistic/eslint-plugin";
 import importPlugin from "eslint-plugin-import";
 import prettier from "eslint-plugin-prettier";
 import prettierRecommended from "eslint-plugin-prettier/recommended";
@@ -17,7 +18,8 @@ export default [
     plugins: {
       "unused-imports": unusedImports,
       prettier,
-      import: importPlugin
+      import: importPlugin,
+      "@stylistic": stylistic
     },
     rules: {
       "react/jsx-handler-names": "off",
@@ -47,6 +49,16 @@ export default [
             order: "asc",
             caseInsensitive: true
           }
+        }
+      ],
+      "@stylistic/jsx-sort-props": [
+        "warn",
+        {
+          callbacksLast: true,
+          shorthandFirst: false,
+          multiline: "ignore",
+          reservedFirst: true,
+          noSortAlphabetically: true
         }
       ]
     }

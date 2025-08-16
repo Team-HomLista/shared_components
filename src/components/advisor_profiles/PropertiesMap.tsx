@@ -28,7 +28,7 @@ export function PropertiesMap({ propiedades }: Props) {
           disableDefaultUI
         >
           {propiedades.map((p, i) => (
-            <AdvancedMarker position={{ lat: p.lat, lng: p.lng }} key={i}>
+            <AdvancedMarker key={i} position={{ lat: p.lat, lng: p.lng }}>
               <Pin
                 background={p.tipo === "venta" ? "hsl(var(--foreground))" : "hsl(var(--ring))"}
                 borderColor="hsl(var(--background))"

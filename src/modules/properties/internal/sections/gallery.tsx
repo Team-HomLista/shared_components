@@ -147,7 +147,7 @@ export const ImageGallery: FC<ImageGalleryProps> = ({ multimedia }) => {
           <div className="animate-zoom-in max-h-[90vh] w-full max-w-7xl overflow-auto rounded-lg bg-white p-4">
             <div className="mb-4 flex items-center justify-between">
               <h3 className="text-2xl font-bold">Galería de imágenes</h3>
-              <button onClick={closeGallery} className="rounded-full p-2 hover:bg-gray-100">
+              <button className="rounded-full p-2 hover:bg-gray-100" onClick={closeGallery}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -182,8 +182,8 @@ export const ImageGallery: FC<ImageGalleryProps> = ({ multimedia }) => {
       {showCarousel && (
         <div className="animate-fade-in fixed inset-0 z-50 flex items-center justify-center bg-black/90">
           <button
-            onClick={closeCarousel}
             className="absolute top-4 right-4 z-10 rounded-full p-2 text-white hover:bg-white/10"
+            onClick={closeCarousel}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -201,8 +201,8 @@ export const ImageGallery: FC<ImageGalleryProps> = ({ multimedia }) => {
             </svg>
           </button>
           <button
-            onClick={() => navigateCarousel("prev")}
             className="animate-slide-in-left absolute left-4 z-10 rounded-full p-2 text-white hover:bg-white/10"
+            onClick={() => navigateCarousel("prev")}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -226,8 +226,8 @@ export const ImageGallery: FC<ImageGalleryProps> = ({ multimedia }) => {
             />
           </div>
           <button
-            onClick={() => navigateCarousel("next")}
             className="animate-slide-in-right absolute right-4 z-10 rounded-full p-2 text-white hover:bg-white/10"
+            onClick={() => navigateCarousel("next")}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

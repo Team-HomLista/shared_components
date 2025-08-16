@@ -77,7 +77,7 @@ const NavCollapsible = ({ subMenu, ...item }: NavCollapsibleProps) => {
   };
 
   return (
-    <Collapsible open={isOpen} onOpenChange={handleOpenChange} className="group/collapsible">
+    <Collapsible open={isOpen} className="group/collapsible" onOpenChange={handleOpenChange}>
       <SidebarMenuItem>
         <CollapsibleTrigger asChild>
           <SidebarMenuButton>

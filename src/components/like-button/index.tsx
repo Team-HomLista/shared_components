@@ -21,9 +21,9 @@ export const LikeButton: FC<LikeButtonProps> = ({ isLiked, onClick, className = 
         "fill-transparent": !isLiked,
         "transition-colors duration-200": true
       })}
-      onClick={onClick}
       aria-label={isLiked ? "Quitar de favoritos" : "Agregar a favoritos"}
       role="button"
+      onClick={onClick}
     />
   );
 };

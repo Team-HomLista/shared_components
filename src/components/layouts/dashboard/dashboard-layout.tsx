@@ -14,12 +14,12 @@ export function DashboardLayout({ children }: PropsWithChildren) {
   return (
     <SidebarProvider
       open={isOpen === "true"}
-      onOpenChange={(open) => setOpen(open ? "true" : "false")}
       style={
         {
           "--header-height": "calc(var(--spacing) * 12)"
         } as React.CSSProperties
       }
+      onOpenChange={(open) => setOpen(open ? "true" : "false")}
     >
       <DashboardSidebar collapsible="offcanvas" />
 

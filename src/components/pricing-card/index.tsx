@@ -43,7 +43,7 @@ export function PricingCard({
 
         <div className="flex w-full flex-col items-start gap-1">
           {features.map((feature, index) => (
-            <div className="flex items-start gap-2 py-1.5" key={index}>
+            <div key={index} className="flex items-start gap-2 py-1.5">
               <Check className="text-secondary mt-0.5 h-5 w-5 flex-shrink-0" />
               <span className="text-md text-gray-500">{feature}</span>
             </div>

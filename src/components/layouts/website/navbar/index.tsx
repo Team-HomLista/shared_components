@@ -113,8 +113,8 @@ export const Navbar: FC<navbarProps> = ({ variant = "default" }) => {
                 <ul className="flex w-[300px] flex-col gap-3 p-4">
                   {buy.map((component) => (
                     <ListItem
-                      className="text-primary-foreground"
                       key={component.title}
+                      className="text-primary-foreground"
                       title={component.title}
                       href={component.href}
                     />
@@ -130,8 +130,8 @@ export const Navbar: FC<navbarProps> = ({ variant = "default" }) => {
                 <ul className="flex w-[300px] flex-col gap-3 p-4">
                   {rent.map((component) => (
                     <ListItem
-                      className="text-primary-foreground"
                       key={component.title}
+                      className="text-primary-foreground"
                       title={component.title}
                       href={component.href}
                     />
@@ -147,8 +147,8 @@ export const Navbar: FC<navbarProps> = ({ variant = "default" }) => {
                 <ul className="flex w-[300px] flex-col gap-3 p-4">
                   {services.map((component) => (
                     <ListItem
-                      className="text-primary-foreground"
                       key={component.title}
+                      className="text-primary-foreground"
                       title={component.title}
                       href={component.href}
                     />

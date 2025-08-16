@@ -49,8 +49,8 @@ export default function PropertyCard({
 
         {/* Favorito */}
         <button
-          onClick={() => toggleFavorite(property.id)}
           className="absolute top-3 right-3 rounded-full p-1 shadow-md"
+          onClick={() => toggleFavorite(property.id)}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

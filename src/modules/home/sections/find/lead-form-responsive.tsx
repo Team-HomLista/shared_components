@@ -19,8 +19,8 @@ export const LeadFormResponsive = ({
   const isDesktop = useIsMobile();
 
   return isDesktop ? (
-    <LeadFormModal open={open} onOpenChange={onOpenChange} initialData={initialData} />
+    <LeadFormModal open={open} initialData={initialData} onOpenChange={onOpenChange} />
   ) : (
-    <LeadFormDrawer open={open} onOpenChange={onOpenChange} initialData={initialData} />
+    <LeadFormDrawer open={open} initialData={initialData} onOpenChange={onOpenChange} />
   );
 };

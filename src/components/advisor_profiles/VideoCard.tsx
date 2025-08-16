@@ -18,8 +18,8 @@ export function VideoCard({ title, thumbnailUrl, videoUrl }: VideoCardProps) {
       <div className="space-y-4 rounded-2xl border p-6">
         <p className="text-foreground text-sm font-semibold">{title}</p>
         <div
-          onClick={openModal}
           className="relative aspect-video w-full cursor-pointer overflow-hidden rounded-lg shadow-md"
+          onClick={openModal}
         >
           <img
             src={thumbnailUrl}
@@ -52,8 +52,8 @@ export function VideoCard({ title, thumbnailUrl, videoUrl }: VideoCardProps) {
 
             {/* Botón cerrar */}
             <button
-              onClick={closeModal}
               className="text-background absolute top-2 right-2 flex size-8 items-center justify-center rounded-full"
+              onClick={closeModal}
             >
               ✕
             </button>
