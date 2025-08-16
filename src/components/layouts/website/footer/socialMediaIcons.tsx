@@ -6,20 +6,16 @@ interface SocialMediaIconsProps {
 
 export const SocialMediaIcons: FC<SocialMediaIconsProps> = ({ icons }) => {
   return (
-    <div className="flex h-full w-full flex-row flex-wrap items-end justify-center gap-2 sm:gap-0 lg:justify-end">
+    <div className="flex h-8 gap-3">
       {icons.map((icon, index) => (
         <a
           key={index}
           href={icon.link}
           target="_blank"
           rel="noopener noreferrer"
-          className="pl-2 transition-opacity hover:opacity-80 sm:pl-4 lg:pl-8"
+          className="transition-opacity hover:opacity-80"
         >
-          <img
-            src={icon.src}
-            alt={icon.alt}
-            className="h-6 w-6 items-end justify-end sm:h-8 sm:w-8 lg:h-full lg:w-full"
-          />
+          <img src={icon.src} alt={icon.alt} className="size-8 items-end justify-end" />
         </a>
       ))}
     </div>

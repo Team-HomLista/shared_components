@@ -1,9 +1,10 @@
 import { Button } from "@shared/components/ui/button";
 import { Input } from "@shared/components/ui/input";
 import Link from "next/link";
-import { FC } from "react";
+import { FC, PropsWithChildren } from "react";
 
 import { Divider } from "@/components/divider";
+import { Text } from "@/shared/components/ui";
 
 import { SocialMediaIcons } from "./socialMediaIcons";
 
@@ -50,148 +51,153 @@ export const Footer: FC<FooterProps> = () => {
 
   return (
     <footer className="bg-primary h-full w-full px-4 py-4 text-white sm:px-8 sm:py-6 lg:px-32 lg:py-8">
-      <div className="flex flex-col items-center justify-center gap-8 pb-8 lg:flex-row lg:items-end lg:gap-32">
-        <div className="w-full items-center justify-center text-center lg:text-left">
-          <h1 className="text-xl sm:text-2xl lg:text-[28px]">Entérate de todo lo nuevo</h1>
-          <Divider direction={"right"} colorScheme="white" />
+      <div className="mx-auto flex max-w-5xl flex-col items-center gap-8">
+        <div className="flex w-full flex-col items-start gap-4 md:flex-row md:items-end">
+          <div className="flex flex-1 flex-col items-start justify-center">
+            <h3 className="text-lg whitespace-nowrap sm:text-xl lg:text-2xl">
+              Entérate de todo lo nuevo
+            </h3>
+            <Divider direction="right" colorScheme="white" />
+          </div>
+
+          <div className="flex flex-col items-end gap-3 self-end">
+            <SocialMediaIcons icons={socialMediaIcons} />
+
+            <div className="flex w-md items-center justify-center gap-4">
+              <Input
+                type="email"
+                placeholder="nombre@correo.com"
+                className="border-secondary border-2 bg-white"
+              />
+              <Button variant="secondary">Subscribirse</Button>
+            </div>
+          </div>
         </div>
-        <div className="flex w-full flex-col items-center justify-center gap-4 sm:flex-row lg:w-full">
-          <Input
-            type="email"
-            placeholder="nombre@correo.com"
-            className="border-secondary w-full border-2 bg-white text-black sm:flex-1"
+
+        <div className="flex flex-wrap justify-between gap-8">
+          <LinksSection
+            title="Propiedades"
+            links={[
+              {
+                text: "Comprar",
+                href: "/properties?search_type=BUY"
+              },
+              {
+                text: "Rentar",
+                href: "/properties?search_type=RENT"
+              },
+              {
+                text: "Vender",
+                href: "/plans"
+              }
+            ]}
           />
-          <Button variant="secondary" className="w-full sm:w-auto">
-            Subscribirse
-          </Button>
-        </div>
-      </div>
-      <div className="flex flex-col items-start justify-between gap-8 py-8 lg:flex-row lg:gap-16">
-        <ul className="w-full text-center font-bold lg:mr-16 lg:w-[300px] lg:text-left">
-          <img
-            src="/GoogleMaps_pin.svg"
-            alt="Google Maps Pin"
-            className="mr-2 inline-block h-[24px] w-[17px]"
+
+          <LinksSection
+            title="Agencias y agentes"
+            links={[
+              {
+                text: "Planes y precios",
+                href: "/plans"
+              }
+            ]}
           />
-          Ubicación
-          <li className="mt-4 font-medium">
-            SUEÑITZA SA de CV, Plaza La Roca - Coworking Colabora - 77560 Cancún - Quintana Roo -
-            MEXICO
-          </li>
-        </ul>
-        <div className="grid w-full grid-cols-2 gap-8 sm:grid-cols-3 lg:flex lg:w-auto lg:flex-row lg:gap-16">
-          <ul className="flex flex-col gap-4 font-bold">
-            Propiedades
-            <div className="flex flex-col gap-4 font-medium">
-              <li>
-                <Link
-                  href="/propiedades?search_type=BUY"
-                  className="hover:text-secondary underline transition-colors"
-                >
-                  Comprar
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/propiedades?search_type=RENT"
-                  className="hover:text-secondary underline transition-colors"
-                >
-                  Rentar
-                </Link>
-              </li>
-              <li>
-                <Link href="/plans" className="hover:text-secondary underline transition-colors">
-                  Vender
-                </Link>
-              </li>
-            </div>
-          </ul>
-          <ul className="flex flex-col gap-4 font-bold">
-            Compañía
-            <div className="flex flex-col gap-4 font-medium">
-              <li>
-                <Link href="/about" className="hover:text-secondary underline transition-colors">
-                  Acerca de
-                </Link>
-              </li>
-              <li>
-                <Link href="/faq" className="hover:text-secondary underline transition-colors">
-                  FAQ
-                </Link>
-              </li>
-              <li>
-                <Link href="/help" className="hover:text-secondary underline transition-colors">
-                  Ayuda
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="hover:text-secondary underline transition-colors">
-                  Contacto
-                </Link>
-              </li>
-            </div>
-          </ul>
-          <ul className="flex flex-col gap-4 font-bold">
-            Recursos
-            <div className="flex flex-col gap-4 font-medium">
-              <li>
-                <Link href="/blog" className="hover:text-secondary underline transition-colors">
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link href="/news" className="hover:text-secondary underline transition-colors">
-                  Noticias
-                </Link>
-              </li>
-            </div>
-          </ul>
-          <ul className="flex flex-col gap-4 font-bold">
-            Agencias y agentes
-            <div className="flex flex-col gap-4 font-medium">
-              <li>
-                <Link href="/plans" className="hover:text-secondary underline transition-colors">
-                  Planes y precios
-                </Link>
-              </li>
-            </div>
-          </ul>
-          <ul className="flex flex-col gap-4 font-bold">
-            Legal
-            <div className="flex flex-col gap-4 font-medium">
-              <li>
-                <Link href="/terms" className="hover:text-secondary underline transition-colors">
-                  Términos y condiciones
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/privacy_policy"
-                  className="hover:text-secondary underline transition-colors"
-                >
-                  Política de privacidad
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/return_policy"
-                  className="hover:text-secondary underline transition-colors"
-                >
-                  Política de reembolso
-                </Link>
-              </li>
-              <li>
-                <Link href="/cookies" className="hover:text-secondary underline transition-colors">
-                  Cookies
-                </Link>
-              </li>
-            </div>
-          </ul>
+
+          <LinksSection
+            title="Recursos"
+            links={[
+              {
+                text: "Blog",
+                href: "/blog"
+              },
+              {
+                text: "Noticias",
+                href: "/news"
+              }
+            ]}
+          />
+
+          <LinksSection
+            title="Compañía"
+            links={[
+              {
+                text: "Acerca de",
+                href: "/about"
+              },
+              {
+                text: "FAQ",
+                href: "/faq"
+              },
+              {
+                text: "Ayuda",
+                href: "/help"
+              },
+              {
+                text: "Contacto",
+                href: "/contact"
+              }
+            ]}
+          />
+
+          <LinksSection
+            title="Legal"
+            links={[
+              {
+                text: "Términos y condiciones",
+                href: "/terms"
+              },
+              {
+                text: "Política de privacidad",
+                href: "/privacy_policy"
+              },
+              {
+                text: "Política de reembolso",
+                href: "/return_policy"
+              },
+              {
+                text: "Cookies",
+                href: "/cookies"
+              }
+            ]}
+          />
         </div>
-      </div>
-      <div className="flex h-full w-full flex-row items-end justify-center gap-4 py-8 lg:justify-end">
-        <SocialMediaIcons icons={socialMediaIcons} />
       </div>
     </footer>
   );
 };
+
+type LinksSectionProps = {
+  title: string;
+  links: {
+    text: string;
+    href: string;
+  }[];
+};
+
+function LinksSection({ title, links }: LinksSectionProps) {
+  return (
+    <SimpleSection title={title}>
+      <ul className="space-y-2">
+        {links.map(({ text, href }) => (
+          <li key={href} className="whitespace-nowrap">
+            <Link href={href}>{text}</Link>
+          </li>
+        ))}
+      </ul>
+    </SimpleSection>
+  );
+}
+
+function SimpleSection({ title, children }: PropsWithChildren<{ title: string }>) {
+  return (
+    <section className="flex w-fit flex-col gap-3">
+      <header>
+        <Text variant="section" className="font-semibold whitespace-nowrap">
+          {title}
+        </Text>
+      </header>
+
+      {children}
+    </section>
+  );
+}

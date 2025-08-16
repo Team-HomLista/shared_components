@@ -30,8 +30,8 @@ export const SectionInline = ({
   children
 }: PropsWithChildren<SectionInlineProps & VariantProps<typeof iconVariants>>) => {
   return (
-    <div className="flex max-w-5xl flex-col gap-6 text-base leading-relaxed">
-      <div className="flex flex-row gap-4">
+    <section className="flex max-w-5xl flex-col gap-6 text-base leading-relaxed">
+      <header className="flex flex-row gap-4">
         <div className={cn(iconVariants({ iconVariant }))}>
           <Icon iconNode={icon} className="text-white" />
         </div>
@@ -40,9 +40,9 @@ export const SectionInline = ({
           <h2 className="text-primary text-xl font-bold sm:text-2xl">{title}</h2>
           <div className="from-secondary to-primary h-1 w-16 rounded-full bg-gradient-to-r" />
         </div>
-      </div>
+      </header>
 
       {children}
-    </div>
+    </section>
   );
 };
