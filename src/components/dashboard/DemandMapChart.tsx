@@ -1,14 +1,15 @@
 "use client";
 
 import { FC } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/shared/components/ui";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
+
+import { Card, CardContent, CardHeader, CardTitle } from "@/shared/components/ui";
 
 interface DemandMapChartProps {
   title?: string;
   data: Record<string, any>[];
   keys: string[];
-  colors?: string[]; 
+  colors?: string[];
   height?: number;
   stackId?: string;
 }
@@ -21,7 +22,6 @@ const DemandMapChart: FC<DemandMapChartProps> = ({
   height = 250,
   stackId = "a"
 }) => {
- 
   const defaultColors = ["--primary", "--secondary", "--chart-2"];
 
   const resolvedColors = (colors || defaultColors).map(

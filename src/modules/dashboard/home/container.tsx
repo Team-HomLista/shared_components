@@ -1,14 +1,11 @@
 "use client";
 
 import { FC } from "react";
-import StatsCard from "@/components/dashboard/StatsCards";
-import UserDistribution from "@/components/dashboard/UsersDistribution";
-import ChartCard from "@/components/dashboard/ChartsSection";
-import RevenueSections from "@/components/dashboard/RevenueSection";
-import DashboardHeader from "@/components/dashboard/DashboardHeadet";
+
 import ChartsTabs from "@/components/dashboard/ChartsTabs";
+import DashboardHeader from "@/components/dashboard/DashboardHeadet";
 import RevenueCardsSection from "@/components/dashboard/RevenueCardsSection";
-import PieChartCard from "@/components/dashboard/PieChartCard";
+import UserDistribution from "@/components/dashboard/UsersDistribution";
 
 interface DashboardContainerProps {
   slug?: string;

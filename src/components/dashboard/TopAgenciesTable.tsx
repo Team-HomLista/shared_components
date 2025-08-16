@@ -11,7 +11,7 @@ interface AgencyData {
 interface TopAgenciesTableProps {
   title?: string;
   data: AgencyData[];
-  badgeColorVar?: string; 
+  badgeColorVar?: string;
 }
 
 export default function TopAgenciesTable({
@@ -45,7 +45,7 @@ export default function TopAgenciesTable({
               </div>
               <span
                 className="rounded-full px-2 py-1 text-sm font-semibold"
-                style={{color: "var(-background)" }}
+                style={{ color: "var(-background)" }}
               >
                 {a.mrr} MRR
               </span>

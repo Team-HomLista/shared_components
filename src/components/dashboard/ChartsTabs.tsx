@@ -1,14 +1,16 @@
 "use client";
 
 import { FC, useState } from "react";
+
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/shared/components/ui/tabs";
+
+import ChartCard from "./ChartsSection";
+import DemandMapChart from "./DemandMapChart";
+import FranchiseRankingCard from "./FranchiseRankingCard";
 import GaugeChart from "./GaugeChart";
+import LeadSourcesPie from "./LeadSourcesPie";
 import PieChartCard from "./PieChartCard";
 import TopAgenciesTable from "./TopAgenciesTable";
-import DemandMapChart from "./DemandMapChart";
-import LeadSourcesPie from "./LeadSourcesPie";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/shared/components/ui/tabs";
-import FranchiseRankingCard from "./FranchiseRankingCard";
-import ChartCard from "./ChartsSection";
 
 interface ChartTab {
   key: string;
@@ -70,7 +72,11 @@ const ChartsTabs: FC<ChartsTabsProps> = ({ tabs }) => {
                       title={chart.title}
                       data={chart.data}
                       keys={Object.keys(chart.data[0]).filter((k) => k !== "name")}
-                      colors={["--publishable-status", "--paused-status-foreground", "--approved-status"]}
+                      colors={[
+                        "--publishable-status",
+                        "--paused-status-foreground",
+                        "--approved-status"
+                      ]}
                     />
                   );
                 default:
