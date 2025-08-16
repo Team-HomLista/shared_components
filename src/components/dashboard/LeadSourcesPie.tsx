@@ -9,7 +9,7 @@ interface LeadSourcesPieProps {
 
 export default function LeadSourcesPie({
   data,
-  colorVars = ["--chart-1", "--chart-2", "--chart-3"]
+  colorVars = ["--publishable-status", "--paused-status-foreground", "--approved-status"]
 }: LeadSourcesPieProps) {
   const colors =
     typeof window !== "undefined"

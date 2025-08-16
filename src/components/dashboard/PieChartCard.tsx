@@ -11,7 +11,7 @@ interface PieChartCardProps {
 export default function PieChartCard({
   title,
   data,
-  colorVars = ["--chart-1", "--chart-2", "--chart-3"]
+  colorVars = ["--publishable-status", "--paused-status-foreground", "--approved-status"]
 }: PieChartCardProps) {
   const colors =
     typeof window !== "undefined"

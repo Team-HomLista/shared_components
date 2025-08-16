@@ -45,7 +45,7 @@ export default function TopAgenciesTable({
               </div>
               <span
                 className="rounded-full px-2 py-1 text-sm font-semibold"
-                style={{ backgroundColor: badgeColor, color: "var(-background)" }}
+                style={{color: "var(-background)" }}
               >
                 {a.mrr} MRR
               </span>

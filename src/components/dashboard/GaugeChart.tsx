@@ -16,8 +16,8 @@ const GaugeChart: FC<GaugeChartProps> = ({
   title,
   percentage,
   goal,
-  primaryColorVar = "--chart-2",
-  backgroundColorVar = "--muted"
+  primaryColorVar = "--approved-status",
+  backgroundColorVar = "--sidebar-ring"
 }) => {
   const primaryColor =
     typeof window !== "undefined"

@@ -22,7 +22,7 @@ const DemandMapChart: FC<DemandMapChartProps> = ({
   stackId = "a"
 }) => {
  
-  const defaultColors = ["--chart-1", "--chart-2", "--chart-3"];
+  const defaultColors = ["--primary", "--secondary", "--chart-2"];
 
   const resolvedColors = (colors || defaultColors).map(
     (c) =>

@@ -21,7 +21,6 @@ const statsData = [
   { label: "Conversión de Leads", value: "23.8%" }
 ];
 
-
 // Datos de los tabs
 const chartTabsData = [
   {

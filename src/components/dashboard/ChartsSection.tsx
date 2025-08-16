@@ -25,7 +25,7 @@ const ChartCard: FC<ChartCardProps> = ({
   title,
   data,
   type = "line",
-  colorVar = "--chart-3",
+  colorVar = "--publishable-status",
   height = 250
 }) => {
   const color =
