@@ -13,10 +13,10 @@ export const textVariants = cva(cn(""), {
       /** Should be used for subtitles in layout sections inside a module or
        * inside body content interfaces. */
       subtitle: cn("text-lg font-medium"),
+      /** Should be used for sections in body content interfaces like forms. */
+      section: cn("text-md font-medium"),
       /** Should be used for any descriptive text. */
       description: cn("text-muted-foreground text-sm font-normal"),
-      /** Should be used for sections in body content interfaces like forms. */
-      section: cn(""),
       /** Should be for controls or form labelss. */
       label: cn(""),
       /** Should be used in secondary interfaces or cases where the text
@@ -36,9 +36,9 @@ type DefaultElement = "p";
 export const textElement = {
   default: "p",
   title: "h1",
-  subtitle: "h3",
+  subtitle: "h2",
+  section: "h3",
   description: "p",
-  section: "h2",
   label: "label",
   small: "p",
   strong: "strong"

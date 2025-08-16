@@ -1,4 +1,3 @@
-"use client";
 export * from "./accordion";
 export * from "./alert";
 export * from "./alert-dialog";
@@ -42,6 +41,7 @@ export * from "./slider";
 export * from "./sonner";
 export * from "./tabs";
 export * from "./tag";
+export * from "./text";
 export * from "./textarea";
 export * from "./toggle";
 export * from "./tooltip";
