@@ -182,18 +182,18 @@ export const HeadingButton = React.forwardRef<HTMLButtonElement, HeadingButtonPr
 
     return (
       <Button
-        type="button"
-        className={className.trim()}
-        disabled={isDisabled}
-        data-style="ghost"
-        data-active-state={isActive ? "on" : "off"}
-        data-disabled={isDisabled}
-        role="button"
-        tabIndex={-1}
         aria-label={formattedName}
         aria-pressed={isActive}
-        tooltip={formattedName}
+        className={className.trim()}
+        data-active-state={isActive ? "on" : "off"}
+        data-disabled={isDisabled}
+        data-style="ghost"
+        disabled={isDisabled}
+        role="button"
         shortcutKeys={shortcutKey}
+        tabIndex={-1}
+        tooltip={formattedName}
+        type="button"
         onClick={handleClick}
         {...buttonProps}
         ref={ref}

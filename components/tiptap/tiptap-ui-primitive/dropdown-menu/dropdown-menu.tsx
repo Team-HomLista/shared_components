@@ -217,10 +217,15 @@ export const DropdownMenuContent = React.forwardRef<HTMLDivElement, DropdownMenu
     if (!context.open) return null;
 
     const content = (
-      <FloatingFocusManager context={context.context} modal={false} initialFocus={0} returnFocus>
+      <FloatingFocusManager returnFocus context={context.context} initialFocus={0} modal={false}>
         <div
           ref={ref}
+          aria-orientation={orientation}
           className={`tiptap-dropdown-menu ${className || ""}`}
+          data-align={align}
+          data-orientation={orientation}
+          data-side={side}
+          data-state={context.open ? "open" : "closed"}
           style={{
             position: context.strategy,
             top: context.y ?? 0,
@@ -228,11 +233,6 @@ export const DropdownMenuContent = React.forwardRef<HTMLDivElement, DropdownMenu
             outline: "none",
             ...style
           }}
-          aria-orientation={orientation}
-          data-orientation={orientation}
-          data-state={context.open ? "open" : "closed"}
-          data-side={side}
-          data-align={align}
           {...context.getFloatingProps(props)}
         >
           {props.children}
@@ -333,9 +333,9 @@ export const DropdownMenuGroup = React.forwardRef<HTMLDivElement, DropdownMenuGr
       <div
         {...props}
         ref={ref}
-        role="group"
         aria-label={label}
         className={`tiptap-button-group ${className || ""}`}
+        role="group"
       >
         {children}
       </div>

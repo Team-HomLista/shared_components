@@ -85,9 +85,9 @@ const RichTextEditorContent = ({
 
   return (
     <EditorContent
+      className={cn("editor-content", className)}
       editor={editor}
       role="presentation"
-      className={cn("editor-content", className)}
       {...props}
     />
   );

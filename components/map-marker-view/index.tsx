@@ -37,11 +37,11 @@ export function MapMarkerView({ apiKey, markers }: FormLocationProps) {
     <div className="flex w-full flex-1 flex-col gap-2 self-center">
       <APIProvider apiKey={apiKey}>
         <Map
-          mapId="MapWithMarker"
           className="aspect-[21/9] w-full overflow-hidden rounded-sm"
-          gestureHandling="greedy"
           defaultCenter={centerPosition}
           defaultZoom={DEFAULT_ZOOM}
+          gestureHandling="greedy"
+          mapId="MapWithMarker"
         >
           {markers?.map((marker, index) => (
             <AdvancedMarker key={index} position={marker.position} />

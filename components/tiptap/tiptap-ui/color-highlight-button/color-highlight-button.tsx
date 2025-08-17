@@ -268,18 +268,18 @@ export const ColorHighlightButton = React.forwardRef<HTMLButtonElement, ColorHig
 
     return (
       <Button
-        type="button"
-        className={className.trim()}
-        disabled={isDisabled}
-        data-style="ghost"
-        data-active-state={isActive ? "on" : "off"}
-        data-disabled={isDisabled}
-        role="button"
-        tabIndex={-1}
         aria-label={`${color} highlight color`}
         aria-pressed={isActive}
-        onClick={handleClick}
+        className={className.trim()}
+        data-active-state={isActive ? "on" : "off"}
+        data-disabled={isDisabled}
+        data-style="ghost"
+        disabled={isDisabled}
+        role="button"
         style={buttonStyle}
+        tabIndex={-1}
+        type="button"
+        onClick={handleClick}
         {...buttonProps}
         ref={ref}
       >

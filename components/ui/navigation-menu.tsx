@@ -34,8 +34,8 @@ function NavigationMenuList({
 }: React.ComponentProps<typeof NavigationMenuPrimitive.List>) {
   return (
     <NavigationMenuPrimitive.List
-      data-slot="navigation-menu-list"
       className={cn("group flex flex-1 list-none items-center justify-center gap-1", className)}
+      data-slot="navigation-menu-list"
       {...props}
     />
   );
@@ -47,8 +47,8 @@ function NavigationMenuItem({
 }: React.ComponentProps<typeof NavigationMenuPrimitive.Item>) {
   return (
     <NavigationMenuPrimitive.Item
-      data-slot="navigation-menu-item"
       className={cn("relative", className)}
+      data-slot="navigation-menu-item"
       {...props}
     />
   );
@@ -65,14 +65,14 @@ function NavigationMenuTrigger({
 }: React.ComponentProps<typeof NavigationMenuPrimitive.Trigger>) {
   return (
     <NavigationMenuPrimitive.Trigger
-      data-slot="navigation-menu-trigger"
       className={cn(navigationMenuTriggerStyle(), "group", className)}
+      data-slot="navigation-menu-trigger"
       {...props}
     >
       {children}{" "}
       <ChevronDownIcon
-        className="relative top-[1px] ml-1 size-3 transition duration-300 group-data-[state=open]:rotate-180"
         aria-hidden="true"
+        className="relative top-[1px] ml-1 size-3 transition duration-300 group-data-[state=open]:rotate-180"
       />
     </NavigationMenuPrimitive.Trigger>
   );

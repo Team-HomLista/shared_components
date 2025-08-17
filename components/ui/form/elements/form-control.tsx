@@ -6,10 +6,10 @@ export function FormControl({ ...props }: React.ComponentProps<typeof Slot>) {
 
   return (
     <Slot
-      data-slot="form-control"
-      id={formItemId}
       aria-describedby={!error ? `${formDescriptionId}` : `${formDescriptionId} ${formMessageId}`}
       aria-invalid={!!error}
+      data-slot="form-control"
+      id={formItemId}
       {...props}
     />
   );

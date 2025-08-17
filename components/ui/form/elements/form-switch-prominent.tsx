@@ -30,13 +30,13 @@ export const FormSwitchProminent = <TFieldValues extends FieldValues>({
           <FormControl>
             <div className="border-input has-data-[state=checked]:border-primary/50 relative flex w-full items-start gap-4 rounded-md border p-4 shadow-xs outline-none">
               <Switch
+                checked={field.value}
                 className={cn(
                   "order-1 h-6 w-10 after:absolute after:inset-0",
                   "[&_span]:size-5",
                   "data-[state=checked]:[&_span]:translate-x-[18px]",
                   "data-[state=checked]:[&_span]:rtl:-translate-x-2"
                 )}
-                checked={field.value}
                 onCheckedChange={(value) => field.onChange(value)}
                 onClick={() => field.onChange(!field.value)}
               />

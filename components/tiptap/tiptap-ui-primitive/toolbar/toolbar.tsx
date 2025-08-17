@@ -256,10 +256,10 @@ export const Toolbar = React.forwardRef<HTMLDivElement, ToolbarProps>(
     return (
       <div
         ref={mergeRefs([toolbarRef, ref])}
-        role="toolbar"
         aria-label="toolbar"
-        data-variant={variant}
         className={`tiptap-toolbar ${className || ""}`}
+        data-variant={variant}
+        role="toolbar"
         {...props}
       >
         {children}
@@ -280,8 +280,8 @@ export const ToolbarGroup = React.forwardRef<HTMLDivElement, BaseProps>(
     return (
       <div
         ref={mergeRefs([groupRef, ref])}
-        role="group"
         className={`tiptap-toolbar-group ${className || ""}`}
+        role="group"
         {...props}
       >
         {children}
@@ -299,7 +299,7 @@ export const ToolbarSeparator = React.forwardRef<HTMLDivElement, BaseProps>(({ .
   if (!isVisible) return null;
 
   return (
-    <Separator ref={mergeRefs([separatorRef, ref])} orientation="vertical" decorative {...props} />
+    <Separator ref={mergeRefs([separatorRef, ref])} decorative orientation="vertical" {...props} />
   );
 });
 

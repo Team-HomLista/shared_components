@@ -7,8 +7,8 @@ import * as React from "react";
 function Tabs({ className, ...props }: React.ComponentProps<typeof TabsPrimitive.Root>) {
   return (
     <TabsPrimitive.Root
-      data-slot="tabs"
       className={cn("flex flex-col gap-2", className)}
+      data-slot="tabs"
       {...props}
     />
   );
@@ -43,8 +43,8 @@ function TabsTrigger({ className, ...props }: React.ComponentProps<typeof TabsPr
 function TabsContent({ className, ...props }: React.ComponentProps<typeof TabsPrimitive.Content>) {
   return (
     <TabsPrimitive.Content
-      data-slot="tabs-content"
       className={cn("flex-1 outline-none", className)}
+      data-slot="tabs-content"
       {...props}
     />
   );

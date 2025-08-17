@@ -90,16 +90,16 @@ export function HeadingDropdownMenu({
     <DropdownMenu open={isOpen} onOpenChange={handleOnOpenChange}>
       <DropdownMenuTrigger asChild>
         <Button
-          type="button"
-          disabled={isDisabled}
-          data-style="ghost"
-          data-active-state={isAnyHeadingActive ? "on" : "off"}
-          data-disabled={isDisabled}
-          role="button"
-          tabIndex={-1}
           aria-label="Format text as heading"
           aria-pressed={isAnyHeadingActive}
+          data-active-state={isAnyHeadingActive ? "on" : "off"}
+          data-disabled={isDisabled}
+          data-style="ghost"
+          disabled={isDisabled}
+          role="button"
+          tabIndex={-1}
           tooltip="Heading"
+          type="button"
           {...props}
         >
           {getActiveIcon()}

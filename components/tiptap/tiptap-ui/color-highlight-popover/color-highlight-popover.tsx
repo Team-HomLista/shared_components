@@ -73,15 +73,15 @@ export const DEFAULT_HIGHLIGHT_COLORS: ColorHighlightPopoverColor[] = [
 export const ColorHighlightPopoverButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, children, ...props }, ref) => (
     <Button
-      type="button"
+      ref={ref}
+      aria-label="Highlight text"
       className={className}
-      data-style="ghost"
       data-appearance="default"
+      data-style="ghost"
       role="button"
       tabIndex={-1}
-      aria-label="Highlight text"
       tooltip="Highlight"
-      ref={ref}
+      type="button"
       {...props}
     >
       {children || <HighlighterIcon className="tiptap-button-icon" />}
@@ -130,11 +130,11 @@ export function ColorHighlightPopoverContent({
         {colors.map((color, index) => (
           <ColorHighlightButton
             key={color.value}
-            editor={editor}
-            color={color.value}
             aria-label={`${color.label} highlight color`}
-            tabIndex={index === selectedIndex ? 0 : -1}
+            color={color.value}
             data-highlighted={selectedIndex === index}
+            editor={editor}
+            tabIndex={index === selectedIndex ? 0 : -1}
             onClick={onClose}
           />
         ))}
@@ -144,13 +144,13 @@ export function ColorHighlightPopoverContent({
 
       <div className="tiptap-button-group">
         <Button
-          onClick={removeHighlight}
           aria-label="Remove highlight"
+          data-highlighted={selectedIndex === colors.length}
+          data-style="ghost"
+          role="menuitem"
           tabIndex={selectedIndex === colors.length ? 0 : -1}
           type="button"
-          role="menuitem"
-          data-style="ghost"
-          data-highlighted={selectedIndex === colors.length}
+          onClick={removeHighlight}
         >
           <BanIcon className="tiptap-button-icon" />
         </Button>
@@ -216,18 +216,18 @@ export function ColorHighlightPopover({
     <Popover open={isOpen} onOpenChange={setIsOpen}>
       <PopoverTrigger asChild>
         <ColorHighlightPopoverButton
-          disabled={isDisabled}
+          aria-pressed={isActive}
           data-active-state={isActive ? "on" : "off"}
           data-disabled={isDisabled}
-          aria-pressed={isActive}
+          disabled={isDisabled}
           {...props}
         />
       </PopoverTrigger>
 
       <PopoverContent aria-label="Highlight colors">
         <ColorHighlightPopoverContent
-          editor={editor}
           colors={colors}
+          editor={editor}
           onClose={() => setIsOpen(false)}
         />
       </PopoverContent>

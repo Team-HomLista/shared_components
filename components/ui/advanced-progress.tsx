@@ -18,10 +18,10 @@ function AdvancedProgress({
 
   return (
     <ProgressPrimitive.Root
-      data-slot="progress"
       className={cn("bg-primary/20 relative h-5 w-full overflow-hidden rounded-full", className)}
-      max={max}
+      data-slot="progress"
       getValueLabel={getValueLabel}
+      max={max}
       {...props}
     >
       {getValueLabel && (
@@ -31,8 +31,8 @@ function AdvancedProgress({
       )}
 
       <ProgressPrimitive.Indicator
-        data-slot="progress-indicator"
         className="bg-primary h-full w-full flex-1 overflow-hidden transition-all"
+        data-slot="progress-indicator"
         style={{ transform: `translateX(-${100 - (value || 0)}%)` }}
       >
         {getValueLabel && (

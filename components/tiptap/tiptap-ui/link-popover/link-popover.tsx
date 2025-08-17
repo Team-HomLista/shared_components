@@ -100,14 +100,14 @@ export const LinkButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, children, ...props }, ref) => {
     return (
       <Button
-        type="button"
+        ref={ref}
+        aria-label="Link"
         className={className}
         data-style="ghost"
         role="button"
         tabIndex={-1}
-        aria-label="Link"
         tooltip="Link"
-        ref={ref}
+        type="button"
         {...props}
       >
         {children || <LinkIcon className="tiptap-button-icon" />}
@@ -148,24 +148,24 @@ const LinkMain: React.FC<LinkMainProps> = ({ url, setUrl, setLink, removeLink, i
   return (
     <>
       <input
-        type="url"
+        autoCapitalize="off"
+        autoComplete="off"
+        autoCorrect="off"
+        className="tiptap-input tiptap-input-clamp"
         placeholder="Paste a link..."
+        type="url"
         value={url}
         onChange={(e) => setUrl(e.target.value)}
         onKeyDown={handleKeyDown}
-        autoComplete="off"
-        autoCorrect="off"
-        autoCapitalize="off"
-        className="tiptap-input tiptap-input-clamp"
       />
 
       <div className="tiptap-button-group" data-orientation="horizontal">
         <Button
+          data-style="ghost"
+          disabled={!url && !isActive}
+          title="Apply link"
           type="button"
           onClick={setLink}
-          title="Apply link"
-          disabled={!url && !isActive}
-          data-style="ghost"
         >
           <CornerDownLeftIcon className="tiptap-button-icon" />
         </Button>
@@ -175,21 +175,21 @@ const LinkMain: React.FC<LinkMainProps> = ({ url, setUrl, setLink, removeLink, i
 
       <div className="tiptap-button-group" data-orientation="horizontal">
         <Button
+          data-style="ghost"
+          disabled={!url && !isActive}
+          title="Open in new window"
           type="button"
           onClick={handleOpenLink}
-          title="Open in new window"
-          disabled={!url && !isActive}
-          data-style="ghost"
         >
           <ExternalLinkIcon className="tiptap-button-icon" />
         </Button>
 
         <Button
+          data-style="ghost"
+          disabled={!url && !isActive}
+          title="Remove link"
           type="button"
           onClick={removeLink}
-          title="Remove link"
-          disabled={!url && !isActive}
-          data-style="ghost"
         >
           <TrashIcon className="tiptap-button-icon" />
         </Button>
@@ -291,9 +291,9 @@ export function LinkPopover({
     <Popover open={isOpen} onOpenChange={handleOnOpenChange}>
       <PopoverTrigger asChild>
         <LinkButton
-          disabled={isDisabled}
           data-active-state={isActive ? "on" : "off"}
           data-disabled={isDisabled}
+          disabled={isDisabled}
           {...props}
         />
       </PopoverTrigger>

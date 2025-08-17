@@ -15,8 +15,8 @@ function CollapsibleContent({
 }: React.ComponentProps<typeof CollapsiblePrimitive.CollapsibleContent>) {
   return (
     <CollapsiblePrimitive.CollapsibleContent
-      data-slot="collapsible-content"
       className="data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down overflow-hidden transition-all"
+      data-slot="collapsible-content"
       {...props}
     />
   );

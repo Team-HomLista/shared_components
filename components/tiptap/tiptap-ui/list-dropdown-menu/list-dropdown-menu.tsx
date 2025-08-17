@@ -155,13 +155,13 @@ export function ListDropdownMenu({
     <DropdownMenu open={isOpen} onOpenChange={handleOnOpenChange}>
       <DropdownMenuTrigger asChild>
         <Button
-          type="button"
-          data-style="ghost"
+          aria-label="List options"
           data-active-state={isAnyActive ? "on" : "off"}
+          data-style="ghost"
           role="button"
           tabIndex={-1}
-          aria-label="List options"
           tooltip="List"
+          type="button"
           {...props}
         >
           {getActiveIcon()}
@@ -175,10 +175,10 @@ export function ListDropdownMenu({
             <DropdownMenuItem key={option.type} asChild>
               <ListButton
                 editor={editor}
-                type={option.type}
-                text={option.label}
                 hideWhenUnavailable={hideWhenUnavailable}
+                text={option.label}
                 tooltip={""}
+                type={option.type}
               />
             </DropdownMenuItem>
           ))}

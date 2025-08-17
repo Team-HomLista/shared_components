@@ -65,8 +65,8 @@ export const FormIdentitySelector = <TFieldValues extends FieldValues>({
           <FormLabel>{title}</FormLabel>
           <FormDescription>{description}</FormDescription>
           <Select
-            onValueChange={field.onChange}
             defaultValue={field.value?.toString() ?? undefined}
+            onValueChange={field.onChange}
             onOpenChange={() => {
               inputRef?.current?.focus();
             }}
@@ -80,11 +80,11 @@ export const FormIdentitySelector = <TFieldValues extends FieldValues>({
             <SelectContent side="bottom">
               <div className="bg-popover sticky top-0 z-50 -translate-y-1 py-1">
                 <Input
-                  type="text"
+                  ref={inputRef}
                   placeholder="Buscar..."
+                  type="text"
                   value={searchTerm}
                   onChange={handleSearchTermChange}
-                  ref={inputRef}
                 />
               </div>
 
@@ -92,7 +92,7 @@ export const FormIdentitySelector = <TFieldValues extends FieldValues>({
                 <SelectItem key={item.value} value={String(item.value)}>
                   <Avatar>
                     {item.image ? (
-                      <AvatarImage src={item.image} alt={name} />
+                      <AvatarImage alt={name} src={item.image} />
                     ) : (
                       <AvatarFallback>{item.initials}</AvatarFallback>
                     )}

@@ -146,11 +146,11 @@ function useFileUpload(options: UploadOptions) {
 
 const CloudUploadIcon: React.FC = () => (
   <svg
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
     className="tiptap-image-upload-icon"
     fill="currentColor"
+    height="24"
+    viewBox="0 0 24 24"
+    width="24"
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
@@ -166,11 +166,11 @@ const CloudUploadIcon: React.FC = () => (
 
 const FileIcon: React.FC = () => (
   <svg
-    width="43"
+    className="tiptap-image-upload-dropzone-rect-primary"
+    fill="currentColor"
     height="57"
     viewBox="0 0 43 57"
-    fill="currentColor"
-    className="tiptap-image-upload-dropzone-rect-primary"
+    width="43"
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
@@ -185,11 +185,11 @@ const FileIcon: React.FC = () => (
 
 const FileCornerIcon: React.FC = () => (
   <svg
-    width="10"
-    height="10"
     className="tiptap-image-upload-dropzone-rect-secondary"
-    viewBox="0 0 10 10"
     fill="currentColor"
+    height="10"
+    viewBox="0 0 10 10"
+    width="10"
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
@@ -229,9 +229,9 @@ const ImageUploadDragArea: React.FC<ImageUploadDragAreaProps> = ({ onFile, child
   return (
     <div
       className={`tiptap-image-upload-dragger ${dragover ? "tiptap-image-upload-dragger-active" : ""}`}
-      onDrop={onDrop}
-      onDragOver={onDragover}
       onDragLeave={onDragleave}
+      onDragOver={onDragover}
+      onDrop={onDrop}
     >
       {children}
     </div>
@@ -387,8 +387,8 @@ export const ImageUploadNode: React.FC<NodeViewProps> = (props) => {
 
       <input
         ref={inputRef}
-        name="file"
         accept={accept}
+        name="file"
         type="file"
         onChange={handleChange}
         onClick={(e: React.MouseEvent<HTMLInputElement>) => e.stopPropagation()}

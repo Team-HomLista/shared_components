@@ -209,18 +209,18 @@ export const TextAlignButton = React.forwardRef<HTMLButtonElement, TextAlignButt
 
     return (
       <Button
-        type="button"
-        className={className.trim()}
-        disabled={isDisabled}
-        data-style="ghost"
-        data-active-state={isActive ? "on" : "off"}
-        data-disabled={isDisabled}
-        role="button"
-        tabIndex={-1}
         aria-label={label}
         aria-pressed={isActive}
-        tooltip={label}
+        className={className.trim()}
+        data-active-state={isActive ? "on" : "off"}
+        data-disabled={isDisabled}
+        data-style="ghost"
+        disabled={isDisabled}
+        role="button"
         shortcutKeys={shortcutKey}
+        tabIndex={-1}
+        tooltip={label}
+        type="button"
         onClick={handleClick}
         {...buttonProps}
         ref={ref}

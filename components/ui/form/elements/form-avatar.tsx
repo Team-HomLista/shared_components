@@ -33,7 +33,7 @@ export const FormAvatar = <TFieldValues extends FieldValues>({
             <FormDescription>{description}</FormDescription>
             <FormControl>
               {}
-              <AvatarUploader onChange={field.onChange} preview={field.value} />
+              <AvatarUploader preview={field.value} onChange={field.onChange} />
             </FormControl>
             <FormMessage />
           </div>

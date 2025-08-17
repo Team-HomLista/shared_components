@@ -194,16 +194,16 @@ export const ListButton = React.forwardRef<HTMLButtonElement, ListButtonProps>(
 
     return (
       <Button
-        type="button"
-        className={className.trim()}
-        data-style="ghost"
-        data-active-state={isActive ? "on" : "off"}
-        role="button"
-        tabIndex={-1}
         aria-label={listOption?.label || type}
         aria-pressed={isActive}
-        tooltip={listOption?.label || type}
+        className={className.trim()}
+        data-active-state={isActive ? "on" : "off"}
+        data-style="ghost"
+        role="button"
         shortcutKeys={shortcutKey}
+        tabIndex={-1}
+        tooltip={listOption?.label || type}
+        type="button"
         onClick={handleClick}
         {...buttonProps}
         ref={ref}

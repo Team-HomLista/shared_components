@@ -154,9 +154,9 @@ export const RichTextEditorSimple = ({
       <RichTextEditor.Toolbar>
         {mobileView === "main" ? (
           <MainToolbarContent
+            isMobile={false}
             onHighlighterClick={() => setMobileView("highlighter")}
             onLinkClick={() => setMobileView("link")}
-            isMobile={false}
           />
         ) : (
           <MobileToolbarContent

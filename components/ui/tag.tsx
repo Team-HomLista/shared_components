@@ -37,7 +37,7 @@ export function Tag({
   const Comp = asChild ? Slot : "span";
 
   return (
-    <Comp data-slot="tag" className={cn(tagVariants({ variant, size, className }))} {...props} />
+    <Comp className={cn(tagVariants({ variant, size, className }))} data-slot="tag" {...props} />
   );
 }
 
@@ -57,7 +57,7 @@ export function TagCloseButton<T extends keyof JSX.IntrinsicElements | JSXElemen
       )}
       {...props}
     >
-      <X data-slot="tag-close-button-icon" className="size-3 stroke-3" />
+      <X className="size-3 stroke-3" data-slot="tag-close-button-icon" />
     </Comp>
   );
 }

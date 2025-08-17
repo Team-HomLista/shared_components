@@ -82,9 +82,9 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     if (!tooltip || !showTooltip) {
       return (
         <button
-          className={`tiptap-button ${className}`.trim()}
           ref={ref}
           aria-label={ariaLabel}
+          className={`tiptap-button ${className}`.trim()}
           {...props}
         >
           {children}
@@ -95,9 +95,9 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <Tooltip delay={200}>
         <TooltipTrigger
-          className={`tiptap-button ${className}`.trim()}
           ref={ref}
           aria-label={ariaLabel}
+          className={`tiptap-button ${className}`.trim()}
           {...props}
         >
           {children}

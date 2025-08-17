@@ -33,8 +33,8 @@ export const FormMultiInput = <TFieldValues extends FieldValues>({
       <div className="grid grid-cols-2 gap-4">
         {inputs.map((input) => (
           <FormField
-            control={control}
             key={input.name}
+            control={control}
             name={input.name}
             render={({ field }) => {
               const { formItem, ...inputProps } = input;

@@ -8,9 +8,9 @@ export function FormDescription({ className, ...props }: React.ComponentProps<"p
 
   return (
     <p
+      className={cn("text-muted-foreground text-sm", className)}
       data-slot="form-description"
       id={formDescriptionId}
-      className={cn("text-muted-foreground text-sm", className)}
       {...props}
     />
   );

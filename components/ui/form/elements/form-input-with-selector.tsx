@@ -78,7 +78,7 @@ export const FormInputWithSelector = <TFieldValues extends FieldValues>({
       control={control}
       name={fields.select.name}
       render={({ field }) => (
-        <Select onValueChange={field.onChange} defaultValue={field.value}>
+        <Select defaultValue={field.value} onValueChange={field.onChange}>
           <FormControl>
             <SelectTrigger
               className={cn(

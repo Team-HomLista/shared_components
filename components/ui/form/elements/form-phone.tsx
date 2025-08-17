@@ -55,7 +55,7 @@ export const FormPhone = <TFieldValues extends FieldValues>({
                 control={control}
                 name={fields.lada.name}
                 render={({ field }) => (
-                  <Select onValueChange={field.onChange} value={field.value}>
+                  <Select value={field.value} onValueChange={field.onChange}>
                     <SelectTrigger className="w-[150px] flex-none">
                       <SelectValue placeholder={fields.lada.placeholder} />
                     </SelectTrigger>

@@ -106,11 +106,11 @@ export function FormMapMarker<TFieldValues extends FieldValues>({
       <FormDescription>{description}</FormDescription>
       <div className="flex w-full flex-1 flex-col gap-2 self-center">
         <Map
-          mapId="MapWithMarker"
           className="aspect-[21/9] w-full overflow-hidden rounded-sm"
+          mapId="MapWithMarker"
           {...cameraProps}
-          gestureHandling="greedy"
           disableDefaultUI
+          gestureHandling="greedy"
           onCameraChanged={handleCameraChange}
           onClick={(e) => {
             if (!e.detail.latLng) return;

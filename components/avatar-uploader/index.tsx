@@ -28,16 +28,16 @@ export const AvatarUploader: FC<AvatarUploaderProps> = ({ onChange, preview: _pr
     <div className="flex flex-col items-center gap-2">
       <div className="flex w-full flex-row items-center gap-2 align-top">
         <div
-          className="border-input relative flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-full border-2 border-dashed"
           aria-label={preview ? "Preview of uploaded image" : "Default user avatar"}
+          className="border-input relative flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-full border-2 border-dashed"
         >
           {preview ? (
             <img
+              alt="Avatar preview"
               className="size-full object-cover"
+              height={40}
               src={preview}
               width={40}
-              height={40}
-              alt="Avatar preview"
             />
           ) : (
             <div aria-hidden="true">
@@ -46,10 +46,10 @@ export const AvatarUploader: FC<AvatarUploaderProps> = ({ onChange, preview: _pr
           )}
         </div>
         <div className="relative inline-block">
-          <Button type="button" onClick={openFileDialog} aria-haspopup="dialog">
+          <Button aria-haspopup="dialog" type="button" onClick={openFileDialog}>
             {fileName ? "Cambiar imagen" : "Cargar imagen"}
           </Button>
-          <input {...getInputProps()} className="sr-only" aria-label="Upload image file" />
+          <input {...getInputProps()} aria-label="Upload image file" className="sr-only" />
         </div>
       </div>
     </div>

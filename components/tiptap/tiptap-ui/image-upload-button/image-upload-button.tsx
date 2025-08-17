@@ -82,15 +82,15 @@ export const ImageUploadButton = React.forwardRef<HTMLButtonElement, ImageUpload
     return (
       <Button
         ref={ref}
-        type="button"
-        className={className.trim()}
-        data-style="ghost"
-        data-active-state={isActive ? "on" : "off"}
-        role="button"
-        tabIndex={-1}
         aria-label="Add image"
         aria-pressed={isActive}
+        className={className.trim()}
+        data-active-state={isActive ? "on" : "off"}
+        data-style="ghost"
+        role="button"
+        tabIndex={-1}
         tooltip="Add image"
+        type="button"
         onClick={handleClick}
         {...buttonProps}
       >

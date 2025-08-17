@@ -166,16 +166,16 @@ export const UndoRedoButton = React.forwardRef<HTMLButtonElement, UndoRedoButton
     return (
       <Button
         ref={ref}
-        type="button"
-        className={className.trim()}
-        disabled={isDisabled}
-        data-style="ghost"
-        data-disabled={isDisabled}
-        role="button"
-        tabIndex={-1}
         aria-label={actionLabel}
-        tooltip={actionLabel}
+        className={className.trim()}
+        data-disabled={isDisabled}
+        data-style="ghost"
+        disabled={isDisabled}
+        role="button"
         shortcutKeys={shortcutKey}
+        tabIndex={-1}
+        tooltip={actionLabel}
+        type="button"
         onClick={handleClick}
         {...buttonProps}
       >
