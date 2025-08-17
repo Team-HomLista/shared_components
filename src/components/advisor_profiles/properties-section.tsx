@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/shared/components/ui/tabs";
 
-import PropertyCard from "./PropertyCard";
+import PropertyCard from "./property-card";
 
 interface Property {
   id: number;
