@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { create } from "zustand";
 
-import { menu } from "@/components/layouts/dashboard/menu";
+import { menu } from "@/layouts/dashboard/menu";
 import { BreadcrumbItem } from "@/types/breadcrumb";
 import { isMenuCollepsible, Menu } from "@/types/menu";
 import { getMenuItemById } from "@/utils/menu";
