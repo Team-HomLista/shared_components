@@ -1,6 +1,6 @@
 "use client";
 
-import { useDashboard } from "@/hooks/useDashboard";
+import { useDashboard } from "@/hooks/use-dashboard";
 
 export default function Page() {
   useDashboard({

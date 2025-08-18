@@ -1,6 +1,6 @@
 "use client";
 
-import { useIsMobile } from "@/hooks/useIsMobile";
+import { useIsMobile } from "@/hooks/use-is-mobile";
 import { LeadFormDrawer } from "@/modules/home/sections/find/drawer";
 import { LeadFormModal } from "@/modules/home/sections/find/modal";
 import { SmallFormData } from "@/modules/home/sections/find/schemas";

@@ -26,7 +26,7 @@ export function AccountSuspensionSection() {
               "Publicación de contenido no autorizado o inapropiado.",
               "Uso indebido del servicio con fines ajenos al sector inmobiliario.",
               "Cualquier intento de manipular el sistema de suscripciones."
-            ].map((text, index) => ({ icon: XCircle, iconVariant: "destructive", text }))}
+            ].map((text) => ({ icon: XCircle, iconVariant: "destructive", text }))}
           />
         </CardContent>
       </Card>

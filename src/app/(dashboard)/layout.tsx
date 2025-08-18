@@ -2,8 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "@/styles/dashboard.css";
 
-import { DashboardLayout } from "@/components/layouts/dashboard/dashboard-layout";
 import { ThemeProvider } from "@/components/theme-provider";
+import { DashboardLayout } from "@/layouts/dashboard";
 import { AlertDialogProvider } from "@/shared/hooks/use-alert-dialog";
 import { DialogProvider } from "@/shared/hooks/use-dialog";
 

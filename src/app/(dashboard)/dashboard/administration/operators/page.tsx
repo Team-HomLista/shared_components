@@ -1,6 +1,6 @@
 "use client";
 
-import { getBreadcrumbFromMenuItem, useDashboard } from "@/hooks/useDashboard";
+import { getBreadcrumbFromMenuItem, useDashboard } from "@/hooks/use-dashboard";
 
 export default function Page() {
   useDashboard({

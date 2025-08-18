@@ -1,7 +1,7 @@
 import { Button } from "@shared/components/ui/button";
 import Link from "next/link";
 
-import { Navbar } from "@/components/layouts/website/navbar";
+import { Navbar } from "@/layouts/website/navbar";
 
 export default function NotFound() {
   return (

@@ -1,5 +1,5 @@
 import { ContactCardSection } from "@/components/contact-card";
-import { BasicHero } from "@/components/layouts/website/body/basic-hero";
+import { BasicHero } from "@/layouts/website/body/basic-hero";
 
 import CookieManagementSection from "./sections/cookie-management";
 import InternationalTransferSection from "./sections/international-transfer";

@@ -1,5 +1,5 @@
 import { ContactCardSection } from "@/components/contact-card";
-import { BasicHero } from "@/components/layouts/website/body/basic-hero";
+import { BasicHero } from "@/layouts/website/body/basic-hero";
 
 import { AccountSuspensionSection } from "./sections/account-suspension";
 import { CancellationRenewalSection } from "./sections/cancellation-renewal";
