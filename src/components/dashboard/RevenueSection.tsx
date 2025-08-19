@@ -1,5 +1,6 @@
 import { FC } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/shared/components/ui";
+
+import { Card, CardContent, CardTitle } from "@/shared/components/ui";
 
 interface RevenueSectionsProps {
   label: string;

@@ -1,5 +1,6 @@
-import { Card, CardContent } from "@/shared/components/ui";
 import { FC } from "react";
+
+import { Card, CardContent } from "@/shared/components/ui";
 
 interface DistributionItem {
   label: string;

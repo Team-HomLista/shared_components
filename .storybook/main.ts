@@ -7,11 +7,11 @@ const config: StorybookConfig = {
     "@storybook/addon-essentials",
     "@storybook/addon-onboarding",
     "@chromatic-com/storybook",
-    "@storybook/experimental-addon-test",
+    "@storybook/experimental-addon-test"
   ],
   framework: {
     name: "@storybook/experimental-nextjs-vite",
-    options: {},
+    options: {}
   },
   staticDirs: ["../public"],
   viteFinal: (config) => {
@@ -19,18 +19,18 @@ const config: StorybookConfig = {
     return mergeConfig(config, {
       resolve: {
         alias: {
-          "@": "../src",
-        },
+          "@": "../src"
+        }
       },
       css: {
         ...config.css,
         postcss: {
           // Empty configurations for error preventing.
-          plugins: [],
-        },
-      },
+          plugins: []
+        }
+      }
     });
-  },
+  }
 };
 
 export default config;

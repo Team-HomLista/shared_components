@@ -1,6 +1,7 @@
 "use client";
 
 import { FC } from "react";
+
 import RevenueSections from "./RevenueSection";
 
 interface RevenueCardData {

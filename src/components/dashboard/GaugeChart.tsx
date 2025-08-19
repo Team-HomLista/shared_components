@@ -1,8 +1,9 @@
 "use client";
 
 import { FC } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/shared/components/ui";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
+
+import { Card, CardContent, CardHeader, CardTitle } from "@/shared/components/ui";
 
 interface GaugeChartProps {
   title: string;

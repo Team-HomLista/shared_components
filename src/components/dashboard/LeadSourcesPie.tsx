@@ -1,6 +1,7 @@
 "use client";
-import { Card, CardContent, CardHeader, CardTitle } from "@/shared/components/ui";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
+
+import { Card, CardContent, CardHeader, CardTitle } from "@/shared/components/ui";
 
 interface LeadSourcesPieProps {
   data: { name: string; value: number }[];

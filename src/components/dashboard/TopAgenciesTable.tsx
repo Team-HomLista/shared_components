@@ -11,19 +11,14 @@ interface AgencyData {
 interface TopAgenciesTableProps {
   title?: string;
   data: AgencyData[];
-  badgeColorVar?: string; 
+  badgeColorVar?: string;
 }
 
 export default function TopAgenciesTable({
   title = "Top Agencias por Ingresos",
-  data,
-  badgeColorVar = "--chart-2"
+  data
 }: TopAgenciesTableProps) {
   // Obtener el color desde la variable CSS
-  const badgeColor =
-    typeof window !== "undefined"
-      ? getComputedStyle(document.documentElement).getPropertyValue(badgeColorVar).trim()
-      : `var(${badgeColorVar})`;
 
   return (
     <Card className="bg-card text-card-foreground w-full">
@@ -45,7 +40,7 @@ export default function TopAgenciesTable({
               </div>
               <span
                 className="rounded-full px-2 py-1 text-sm font-semibold"
-                style={{color: "var(-background)" }}
+                style={{ color: "var(-background)" }}
               >
                 {a.mrr} MRR
               </span>

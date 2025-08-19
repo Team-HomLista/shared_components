@@ -1,6 +1,7 @@
 "use client";
 
 import { FC } from "react";
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/shared/components/ui";
 
 interface Franchise {
@@ -13,7 +14,7 @@ interface Franchise {
 interface FranchiseRankingCardProps {
   title?: string;
   data: Franchise[];
-  scoreColorVar?: string; 
+  scoreColorVar?: string;
 }
 
 const FranchiseRankingCard: FC<FranchiseRankingCardProps> = ({
@@ -21,7 +22,6 @@ const FranchiseRankingCard: FC<FranchiseRankingCardProps> = ({
   data,
   scoreColorVar = "--primary"
 }) => {
-
   const scoreColor =
     typeof window !== "undefined"
       ? getComputedStyle(document.documentElement).getPropertyValue(scoreColorVar).trim()

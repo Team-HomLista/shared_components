@@ -1,7 +1,6 @@
 "use client";
 
 import { FC } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/shared/components/ui";
 import {
   LineChart,
   Line,
@@ -12,6 +11,8 @@ import {
   Tooltip,
   ResponsiveContainer
 } from "recharts";
+
+import { Card, CardContent, CardHeader, CardTitle } from "@/shared/components/ui";
 
 interface ChartCardProps {
   title: string;

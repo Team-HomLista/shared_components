@@ -169,7 +169,8 @@ const zonesData = [
   "Bacalar"
 ];
 
-export const AgentContainer: FC<AgentContainerProps> = ({ slug }) => {
+// eslint-disable-next-line no-empty-pattern
+export const AgentContainer: FC<AgentContainerProps> = ({}) => {
   const router = useRouter();
 
   return (
