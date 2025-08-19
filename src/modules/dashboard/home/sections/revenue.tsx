@@ -1,25 +1,30 @@
 import { FC } from "react";
 
-import { Card, CardContent, CardTitle } from "@/shared/components/ui";
+import { Card, CardContent } from "@/shared/components/ui";
 
-interface RevenueSectionsProps {
+interface RevenueProps {
   label: string;
   value: string | number;
   change?: string;
 }
 
-const Revenue: FC<RevenueSectionsProps> = ({ label, value, change }) => {
+const Revenue: FC<RevenueProps> = ({ label, value, change }) => {
   return (
-    <Card>
-      <CardContent>
-        <CardTitle className="text-muted-foreground pb-2 text-sm font-medium">{label}</CardTitle>
-        <div className="pb-4 text-2xl font-bold">{value}</div>
+    <Card className="border-border border shadow-none">
+      <CardContent className="p-4">
+        {/* Label */}
+        <p className="text-muted-foreground text-sm font-medium">{label}</p>
+
+        {/* Value */}
+        <p className="pb-2 text-2xl font-bold">{value}</p>
+
+        {/* Change chip */}
         {change && (
           <span
-            className={`rounded-full px-2 py-1 text-xs font-medium ${
+            className={`inline-flex items-center rounded-md px-2 py-0.5 text-xs font-medium ${
               change.startsWith("-")
-                ? "bg-blocked-status text-blocked-status-foreground"
-                : "bg-approved-status text-active-status-foreground"
+                ? "bg-destructive text-destructive-foreground"
+                : "bg-foreground text-background"
             }`}
           >
             {change}

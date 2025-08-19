@@ -72,11 +72,6 @@ const ChartsTabsSection: FC<ChartsTabsProps> = ({ tabs }) => {
                       title={chart.title}
                       data={chart.data}
                       keys={Object.keys(chart.data[0]).filter((k) => k !== "name")}
-                      colors={[
-                        "--publishable-status",
-                        "--paused-status-foreground",
-                        "--approved-status"
-                      ]}
                     />
                   );
                 default:

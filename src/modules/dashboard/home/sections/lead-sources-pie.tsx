@@ -1,23 +1,21 @@
 "use client";
-import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
+import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/shared/components/ui";
 
 interface LeadSourcesPieProps {
   data: { name: string; value: number }[];
-  colorVars?: string[];
 }
 
-export default function LeadSourcesPie({
-  data,
-  colorVars = ["--publishable-status", "--paused-status-foreground", "--approved-status"]
-}: LeadSourcesPieProps) {
+export default function LeadSourcesPie({ data }: LeadSourcesPieProps) {
+  const chartVars = ["--chart-1", "--chart-2", "--chart-3", "--chart-4", "--chart-5"];
+
   const colors =
     typeof window !== "undefined"
-      ? colorVars.map((varName) =>
+      ? chartVars.map((varName) =>
           getComputedStyle(document.documentElement).getPropertyValue(varName).trim()
         )
-      : colorVars.map((varName) => `var(${varName})`);
+      : chartVars.map((varName) => `var(${varName})`);
 
   return (
     <Card className="bg-card text-card-foreground w-full">
@@ -26,7 +24,7 @@ export default function LeadSourcesPie({
       </CardHeader>
       <CardContent className="h-[250px]">
         <ResponsiveContainer width="100%" height="100%">
-          <PieChart>
+          <PieChart aria-label="Distribución de fuentes de leads">
             <Pie
               data={data}
               dataKey="value"
@@ -34,12 +32,13 @@ export default function LeadSourcesPie({
               cx="50%"
               cy="50%"
               outerRadius={90}
-              label
+              label={({ name, value }) => `${name}: ${value}`}
             >
               {data.map((_, index) => (
                 <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
               ))}
             </Pie>
+            <Tooltip />
           </PieChart>
         </ResponsiveContainer>
       </CardContent>

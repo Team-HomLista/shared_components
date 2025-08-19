@@ -1,25 +1,22 @@
 "use client";
-import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
+import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/shared/components/ui";
 
 interface PieChartCardProps {
   title: string;
   data: { name: string; value: number }[];
-  colorVars?: string[];
 }
 
-export default function PieChartCard({
-  title,
-  data,
-  colorVars = ["--publishable-status", "--paused-status-foreground", "--approved-status"]
-}: PieChartCardProps) {
+export default function PieChartCard({ title, data }: PieChartCardProps) {
+  const chartVars = ["--chart-1", "--chart-2", "--chart-3", "--chart-4", "--chart-5"];
+
   const colors =
     typeof window !== "undefined"
-      ? colorVars.map((varName) =>
+      ? chartVars.map((varName) =>
           getComputedStyle(document.documentElement).getPropertyValue(varName).trim()
         )
-      : colorVars.map((varName) => `var(${varName})`);
+      : chartVars.map((varName) => `var(${varName})`);
 
   return (
     <Card className="bg-card text-card-foreground w-full">
@@ -28,7 +25,7 @@ export default function PieChartCard({
       </CardHeader>
       <CardContent className="h-[250px]">
         <ResponsiveContainer width="100%" height="100%">
-          <PieChart>
+          <PieChart aria-label={title}>
             <Pie
               data={data}
               dataKey="value"
@@ -36,12 +33,13 @@ export default function PieChartCard({
               cx="50%"
               cy="50%"
               outerRadius={90}
-              label
+              label={({ name, value }) => `${name}: ${value}`}
             >
               {data.map((_, index) => (
                 <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
               ))}
             </Pie>
+            <Tooltip />
           </PieChart>
         </ResponsiveContainer>
       </CardContent>

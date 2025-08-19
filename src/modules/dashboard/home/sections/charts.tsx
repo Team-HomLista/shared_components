@@ -26,20 +26,17 @@ const ChartCard: FC<ChartCardProps> = ({
   title,
   data,
   type = "line",
-  colorVar = "--publishable-status",
+  colorVar = "--chart-1", // 👈 por defecto usamos chart-1
   height = 250
 }) => {
-  const color =
-    typeof window !== "undefined"
-      ? getComputedStyle(document.documentElement).getPropertyValue(colorVar).trim()
-      : "var(--muted-foreground)";
+  const color = `var(${colorVar})`; // 👈 sin window, sin getComputedStyle
 
   return (
     <Card className="bg-card text-card-foreground w-full">
       <CardHeader>
         <CardTitle>{title}</CardTitle>
       </CardHeader>
-      <CardContent className={`h-[${height}px]`}>
+      <CardContent style={{ height }}>
         <ResponsiveContainer width="100%" height="100%">
           {type === "line" ? (
             <LineChart data={data}>

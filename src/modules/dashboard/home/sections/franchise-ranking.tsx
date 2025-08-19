@@ -14,19 +14,12 @@ interface Franchise {
 interface FranchiseRankingCardProps {
   title?: string;
   data: Franchise[];
-  scoreColorVar?: string;
 }
 
 const FranchiseRankingCard: FC<FranchiseRankingCardProps> = ({
   title = "Top Franquicias por Actividad",
-  data,
-  scoreColorVar = "--primary"
+  data
 }) => {
-  const scoreColor =
-    typeof window !== "undefined"
-      ? getComputedStyle(document.documentElement).getPropertyValue(scoreColorVar).trim()
-      : "--primary";
-
   return (
     <Card className="bg-card text-card-foreground w-full">
       <CardHeader>
@@ -34,7 +27,7 @@ const FranchiseRankingCard: FC<FranchiseRankingCardProps> = ({
       </CardHeader>
       <CardContent>
         <ul className="space-y-3">
-          {data.map((f) => (
+          {data.map((f, i) => (
             <li
               key={f.name}
               className="border-muted flex items-center justify-between border-b pb-2 last:border-none last:pb-0"
@@ -46,8 +39,8 @@ const FranchiseRankingCard: FC<FranchiseRankingCardProps> = ({
                 </p>
               </div>
               <span
-                className="rounded-full px-2 py-1 text-xs font-medium"
-                style={{ backgroundColor: scoreColor, color: "white" }}
+                className="rounded-full px-2 py-1 text-xs font-medium text-white"
+                style={{ backgroundColor: `var(--chart-${(i % 4) + 1})` }}
               >
                 {f.score}/100
               </span>

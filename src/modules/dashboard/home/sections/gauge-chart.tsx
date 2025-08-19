@@ -9,30 +9,12 @@ interface GaugeChartProps {
   title: string;
   percentage: number;
   goal: number;
-  primaryColorVar?: string;
-  backgroundColorVar?: string;
 }
 
-const GaugeChart: FC<GaugeChartProps> = ({
-  title,
-  percentage,
-  goal,
-  primaryColorVar = "--approved-status",
-  backgroundColorVar = "--sidebar-ring"
-}) => {
-  const primaryColor =
-    typeof window !== "undefined"
-      ? getComputedStyle(document.documentElement).getPropertyValue(primaryColorVar).trim()
-      : "var(--chart-2)";
-
-  const backgroundColor =
-    typeof window !== "undefined"
-      ? getComputedStyle(document.documentElement).getPropertyValue(backgroundColorVar).trim()
-      : "var(--muted)";
-
+const GaugeChart: FC<GaugeChartProps> = ({ title, percentage, goal }) => {
   const data = [
-    { value: percentage, color: primaryColor },
-    { value: 100 - percentage, color: backgroundColor }
+    { value: percentage, color: "var(--approved-status)" },
+    { value: 100 - percentage, color: "var(--sidebar-ring)" }
   ];
 
   return (

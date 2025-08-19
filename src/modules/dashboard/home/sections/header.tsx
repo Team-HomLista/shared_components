@@ -15,17 +15,15 @@ type StatsData = {
 };
 
 type DashboardHeaderProps = {
-  title: string;
-  subtitle?: string;
   stats: StatsData[];
 };
 
-export default function HeaderSection({ title, subtitle, stats }: DashboardHeaderProps) {
+export default function HeaderSection({ stats }: DashboardHeaderProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>{title}</CardTitle>
-        {subtitle && <CardDescription>{subtitle}</CardDescription>}
+        <CardTitle>Panel de Control de Backoffice</CardTitle>
+        {<CardDescription>Resumen ejecutivo de la red Homlista</CardDescription>}
       </CardHeader>
       <CardContent className="grid grid-cols-2 gap-4 md:grid-cols-4">
         {stats.map((stat) => (

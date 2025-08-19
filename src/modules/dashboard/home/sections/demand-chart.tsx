@@ -5,9 +5,14 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recha
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/shared/components/ui";
 
+interface DemandData {
+  name: string;
+  [key: string]: number | string;
+}
+
 interface DemandMapChartProps {
   title?: string;
-  data: Record<string, any>[];
+  data: DemandData[];
   keys: string[];
   colors?: string[];
   height?: number;
@@ -22,21 +27,18 @@ const DemandMapChart: FC<DemandMapChartProps> = ({
   height = 250,
   stackId = "a"
 }) => {
-  const defaultColors = ["--primary", "--secondary", "--chart-2"];
+  // 👇 ahora por defecto usamos solo las variables --chart-*
+  const defaultColors = ["--chart-1", "--chart-2", "--chart-3", "--chart-4", "--chart-5"];
 
-  const resolvedColors = (colors || defaultColors).map(
-    (c) =>
-      (typeof window !== "undefined"
-        ? getComputedStyle(document.documentElement).getPropertyValue(c).trim()
-        : c) || "var(--secondary)"
-  );
+  // 👇 resolvemos directo a var(), sin getComputedStyle
+  const resolvedColors = (colors || defaultColors).map((c) => `var(${c})`);
 
   return (
     <Card className="bg-card text-card-foreground w-full">
       <CardHeader>
         <CardTitle>{title}</CardTitle>
       </CardHeader>
-      <CardContent className={`h-[${height}px]`}>
+      <CardContent style={{ height }}>
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={data}>
             <XAxis dataKey="name" stroke="var(--muted-foreground)" />

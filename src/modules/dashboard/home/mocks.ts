@@ -146,5 +146,5 @@ export const chartTabsData: Tab[] = [
 export const revenueCardsData: RevenueCard[] = [
   { label: "Ingresos Totales", value: "$12,500", change: "+5%" },
   { label: "Nuevos Clientes", value: 320, change: "+12%" },
-  { label: "Ventas Online", value: "$8,300", change: "-8%" }
+  { label: "Ventas Online", value: "$8,300", change: "+8%" }
 ];

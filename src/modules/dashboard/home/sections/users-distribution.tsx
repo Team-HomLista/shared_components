@@ -8,16 +8,15 @@ interface DistributionItem {
 }
 
 interface UserDistributionProps {
-  title: string;
   data: DistributionItem[];
 }
 
-const UserDistributionSection: FC<UserDistributionProps> = ({ title, data }) => {
+const UserDistributionSection: FC<UserDistributionProps> = ({ data }) => {
   return (
     <section className="space-y-4">
       <Card>
         <CardHeader>
-          <CardTitle>{title}</CardTitle>
+          <CardTitle>Distribución de Usuarios</CardTitle>
         </CardHeader>
         <CardContent className="grid grid-cols-2 gap-4 md:grid-cols-4">
           {data.map((item) => (
