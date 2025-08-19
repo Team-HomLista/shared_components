@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import { PropsWithChildren } from "react";
 
-import { WebsiteLayout } from "@/components/layouts/website/website-layout";
+import { WebsiteLayout } from "@/layouts/website/website-layout";
 import "@/styles/website.css";
 
 const inter = Inter({

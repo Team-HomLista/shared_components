@@ -12,7 +12,7 @@ import { Copy, MapPinnedIcon, PrinterIcon, Share2Icon } from "lucide-react";
 import { FC, useState } from "react";
 
 import { PropertyTags } from "@/components/property-tags";
-import { useCopyToClipboard } from "@/hooks/useCopyToClipboard";
+import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
 import { PropertyPrice, PropertyPriceType, PropertyTag } from "@/types/property";
 import { formatPrice } from "@/utils/price-formatter";
 

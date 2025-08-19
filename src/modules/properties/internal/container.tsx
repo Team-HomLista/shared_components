@@ -131,8 +131,8 @@ export const PropertyDetailContainer: FC<PropertyDetailContainerProps> = ({
                   className="h-full w-full object-cover"
                 />
                 <button
-                  onClick={() => setShowGallery(true)}
                   className="absolute top-3 right-3 rounded-md bg-white/90 px-3 py-2 text-sm font-medium text-gray-900 shadow-sm backdrop-blur-sm transition-all hover:bg-white"
+                  onClick={() => setShowGallery(true)}
                 >
                   Ver imágenes
                 </button>
@@ -159,8 +159,8 @@ export const PropertyDetailContainer: FC<PropertyDetailContainerProps> = ({
         <div className="fixed inset-0 z-50 bg-black">
           <ImageGallery multimedia={property?.multimedia ?? []} />
           <button
-            onClick={() => setShowGallery(false)}
             className="absolute top-4 right-4 z-10 rounded-full bg-white/10 p-2 text-white hover:bg-white/20"
+            onClick={() => setShowGallery(false)}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

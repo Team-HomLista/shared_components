@@ -1,6 +1,6 @@
 "use client";
 
-import { useIsMobile } from "@/hooks/useIsMobile";
+import { useIsMobile } from "@/hooks/use-is-mobile";
 import { LeadFormDrawer } from "@/modules/home/sections/find/drawer";
 import { LeadFormModal } from "@/modules/home/sections/find/modal";
 import { SmallFormData } from "@/modules/home/sections/find/schemas";
@@ -19,8 +19,8 @@ export const LeadFormResponsive = ({
   const isDesktop = useIsMobile();
 
   return isDesktop ? (
-    <LeadFormModal open={open} onOpenChange={onOpenChange} initialData={initialData} />
+    <LeadFormModal open={open} initialData={initialData} onOpenChange={onOpenChange} />
   ) : (
-    <LeadFormDrawer open={open} onOpenChange={onOpenChange} initialData={initialData} />
+    <LeadFormDrawer open={open} initialData={initialData} onOpenChange={onOpenChange} />
   );
 };

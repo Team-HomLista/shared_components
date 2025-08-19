@@ -89,8 +89,8 @@ export const LeadForm = ({ initialData, onClose, onSubmitSuccess }: LeadFormProp
   return (
     <Form {...form}>
       <form
-        onSubmit={form.handleSubmit(onSubmit)}
         className="flex flex-col items-center justify-evenly gap-4 pb-8"
+        onSubmit={form.handleSubmit(onSubmit)}
       >
         <FormField
           control={form.control}
@@ -100,7 +100,7 @@ export const LeadForm = ({ initialData, onClose, onSubmitSuccess }: LeadFormProp
               <FormLabel>
                 <Text variant="label">Tipo de propiedad</Text>
               </FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
+              <Select defaultValue={field.value} onValueChange={field.onChange}>
                 <FormControl>
                   <SelectTrigger className="w-full bg-white">
                     <SelectValue placeholder="Selecciona el tipo de propiedad que buscas" />
@@ -127,7 +127,7 @@ export const LeadForm = ({ initialData, onClose, onSubmitSuccess }: LeadFormProp
               <FormLabel>
                 <Text variant="label">Estado</Text>
               </FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value} value={field.value}>
+              <Select defaultValue={field.value} value={field.value} onValueChange={field.onChange}>
                 <FormControl>
                   <SelectTrigger className="w-full bg-white">
                     <SelectValue placeholder="Selecciona el estado donde buscas tu propiedad" />
@@ -154,7 +154,7 @@ export const LeadForm = ({ initialData, onClose, onSubmitSuccess }: LeadFormProp
               <FormLabel>
                 <Text variant="label">Ciudad</Text>
               </FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value} value={field.value}>
+              <Select defaultValue={field.value} value={field.value} onValueChange={field.onChange}>
                 <FormControl>
                   <SelectTrigger className="w-full bg-white">
                     <SelectValue placeholder="Selecciona la ciudad donde buscas tu propiedad" />
@@ -181,7 +181,7 @@ export const LeadForm = ({ initialData, onClose, onSubmitSuccess }: LeadFormProp
               <FormLabel>
                 <Text variant="label">Tipo de búsqueda</Text>
               </FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
+              <Select defaultValue={field.value} onValueChange={field.onChange}>
                 <FormControl>
                   <SelectTrigger className="w-full bg-white">
                     <SelectValue placeholder="Selecciona el tipo de búsqueda" />
@@ -222,8 +222,8 @@ export const LeadForm = ({ initialData, onClose, onSubmitSuccess }: LeadFormProp
                     max={20000000}
                     step={500000}
                     value={[field.value || 5000000]}
-                    onValueChange={(value) => field.onChange(value[0])}
                     className="w-full"
+                    onValueChange={(value) => field.onChange(value[0])}
                   />
                 </FormControl>
                 <FormMessage />
@@ -245,7 +245,7 @@ export const LeadForm = ({ initialData, onClose, onSubmitSuccess }: LeadFormProp
                   control={form.control}
                   name="lada"
                   render={({ field: phoneField }) => (
-                    <Select onValueChange={phoneField.onChange} defaultValue={phoneField.value}>
+                    <Select defaultValue={phoneField.value} onValueChange={phoneField.onChange}>
                       <FormControl>
                         <SelectTrigger className="w-fit">
                           <SelectValue placeholder="Código" />

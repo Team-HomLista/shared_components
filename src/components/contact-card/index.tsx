@@ -1,7 +1,9 @@
-import { Badge } from "@shared/components/ui/badge";
 import { Card, CardContent } from "@shared/components/ui/card";
 import { Mail } from "lucide-react";
+import Link from "next/link";
 import { FC } from "react";
+
+import { Button } from "@/shared/components/ui";
 
 interface ContactCardProps {
   subtitle?: string;
@@ -22,12 +24,9 @@ export const ContactCardSection: FC<ContactCardProps> = ({ subtitle, description
           <p className="text-primary-foreground/90 mb-8 text-base leading-relaxed sm:text-lg">
             {description}
           </p>
-          <Badge
-            variant="secondary"
-            className="text-primary border-0 bg-white px-6 py-3 text-sm font-semibold shadow-lg sm:text-base"
-          >
-            hola@homlista.com
-          </Badge>
+          <Button variant="outline" asChild>
+            <Link href="mailto:hola@homlista.com">hola@homlista.com</Link>
+          </Button>
         </div>
       </CardContent>
     </Card>

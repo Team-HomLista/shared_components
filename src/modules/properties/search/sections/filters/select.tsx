@@ -32,7 +32,7 @@ export const FilterSelect: FC<FilterSelectProps> = ({
   return (
     <div className={className}>
       {label && <label className="mb-1 block text-sm font-medium">{label}</label>}
-      <Select value={value} onValueChange={onChange} disabled={disabled}>
+      <Select value={value} disabled={disabled} onValueChange={onChange}>
         {" "}
         {/* Apply disabled prop */}
         <SelectTrigger className="w-full py-2">

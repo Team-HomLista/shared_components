@@ -1,7 +1,7 @@
 "use client";
 import { use } from "react";
 
-import { getBreadcrumbFromMenuItem, useDashboard } from "@/hooks/useDashboard";
+import { getBreadcrumbFromMenuItem, useDashboard } from "@/hooks/use-dashboard";
 import { PageProps } from "@/types/next";
 
 export default function Page({ params }: PageProps<"id">) {

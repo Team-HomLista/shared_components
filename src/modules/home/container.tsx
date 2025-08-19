@@ -1,7 +1,7 @@
 "use client";
 import { FC } from "react";
 
-import { Navbar } from "@/components/layouts/website/navbar";
+import { Navbar } from "@/layouts/website/navbar";
 import {
   CitiesSection,
   DiscoverSection,

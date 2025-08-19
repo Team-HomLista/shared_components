@@ -20,17 +20,17 @@ import {
 import { useRouter } from "next/navigation";
 import { FC } from "react";
 
-import { About } from "@/components/advisor_profiles/About";
-import { AgentTeam } from "@/components/advisor_profiles/AgentTeam";
-import { Certificate } from "@/components/advisor_profiles/Certificate";
-import { ContactCard } from "@/components/advisor_profiles/ContactCard";
-import { Header } from "@/components/advisor_profiles/Header";
-import { PropertiesMap } from "@/components/advisor_profiles/PropertiesMap";
-import PropertiesSection from "@/components/advisor_profiles/PropertiesSection";
-import { ReviewsSection } from "@/components/advisor_profiles/ReviewsSection";
-import { Specialties } from "@/components/advisor_profiles/Specialties";
-import { VideoCard } from "@/components/advisor_profiles/VideoCard";
-import { Zones } from "@/components/advisor_profiles/Zones";
+import { About } from "@/components/advisor_profiles/about";
+import { AgentTeam } from "@/components/advisor_profiles/agent-team";
+import { Certificate } from "@/components/advisor_profiles/certificate";
+import { ContactCard } from "@/components/advisor_profiles/contact-card";
+import { Header } from "@/components/advisor_profiles/header";
+import { PropertiesMap } from "@/components/advisor_profiles/properties-map";
+import PropertiesSection from "@/components/advisor_profiles/properties-section";
+import { ReviewsSection } from "@/components/advisor_profiles/reviews-section";
+import { Specialties } from "@/components/advisor_profiles/specialties";
+import { VideoCard } from "@/components/advisor_profiles/video-card";
+import { Zones } from "@/components/advisor_profiles/zones";
 
 interface AgenciesContainerProps {
   slug: string;

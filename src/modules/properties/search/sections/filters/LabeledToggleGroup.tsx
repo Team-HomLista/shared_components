@@ -18,7 +18,7 @@ export const LabeledToggleGroup: FC<LabeledToggleGroupProps> = ({
 }) => (
   <div>
     <label>{label}</label>
-    <ToggleGroup type="single" value={value} onValueChange={onChange} className={className}>
+    <ToggleGroup type="single" value={value} className={className} onValueChange={onChange}>
       {options.map((opt) => (
         <ToggleGroupItem key={opt.value} value={opt.value}>
           {opt.label}

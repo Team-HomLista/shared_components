@@ -28,8 +28,8 @@ export const PropertyDescription: FC<PropertyDescriptionProps> = ({ property }) 
       </div>
       <div className="flex flex-col gap-2">
         <div
-          className="prose prose-slate prose-headings:text-[#09090B] prose-p:text-[#09090B] prose-p:leading-relaxed prose-p:font-light prose-strong:text-[#09090B] prose-ul:text-[#09090B] prose-ol:text-[#09090B] prose-li:text-[#09090B] max-w-none"
           dangerouslySetInnerHTML={{ __html: descripcionSegura }}
+          className="prose prose-slate prose-headings:text-[#09090B] prose-p:text-[#09090B] prose-p:leading-relaxed prose-p:font-light prose-strong:text-[#09090B] prose-ul:text-[#09090B] prose-ol:text-[#09090B] prose-li:text-[#09090B] max-w-none"
         />
       </div>
     </>

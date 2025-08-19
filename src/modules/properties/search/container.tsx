@@ -131,11 +131,11 @@ export const PropertiesSearchContainer: FC<PropertiesSearchContainerProps> = ({
     <>
       <ControlsSection
         form={form}
-        onFormSubmit={handleFormSubmit}
-        onClearFilters={handleClearFilters}
         stateOptions={stateOptions}
         cityOptions={cityOptions}
         neighborhoodOptions={neighborhoodOptions}
+        onFormSubmit={handleFormSubmit}
+        onClearFilters={handleClearFilters}
       />
       <PropertiesSearchGridSection properties={properties} />
       <PropertiesSearchPaginationSection

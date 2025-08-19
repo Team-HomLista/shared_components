@@ -72,9 +72,9 @@ export const SearchBar: FC<SearchBarProps> = () => {
           <Text variant="label">Ciudad</Text>
           <Input
             value={city}
-            onChange={(e) => setCity(e.target.value)}
             placeholder="Nombre de la ciudad"
             className="bg-white"
+            onChange={(e) => setCity(e.target.value)}
           />
         </div>
 
