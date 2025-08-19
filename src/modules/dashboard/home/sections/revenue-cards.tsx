@@ -2,7 +2,7 @@
 
 import { FC } from "react";
 
-import RevenueSections from "./RevenueSection";
+import RevenueSections from "@/modules/dashboard/home/sections/revenue";
 
 interface RevenueCardData {
   label: string;
@@ -15,7 +15,7 @@ interface RevenueCardsSectionProps {
   cards: RevenueCardData[];
 }
 
-const RevenueCardsSection: FC<RevenueCardsSectionProps> = ({ title, cards }) => {
+const RevenueCardsSections: FC<RevenueCardsSectionProps> = ({ title, cards }) => {
   return (
     <section className="space-y-4">
       <h2 className="text-lg font-semibold tracking-tight">{title}</h2>
@@ -28,4 +28,4 @@ const RevenueCardsSection: FC<RevenueCardsSectionProps> = ({ title, cards }) => 
   );
 };
 
-export default RevenueCardsSection;
+export default RevenueCardsSections;

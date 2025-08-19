@@ -2,15 +2,15 @@
 
 import { FC, useState } from "react";
 
+import DemandMapChart from "@/modules/dashboard/home/sections/demand-chart";
+import FranchiseRankingCard from "@/modules/dashboard/home/sections/franchise-ranking";
+import GaugeChart from "@/modules/dashboard/home/sections/gauge-chart";
+import LeadSourcesPie from "@/modules/dashboard/home/sections/lead-sources-pie";
+import PieChartCard from "@/modules/dashboard/home/sections/pie-chart-card";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/shared/components/ui/tabs";
 
-import ChartCard from "./ChartsSection";
-import DemandMapChart from "./DemandMapChart";
-import FranchiseRankingCard from "./FranchiseRankingCard";
-import GaugeChart from "./GaugeChart";
-import LeadSourcesPie from "./LeadSourcesPie";
-import PieChartCard from "./PieChartCard";
-import TopAgenciesTable from "./TopAgenciesTable";
+import ChartCard from "./charts";
+import TopAgenciesTable from "./top-agencies-table";
 
 interface ChartTab {
   key: string;
@@ -22,7 +22,7 @@ interface ChartsTabsProps {
   tabs: ChartTab[];
 }
 
-const ChartsTabs: FC<ChartsTabsProps> = ({ tabs }) => {
+const ChartsTabsSection: FC<ChartsTabsProps> = ({ tabs }) => {
   const [activeTab, setActiveTab] = useState(tabs[0]?.key || "");
 
   return (
@@ -90,4 +90,4 @@ const ChartsTabs: FC<ChartsTabsProps> = ({ tabs }) => {
   );
 };
 
-export default ChartsTabs;
+export default ChartsTabsSection;

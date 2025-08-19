@@ -8,7 +8,7 @@ interface RevenueSectionsProps {
   change?: string;
 }
 
-const RevenueSections: FC<RevenueSectionsProps> = ({ label, value, change }) => {
+const Revenue: FC<RevenueSectionsProps> = ({ label, value, change }) => {
   return (
     <Card>
       <CardContent>
@@ -30,4 +30,4 @@ const RevenueSections: FC<RevenueSectionsProps> = ({ label, value, change }) => 
   );
 };
 
-export default RevenueSections;
+export default Revenue;
