@@ -3,8 +3,6 @@ import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/shared/components/ui";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/shared/components/ui";
-
 interface PieChartCardProps {
   title: string;
   data: { name: string; value: number }[];
