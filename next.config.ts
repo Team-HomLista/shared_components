@@ -11,8 +11,8 @@ const nextConfig: NextConfig = {
   turbopack: {
     resolveAlias: {
       "@": "src",
-      "@shared": "shared_components/src",
-    },
+      "@shared": "shared_components/src"
+    }
   },
   images: {
     remotePatterns: [
@@ -21,22 +21,22 @@ const nextConfig: NextConfig = {
         hostname: "pics.craiyon.com",
         port: "",
         pathname: "/**",
-        search: "",
+        search: ""
       },
       {
         protocol: "https",
         hostname: "cannele-bucket.nyc3.cdn.digitaloceanspaces.com",
         port: "",
         pathname: "/**",
-        search: "",
-      },
-    ],
+        search: ""
+      }
+    ]
   },
   experimental: {
     serverActions: {
-      allowedOrigins: ["localhost:3000", "dev.homlista.com", "homlista.com"],
-    },
-  },
+      allowedOrigins: ["localhost:3000", "dev.homlista.com", "homlista.com"]
+    }
+  }
 };
 
 export default nextConfig;

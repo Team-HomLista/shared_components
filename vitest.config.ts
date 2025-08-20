@@ -7,9 +7,7 @@ import { storybookTest } from "@storybook/experimental-addon-test/vitest-plugin"
 import tailwindcss from "@tailwindcss/vite";
 
 const dirname =
-  typeof __dirname !== "undefined"
-    ? __dirname
-    : path.dirname(fileURLToPath(import.meta.url));
+  typeof __dirname !== "undefined" ? __dirname : path.dirname(fileURLToPath(import.meta.url));
 
 // More info at: https://storybook.js.org/docs/writing-tests/test-addon
 export default defineConfig({
@@ -21,7 +19,7 @@ export default defineConfig({
           // The plugin will run tests for the stories defined in your Storybook config
           // See options at: https://storybook.js.org/docs/writing-tests/test-addon#storybooktest
           storybookTest({ configDir: path.join(dirname, ".storybook") }),
-          tailwindcss(),
+          tailwindcss()
         ],
         test: {
           name: "storybook",
@@ -29,11 +27,11 @@ export default defineConfig({
             enabled: true,
             headless: true,
             name: "chromium",
-            provider: "playwright",
+            provider: "playwright"
           },
-          setupFiles: [".storybook/vitest.setup.ts"],
-        },
-      },
-    ],
-  },
+          setupFiles: [".storybook/vitest.setup.ts"]
+        }
+      }
+    ]
+  }
 });
