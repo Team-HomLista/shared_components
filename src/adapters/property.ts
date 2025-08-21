@@ -56,7 +56,14 @@ export interface PropertyUI {
 export class PropertyAdapter {
   constructor(private brandConfig?: BrandConfig) {}
 
-  adapt(property: PropertyBackend): PropertyUI {
+  adapt(property: PropertyBackend): {
+    id: string;
+    slug: string;
+    image: string;
+    tag: { label: string; variant: string; color: string } | { label: string; variant: "default" | "outline" };
+    banner: { transaction: { label: string; price: any; variant: string } };
+    information: { title: string; location: string; features: string[]; price: any; priceLabel: any }
+  } {
     const primaryImage = property.images[0] || "/placeholder-property.jpg";
     
     // Adapt tag based on property type
@@ -209,7 +216,14 @@ export class PropertyAdapter {
   }
 
   // Batch adaptation for multiple properties
-  adaptMany(properties: PropertyBackend[]): PropertyUI[] {
+  adaptMany(properties: PropertyBackend[]): {
+    id: string;
+    slug: string;
+    image: string;
+    tag: { label: string; variant: string; color: string } | { label: string; variant: "default" | "outline" };
+    banner: { transaction: { label: string; price: any; variant: string } };
+    information: { title: string; location: string; features: string[]; price: any; priceLabel: any }
+  }[] {
     return properties.map(property => this.adapt(property));
   }
 }
