@@ -13,7 +13,15 @@ export async function fetchServer(
   { method = "GET", params, withIdentifyToken = true, headers: headerInt, ...config }: config = {}
 ) {
   try {
-    const url = new URL(`${process.env.SERVER_URL}${path}`);
+    const serverUrl = process.env.SERVER_URL;
+    
+    if (!serverUrl) {
+      throw new Error(
+        'SERVER_URL environment variable is not defined. Please add it to your .env.local file.'
+      );
+    }
+    
+    const url = new URL(`${serverUrl}${path}`);
 
     if (params) {
       Object.keys(params).forEach((key) => url.searchParams.append(key, params[key]));
