@@ -123,9 +123,11 @@ export class PropertyAdapter {
       LAND: "Terreno"
     };
 
+    const variant: "default" | "outline" = status === "AVAILABLE" ? "default" : "outline";
+    
     return {
       label: typeLabels[type] || type,
-      variant: status === "AVAILABLE" ? "default" : "outline" as const,
+      variant,
     };
   }
 
