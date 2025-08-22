@@ -2,11 +2,11 @@
 
 import { FC, useState } from "react";
 
-import DemandMapChart from "@/modules/dashboard/home/sections/demand-chart";
-import FranchiseRankingCard from "@/modules/dashboard/home/sections/franchise-ranking";
-import GaugeChart from "@/modules/dashboard/home/sections/gauge-chart";
-import LeadSourcesPie from "@/modules/dashboard/home/sections/lead-sources-pie";
-import PieChartCard from "@/modules/dashboard/home/sections/pie-chart-card";
+import DemandMapChart from "@/modules/dashboard/home/backoffice/sections/demand-chart";
+import FranchiseRankingCard from "@/modules/dashboard/home/backoffice/sections/franchise-ranking";
+import GaugeChart from "@/modules/dashboard/home/backoffice/sections/gauge-chart";
+import LeadSourcesPie from "@/modules/dashboard/home/backoffice/sections/lead-sources-pie";
+import PieChartCard from "@/modules/dashboard/home/backoffice/sections/pie-chart-card";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/shared/components/ui/tabs";
 
 import ChartCard from "./charts";

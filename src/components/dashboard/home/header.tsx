@@ -7,23 +7,25 @@ import {
 } from "@shared/components/ui/card";
 import * as React from "react";
 
-import StatsCard from "./status-cards";
+import StatsCard from "../../../modules/dashboard/home/backoffice/sections/status-cards";
 
 type StatsData = {
   label: string;
   value: string | number;
 };
 
-type DashboardHeaderProps = {
+type HeaderSectionProps = {
   stats: StatsData[];
+  title: string;
+  description?: string;
 };
 
-export default function HeaderSection({ stats }: DashboardHeaderProps) {
+export default function HeaderSection({ stats, title, description }: HeaderSectionProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Panel de Control de Backoffice</CardTitle>
-        {<CardDescription>Resumen ejecutivo de la red Homlista</CardDescription>}
+        <CardTitle>{title}</CardTitle>
+        {description && <CardDescription>{description}</CardDescription>}
       </CardHeader>
       <CardContent className="grid grid-cols-2 gap-4 md:grid-cols-4">
         {stats.map((stat) => (
