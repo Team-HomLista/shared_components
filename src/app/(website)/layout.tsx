@@ -1,8 +1,5 @@
-import { PropsWithChildren } from "react";
-
 import { WebsiteLayout } from "@/layouts/website";
-import "@/styles/website.css";
 
-export default function RootLayout({ children }: PropsWithChildren) {
+export default function RootLayout({ children }: React.PropsWithChildren) {
   return <WebsiteLayout>{children}</WebsiteLayout>;
 }

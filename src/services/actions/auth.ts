@@ -1,6 +1,8 @@
 "use server";
+import { redirect } from "next/navigation";
+
 import { apiClient } from "@/lib/api-client";
-import { setAccessToken } from "@/services/access-token";
+import { removeAccessToken, setAccessToken } from "@/services/access-token";
 
 type LoginPayload = {
   email: string;
@@ -15,4 +17,10 @@ export async function login(payload: LoginPayload) {
   setAccessToken(data.token);
 
   return data;
+}
+
+export async function logout() {
+  await apiClient.post("/api/logout");
+  await removeAccessToken();
+  redirect("/login");
 }

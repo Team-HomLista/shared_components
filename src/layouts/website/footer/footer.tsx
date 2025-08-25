@@ -10,7 +10,7 @@ import { SocialMediaIcons } from "./socialMediaIcons";
 
 interface FooterProps {}
 
-export const Footer: FC<FooterProps> = () => {
+export const WebsiteFooter: FC<FooterProps> = () => {
   const socialMediaIcons = [
     {
       src: "/socialMedia-svg/whatsapp.svg",

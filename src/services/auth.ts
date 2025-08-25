@@ -9,7 +9,7 @@ export const useLogin = () => {
 
   return useMutation({
     mutationFn: login,
-    onSuccess: (data) => {
+    onSuccess: () => {
       router.push("/dashboard");
     }
   });

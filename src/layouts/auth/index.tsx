@@ -4,6 +4,8 @@ import { ThemeProvider } from "@/components/theme-provider";
 
 import { AuthHeader } from "./header";
 
+import "@/styles/auth.css";
+
 export function AuthLayout({ children }: PropsWithChildren) {
   return (
     <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>

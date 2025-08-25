@@ -9,8 +9,10 @@ import { AlertDialogProvider } from "@/shared/hooks/use-alert-dialog";
 import useCookie from "@/shared/hooks/use-cookie";
 import { DialogProvider } from "@/shared/hooks/use-dialog";
 
-import { DashboardHeader } from "./header";
+import { DashboardNavbar } from "./navbar";
 import { DashboardSidebar } from "./sidebar";
+
+import "@/styles/dashboard.css";
 
 export function DashboardLayout({ children }: PropsWithChildren) {
   const [isOpen, setOpen] = useCookie("sidebar_is_open", "false");
@@ -32,7 +34,7 @@ export function DashboardLayout({ children }: PropsWithChildren) {
               <DashboardSidebar collapsible="offcanvas" />
 
               <SidebarInset>
-                <DashboardHeader />
+                <DashboardNavbar />
 
                 <div className="flex flex-1 flex-col">
                   <div className="@container/main flex flex-1 flex-col gap-2">{children}</div>
