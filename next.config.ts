@@ -6,12 +6,24 @@ const nextConfig: NextConfig = {
     if (dev && !isServer) {
       config.devtool = "eval-source-map";
     }
+
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ["@svgr/webpack", "url-loader"]
+    });
+
     return config;
   },
   turbopack: {
     resolveAlias: {
       "@": "src",
       "@shared": "shared_components/src"
+    },
+    rules: {
+      "*.svg": {
+        loaders: ["@svgr/webpack"],
+        as: "*.js"
+      }
     }
   },
   images: {

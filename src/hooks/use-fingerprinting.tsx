@@ -3,7 +3,7 @@ import { Thumbmark } from "@thumbmarkjs/thumbmarkjs";
 import { useEffect } from "react";
 
 import { FINGERPRINT_STORAGE_KEY, IDENTIFICATIONS_STORAGE_KEY } from "@/constants/localstorage";
-import { identifyGuest } from "@/services/guest";
+import { identifyGuest } from "@/services/legacy/guest";
 
 export const useFingerprinting = () => {
   const saveFingerprint = async (fingerprint: string) => {

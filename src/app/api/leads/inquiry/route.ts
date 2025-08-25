@@ -6,11 +6,11 @@ interface RequestBody {
 
 export async function POST(request: Request) {
   try {
-    const SERVER_URL = process.env.SERVER_URL;
+    const API_URL = process.env.NEXT_PUBLIC_API_URL;
     const HARD_KEY = String(process.env.HARD_KEY);
 
     const body = (await request.json()) as RequestBody;
-    const url = `${SERVER_URL}/api/leads/inquiries`;
+    const url = `${API_URL}/api/leads/inquiries`;
 
     const response = await fetch(url, {
       method: "POST",

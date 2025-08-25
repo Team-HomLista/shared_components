@@ -27,8 +27,8 @@ import { BUILDING_TYPE_ES } from "@/constants/building-type";
 import { FINGERPRINT_STORAGE_KEY } from "@/constants/localstorage";
 import { TRANSACTION_TYPE_GROUP_ES } from "@/constants/transaction-type";
 import { LeadFormData, leadFormSchema, SmallFormData } from "@/modules/home/sections/find/schemas";
-import { InquiryService } from "@/services/inquiry";
-import { getCities, getStates } from "@/services/propertyLocations";
+import { InquiryService } from "@/services/legacy/inquiry";
+import { getCities, getStates } from "@/services/legacy/property-locations";
 
 interface LeadFormProps {
   initialData: SmallFormData;

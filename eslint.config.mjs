@@ -1,5 +1,6 @@
 import stylistic from "@stylistic/eslint-plugin";
 import importPlugin from "eslint-plugin-import";
+import noRelativeImportPaths from "eslint-plugin-no-relative-import-paths";
 import prettier from "eslint-plugin-prettier";
 import prettierRecommended from "eslint-plugin-prettier/recommended";
 import unusedImports from "eslint-plugin-unused-imports";
@@ -19,7 +20,8 @@ export default [
       "unused-imports": unusedImports,
       prettier,
       import: importPlugin,
-      "@stylistic": stylistic
+      "@stylistic": stylistic,
+      "no-relative-import-paths": noRelativeImportPaths
     },
     rules: {
       "react/jsx-handler-names": "off",
@@ -60,7 +62,8 @@ export default [
           reservedFirst: true,
           noSortAlphabetically: true
         }
-      ]
+      ],
+      "no-relative-import-paths/no-relative-import-paths": ["warn", { allowSameFolder: true }]
     }
   },
   // Ignores

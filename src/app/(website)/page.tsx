@@ -1,5 +1,5 @@
 import { HomepageContainer } from "@/modules/home/container";
-import { getFeaturedProperties } from "@/services/property";
+import { getFeaturedProperties } from "@/services/legacy/property";
 
 export const revalidate = 86400; // 24 hours
 

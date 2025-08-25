@@ -1,5 +1,5 @@
 "use server";
-
+// TODO: cambiar logica para almacenar la session del invitado(GUEST)
 import { cookies } from "next/headers";
 
 import { decrypt, encrypt } from "@/lib/session";
