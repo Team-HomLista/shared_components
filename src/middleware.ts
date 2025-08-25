@@ -12,6 +12,19 @@ export function middleware(request: NextRequest) {
   const isLocalhost = host.includes("localhost");
   const isWhiteLabelPath = request.nextUrl.pathname.startsWith("/wl/");
 
+  // Debug logging for development
+  if (process.env.NODE_ENV !== "production") {
+    console.log("🔍 Middleware Debug:", {
+      host,
+      subdomain,
+      pathname: request.nextUrl.pathname,
+      isLocalhost,
+      isWhiteLabelPath,
+      supportedBrands,
+      isSubdomainSupported: supportedBrands.includes(subdomain)
+    });
+  }
+
   if (supportedBrands.includes(subdomain) || (isLocalhost && isWhiteLabelPath)) {
     const url = request.nextUrl.clone();
     let brandSlug = subdomain;
