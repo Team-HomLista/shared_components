@@ -1,5 +1,6 @@
-import { WhiteLabelHomePage } from "@/modules/white-label/home";
 import { headers } from "next/headers";
+
+import { WhiteLabelHomePage } from "@/modules/white-label/home";
 
 interface WhiteLabelHomePageProps {
   params: Promise<{ slug: string }>;
@@ -8,11 +9,11 @@ interface WhiteLabelHomePageProps {
 export default async function WhiteLabelAgencyPage({ params }: WhiteLabelHomePageProps) {
   const { slug } = await params;
   const headersList = await headers();
-  
+
   // Get brand info from middleware
-  const brand = headersList.get('x-brand') || slug;
-  const isWhiteLabel = headersList.get('x-is-white-label') === 'true';
-  
+  const brand = headersList.get("x-brand") || slug;
+  const isWhiteLabel = headersList.get("x-is-white-label") === "true";
+
   if (!isWhiteLabel) {
     // Fallback if not properly configured
     return (

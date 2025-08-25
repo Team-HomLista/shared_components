@@ -14,13 +14,13 @@ export async function fetchServer(
 ) {
   try {
     const serverUrl = process.env.SERVER_URL;
-    
+
     if (!serverUrl) {
       throw new Error(
-        'SERVER_URL environment variable is not defined. Please add it to your .env.local file.'
+        "SERVER_URL environment variable is not defined. Please add it to your .env.local file."
       );
     }
-    
+
     const url = new URL(`${serverUrl}${path}`);
 
     if (params) {

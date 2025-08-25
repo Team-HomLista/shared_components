@@ -38,7 +38,7 @@ const MOCK_PROPERTIES: PropertyBackend[] = [
     }
   },
   {
-    id: "prop-002", 
+    id: "prop-002",
     title: "Departamento ejecutivo céntrico",
     price: 25000,
     currency: "MXN",
@@ -60,7 +60,7 @@ const MOCK_PROPERTIES: PropertyBackend[] = [
     ],
     status: "AVAILABLE",
     agency: {
-      id: "agency-001", 
+      id: "agency-001",
       name: "Test Agency"
     }
   },
@@ -71,7 +71,7 @@ const MOCK_PROPERTIES: PropertyBackend[] = [
     currency: "MXN",
     location: {
       city: "Monterrey",
-      state: "Nuevo León", 
+      state: "Nuevo León",
       address: "Zona Centro"
     },
     type: "LAND",
@@ -93,10 +93,10 @@ const MOCK_PROPERTIES: PropertyBackend[] = [
 export function WhiteLabelPropertiesContainer({ agencySlug }: WhiteLabelPropertiesContainerProps) {
   // Get brand configuration
   const brandConfig = getBrandConfig(agencySlug);
-  
+
   // Initialize adapter with brand config
   const adapter = new PropertyAdapter(brandConfig || undefined);
-  
+
   // Adapt backend data to UI props
   const adaptedProperties = adapter.adaptMany(MOCK_PROPERTIES);
 
@@ -109,9 +109,9 @@ export function WhiteLabelPropertiesContainer({ agencySlug }: WhiteLabelProperti
   return (
     <div>
       {/* Breadcrumb Navigation */}
-      <nav className="mb-6 text-sm text-muted-foreground">
-        <a 
-          href={`/wl/${agencySlug}`} 
+      <nav className="text-muted-foreground mb-6 text-sm">
+        <a
+          href={`/wl/${agencySlug}`}
           className="hover:text-foreground transition-colors"
           style={{ color: brandConfig?.colors.primary }}
         >
@@ -122,19 +122,19 @@ export function WhiteLabelPropertiesContainer({ agencySlug }: WhiteLabelProperti
       </nav>
 
       <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-2">
+        <h1 className="mb-2 text-3xl font-bold">
           Propiedades {brandConfig?.content.title ? `- ${brandConfig.content.title}` : agencySlug}
         </h1>
         <p className="text-muted-foreground">
           {brandConfig?.content.description || `Descubre las mejores propiedades disponibles`}
         </p>
-        <p className="text-sm text-muted-foreground mt-2">
+        <p className="text-muted-foreground mt-2 text-sm">
           {adaptedProperties.length} propiedades encontradas
         </p>
       </div>
-      
+
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {adaptedProperties.map((property, index) => (
+        {adaptedProperties.map((property, _index) => (
           <PropertyCardItem
             key={property.id}
             image={property.image}
@@ -149,12 +149,10 @@ export function WhiteLabelPropertiesContainer({ agencySlug }: WhiteLabelProperti
           />
         ))}
       </div>
-      
+
       {adaptedProperties.length === 0 && (
-        <div className="text-center py-12">
-          <p className="text-muted-foreground">
-            No hay propiedades disponibles en este momento.
-          </p>
+        <div className="py-12 text-center">
+          <p className="text-muted-foreground">No hay propiedades disponibles en este momento.</p>
         </div>
       )}
     </div>

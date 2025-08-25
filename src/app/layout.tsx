@@ -35,9 +35,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="es" suppressHydrationWarning={process.env.NODE_ENV === "production"}>
-      <body className={`${inter.variable} flex min-h-screen flex-col antialiased`}>
-        {children}
-      </body>
+      <body className={`${inter.variable} flex min-h-screen flex-col antialiased`}>{children}</body>
     </html>
   );
 }

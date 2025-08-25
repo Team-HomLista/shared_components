@@ -21,14 +21,14 @@ export class WhiteLabelContentAdapter {
         LAND: "Terreno Selecto"
       },
       zenit: {
-        HOUSE: "Casa de Inversión", 
+        HOUSE: "Casa de Inversión",
         APARTMENT: "Depto. Estratégico",
         COMMERCIAL: "Oportunidad Comercial",
         LAND: "Desarrollo Potencial"
       },
       demo: {
         HOUSE: "Casa Demo",
-        APARTMENT: "Apartamento Demo", 
+        APARTMENT: "Apartamento Demo",
         COMMERCIAL: "Comercial Demo",
         LAND: "Terreno Demo"
       }
@@ -77,7 +77,7 @@ export class WhiteLabelContentAdapter {
         RENT: "por mes"
       },
       zenit: {
-        SALE: "valor total", 
+        SALE: "valor total",
         RENT: "inversión mensual"
       },
       demo: {
@@ -97,7 +97,7 @@ export class WhiteLabelContentAdapter {
     if (!this.brandConfig) {
       const defaults = {
         view_properties: "Ver Propiedades",
-        contact: "Contactar", 
+        contact: "Contactar",
         learn_more: "Saber Más"
       };
       return defaults[context];
@@ -110,7 +110,7 @@ export class WhiteLabelContentAdapter {
         learn_more: "Descubrir Más"
       },
       zenit: {
-        view_properties: "Ver Inversiones", 
+        view_properties: "Ver Inversiones",
         contact: "Asesor de Inversión",
         learn_more: "Analizar Oportunidades"
       },
