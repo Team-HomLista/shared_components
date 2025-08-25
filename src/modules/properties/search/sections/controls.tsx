@@ -15,10 +15,9 @@ import { UseFormReturn } from "react-hook-form";
 import { z } from "zod";
 
 import { BreadcrumbPagination } from "@/components/breadcrumb-index";
+import { controlsSchema } from "@/modules/properties/search/schema";
 import { BuildingType } from "@/types/enums/building-type";
 import { TransactionType } from "@/types/enums/transaction-type";
-
-import { controlsSchema } from "../schema";
 
 import { Filters } from "./filters";
 

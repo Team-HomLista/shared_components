@@ -13,7 +13,7 @@ export const config = {
   matcher: ["/((?!api|_next/static|_next/image|assets|favicon.ico|sw.js|site.webmanifest).*)"]
 };
 
-const requiredAuth = [
+const authRoutesRequired = [
   "/dashboard",
   "/dashboard/(.*)",
   "/profile",
@@ -22,12 +22,18 @@ const requiredAuth = [
   "/settings/(.*)"
 ];
 
+const notAuthRoutesRequired = ["/login", "/register"];
+
 export async function middleware(req: NextRequest) {
   if (req.headers.get("accept") === "text/x-component") return NextResponse.next();
 
   const lng = await getLanguage(req);
   req.headers.set(headerName, lng);
   await setCookie(cookieName, lng);
+
+  if (!(await validNotAuthRoutes(req))) {
+    return NextResponse.redirect(new URL("/dashboard", req.url));
+  }
 
   if (!(await validAuthRoutes(req))) {
     return NextResponse.redirect(new URL("/login", req.url));
@@ -49,12 +55,26 @@ async function getLanguage(req: NextRequest) {
 }
 
 async function validAuthRoutes(req: NextRequest) {
-  const isAuthRoute = requiredAuth.some((route) => req.nextUrl.pathname.startsWith(route));
+  const isAuthRoute = authRoutesRequired.some((route) => req.nextUrl.pathname.startsWith(route));
 
   if (isAuthRoute) {
     const accessToken = await getAccessToken();
 
     return !!accessToken;
+  }
+
+  return true;
+}
+
+async function validNotAuthRoutes(req: NextRequest) {
+  const isNotAuthRoute = notAuthRoutesRequired.some((route) =>
+    req.nextUrl.pathname.startsWith(route)
+  );
+
+  if (isNotAuthRoute) {
+    const accessToken = await getAccessToken();
+
+    return !accessToken;
   }
 
   return true;

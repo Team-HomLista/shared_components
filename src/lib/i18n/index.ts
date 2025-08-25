@@ -37,7 +37,7 @@ i18n
   )
   .init();
 
-i18n.services.formatter?.add("capitalize", (value, lng, options) => {
+i18n.services.formatter?.add("capitalize", (value) => {
   return capitalize(value);
 });
 

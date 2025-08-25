@@ -13,11 +13,10 @@ import { Slider } from "@shared/components/ui/slider";
 import { FC } from "react";
 import { SubmitHandler, UseFormReturn } from "react-hook-form";
 
+import { ControlsSchema } from "@/modules/properties/search/schema";
 import { DimensionInput } from "@/modules/properties/search/sections/filters/DimensionInput";
 import { LabeledSelect } from "@/modules/properties/search/sections/filters/LabeledSelect";
 import { FilterSelect } from "@/modules/properties/search/sections/filters/select";
-
-import { ControlsSchema } from "../../schema";
 
 interface FilterProps {
   form: UseFormReturn<ControlsSchema>;

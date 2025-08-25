@@ -10,6 +10,7 @@ import {
   NavigationMenuTrigger
 } from "@shared/components/ui/navigation-menu";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@shared/components/ui/sheet";
+import { useQuery } from "@tanstack/react-query";
 import { Menu } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -17,6 +18,7 @@ import { redirect } from "next/navigation";
 import React, { FC, useState } from "react";
 
 import { cn } from "@/lib/utils";
+import { getAccessToken } from "@/services/access-token";
 
 const buy: { title: string; href: string }[] = [
   {
@@ -77,6 +79,13 @@ interface NavbarProps {
 
 export const WebsiteNavbar: FC<NavbarProps> = ({ variant = "default" }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const { data, isLoading } = useQuery({
+    queryKey: ["access-token"],
+    queryFn: getAccessToken
+  });
+
+  const isAuth = !!data;
 
   return (
     <nav
@@ -163,9 +172,16 @@ export const WebsiteNavbar: FC<NavbarProps> = ({ variant = "default" }) => {
           </NavigationMenuList>
         </NavigationMenu>
 
-        <Button variant="secondary" onClick={() => redirect("/login")}>
-          Iniciar Sesión
-        </Button>
+        {!isLoading &&
+          (isAuth ? (
+            <Button variant="secondary" onClick={() => redirect("/dashboard")}>
+              Ir al dashboard
+            </Button>
+          ) : (
+            <Button variant="secondary" onClick={() => redirect("/login")}>
+              Iniciar Sesión
+            </Button>
+          ))}
       </div>
 
       {/* Mobile Menu Button */}
@@ -251,14 +267,16 @@ export const WebsiteNavbar: FC<NavbarProps> = ({ variant = "default" }) => {
                 </Link>
               </div>
 
-              {/* Login Button */}
-              <Button
-                className="mb-12 w-fit"
-                variant="secondary"
-                onClick={() => redirect("/login")}
-              >
-                Iniciar Sesión
-              </Button>
+              {!isLoading &&
+                (isAuth ? (
+                  <Button variant="secondary" onClick={() => redirect("/dashboard")}>
+                    Ir al dashboard
+                  </Button>
+                ) : (
+                  <Button variant="secondary" onClick={() => redirect("/login")}>
+                    Iniciar Sesión
+                  </Button>
+                ))}
             </div>
           </SheetContent>
         </Sheet>

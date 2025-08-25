@@ -8,10 +8,9 @@ import { z } from "zod";
 import { Paginated } from "@/types/paginated";
 import { Property } from "@/types/property";
 import { LocationFilters } from "@/types/property-filter";
+import { PropertyQueryParams } from "@/types/property-query-params";
 import { buildSearchQueryParams } from "@/utils/build-search-query-params";
 import { cleanQueries } from "@/utils/clean-queries";
-
-import { PropertyQueryParams } from "../../../types/property-query-params";
 
 import { ControlsSchema, controlsSchema } from "./schema";
 import { ControlsSection } from "./sections/controls";
