@@ -36,7 +36,7 @@ export default async function WhiteLabelAgencyPage({ params }: WhiteLabelHomePag
       <div className="container mx-auto px-4 py-8">
         <h1>Agency not found: {slug}</h1>
         <p>Please check your configuration.</p>
-        <p className="text-sm text-gray-500 mt-4">
+        <p className="mt-4 text-sm text-gray-500">
           Supported agencies: {supportedBrands.join(", ")}
         </p>
         <p className="text-sm text-gray-500">
