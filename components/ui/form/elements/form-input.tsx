@@ -34,7 +34,7 @@ export const FormInput = <TFieldValues extends FieldValues>({
           <FormDescription>{description}</FormDescription>
           <FormControl>
             {/* Pass inputProps and field props to the Input component */}
-            <Input {...inputProps} {...field} />
+            <Input {...inputProps} {...field} value={field.value ?? ""} />
           </FormControl>
           <FormMessage />
         </FormItem>
