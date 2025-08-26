@@ -1,7 +1,7 @@
 "use client";
 import { FC } from "react";
 
-import { Navbar } from "@/layouts/website/navbar";
+import { WebsiteNavbar } from "@/layouts/website/navbar";
 import {
   CitiesSection,
   DiscoverSection,
@@ -22,7 +22,7 @@ export const HomepageContainer: FC<HomepageContainerProps> = ({ properties }) =>
 
   return (
     <>
-      <Navbar variant="float" />
+      <WebsiteNavbar variant="float" />
       <HeroSection />
       <DiscoverSection items={items} onClickLike={onClickLike} />
       <FindSection />

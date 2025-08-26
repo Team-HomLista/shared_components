@@ -1,11 +1,11 @@
 "use client";
 
 import { ChevronDown } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import * as React from "react";
 import { useState } from "react";
 
+import LogoDark from "@/assets/logo-dark.svg";
 import { useDashboardStore } from "@/hooks/use-dashboard";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger, Icon } from "@/shared/components/ui";
 import {
@@ -34,7 +34,7 @@ export function DashboardSidebar(props: React.ComponentProps<typeof Sidebar>) {
         <SidebarMenu>
           <SidebarMenuItem className="flex flex-row items-center gap-2 p-2">
             <div className="bg-logo flex size-8 items-center justify-center rounded-md p-2">
-              <Image src="/logo.svg" alt="Homlista" width={16} height={16} />
+              <LogoDark />
             </div>
 
             <div className="flex flex-col">

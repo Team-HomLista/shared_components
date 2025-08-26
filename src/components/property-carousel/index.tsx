@@ -8,7 +8,7 @@ import {
 } from "@shared/components/ui/carousel";
 import React, { FC } from "react";
 
-import { PropertyCardItem, PropertyCardItemProps } from "../property-card";
+import { PropertyCardItem, PropertyCardItemProps } from "@/components/property-card";
 
 export interface PropertyCarouselProps extends Pick<PropertyCardItemProps, "onClickLike"> {
   items: Array<Omit<PropertyCardItemProps, "onClickLike">>;

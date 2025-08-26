@@ -1,27 +1,20 @@
 "use server";
 import { headers as clientHeaders } from "next/headers";
 
-import { getIdentifyToken } from "@/services/session";
+import { getIdentifyToken } from "@/services/legacy/session";
 
 type config = RequestInit & {
   params?: any;
   withIdentifyToken?: boolean;
 };
 
+// #DEPRECATED: Replace by `api-client.ts` using axios
 export async function fetchServer(
   path: string,
   { method = "GET", params, withIdentifyToken = true, headers: headerInt, ...config }: config = {}
 ) {
   try {
-    const serverUrl = process.env.SERVER_URL;
-
-    if (!serverUrl) {
-      throw new Error(
-        "SERVER_URL environment variable is not defined. Please add it to your .env.local file."
-      );
-    }
-
-    const url = new URL(`${serverUrl}${path}`);
+    const url = new URL(`${process.env.NEXT_PUBLIC_API_URL}${path}`);
 
     if (params) {
       Object.keys(params).forEach((key) => url.searchParams.append(key, params[key]));

@@ -40,7 +40,6 @@ export const useDashboard = ({
     if (breadcrumb) {
       setBreadcrumb(breadcrumb);
     }
-    console.log({ activeMenuItem, breadcrumb });
   }, [activeMenuItem, breadcrumb]);
 };
 

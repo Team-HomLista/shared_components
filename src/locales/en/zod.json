@@ -1,0 +1,106 @@
+{
+  "errors": {
+    "invalid_type": "Expected {{expected}}, received {{received}}",
+    "invalid_type_received_undefined": "Required",
+    "invalid_type_received_null": "Required",
+    "invalid_value_one": "Expected {{values}}",
+    "invalid_value_other": "Expected one of {{values}}",
+    "unrecognized_keys": "Unrecognized key(s) in object: {{- keys}}",
+    "invalid_union": "Invalid input",
+    "invalid_key": "Invalid key in {{origin}}",
+    "invalid_element": "Invalid value in {{origin}}",
+    "custom": "Invalid input",
+    "not_multiple_of": "Number must be a multiple of {{multipleOf}}",
+    "invalid_format": {
+      "starts_with": "Invalid input: must start with '{{startsWith}}'",
+      "ends_with": "Invalid input: must end with '{{endsWith}}'",
+      "includes": "Invalid input: must include '{{includes}}'",
+      "regex": "Invalid input",
+      "generic": "Invalid {{format}}"
+    },
+    "too_small": {
+      "array": {
+        "exact": "Array must contain exactly {{minimum}} element(s)",
+        "inclusive": "Array must contain at least {{minimum}} element(s)",
+        "not_inclusive": "Array must contain more than {{minimum}} element(s)"
+      },
+      "string": {
+        "exact": "String must contain exactly {{minimum}} character(s)",
+        "inclusive": "String must contain at least {{minimum}} character(s)",
+        "not_inclusive": "String must contain over {{minimum}} character(s)"
+      },
+      "number": {
+        "exact": "Number must be exactly {{minimum}}",
+        "inclusive": "Number must be greater than or equal to {{minimum}}",
+        "not_inclusive": "Number must be greater than {{minimum}}"
+      },
+      "set": {
+        "exact": "Invalid input",
+        "inclusive": "Invalid input",
+        "not_inclusive": "Invalid input"
+      },
+      "date": {
+        "exact": "Date must be exactly {{- minimum, datetime}}",
+        "inclusive": "Date must be greater than or equal to {{- minimum, datetime}}",
+        "not_inclusive": "Date must be greater than {{- minimum, datetime}}"
+      }
+    },
+    "too_big": {
+      "array": {
+        "exact": "Array must contain exactly {{maximum}} element(s)",
+        "inclusive": "Array must contain at most {{maximum}} element(s)",
+        "not_inclusive": "Array must contain less than {{maximum}} element(s)"
+      },
+      "string": {
+        "exact": "String must contain exactly {{maximum}} character(s)",
+        "inclusive": "String must contain at most {{maximum}} character(s)",
+        "not_inclusive": "String must contain under {{maximum}} character(s)"
+      },
+      "number": {
+        "exact": "Number must be exactly {{maximum}}",
+        "inclusive": "Number must be less than or equal to {{maximum}}",
+        "not_inclusive": "Number must be less than {{maximum}}"
+      },
+      "set": {
+        "exact": "Invalid input",
+        "inclusive": "Invalid input",
+        "not_inclusive": "Invalid input"
+      },
+      "date": {
+        "exact": "Date must be exactly {{- maximum, datetime}}",
+        "inclusive": "Date must be smaller than or equal to {{- maximum, datetime}}",
+        "not_inclusive": "Date must be smaller than {{- maximum, datetime}}"
+      }
+    }
+  },
+  "validations": {
+    "email": "email",
+    "url": "url",
+    "uuid": "uuid",
+    "cuid": "cuid",
+    "regex": "regex",
+    "datetime": "datetime"
+  },
+  "types": {
+    "function": "function",
+    "number": "number",
+    "string": "string",
+    "nan": "nan",
+    "integer": "integer",
+    "float": "float",
+    "boolean": "boolean",
+    "date": "date",
+    "bigint": "bigint",
+    "undefined": "undefined",
+    "symbol": "symbol",
+    "null": "null",
+    "array": "array",
+    "object": "object",
+    "unknown": "unknown",
+    "promise": "promise",
+    "void": "void",
+    "never": "never",
+    "map": "map",
+    "set": "set"
+  }
+}

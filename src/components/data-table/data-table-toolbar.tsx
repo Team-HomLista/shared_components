@@ -17,7 +17,6 @@ export interface DataTableToolbarProps<TData extends Record<string, any>> {
 
 export function DataTableToolbar<TData extends Record<string, any>>({
   table,
-  countLabel: _countLabel,
   actions
 }: DataTableToolbarProps<TData>) {
   const { search: initialSearch } = table.getState();

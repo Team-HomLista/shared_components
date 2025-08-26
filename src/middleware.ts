@@ -1,69 +1,81 @@
+import acceptLanguage from "accept-language";
 import { NextRequest, NextResponse } from "next/server";
 
-// Simple brand detection for POC
-export function middleware(request: NextRequest) {
-  const host = request.headers.get("host") || "";
-  const subdomain = host.split(".")[0];
+import { fallbackLng, languages, cookieName, headerName } from "@/lib/i18n/settings";
 
-  // List of supported brands
-  const supportedBrands = ["acme", "zenit", "demo"];
+import { getCookie, setCookie } from "./lib/cookie";
+import { getAccessToken } from "./services/access-token";
 
-  // Check if it's a white-label subdomain or localhost testing
-  const isLocalhost = host.includes("localhost");
-  const isWhiteLabelPath = request.nextUrl.pathname.startsWith("/wl/");
+acceptLanguage.languages(languages);
 
-  // Debug logging for development
-  if (process.env.NODE_ENV !== "production") {
-    console.log("🔍 Middleware Debug:", {
-      host,
-      subdomain,
-      pathname: request.nextUrl.pathname,
-      isLocalhost,
-      isWhiteLabelPath,
-      supportedBrands,
-      isSubdomainSupported: supportedBrands.includes(subdomain)
-    });
+export const config = {
+  // Avoid matching for static files, API routes, etc.
+  matcher: ["/((?!api|_next/static|_next/image|assets|favicon.ico|sw.js|site.webmanifest).*)"]
+};
+
+const authRoutesRequired = [
+  "/dashboard",
+  "/dashboard/(.*)",
+  "/profile",
+  "/profile/(.*)",
+  "/settings",
+  "/settings/(.*)"
+];
+
+const notAuthRoutesRequired = ["/login", "/register"];
+
+export async function middleware(req: NextRequest) {
+  if (req.headers.get("accept") === "text/x-component") return NextResponse.next();
+
+  const lng = await getLanguage(req);
+  req.headers.set(headerName, lng);
+  await setCookie(cookieName, lng);
+
+  if (!(await validNotAuthRoutes(req))) {
+    return NextResponse.redirect(new URL("/dashboard", req.url));
   }
 
-  if (supportedBrands.includes(subdomain) || (isLocalhost && isWhiteLabelPath)) {
-    const url = request.nextUrl.clone();
-    let brandSlug = subdomain;
-
-    // For localhost testing, extract brand from URL path
-    if (isLocalhost && isWhiteLabelPath) {
-      const pathParts = url.pathname.split("/");
-      brandSlug = pathParts[2]; // /wl/[brand]/...
-
-      // Only process if it's a supported brand
-      if (!supportedBrands.includes(brandSlug)) {
-        return NextResponse.next();
-      }
-    } else {
-      // For subdomain, rewrite to white-label route
-      url.pathname = `/wl/${subdomain}${url.pathname === "/" ? "" : url.pathname}`;
-    }
-
-    // Add brand info to headers for components to use
-    const response =
-      isLocalhost && isWhiteLabelPath ? NextResponse.next() : NextResponse.rewrite(url);
-    response.headers.set("x-brand", brandSlug);
-    response.headers.set("x-is-white-label", "true");
-
-    return response;
+  if (!(await validAuthRoutes(req))) {
+    return NextResponse.redirect(new URL("/login", req.url));
   }
 
   return NextResponse.next();
 }
 
-export const config = {
-  matcher: [
-    /*
-     * Match all request paths except for the ones starting with:
-     * - api (API routes)
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
-     */
-    "/((?!api|_next/static|_next/image|favicon.ico).*)"
-  ]
-};
+async function getLanguage(req: NextRequest) {
+  const languageFromCookie = await getCookie(cookieName);
+
+  if (languageFromCookie) return languageFromCookie;
+
+  const languageFromHeader = acceptLanguage.get(req.headers.get("Accept-Language"));
+
+  if (languageFromHeader) return languageFromHeader;
+
+  return fallbackLng;
+}
+
+async function validAuthRoutes(req: NextRequest) {
+  const isAuthRoute = authRoutesRequired.some((route) => req.nextUrl.pathname.startsWith(route));
+
+  if (isAuthRoute) {
+    const accessToken = await getAccessToken();
+
+    return !!accessToken;
+  }
+
+  return true;
+}
+
+async function validNotAuthRoutes(req: NextRequest) {
+  const isNotAuthRoute = notAuthRoutesRequired.some((route) =>
+    req.nextUrl.pathname.startsWith(route)
+  );
+
+  if (isNotAuthRoute) {
+    const accessToken = await getAccessToken();
+
+    return !accessToken;
+  }
+
+  return true;
+}

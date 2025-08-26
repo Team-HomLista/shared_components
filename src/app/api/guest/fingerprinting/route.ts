@@ -6,12 +6,12 @@ interface RequestBody {
 
 export async function POST(request: Request) {
   try {
-    const SERVER_URL = process.env.SERVER_URL;
+    const API_URL = process.env.NEXT_PUBLIC_API_URL;
     const HARD_KEY = String(process.env.HARD_KEY);
 
     const { anonymous_id: anonymousId } = (await request.json()) as RequestBody;
 
-    const url = `${SERVER_URL}/api/guest/identify`;
+    const url = `${API_URL}/api/guest/identify`;
 
     const response = await fetch(url, {
       method: "POST",

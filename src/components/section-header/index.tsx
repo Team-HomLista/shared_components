@@ -1,8 +1,7 @@
 import React, { FC, ReactNode } from "react";
 
+import { Divider } from "@/components/divider";
 import { cn } from "@/lib/utils";
-
-import { Divider } from "../divider";
 
 /**
  * Props for the SectionHeader component.
