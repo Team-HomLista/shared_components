@@ -10,12 +10,15 @@ import {
   NavigationMenuTrigger
 } from "@shared/components/ui/navigation-menu";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@shared/components/ui/sheet";
+import { useQuery } from "@tanstack/react-query";
 import { Menu } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import React, { FC, useState } from "react";
 
 import { cn } from "@/lib/utils";
+import { getAccessToken } from "@/services/access-token";
 
 const buy: { title: string; href: string }[] = [
   {
@@ -70,17 +73,19 @@ const services: { title: string; href: string }[] = [
   }
 ];
 
-interface navbarProps {
+interface NavbarProps {
   variant?: "default" | "float";
 }
 
-/**
- * @todo create navbar using figma
- * @param param0
- * @returns
- */
-export const Navbar: FC<navbarProps> = ({ variant = "default" }) => {
+export const WebsiteNavbar: FC<NavbarProps> = ({ variant = "default" }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const { data } = useQuery({
+    queryKey: ["access-token"],
+    queryFn: () => getAccessToken()
+  });
+
+  const isAuth = !!data;
 
   return (
     <nav
@@ -122,6 +127,7 @@ export const Navbar: FC<navbarProps> = ({ variant = "default" }) => {
                 </ul>
               </NavigationMenuContent>
             </NavigationMenuItem>
+
             <NavigationMenuItem>
               <NavigationMenuTrigger className="text-primary-foreground text-md bg-transparent">
                 Rentar
@@ -139,6 +145,7 @@ export const Navbar: FC<navbarProps> = ({ variant = "default" }) => {
                 </ul>
               </NavigationMenuContent>
             </NavigationMenuItem>
+
             <NavigationMenuItem>
               <NavigationMenuTrigger className="text-primary-foreground text-md bg-transparent">
                 Servicios
@@ -156,6 +163,7 @@ export const Navbar: FC<navbarProps> = ({ variant = "default" }) => {
                 </ul>
               </NavigationMenuContent>
             </NavigationMenuItem>
+
             <NavigationMenuItem className="text-primary-foreground text-md bg-transparent">
               <NavigationMenuLink asChild className="text-md font-medium">
                 <Link href="/plans">Vende con nosotros</Link>
@@ -163,7 +171,16 @@ export const Navbar: FC<navbarProps> = ({ variant = "default" }) => {
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
-        {/* <Button variant="secondary">Iniciar Sesión</Button> */}
+
+        {isAuth ? (
+          <Button variant="secondary" onClick={() => redirect("/dashboard")}>
+            Ir al dashboard
+          </Button>
+        ) : (
+          <Button variant="secondary" onClick={() => redirect("/login")}>
+            Iniciar Sesión
+          </Button>
+        )}
       </div>
 
       {/* Mobile Menu Button */}
@@ -249,14 +266,15 @@ export const Navbar: FC<navbarProps> = ({ variant = "default" }) => {
                 </Link>
               </div>
 
-              {/* Login Button */}
-              {/* <Button
-                className="mb-12 w-fit"
-                variant="secondary"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Iniciar Sesión
-              </Button> */}
+              {isAuth ? (
+                <Button variant="secondary" onClick={() => redirect("/dashboard")}>
+                  Ir al dashboard
+                </Button>
+              ) : (
+                <Button variant="secondary" onClick={() => redirect("/login")}>
+                  Iniciar Sesión
+                </Button>
+              )}
             </div>
           </SheetContent>
         </Sheet>

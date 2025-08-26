@@ -1,7 +1,6 @@
 "use server";
 import { fetchServer, getResponseData } from "@/lib/http-server";
-
-import { createSession } from "./session";
+import { createSession } from "@/services/legacy/session";
 
 export async function identifyGuest(anonymousId: string) {
   const response = await fetchServer("/api/guest/identify", {

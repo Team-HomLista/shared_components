@@ -25,7 +25,7 @@ import * as z from "zod";
 import { BUILDING_TYPE_ES } from "@/constants/building-type";
 import { TRANSACTION_TYPE_GROUP_ES } from "@/constants/transaction-type";
 import { SmallFormData, smallFormSchema } from "@/modules/home/sections/find/schemas";
-import { getCities, getStates } from "@/services/propertyLocations";
+import { getCities, getStates } from "@/services/legacy/property-locations";
 
 interface FindSmallFormProps {
   onComplete: (data: SmallFormData) => void;

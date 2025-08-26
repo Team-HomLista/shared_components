@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 
 import { ErrorBoundary } from "@/components/error-boundary";
 import { PropertyDetailContainer } from "@/modules/properties/internal/container";
-import { getPropertyDetails, getFeaturedProperties } from "@/services/property";
+import { getPropertyDetails, getFeaturedProperties } from "@/services/legacy/property";
 
 interface PageProps {
   params: Promise<{

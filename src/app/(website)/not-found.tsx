@@ -1,12 +1,12 @@
 import { Button } from "@shared/components/ui/button";
 import Link from "next/link";
 
-import { Navbar } from "@/layouts/website/navbar";
+import { WebsiteNavbar } from "@/layouts/website/navbar";
 
 export default function NotFound() {
   return (
     <>
-      <Navbar variant="default" />
+      <WebsiteNavbar variant="default" />
       <div className="bg-background flex min-h-screen flex-col items-center justify-center px-4 sm:px-6 lg:px-8">
         <div className="mx-auto flex w-full max-w-4xl flex-col items-center text-center">
           {/* Image container with responsive sizing */}

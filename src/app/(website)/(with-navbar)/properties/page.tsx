@@ -1,6 +1,6 @@
 import { PropertiesSearchContainer } from "@/modules/properties/search/container";
-import { FilterService } from "@/services/filter";
-import { getPropertiesBySearch } from "@/services/property";
+import { FilterService } from "@/services/legacy/filter";
+import { getPropertiesBySearch } from "@/services/legacy/property";
 import { cleanQueries } from "@/utils/clean-queries";
 
 export default async function PropertiesPage({
