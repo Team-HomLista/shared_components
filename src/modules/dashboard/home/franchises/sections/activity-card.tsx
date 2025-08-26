@@ -1,13 +1,14 @@
 import { FC } from "react";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/shared/components/ui";
+import { cn } from "@/shared/lib/utils";
 
 interface ActivityItem {
   title: string;
   subtitle: string;
   time: string;
   value?: string;
-  color?: string;
+  color?: "primary" | "secondary";
 }
 
 interface ActivityCardProps {
@@ -18,10 +19,10 @@ interface ActivityCardProps {
 
 export const ActivityCard: FC<ActivityCardProps> = ({ title, description, items }) => {
   return (
-    <Card className="rounded-2xl border border-[--color-border] bg-[--color-card] text-[--color-card-foreground] shadow-sm">
+    <Card>
       <CardHeader>
         <CardTitle className="text-base font-semibold">{title}</CardTitle>
-        {description && <p className="text-xs text-[--color-muted-foreground]">{description}</p>}
+        {description && <p className="text-muted-foreground text-xs">{description}</p>}
       </CardHeader>
       <CardContent>
         <ul className="space-y-4">
@@ -29,19 +30,19 @@ export const ActivityCard: FC<ActivityCardProps> = ({ title, description, items 
             <li key={idx} className="flex items-center justify-between text-sm">
               <div className="flex items-start gap-2">
                 <span
-                  className={`mt-1 h-2 w-2 rounded-full`}
-                  style={{
-                    backgroundColor: item.color === "primary" ? "var(--chart-3)" : "var(--chart-2)"
-                  }}
+                  className={cn("size-2 rounded-full", {
+                    "bg-chart-3": item.color === "primary",
+                    "bg-chart-2": item.color === "secondary"
+                  })}
                 />
                 <div className="flex flex-col">
                   <span className="font-medium">{item.title}</span>
-                  <span className="text-xs text-[--color-muted-foreground]">{item.subtitle}</span>
+                  <span className="text-muted-foreground text-xs">{item.subtitle}</span>
                 </div>
               </div>
               <div className="flex flex-col items-end">
                 {item.value && <span className="text-sm font-semibold">{item.value}</span>}
-                <span className="text-xs text-[--color-muted-foreground]">{item.time}</span>
+                <span className="text-muted-foreground text-xs">{item.time}</span>
               </div>
             </li>
           ))}

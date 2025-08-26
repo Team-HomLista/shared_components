@@ -16,11 +16,10 @@ export const DashboardCard: React.FC<DashboardCardProps> = ({
   title,
   description,
   rightSlot,
-  className,
   contentClassName,
   children
 }) => (
-  <Card className={cn("bg-background rounded-2xl border shadow-sm", className)}>
+  <Card className={cn("bg-background")}>
     {(title || description || rightSlot) && (
       <CardHeader className="py-4">
         <div className="flex items-center justify-between">

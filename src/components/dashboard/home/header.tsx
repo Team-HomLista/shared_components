@@ -7,7 +7,7 @@ import {
 } from "@shared/components/ui/card";
 import * as React from "react";
 
-import StatsCard from "../../../modules/dashboard/home/backoffice/sections/status-cards";
+import StatsCard from "@/modules/dashboard/home/backoffice/sections/status-cards";
 
 type StatsData = {
   label: string;

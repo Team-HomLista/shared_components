@@ -94,14 +94,18 @@ export function DonutDistributionCard({
               : { value: s.value, color: "text-sidebar-primary" };
 
             return (
-              <li key={s.name} className="flex items-center gap-3">
+              <li key={s.name} className="grid grid-cols-[auto_1fr_auto_auto] items-center gap-2">
+                {/* Punto de color */}
                 <span
                   className="h-3 w-3 rounded-full"
                   style={{ background: chartColors[i % chartColors.length] }}
                 />
-                <span className="w-20">{s.name}</span>
-                <span className={`ml-auto ${first.color} w-8 text-right`}>{first.value}</span>
-                <span className={`ml-2 ${second.color} w-8 text-right`}>{second.value}</span>
+                {/* Nombre del slice */}
+                <span className="truncate">{s.name}</span>
+                {/* Primer valor */}
+                <span className={`${first.color} w-10 truncate text-right`}>{first.value}</span>
+                {/* Segundo valor */}
+                <span className={`${second.color} w-10 truncate text-right`}>{second.value}</span>
               </li>
             );
           })}

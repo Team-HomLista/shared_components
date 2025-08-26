@@ -27,29 +27,35 @@ export function ListStatsCard({
     <DashboardCard title={title} description={descriptions}>
       <ul className="space-y-2 text-sm">
         {rows.map((row, i) => (
-          <li key={i} className="flex justify-between">
-            <span>{row.label}</span>
-            <span className="flex gap-2 font-medium">
-              {invertOrder ? (
-                <>
-                  {row.amount !== undefined && (
-                    <span className="text-sidebar-primary">{row.amount}</span>
-                  )}
-                  {row.pct !== undefined && (
-                    <span className="text-muted-foreground">{row.pct}</span>
-                  )}
-                </>
+          <li key={i} className="grid grid-cols-[1fr_auto_auto] items-center gap-2">
+            {/* Label */}
+            <span className="truncate">{row.label}</span>
+
+            {/* Primer valor */}
+            {invertOrder ? (
+              row.amount !== undefined ? (
+                <span className="text-sidebar-primary w-16 truncate text-right">{row.amount}</span>
               ) : (
-                <>
-                  {row.pct !== undefined && (
-                    <span className="text-muted-foreground">{row.pct}</span>
-                  )}
-                  {row.amount !== undefined && (
-                    <span className="text-sidebar-primary">{row.amount}</span>
-                  )}
-                </>
-              )}
-            </span>
+                <span />
+              )
+            ) : row.pct !== undefined ? (
+              <span className="text-muted-foreground w-16 truncate text-right">{row.pct}</span>
+            ) : (
+              <span />
+            )}
+
+            {/* Segundo valor */}
+            {invertOrder ? (
+              row.pct !== undefined ? (
+                <span className="text-muted-foreground w-16 truncate text-right">{row.pct}</span>
+              ) : (
+                <span />
+              )
+            ) : row.amount !== undefined ? (
+              <span className="text-sidebar-primary w-16 truncate text-right">{row.amount}</span>
+            ) : (
+              <span />
+            )}
           </li>
         ))}
       </ul>

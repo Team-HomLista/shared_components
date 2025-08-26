@@ -2,6 +2,8 @@
 
 import { FC } from "react";
 
+import { TabsSection } from "@/shared/components/ui/tabs-section";
+
 import HeaderSection from "../../../../components/dashboard/home/header";
 import RevenueCardsSection from "../../../../components/dashboard/home/revenue-cards";
 
@@ -9,7 +11,6 @@ import { statsData, revenueCardsData } from "./mocks";
 import { ActivityTab } from "./sections/activity-tab";
 import { AgenciesTab } from "./sections/agencies-tab";
 import { PropertiesTab } from "./sections/properties-tab";
-import { TabsSection } from "./sections/tabs-section";
 
 interface FranquiciasDashboardContainerProps {
   slug?: string;
