@@ -2,12 +2,12 @@
 
 import { FC } from "react";
 
-import UserDistributionSection from "@/modules/dashboard/home/sections/users-distribution";
+import HeaderSection from "../../../../components/dashboard/home/header";
+import RevenueCardsSection from "../../../../components/dashboard/home/revenue-cards";
 
 import { statsData, chartTabsData, revenueCardsData } from "./mocks";
-import HeaderSection from "./sections/header";
-import RevenueCardsSection from "./sections/revenue-cards";
 import ChartsTabsSection from "./sections/tabs";
+import UserDistributionSection from "./sections/users-distribution";
 
 interface DashboardContainerProps {
   slug?: string;
@@ -16,7 +16,11 @@ interface DashboardContainerProps {
 export const DashboardContainer: FC<DashboardContainerProps> = () => {
   return (
     <section className="container mx-auto space-y-8 p-4">
-      <HeaderSection stats={statsData} />
+      <HeaderSection
+        title="Panel de Control de Backoffice"
+        description="Resumen ejecutivo de la red Homlista"
+        stats={statsData}
+      />
 
       <UserDistributionSection
         data={[
