@@ -219,7 +219,6 @@ export const makeZodI18nMap: MakeZodI18nMap = (i18n, option) => (issue) => {
       break;
     }
     case "invalid_format":
-      console.log({ format: issue.format });
       if (issue.format === "starts_with") {
         message = t("errors.invalid_format.starts_with", {
           startsWith: issue["prefix"],
@@ -270,7 +269,6 @@ export const makeZodI18nMap: MakeZodI18nMap = (i18n, option) => (issue) => {
         defaultValue: message,
         ...path
       });
-      console.log({ message, key, values });
       break;
     }
     case "not_multiple_of":

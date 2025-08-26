@@ -80,9 +80,9 @@ interface NavbarProps {
 export const WebsiteNavbar: FC<NavbarProps> = ({ variant = "default" }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const { data, isLoading } = useQuery({
+  const { data } = useQuery({
     queryKey: ["access-token"],
-    queryFn: getAccessToken
+    queryFn: () => getAccessToken()
   });
 
   const isAuth = !!data;
@@ -172,16 +172,15 @@ export const WebsiteNavbar: FC<NavbarProps> = ({ variant = "default" }) => {
           </NavigationMenuList>
         </NavigationMenu>
 
-        {!isLoading &&
-          (isAuth ? (
-            <Button variant="secondary" onClick={() => redirect("/dashboard")}>
-              Ir al dashboard
-            </Button>
-          ) : (
-            <Button variant="secondary" onClick={() => redirect("/login")}>
-              Iniciar Sesión
-            </Button>
-          ))}
+        {isAuth ? (
+          <Button variant="secondary" onClick={() => redirect("/dashboard")}>
+            Ir al dashboard
+          </Button>
+        ) : (
+          <Button variant="secondary" onClick={() => redirect("/login")}>
+            Iniciar Sesión
+          </Button>
+        )}
       </div>
 
       {/* Mobile Menu Button */}
@@ -267,16 +266,15 @@ export const WebsiteNavbar: FC<NavbarProps> = ({ variant = "default" }) => {
                 </Link>
               </div>
 
-              {!isLoading &&
-                (isAuth ? (
-                  <Button variant="secondary" onClick={() => redirect("/dashboard")}>
-                    Ir al dashboard
-                  </Button>
-                ) : (
-                  <Button variant="secondary" onClick={() => redirect("/login")}>
-                    Iniciar Sesión
-                  </Button>
-                ))}
+              {isAuth ? (
+                <Button variant="secondary" onClick={() => redirect("/dashboard")}>
+                  Ir al dashboard
+                </Button>
+              ) : (
+                <Button variant="secondary" onClick={() => redirect("/login")}>
+                  Iniciar Sesión
+                </Button>
+              )}
             </div>
           </SheetContent>
         </Sheet>

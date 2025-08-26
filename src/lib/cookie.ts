@@ -1,6 +1,6 @@
 import { OptionsType } from "cookies-next";
 
-import cookieClient from "./cookie-client";
+import * as cookieClient from "./cookie-client";
 import * as cookieServer from "./cookie-server";
 
 export async function getCookie(key: string) {
