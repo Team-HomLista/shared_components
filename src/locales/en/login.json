@@ -5,5 +5,9 @@
   "password": "Password",
   "loginBtn": "Login",
   "forgotPassBtn": "I forgot my password",
-  "acceptTermsAndPrivacy": "By continuing, I accept the <0 href=\"/terms\">Terms of Service</0> and <1 href=\"/privacy_policy\">Privacy Policy</1>."
+  "acceptTermsAndPrivacy": "By continuing, I accept the <0 href=\"/terms\">Terms of Service</0> and <1 href=\"/privacy_policy\">Privacy Policy</1>.",
+  "error": {
+    "title": "Login failed",
+    "description": "Please recheck the email and password and try again."
+  }
 }

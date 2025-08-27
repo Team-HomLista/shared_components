@@ -3,9 +3,11 @@ import { dir } from "i18next";
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 
+import { ThemeProvider } from "@/components/theme-provider";
+import { cookieName, fallbackLng } from "@/config/i18n";
 import { I18nextProvider } from "@/lib/i18n/provider";
-import { cookieName, fallbackLng } from "@/lib/i18n/settings";
 import { QueryClientProvider } from "@/lib/react-query";
+import { Toaster } from "@/shared/components/ui";
 
 import "@/styles/globals.css";
 
@@ -46,7 +48,15 @@ export default async function RootLayout({ children }: React.PropsWithChildren) 
       <I18nextProvider>
         <html lang={lng} dir={dir(lng)}>
           <body className={`${inter.variable} flex min-h-screen flex-col antialiased`}>
-            {children}
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="light"
+              enableSystem
+              disableTransitionOnChange
+            >
+              {children}
+              <Toaster />
+            </ThemeProvider>
           </body>
         </html>
       </I18nextProvider>
