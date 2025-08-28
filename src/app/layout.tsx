@@ -8,7 +8,6 @@ import { cookieName, fallbackLng } from "@/config/i18n";
 import { I18nextProvider } from "@/lib/i18n/provider";
 import { QueryClientProvider } from "@/lib/react-query";
 import { Toaster } from "@/shared/components/ui";
-
 import "@/styles/globals.css";
 
 const inter = Inter({
