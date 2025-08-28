@@ -17,11 +17,14 @@ const config: StorybookConfig = {
     reactDocgen: "react-docgen-typescript"
   },
   viteFinal: async (config) => {
+    const path = await import('path');
+    const __dirname = path.dirname(new URL(import.meta.url).pathname);
+    
     config.resolve = config.resolve || {};
     config.resolve.alias = {
       ...config.resolve.alias,
-      "@": new URL("../src", import.meta.url).pathname,
-      "@shared": new URL("../src/shared", import.meta.url).pathname,
+      "@": path.resolve(__dirname, "../src"),
+      "@shared": path.resolve(__dirname, "../src/shared"),
     };
     
     // Override PostCSS config for Storybook
