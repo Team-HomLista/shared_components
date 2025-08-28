@@ -7,7 +7,7 @@ on:
       - main
 
 jobs:
-  chromatic:
+  deploy-chromatic:
     if: contains(github.event.pull_request.labels.*.name, 'chromatic-deployment')
     runs-on: ubuntu-latest
     steps:
@@ -21,4 +21,4 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Run Chromatic
-        run: npm run chromatic --project-token=${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+        run: npm run build-chromatic --project-token=${{ secrets.CHROMATIC_PROJECT_TOKEN }}
