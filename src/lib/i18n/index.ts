@@ -2,13 +2,13 @@ import { createInstance, KeyPrefix } from "i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import resourcesToBackend from "i18next-resources-to-backend";
 import { initReactI18next } from "react-i18next/initReactI18next";
+import { fallbackLng, languages, defaultNS, cookieName } from "src/config/i18n";
 import z from "zod";
 
 import { getCookie } from "@/lib/cookie";
 import { capitalize } from "@/utils/string";
 
 import { makeZodI18nMap } from "./i18n.zod";
-import { fallbackLng, languages, defaultNS, cookieName } from "../../config/i18n";
 
 const runsOnServerSide = typeof window === "undefined";
 
