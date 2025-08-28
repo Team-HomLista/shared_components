@@ -4,6 +4,7 @@ import { Button } from "@shared/components/ui/button";
 import { Card, CardContent } from "@shared/components/ui/card";
 import { Building2, MapPin, TrendingUp, Users } from "lucide-react";
 import Link from "next/link";
+import { WhiteLabelHero } from "@shared/white-label/src/hero-banner";
 
 import { getBrandConfig } from "@/config/brands";
 
@@ -25,38 +26,6 @@ export function WhiteLabelHomePage({ agencySlug }: WhiteLabelHomePageProps) {
   return (
     <div className="space-y-12">
       {/* Hero Section */}
-      <section className="py-16 text-center">
-        <h1 className="mb-4 text-4xl font-bold" style={{ color: brandConfig.colors.primary }}>
-          {brandConfig.content.title}
-        </h1>
-        {brandConfig.content.tagline && (
-          <p className="text-muted-foreground mx-auto mb-8 max-w-2xl text-xl">
-            {brandConfig.content.tagline}
-          </p>
-        )}
-        <p className="text-muted-foreground mx-auto mb-8 max-w-3xl text-lg">
-          {brandConfig.content.description}
-        </p>
-
-        <div className="flex justify-center gap-4">
-          <Link href={`/wl/${agencySlug}/properties`}>
-            <Button
-              size="lg"
-              style={{ backgroundColor: brandConfig.colors.primary }}
-              className="hover:opacity-90"
-            >
-              Ver Propiedades
-            </Button>
-          </Link>
-          <Button
-            variant="outline"
-            size="lg"
-            style={{ borderColor: brandConfig.colors.primary, color: brandConfig.colors.primary }}
-          >
-            Contactar Agencia
-          </Button>
-        </div>
-      </section>
 
       {/* Features Section */}
       <section className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">

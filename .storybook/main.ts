@@ -2,20 +2,25 @@ import type { StorybookConfig } from "@storybook/react-vite";
 
 const config: StorybookConfig = {
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
+
   addons: [
     "@storybook/addon-essentials",
     "@storybook/addon-onboarding",
     "@chromatic-com/storybook",
     "@storybook/experimental-addon-test"
   ],
+
   framework: {
     name: "@storybook/react-vite",
     options: {}
   },
+
   staticDirs: ["../public"],
+
   typescript: {
     reactDocgen: "react-docgen-typescript"
   },
+
   viteFinal: async (config) => {
     const path = await import('path');
     const __dirname = path.dirname(new URL(import.meta.url).pathname);
@@ -34,7 +39,9 @@ const config: StorybookConfig = {
     };
     
     return config;
-  }
+  },
+
+  docs: {}
 };
 
 export default config;
