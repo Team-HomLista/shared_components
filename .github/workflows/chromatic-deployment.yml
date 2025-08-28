@@ -8,9 +8,9 @@ on:
 
 jobs:
   deploy-chromatic:
+    continue-on-error: true
     if: contains(github.event.pull_request.labels.*.name, 'chromatic-deployment')
     runs-on: ubuntu-latest
-    allow_failure: true
     steps:
       - uses: actions/checkout@v4
         with:
