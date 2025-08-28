@@ -4,11 +4,11 @@ import resourcesToBackend from "i18next-resources-to-backend";
 import { initReactI18next } from "react-i18next/initReactI18next";
 import z from "zod";
 
+import { fallbackLng, languages, defaultNS, cookieName } from "@/config/i18n";
 import { getCookie } from "@/lib/cookie";
 import { capitalize } from "@/utils/string";
 
 import { makeZodI18nMap } from "./i18n.zod";
-import { fallbackLng, languages, defaultNS, cookieName } from "../../config/i18n";
 
 const runsOnServerSide = typeof window === "undefined";
 

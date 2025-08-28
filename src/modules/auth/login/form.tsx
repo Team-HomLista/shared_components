@@ -17,7 +17,7 @@ import { Schema, schema } from "./schema";
 export function LoginForm() {
   const router = useRouter();
   const form = useForm({ resolver: zodResolver(schema) });
-  const { mutate, error, isPending } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationFn: login,
     onSuccess() {
       router.push("/login");
