@@ -9,8 +9,7 @@
     "start": "next start",
     "lint": "next lint --fix",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
-    "build-chromatic": "chromatic --project-token $CHROMATIC_PROJECT_TOKEN --auto-accept-changes"
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@hookform/resolvers": "5.2.1",
