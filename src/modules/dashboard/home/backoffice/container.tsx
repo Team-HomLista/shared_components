@@ -2,8 +2,8 @@
 
 import { FC } from "react";
 
-import HeaderSection from "../../../../components/dashboard/home/header";
-import RevenueCardsSection from "../../../../components/dashboard/home/revenue-cards";
+import HeaderSection from "@/components/dashboard/home/header";
+import RevenueCardsSection from "@/components/dashboard/home/revenue-cards";
 
 import { statsData, chartTabsData, revenueCardsData } from "./mocks";
 import ChartsTabsSection from "./sections/tabs";
