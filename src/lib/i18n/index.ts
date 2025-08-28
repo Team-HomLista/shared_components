@@ -8,7 +8,7 @@ import { getCookie } from "@/lib/cookie";
 import { capitalize } from "@/utils/string";
 
 import { makeZodI18nMap } from "./i18n.zod";
-import { fallbackLng, languages, defaultNS, cookieName } from "./settings";
+import { fallbackLng, languages, defaultNS, cookieName } from "../../config/i18n";
 
 const runsOnServerSide = typeof window === "undefined";
 

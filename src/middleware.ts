@@ -1,10 +1,9 @@
 import acceptLanguage from "accept-language";
 import { NextRequest, NextResponse } from "next/server";
 
-import { fallbackLng, languages, cookieName, headerName } from "@/lib/i18n/settings";
-
-import { getCookie, setCookie } from "./lib/cookie";
-import { getAccessToken } from "./services/access-token";
+import { fallbackLng, languages, cookieName, headerName } from "@/config/i18n";
+import { getCookie, setCookie } from "@/lib/cookie";
+import { getAccessToken } from "@/services/access-token";
 
 acceptLanguage.languages(languages);
 

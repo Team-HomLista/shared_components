@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import { apiClient } from "@/lib/api-client";
 import { removeAccessToken, setAccessToken } from "@/services/access-token";
 
-type LoginPayload = {
+export type LoginPayload = {
   email: string;
   password: string;
 };
@@ -12,7 +12,7 @@ type LoginPayload = {
 export async function login(payload: LoginPayload) {
   const { data } = await apiClient.post("/api/login", payload);
 
-  if (!data?.token) return null;
+  if (!data?.token) throw new Error("User without token");
 
   setAccessToken(data.token);
 
