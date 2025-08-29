@@ -1,29 +1,14 @@
-import { toast } from "sonner";
-
-export interface ErrorHandlerObject<TError extends Error = Error> {
-  after?(error?: TError, options?: ErrorHandlerObject<TError>): void;
-  before?(error?: TError, options?: ErrorHandlerObject<TError>): void;
-  message?: string;
-}
-
-export type ErrorHandlerFunction<TError extends Error = Error> = (
-  error?: TError
-) => ErrorHandlerObject<TError> | boolean | undefined;
-
-export type ErrorHandler<TError extends Error = Error> =
-  | ErrorHandlerFunction
-  | ErrorHandlerObject<TError>
-  | string;
+/**
+ * Represents a function that handles errors of type TError.
+ *
+ * @template TError - The type of error to handle, defaults to Error
+ * @param error - The error to handle (optional)
+ * @returns A boolean indicating whether the error was handled successfully, or void if no return value is needed
+ */
+export type ErrorHandler<TError extends Error = Error> = (error?: TError) => boolean;
 
 export interface ErrorHandlerMany<TError extends Error = Error> {
   [key: string]: ErrorHandler<TError>;
-}
-
-function isErrorHandlerObject(value: any): value is ErrorHandlerObject {
-  if (typeof value === "object") {
-    return ["message", "after", "before"].some((k) => k in value);
-  }
-  return false;
 }
 
 /**
@@ -38,7 +23,7 @@ function isErrorHandlerObject(value: any): value is ErrorHandlerObject {
  * - Support for both direct and indirect error handling
  */
 export class ErrorHandlerRegistry<TError extends Error = Error> {
-  private handlers = new Map<string, ErrorHandler<Error>>();
+  private handlers = new Map<string, ErrorHandler<TError>>();
 
   private parent: ErrorHandlerRegistry | null = null;
 
@@ -76,7 +61,7 @@ export class ErrorHandlerRegistry<TError extends Error = Error> {
    * @param seek - The key of the error handler to find
    * @returns The found error handler or undefined if not found
    */
-  find(seek: string): ErrorHandler | undefined {
+  find(seek: string): ErrorHandler<TError> | undefined {
     const handler = this.handlers.get(seek);
     if (handler) return handler;
     return this.parent?.find(seek);
@@ -119,40 +104,6 @@ export class ErrorHandlerRegistry<TError extends Error = Error> {
 
     if (!handler) return false;
 
-    if (typeof handler === "string") {
-      return this.handleErrorObject(error, { message: handler });
-    }
-
-    if (typeof handler === "function") {
-      const result = handler(error);
-
-      if (isErrorHandlerObject(result)) return this.handleErrorObject(error, result);
-
-      return !!result;
-    }
-
-    if (isErrorHandlerObject(handler)) {
-      return this.handleErrorObject(error, handler);
-    }
-
-    return false;
-  }
-
-  /**
-   * Handles an error using an error handler object.
-   *
-   * @param error - The error to handle
-   * @param options - The error handler object containing before/after hooks and message
-   * @returns True if the error was handled successfully
-   */
-  handleErrorObject(error: TError, options: ErrorHandlerObject<TError> = {}) {
-    if (options.message) {
-      if (typeof window === "undefined") throw new Error(options.message);
-
-      toast(options.message);
-    }
-
-    options?.before?.(error, options);
-    return true;
+    return !!handler(error);
   }
 }

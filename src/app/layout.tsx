@@ -4,7 +4,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 
 import { ThemeProvider } from "@/components/theme-provider";
-import { cookieName, fallbackLng } from "@/config/i18n";
+import { COOKIE_NAME, FALLBACK_LNG } from "@/config/i18n";
 import { I18nextProvider } from "@/lib/i18n/provider";
 import { QueryClientProvider } from "@/lib/react-query";
 import { Toaster } from "@/shared/components/ui";
@@ -40,7 +40,7 @@ export const viewport: Viewport = {
 };
 
 export default async function RootLayout({ children }: React.PropsWithChildren) {
-  const lng = (await getCookie(cookieName)) ?? fallbackLng;
+  const lng = (await getCookie(COOKIE_NAME)) ?? FALLBACK_LNG;
 
   return (
     <QueryClientProvider>
