@@ -6,6 +6,7 @@ import { mergeConfig } from "vite";
 const config: StorybookConfig = {
   stories: [
     "../src/**/*.stories.@(js|jsx|ts|tsx)",
+    "../src/shared/**/*.stories.@(js|jsx|ts|tsx)",
     "../src/**/*.mdx"
   ],
 

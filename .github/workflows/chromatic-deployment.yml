@@ -30,7 +30,10 @@ jobs:
             echo "Created minimal package.json for submodule"
           fi
           
-          npm install
+          npm install --frozen-lockfile
+          
+          # Force re-link workspace to ensure submodule is accessible
+          npm install --force-local-workspace-links
           
           # Debug: Check submodule content
           echo "=== Checking submodule status ==="
@@ -41,6 +44,8 @@ jobs:
           find src -name "*.stories.*" -type f
           echo "=== Checking workspace linking ==="
           ls -la node_modules/@team-homlista/ || echo "Workspace not linked"
+          echo "=== Testing story file readability ==="
+          cat src/shared/components/ui/button.stories.tsx | head -5 || echo "Cannot read story file"
       - name: Run Chromatic
         uses: chromaui/action@latest
         with:
