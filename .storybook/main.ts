@@ -13,8 +13,7 @@ const config: StorybookConfig = {
   ],
 
   addons: [
-    "@chromatic-com/storybook",
-    "@storybook/addon-essentials"
+    "@chromatic-com/storybook"
   ],
 
   framework: {
