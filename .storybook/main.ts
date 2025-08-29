@@ -1,7 +1,6 @@
 import type { StorybookConfig } from "@storybook/react-vite";
 import * as viteTsconfigDefault from "vite-tsconfig-paths";
 const tsconfigPaths = viteTsconfigDefault.default;
-import { mergeConfig } from "vite";
 
 const config: StorybookConfig = {
   stories: [
@@ -9,13 +8,8 @@ const config: StorybookConfig = {
     "../src/**/*.mdx",
     "../src/**/*.stories.@(js|jsx|ts|tsx)",
 
-    // Monorepo-style packages (if any)
-    "../packages/**/src/**/*.stories.@(js|jsx|ts|tsx|mdx)",
-    "../libs/**/src/**/*.stories.@(js|jsx|ts|tsx|mdx)",
-
-    // Git submodules (common locations)
-    "../../submodules/**/src/**/*.stories.@(js|jsx|ts|tsx|mdx)",
-    "../../packages/**/src/**/*.stories.@(js|jsx|ts|tsx|mdx)"
+    // Shared submodule stories (adjust the relative path if your .storybook lives elsewhere)
+    "../src/shared/**/*.stories.@(js|jsx|ts|tsx|mdx)"
   ],
 
   addons: [
@@ -30,21 +24,12 @@ const config: StorybookConfig = {
 
   staticDirs: ["../public"],
 
-  typescript: {
-    reactDocgen: "react-docgen-typescript"
-  },
-
-  core: {
-    builder: "@storybook/builder-vite"
-  },
-
-  async viteFinal(config) {
-    return mergeConfig(config, {
-      plugins: [tsconfigPaths()]
-    });
+  viteFinal(config) {
+    // Ensure TS path aliases resolve across the repo (helps with imports from the submodule)
+    config.plugins = [...(config.plugins || []), tsconfigPaths()];
+    return config;
   },
 
   docs: {}
 };
-
 export default config;
