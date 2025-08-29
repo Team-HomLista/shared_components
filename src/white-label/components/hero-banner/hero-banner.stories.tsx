@@ -1,5 +1,5 @@
 // File: src/white-label/components/hero-banner/hero-banner.stories.tsx
-import { Meta, Story } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import React from "react";
 
 import { WhiteLabelHero } from "./hero-banner";
@@ -16,7 +16,7 @@ export default {
   }
 } as Meta;
 
-const Template: Story<any> = (args) => (
+const Template: StoryFn<any> = (args) => (
   <div style={{ padding: 20 }}>
     <WhiteLabelHero {...args} />
   </div>
