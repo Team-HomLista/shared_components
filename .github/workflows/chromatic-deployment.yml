@@ -30,7 +30,7 @@ jobs:
             echo "Created minimal package.json for submodule"
           fi
           
-          pnpm install --frozen-lockfile
+          npm install
           
           # Debug: Check submodule content
           echo "=== Checking submodule status ==="
