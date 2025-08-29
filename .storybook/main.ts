@@ -1,41 +1,46 @@
-// .storybook/main.ts
-import type { StorybookConfig } from '@storybook/react-vite';
-import path from 'path';
+import type { StorybookConfig } from "@storybook/react-vite";
+import * as viteTsconfigDefault from "vite-tsconfig-paths";
+import { resolve } from "path";
+
+const tsconfigPaths = viteTsconfigDefault.default;
 
 const config: StorybookConfig = {
   stories: [
-    // app stories
-    path.join(process.cwd(), 'src/**/*.mdx'),
-    path.join(process.cwd(), 'src/**/*.stories.@(js|jsx|ts|tsx)'),
-    // shared submodule stories
-    path.join(process.cwd(), 'src/shared/**/*.stories.@(js|jsx|ts|tsx|mdx)'),
+    "../src/shared/**/*.stories.@(js|jsx|ts|tsx)",
+    "../src/**/*.mdx"
   ],
-  addons: [
-    '@storybook/addon-essentials',
-    '@storybook/addon-links',
-    '@storybook/addon-interactions',
-    '@storybook/addon-mdx-gfm',
-  ],
-  framework: { name: '@storybook/react-vite', options: {} },
 
-  // ⬇️ This is the key part: alias the local package name to the folder.
-  viteFinal: async (config) => {
-    config.resolve = config.resolve || {};
-    config.resolve.alias = {
-      ...(config.resolve.alias || {}),
-      '@team-homlista/shared_components': path.resolve(process.cwd(), 'src/shared'),
-    };
-    // Ensure deps from shared compile when imported from the linked package
-    config.optimizeDeps = {
-      ...(config.optimizeDeps || {}),
-      include: [
-        ...(config.optimizeDeps?.include || []),
-      ],
-    };
-    return config;
+  addons: [
+    "@chromatic-com/storybook"
+  ],
+  
+  framework: {
+    name: "@storybook/react-vite",
+    options: {}
   },
 
-  docs: { autodocs: 'tag' },
+  staticDirs: ["../public"],
+
+  typescript: {
+    reactDocgen: "react-docgen-typescript"
+  },
+
+  async viteFinal(config) {
+    return {
+      ...config,
+      plugins: [...(config.plugins || []), tsconfigPaths()],
+      resolve: {
+        ...config.resolve,
+        alias: {
+          ...config.resolve?.alias,
+          "@": resolve(__dirname, "../src"),
+          "@shared": resolve(__dirname, "../src/shared"),
+        },
+      },
+    };
+  },
+
+  docs: {}
 };
 
 export default config;
