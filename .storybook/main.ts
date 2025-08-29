@@ -1,4 +1,4 @@
-import type { StorybookConfig } from "@storybook/react-vite";
+import type { StorybookConfig } from '@storybook/nextjs-vite';
 import * as viteTsconfigDefault from "vite-tsconfig-paths";
 import { resolve } from "path";
 
@@ -6,7 +6,7 @@ const tsconfigPaths = viteTsconfigDefault.default;
 
 const config: StorybookConfig = {
   stories: [
-    "../src/shared/**/*.stories.@(js|jsx|ts|tsx)",
+    "../src/**/*.stories.@(js|jsx|ts|tsx)",
     "../src/**/*.mdx"
   ],
 
@@ -15,7 +15,7 @@ const config: StorybookConfig = {
   ],
   
   framework: {
-    name: "@storybook/react-vite",
+    name: "@storybook/nextjs-vite",
     options: {}
   },
 

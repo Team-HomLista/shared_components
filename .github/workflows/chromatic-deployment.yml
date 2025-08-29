@@ -27,7 +27,7 @@ jobs:
           git submodule update --init --recursive
           git submodule status --recursive
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4p
         with:
           node-version: 22.18.0
 
