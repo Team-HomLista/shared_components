@@ -27,8 +27,6 @@ jobs:
             echo "Created minimal package.json for submodule"
           fi
           
-          npm ci
-          
           # Force npm to reinstall to ensure submodule workspace is linked
           npm install
           
