@@ -1,5 +1,7 @@
 import type { StorybookConfig } from "@storybook/react-vite";
-import { resolve } from "path";
+import * as viteTsconfigDefault from 'vite-tsconfig-paths';
+const tsconfigPaths = viteTsconfigDefault.default;
+import { mergeConfig } from "vite";
 
 const config: StorybookConfig = {
   stories: [
@@ -22,15 +24,14 @@ const config: StorybookConfig = {
     reactDocgen: "react-docgen-typescript"
   },
 
-  viteFinal: async (config) => {
-    config.resolve = config.resolve || {};
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      "@": resolve(__dirname, "../src"),
-      "@shared": resolve(__dirname, "../src/shared"),
-    };
+  core: {
+    builder: '@storybook/builder-vite',
+  },
 
-    return config;
+  async viteFinal(config) {
+    return mergeConfig(config, {
+      plugins: [tsconfigPaths()],
+    });
   },
 
   docs: {}
