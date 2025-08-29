@@ -42,8 +42,21 @@ jobs:
           bash -lc 'shopt -s globstar nullglob; files=(src/shared/**/*.stories.* src/shared/**/*.mdx); echo "Found: ${#files[@]}"; ((${#files[@]} > 0)) || { echo "❌ No stories found under src/shared"; exit 1; }'
 
       - name: Run Chromatic
+        id: chromatic
         uses: chromaui/action@latest
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           buildScriptName: build-storybook
           onlyChanged: false
+      
+      - name: Comment PR with Storybook URL
+        if: steps.chromatic.outcome == 'success'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `🎨 **Storybook Preview Ready!**\n\n📖 View the Storybook build: ${{ steps.chromatic.outputs.storybookUrl }}\n\n🔍 Review visual changes: ${{ steps.chromatic.outputs.url }}`
+            })
