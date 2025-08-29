@@ -24,7 +24,14 @@ jobs:
           version: latest
       - name: Install dependencies
         run: |
-          npm install --frozen-lockfile
+          # Create minimal package.json for submodule if it doesn't exist
+          if [ ! -f "src/shared/package.json" ]; then
+            echo '{"name": "@team-homlista/shared_components", "version": "0.0.0", "main": "components/ui/index.tsx"}' > src/shared/package.json
+            echo "Created minimal package.json for submodule"
+          fi
+          
+          pnpm install --frozen-lockfile
+          
           # Debug: Check submodule content
           echo "=== Checking submodule status ==="
           git submodule status
@@ -32,6 +39,8 @@ jobs:
           ls -la src/shared/components/ui/ | grep stories || echo "No stories found in submodule"
           echo "=== Checking story pattern match ==="
           find src -name "*.stories.*" -type f
+          echo "=== Checking workspace linking ==="
+          ls -la node_modules/@team-homlista/ || echo "Workspace not linked"
       - name: Run Chromatic
         uses: chromaui/action@latest
         with:
