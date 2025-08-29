@@ -9,6 +9,7 @@ on:
 jobs:
   chromatic:
     name: Run Chromatic
+    if: github.event_name == 'pull_request' && contains(join(github.event.pull_request.labels.*.name, ','), 'chromatic-deployment')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code (with submodules)
@@ -35,7 +36,7 @@ jobs:
 
       - name: Verify shared stories exist
         run: |
-          echo "Listing story files under src/shared:" 
+          echo "Listing story files under src/shared:"
           ls -R src/shared || true
           echo "Checking for any *.stories or *.mdx files under src/shared..."
           bash -lc 'shopt -s globstar nullglob; files=(src/shared/**/*.stories.* src/shared/**/*.mdx); echo "Found: ${#files[@]}"; ((${#files[@]} > 0)) || { echo "❌ No stories found under src/shared"; exit 1; }'
