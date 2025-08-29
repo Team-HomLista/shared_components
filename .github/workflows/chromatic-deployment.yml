@@ -23,7 +23,15 @@ jobs:
         with:
           version: latest
       - name: Install dependencies
-        run: npm install --frozen-lockfile
+        run: |
+          pnpm install --frozen-lockfile
+          # Debug: Check submodule content
+          echo "=== Checking submodule status ==="
+          git submodule status
+          echo "=== Checking if story file exists ==="
+          ls -la src/shared/components/ui/ | grep stories || echo "No stories found in submodule"
+          echo "=== Checking story pattern match ==="
+          find src -name "*.stories.*" -type f
       - name: Run Chromatic
         uses: chromaui/action@latest
         with:
