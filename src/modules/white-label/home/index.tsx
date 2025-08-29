@@ -4,7 +4,6 @@ import { Button } from "@shared/components/ui/button";
 import { Card, CardContent } from "@shared/components/ui/card";
 import { Building2, MapPin, TrendingUp, Users } from "lucide-react";
 import Link from "next/link";
-import { WhiteLabelHero } from "@shared/white-label/src/hero-banner";
 
 import { getBrandConfig } from "@/config/brands";
 

@@ -1,19 +1,14 @@
-import type { StorybookConfig } from '@storybook/nextjs-vite';
+import type { StorybookConfig } from "@storybook/nextjs-vite";
 import * as viteTsconfigDefault from "vite-tsconfig-paths";
 import { resolve } from "path";
 
 const tsconfigPaths = viteTsconfigDefault.default;
 
 const config: StorybookConfig = {
-  stories: [
-    "../src/**/*.stories.@(js|jsx|ts|tsx)",
-    "../src/**/*.mdx"
-  ],
+  stories: ["../src/**/*.stories.@(js|jsx|ts|tsx)", "../src/**/*.mdx"],
 
-  addons: [
-    "@chromatic-com/storybook"
-  ],
-  
+  addons: ["@chromatic-com/storybook"],
+
   framework: {
     name: "@storybook/nextjs-vite",
     options: {}
@@ -34,9 +29,9 @@ const config: StorybookConfig = {
         alias: {
           ...config.resolve?.alias,
           "@": resolve(__dirname, "../src"),
-          "@shared": resolve(__dirname, "../src/shared"),
-        },
-      },
+          "@shared": resolve(__dirname, "../src/shared")
+        }
+      }
     };
   },
 

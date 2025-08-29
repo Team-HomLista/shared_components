@@ -20,14 +20,14 @@ interface WhiteLabelHeroProps {
 }
 
 export function WhiteLabelHero({
-                                 title,
-                                 tagline,
-                                 description,
-                                 primaryColor,
-                                 primaryCta,
-                                 secondaryCta,
-                                 align = "center"
-                               }: WhiteLabelHeroProps) {
+  title,
+  tagline,
+  description,
+  primaryColor,
+  primaryCta,
+  secondaryCta,
+  align = "center"
+}: WhiteLabelHeroProps) {
   const alignClass = align === "left" ? "text-left" : "text-center";
 
   return (
