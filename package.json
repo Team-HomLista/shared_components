@@ -8,8 +8,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint --fix",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
+    "storybook": "storybook dev -p 6006 -c src/shared/.storybook",
+    "build-storybook": "storybook build -c src/shared/.storybook",
+    "storybook:root": "storybook dev -p 6006",
+    "build-storybook:root": "storybook build",
     "chromatic": "npx chromatic"
   },
   "dependencies": {

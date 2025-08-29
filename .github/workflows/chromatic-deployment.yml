@@ -21,35 +21,11 @@ jobs:
           node-version: 22.18.0
       - name: Install dependencies
         run: |
-          # Create minimal package.json for submodule if it doesn't exist
-          if [ ! -f "src/shared/package.json" ]; then
-            echo '{"name": "@team-homlista/shared_components", "version": "0.0.0", "main": "components/ui/index.tsx"}' > src/shared/package.json
-            echo "Created minimal package.json for submodule"
-          fi
-          
-          # Force npm to reinstall to ensure submodule workspace is linked
           npm install
-          
-          # Workaround: Create a direct accessible copy of the story and its dependencies
-          mkdir -p src/stories
-          cp src/shared/components/ui/button.tsx src/stories/ || echo "Could not copy button component"
-          # Copy and update the import path in the story
-          cp src/shared/components/ui/button.stories.tsx src/stories/ || echo "Could not copy story file"
-          sed -i 's|from "./button"|from "./button"|g' src/stories/button.stories.tsx || echo "Could not update import path"
-          
-          # Debug: Check submodule content
-          echo "=== Checking submodule status ==="
-          git submodule status
-          echo "=== Checking if story file exists ==="
-          ls -la src/shared/components/ui/ | grep stories || echo "No stories found in submodule"
-          echo "=== Checking story pattern match ==="
-          find src -name "*.stories.*" -type f
-          echo "=== Checking workspace linking ==="
-          ls -la node_modules/@team-homlista/ || echo "Workspace not linked"
-          echo "=== Testing story file readability ==="
-          cat src/shared/components/ui/button.stories.tsx | head -5 || echo "Cannot read story file"
       - name: Run Chromatic
         uses: chromaui/action@latest
         with:
           # ⚠️ Make sure to configure a `CHROMATIC_PROJECT_TOKEN` repository secret
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          # Use the submodule Storybook configuration
+          storybookBuildDir: storybook-static
