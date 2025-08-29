@@ -17,7 +17,7 @@ jobs:
           fetch-depth: 0
           submodules: recursive
           # Use a PAT with read access to the submodule if needed
-          token: ${{ secrets.SUBMODULES_TOKEN }}
+          # token: ${{ secrets.SUBMODULES_TOKEN }}
 
       - name: Sync & init submodules
         run: |
