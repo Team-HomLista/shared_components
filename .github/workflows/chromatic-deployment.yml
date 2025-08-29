@@ -25,8 +25,7 @@ jobs:
           version: 8
       - name: Install dependencies
         run: |
-          pnpm install --frozen-lockfile
-          pnpm build-storybook
+          npm install
       - name: Run Chromatic
         run: npx chromatic --project-token=${{ secrets.CHROMATIC_PROJECT_TOKEN }} --exit-zero-on-changes --storybook-build-dir=storybook-static
         env:
