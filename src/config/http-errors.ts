@@ -1,15 +1,13 @@
-import { ErrorHandlerRegistry } from "@/lib/error-handler";
+import { AxiosError } from "axios";
+import { toast } from "sonner";
 
 export const HTTTP_ERROR_TYPE = {
-  GENERIC_ERROR: "GENERIC_ERROR",
   NOT_FOUND: "404",
   SERVER_ERROR: "500"
-};
+} as const;
 
-export const registerGlobalErrors = (registry: ErrorHandlerRegistry) => {
-  registry.registerMany({
-    [HTTTP_ERROR_TYPE.GENERIC_ERROR]: { message: "Something went wrong. Please try again." },
-    [HTTTP_ERROR_TYPE.NOT_FOUND]: { message: "API Page not found!" },
-    [HTTTP_ERROR_TYPE.SERVER_ERROR]: { message: "Internal server error" }
-  });
+export const HTTP_ERROR_HANDLERS = {
+  [AxiosError.ERR_NETWORK]: () => !!toast.error("Network error"),
+  [HTTTP_ERROR_TYPE.NOT_FOUND]: () => !!toast.error("API Page not found!"),
+  [HTTTP_ERROR_TYPE.SERVER_ERROR]: () => !!toast.error("Internal server error")
 };

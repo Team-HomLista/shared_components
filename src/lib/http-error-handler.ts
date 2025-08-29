@@ -1,7 +1,8 @@
 import axios, { AxiosError } from "axios";
 
-import { registerGlobalErrors } from "@/config/http-errors";
+import { HTTP_ERROR_HANDLERS } from "@/config/http-errors";
 import { ErrorHandler, ErrorHandlerMany, ErrorHandlerRegistry } from "@/lib/error-handler";
+import { isApiErrorResponse } from "@/types/api-response";
 
 export interface HttpData {
   code: string;
@@ -11,14 +12,6 @@ export interface HttpData {
 
 export type THttpError = Error | AxiosError;
 
-export class HttpError extends Error {
-  constructor(message?: string) {
-    super(message); // 'Error' breaks prototype chain here
-    this.name = "HttpError";
-    Object.setPrototypeOf(this, new.target.prototype); // restore prototype chain
-  }
-}
-
 class HttpErrorHandler extends ErrorHandlerRegistry<THttpError> {
   /**
    * Handles an error response, determining the appropriate error handler to use.
@@ -27,45 +20,30 @@ class HttpErrorHandler extends ErrorHandlerRegistry<THttpError> {
    * @param direct - If true, bypasses some error handling logic
    * @throws The error if it cannot be handled
    */
-  resposeErrorHandler(this: HttpErrorHandler, error: THttpError) {
+  handleResponseError(this: HttpErrorHandler, error: THttpError) {
     if (error === null) throw new Error("Unrecoverrable error!! Error is null!");
 
-    if (axios.isAxiosError(error)) {
-      const response = error?.response;
-      const data = response?.data as HttpData;
+    const fromServerSide = typeof window === "undefined";
 
-      const seekers = [
-        data?.code,
-        error.code,
-        error?.name,
-        String(data?.status),
-        String(response?.status)
-      ];
+    if (fromServerSide || !axios.isAxiosError(error)) return error;
 
-      const result = this.handleError(seekers, error);
+    const response = error?.response;
+    const data = response?.data;
+    const seekers = [
+      isApiErrorResponse(data) ? data.error_code : undefined,
+      error.code,
+      error.name,
+      String(error.status),
+      String(response?.status)
+    ];
 
-      if (!result) {
-        if (data?.code && data?.description) {
-          const res = this.handleErrorObject(error, {
-            message: data?.description
-          });
-
-          return res;
-        }
-      }
-    }
-
-    if (error instanceof Error) {
-      if (this.handleError(error.name, error)) return;
-    }
-
-    throw error;
+    if (!this.handleError(seekers, error)) return error;
   }
 }
 
-export const globalErrorHandler = new HttpErrorHandler();
+export const globalHttpErrorHandler = new HttpErrorHandler();
 
-registerGlobalErrors(globalErrorHandler);
+globalHttpErrorHandler.registerMany(HTTP_ERROR_HANDLERS);
 
 /**
  * Creates a new error handler function that processes errors using a combination of local and global handlers.
@@ -77,11 +55,11 @@ registerGlobalErrors(globalErrorHandler);
 export function dealWith(solutions: ErrorHandlerMany<THttpError>, ignoreGlobal?: boolean) {
   let global;
 
-  if (ignoreGlobal === false) global = globalErrorHandler;
+  if (ignoreGlobal === false) global = globalHttpErrorHandler;
 
   const localHandlers = new HttpErrorHandler(global, solutions);
 
-  return (error: any) => localHandlers.resposeErrorHandler(error);
+  return (error: any) => localHandlers.handleResponseError(error);
 }
 
 /**
@@ -91,5 +69,5 @@ export function dealWith(solutions: ErrorHandlerMany<THttpError>, ignoreGlobal?:
  * @param handler - The error handler to register (can be a function, object, or string)
  */
 export function registerError(key: string, handler: ErrorHandler<THttpError>) {
-  globalErrorHandler.register(key, handler);
+  globalHttpErrorHandler.register(key, handler);
 }

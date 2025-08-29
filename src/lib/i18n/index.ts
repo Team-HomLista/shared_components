@@ -4,7 +4,7 @@ import resourcesToBackend from "i18next-resources-to-backend";
 import { initReactI18next } from "react-i18next/initReactI18next";
 import z from "zod";
 
-import { fallbackLng, languages, defaultNS, cookieName } from "@/config/i18n";
+import { FALLBACK_LNG, LANGUAGUES, DEFAULT_NS, COOKIE_NAME } from "@/config/i18n";
 import { getCookie } from "@/lib/cookie";
 import { capitalize } from "@/utils/string";
 
@@ -14,16 +14,16 @@ const runsOnServerSide = typeof window === "undefined";
 
 const i18n = createInstance({
   debug: false,
-  supportedLngs: languages,
-  fallbackLng,
+  supportedLngs: LANGUAGUES,
+  fallbackLng: FALLBACK_LNG,
   lng: undefined, // let detect the language on client side
-  fallbackNS: defaultNS,
-  defaultNS,
-  ns: ["zod", defaultNS],
+  fallbackNS: DEFAULT_NS,
+  defaultNS: DEFAULT_NS,
+  ns: ["zod", DEFAULT_NS],
   detection: {
     order: ["path", "htmlTag", "cookie", "navigator"]
   },
-  preload: runsOnServerSide ? languages : []
+  preload: runsOnServerSide ? LANGUAGUES : []
 });
 
 i18n
@@ -51,7 +51,7 @@ export async function getT<NS extends string | readonly string[]>(
   ns: NS,
   options: { keyPrefix?: KeyPrefix<NS> } = {}
 ) {
-  const lng = await getCookie(cookieName);
+  const lng = await getCookie(COOKIE_NAME);
 
   if (lng && i18n.resolvedLanguage !== lng) {
     await i18n.changeLanguage(lng);
@@ -63,7 +63,7 @@ export async function getT<NS extends string | readonly string[]>(
 
   return {
     t: i18n.getFixedT(
-      lng ?? i18n.resolvedLanguage ?? fallbackLng,
+      lng ?? i18n.resolvedLanguage ?? FALLBACK_LNG,
       Array.isArray(ns) ? ns[0] : ns,
       options?.keyPrefix
     ),
