@@ -13,6 +13,11 @@ const config: StorybookConfig = {
     "@chromatic-com/storybook"
   ],
 
+  features: {
+    interactionsDebugger: true,
+    storyStoreV7: false
+  },
+
   framework: {
     name: "@storybook/react-vite",
     options: {}
