@@ -27,3 +27,9 @@ jobs:
         with:
           # ⚠️ Make sure to configure a `CHROMATIC_PROJECT_TOKEN` repository secret
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          # 👇 both of these should be the folder that contains .storybook/
+          workingDir: "./"
+          storybookBaseDir: "./"
+          # (optional niceties)
+          exitZeroOnChanges: true
+          onlyChanged: true
