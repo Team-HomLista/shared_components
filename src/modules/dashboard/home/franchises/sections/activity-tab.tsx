@@ -2,7 +2,10 @@
 
 import { FC } from "react";
 
-import { actividadesAgencias, actividadesPropiedades } from "../mocks";
+import {
+  actividadesAgencias,
+  actividadesPropiedades
+} from "@/modules/dashboard/home/franchises/mocks";
 
 import { ActivityCard } from "./activity-card";
 
