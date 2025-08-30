@@ -5,9 +5,9 @@ import { FC } from "react";
 import { TabsSection } from "@/shared/components/ui/tabs-section";
 
 import { agencyMock } from "./mocks";
-import { AdministratorsTab } from "./tabs/administrators-tab";
 import { AgencyHeader } from "./sections/agency-header";
 import { AgencySidebar } from "./sections/agency-sidebar";
+import { AdministratorsTab } from "./tabs/administrators-tab";
 import { CertificationsTab } from "./tabs/certifications-tab";
 import { ExperienceTab } from "./tabs/experience-tab";
 import { GeneralTab } from "./tabs/general-tab";

@@ -4,7 +4,7 @@ import {
   distribucionPrecio,
   rendimientoPropiedades,
   summaryProperties
-} from "../mocks";
+} from "@/modules/dashboard/home/franchises/mocks";
 
 import { DonutDistributionCard } from "./donut-distribution-card";
 import { ListStatsCard } from "./list-stats-card";

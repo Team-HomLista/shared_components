@@ -2,10 +2,9 @@
 
 import { FC } from "react";
 
+import HeaderSection from "@/components/dashboard/home/header";
+import RevenueCardsSection from "@/components/dashboard/home/revenue-cards";
 import { TabsSection } from "@/shared/components/ui/tabs-section";
-
-import HeaderSection from "../../../../components/dashboard/home/header";
-import RevenueCardsSection from "../../../../components/dashboard/home/revenue-cards";
 
 import { statsData, revenueCardsData } from "./mocks";
 import { ActivityTab } from "./sections/activity-tab";
