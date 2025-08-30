@@ -89,42 +89,44 @@ export function WhiteLabelHomePage({ agencySlug }: WhiteLabelHomePageProps) {
 
       {/* Stats Section */}
       <section
-        className="rounded-2xl p-8 text-center text-white"
+        className="rounded-2xl p-8 text-center text-white flex flex-col gap-8"
         style={{ backgroundColor: brandConfig.colors.primary }}
       >
-        <h2 className="mb-8 text-2xl font-bold">Resultados que Nos Respaldan</h2>
+        <h2 className="text-2xl font-bold">Resultados que Nos Respaldan</h2>
         <div className="grid gap-8 md:grid-cols-3">
-          <div>
-            <div className="mb-2 text-3xl font-bold">500+</div>
+          <div className="flex flex-col gap-2">
+            <div className="text-3xl font-bold">500+</div>
             <div className="opacity-90">Propiedades Vendidas</div>
           </div>
-          <div>
-            <div className="mb-2 text-3xl font-bold">95%</div>
+          <div className="flex flex-col gap-2">
+            <div className="text-3xl font-bold">95%</div>
             <div className="opacity-90">Clientes Satisfechos</div>
           </div>
-          <div>
-            <div className="mb-2 text-3xl font-bold">15+</div>
+          <div className="flex flex-col gap-2">
+            <div className="text-3xl font-bold">15+</div>
             <div className="opacity-90">Años de Experiencia</div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 text-center">
-        <h2 className="mb-4 text-3xl font-bold">¿Listo para encontrar tu hogar ideal?</h2>
-        <p className="text-muted-foreground mx-auto mb-8 max-w-2xl">
+      <section className="py-16 text-center flex flex-col gap-4">
+        <h2 className="text-3xl font-bold">¿Listo para encontrar tu hogar ideal?</h2>
+        <p className="text-muted-foreground mx-auto max-w-2xl">
           Explora nuestra selección de propiedades y encuentra la que mejor se adapte a tus
           necesidades
         </p>
-        <Link href={`/wl/${agencySlug}/properties`}>
-          <Button
-            size="lg"
-            style={{ backgroundColor: brandConfig.colors.primary }}
-            className="hover:opacity-90"
-          >
-            Explorar Propiedades
-          </Button>
-        </Link>
+        <div>
+          <Link href={`/wl/${agencySlug}/properties`}>
+            <Button
+              size="lg"
+              style={{ backgroundColor: brandConfig.colors.primary }}
+              className="hover:opacity-90"
+            >
+              Explorar Propiedades
+            </Button>
+          </Link>
+        </div>
       </section>
     </div>
   );
