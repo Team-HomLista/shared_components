@@ -31,7 +31,7 @@ export function WhiteLabelHomePage({ agencySlug }: WhiteLabelHomePageProps) {
         <Card>
           <CardContent className="p-6 text-center">
             <div
-              className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg"
+              className="mx-auto mb-4 flex size-12 items-center justify-center rounded-lg"
               style={{ backgroundColor: `${brandConfig.colors.primary}20` }}
             >
               <Building2 className="h-6 w-6" style={{ color: brandConfig.colors.primary }} />
@@ -46,7 +46,7 @@ export function WhiteLabelHomePage({ agencySlug }: WhiteLabelHomePageProps) {
         <Card>
           <CardContent className="p-6 text-center">
             <div
-              className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg"
+              className="mx-auto mb-4 flex size-12 items-center justify-center rounded-lg"
               style={{ backgroundColor: `${brandConfig.colors.primary}20` }}
             >
               <MapPin className="h-6 w-6" style={{ color: brandConfig.colors.primary }} />
@@ -59,7 +59,7 @@ export function WhiteLabelHomePage({ agencySlug }: WhiteLabelHomePageProps) {
         <Card>
           <CardContent className="p-6 text-center">
             <div
-              className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg"
+              className="mx-auto mb-4 flex size-12 items-center justify-center rounded-lg"
               style={{ backgroundColor: `${brandConfig.colors.primary}20` }}
             >
               <TrendingUp className="h-6 w-6" style={{ color: brandConfig.colors.primary }} />
@@ -74,7 +74,7 @@ export function WhiteLabelHomePage({ agencySlug }: WhiteLabelHomePageProps) {
         <Card>
           <CardContent className="p-6 text-center">
             <div
-              className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg"
+              className="mx-auto mb-4 flex size-12 items-center justify-center rounded-lg"
               style={{ backgroundColor: `${brandConfig.colors.primary}20` }}
             >
               <Users className="h-6 w-6" style={{ color: brandConfig.colors.primary }} />
