@@ -5,13 +5,13 @@ import { FC } from "react";
 import { TabsSection } from "@/shared/components/ui/tabs-section";
 
 import { agencyMock } from "./mocks";
-import { AdministratorsTab } from "./sections/administrators-tab";
+import { AdministratorsTab } from "./tabs/administrators-tab";
 import { AgencyHeader } from "./sections/agency-header";
 import { AgencySidebar } from "./sections/agency-sidebar";
-import { CertificationsTab } from "./sections/certifications-tab";
-import { ExperienceTab } from "./sections/experience-tab";
-import { GeneralTab } from "./sections/general-tab";
-import { VideoTab } from "./sections/video-tab";
+import { CertificationsTab } from "./tabs/certifications-tab";
+import { ExperienceTab } from "./tabs/experience-tab";
+import { GeneralTab } from "./tabs/general-tab";
+import { VideoTab } from "./tabs/video-tab";
 
 interface ContainerProps {
   slug?: string;

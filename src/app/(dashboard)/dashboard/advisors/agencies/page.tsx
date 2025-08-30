@@ -1,6 +1,6 @@
 "use client";
 import { getBreadcrumbFromMenuItem, useDashboard } from "@/hooks/use-dashboard";
-import { AgencyEditContainer } from "@/modules/dashboard/advisors/agencies/edit/container";
+import { AgencyEditContainer } from "@/modules/agencies/dashboard/edit/container";
 
 export default function Page() {
   useDashboard({
