@@ -6,6 +6,7 @@ import { Building2, MapPin, TrendingUp, Users } from "lucide-react";
 import Link from "next/link";
 
 import { getBrandConfig } from "@/config/brands";
+import { ErrorBoundary } from "@/components/error-boundary";
 
 interface WhiteLabelHomePageProps {
   agencySlug: string;
@@ -15,11 +16,7 @@ export function WhiteLabelHomePage({ agencySlug }: WhiteLabelHomePageProps) {
   const brandConfig = getBrandConfig(agencySlug);
 
   if (!brandConfig) {
-    return (
-      <div className="container mx-auto px-4 py-8">
-        <h1>Brand configuration not found for: {agencySlug}</h1>
-      </div>
-    );
+    throw new Error(`Brand configuration not found for: ${agencySlug}`);
   }
 
   return (
