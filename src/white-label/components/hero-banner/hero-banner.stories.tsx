@@ -1,40 +1,45 @@
 // File: src/white-label/components/hero-banner/hero-banner.stories.tsx
-import { Meta, StoryFn } from "@storybook/react";
-import React from "react";
+import type { Meta, StoryObj } from "@storybook/react";
 
 import { WhiteLabelHero } from "./hero-banner";
 
-export default {
-  title: "WhiteLabel/WhiteLabelHero",
+const meta: Meta<typeof WhiteLabelHero> = {
+  title: "WhiteLabel/HeroBanner",
   component: WhiteLabelHero,
   argTypes: {
     primaryColor: { control: "color" },
-    align: { control: { type: "inline-radio", options: ["center", "left"] } },
-    title: { control: "text" },
-    tagline: { control: "text" },
-    description: { control: "text" }
+    align: { control: { type: "inline-radio", options: ["center", "left"] } }
   }
-} as Meta;
+};
+export default meta;
 
-const Template: StoryFn<any> = (args) => (
-  <div style={{ padding: 20 }}>
-    <WhiteLabelHero {...args} />
-  </div>
-);
+type Story = StoryObj<typeof WhiteLabelHero>;
 
-export const Default = Template.bind({});
-Default.args = {
-  title: "Encuentra tu próximo hogar",
-  tagline: "Propiedades seleccionadas para ti",
-  description: "Explora una amplia selección de viviendas en las mejores ubicaciones.",
-  primaryColor: "#0ea5a4",
-  primaryCta: { label: "Ver Propiedades", href: "#" },
-  secondaryCta: { label: "Contactar Agencia", href: "#" },
-  align: "center"
+export const WithBackground: Story = {
+  args: {
+    eyebrow: "Agencia Inmobiliaria",
+    title: "Encuentra tu próximo hogar",
+    subtitle: "Propiedades seleccionadas para ti",
+    description: "Explora una amplia selección de viviendas en las mejores ubicaciones.",
+    primaryColor: "#0ea5a4",
+    primaryCta: { label: "Ver Propiedades", href: "#" },
+    secondaryCta: { label: "Contactar Agencia", href: "#" },
+    align: "left",
+    backgroundUrl:
+      "https://images.unsplash.com/photo-1505691938895-1758d7feb511?q=80&w=1600&auto=format&fit=crop",
+    kpis: [
+      { value: "500+", label: "Propiedades Vendidas" },
+      { value: "95%", label: "Clientes Satisfechos" },
+      { value: "15+", label: "Años de Experiencia" }
+    ]
+  }
 };
 
-export const LeftAligned = Template.bind({});
-LeftAligned.args = {
-  ...Default.args,
-  align: "left"
+export const Minimal: Story = {
+  args: {
+    title: "Tu inversión segura",
+    primaryColor: "#0ea5a4",
+    primaryCta: { label: "Explorar", href: "#" },
+    align: "center"
+  }
 };
