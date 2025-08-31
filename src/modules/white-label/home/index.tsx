@@ -5,8 +5,8 @@ import { Card, CardContent } from "@shared/components/ui/card";
 import { Building2, MapPin, TrendingUp, Users } from "lucide-react";
 import Link from "next/link";
 
-import { getBrandConfig } from "@/config/brands";
 import { ErrorBoundary } from "@/components/error-boundary";
+import { getBrandConfig } from "@/config/brands";
 
 interface WhiteLabelHomePageProps {
   agencySlug: string;
@@ -16,7 +16,13 @@ export function WhiteLabelHomePage({ agencySlug }: WhiteLabelHomePageProps) {
   const brandConfig = getBrandConfig(agencySlug);
 
   if (!brandConfig) {
-    throw new Error(`Brand configuration not found for: ${agencySlug}`);
+    return (
+      <ErrorBoundary>
+        <div className="container mx-auto px-4 py-8">
+          <h1>Brand configuration not found for: {agencySlug}</h1>
+        </div>
+      </ErrorBoundary>
+    );
   }
 
   return (
@@ -86,7 +92,7 @@ export function WhiteLabelHomePage({ agencySlug }: WhiteLabelHomePageProps) {
 
       {/* Stats Section */}
       <section
-        className="rounded-2xl p-8 text-center text-white flex flex-col gap-8"
+        className="flex flex-col gap-8 rounded-2xl p-8 text-center text-white"
         style={{ backgroundColor: brandConfig.colors.primary }}
       >
         <h2 className="text-2xl font-bold">Resultados que Nos Respaldan</h2>
@@ -107,7 +113,7 @@ export function WhiteLabelHomePage({ agencySlug }: WhiteLabelHomePageProps) {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 text-center flex flex-col gap-4">
+      <section className="flex flex-col gap-4 py-16 text-center">
         <h2 className="text-3xl font-bold">¿Listo para encontrar tu hogar ideal?</h2>
         <p className="text-muted-foreground mx-auto max-w-2xl">
           Explora nuestra selección de propiedades y encuentra la que mejor se adapte a tus

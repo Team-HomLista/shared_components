@@ -165,18 +165,20 @@ export const WhiteLabelHero = forwardRef<HTMLElement, WhiteLabelHeroProps>(
         )}
 
         <div className="relative container px-4">
-          <div 
+          <div
             className={cn(contentMaxWidth[align], alignClasses[align], "flex flex-col gap-4")}
-            style={{
-              "--brand-primary": primaryColor,
-              "--brand-accent": _accentColor || primaryColor
-            } as React.CSSProperties}
+            style={
+              {
+                "--brand-primary": primaryColor,
+                "--brand-accent": _accentColor || primaryColor
+              } as React.CSSProperties
+            }
           >
             {/* Badge */}
             {badge && (
               <Badge
                 variant="secondary"
-                className="inline-flex items-center gap-1 bg-white/10 text-white backdrop-blur-sm self-start"
+                className="inline-flex items-center gap-1 self-start bg-white/10 text-white backdrop-blur-sm"
               >
                 <Star className="h-3 w-3" />
                 {badge}
@@ -187,10 +189,10 @@ export const WhiteLabelHero = forwardRef<HTMLElement, WhiteLabelHeroProps>(
             {eyebrow && (
               <div
                 className={cn(
-                  "inline-block rounded-full border px-3 py-1 text-xs font-medium tracking-wide self-start",
-                  hasBackground 
-                    ? "bg-white/10 text-white border-white/20" 
-                    : "bg-[color:var(--brand-primary)]/5 text-[color:var(--brand-primary)] border-[color:var(--brand-primary)]/20"
+                  "inline-block self-start rounded-full border px-3 py-1 text-xs font-medium tracking-wide",
+                  hasBackground
+                    ? "border-white/20 bg-white/10 text-white"
+                    : "border-[color:var(--brand-primary)]/20 bg-[color:var(--brand-primary)]/5 text-[color:var(--brand-primary)]"
                 )}
               >
                 {eyebrow}
@@ -246,9 +248,9 @@ export const WhiteLabelHero = forwardRef<HTMLElement, WhiteLabelHeroProps>(
                   size={primaryCta.size || "lg"}
                   variant={primaryCta.variant || "default"}
                   className={cn(
-                    "group inline-flex items-center gap-2 font-semibold transition-all hover:gap-3 text-white",
-                    hasBackground 
-                      ? "bg-white/90 text-black hover:bg-white" 
+                    "group inline-flex items-center gap-2 font-semibold text-white transition-all hover:gap-3",
+                    hasBackground
+                      ? "bg-white/90 text-black hover:bg-white"
                       : "bg-[color:var(--brand-primary)] hover:bg-[color:var(--brand-primary)]/90"
                   )}
                 >
@@ -321,9 +323,9 @@ export const WhiteLabelHero = forwardRef<HTMLElement, WhiteLabelHeroProps>(
                   <div
                     key={idx}
                     className={cn(
-                      "rounded-lg border p-4 backdrop-blur-sm transition-all hover:scale-105 flex flex-col gap-2",
-                      hasBackground 
-                        ? "border-white/20 bg-white/10" 
+                      "flex flex-col gap-2 rounded-lg border p-4 backdrop-blur-sm transition-all hover:scale-105",
+                      hasBackground
+                        ? "border-white/20 bg-white/10"
                         : "border-[color:var(--brand-primary)]/20 bg-transparent"
                     )}
                   >
@@ -342,7 +344,7 @@ export const WhiteLabelHero = forwardRef<HTMLElement, WhiteLabelHeroProps>(
             {testimonial && (
               <div
                 className={cn(
-                  "rounded-lg border bg-white/10 p-6 backdrop-blur-sm flex flex-col gap-4",
+                  "flex flex-col gap-4 rounded-lg border bg-white/10 p-6 backdrop-blur-sm",
                   align === "center" && "mx-auto max-w-2xl"
                 )}
               >
