@@ -1,6 +1,9 @@
 "use client";
 
-import { FC, useState } from "react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import React, { FC } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
 import {
   Button,
@@ -9,47 +12,39 @@ import {
   DialogHeader,
   DialogTitle,
   DialogFooter,
-  Input
+  Form
 } from "@/shared/components/ui";
+import { getYouTubeEmbedUrl } from "@/shared/lib/utils";
 
-// Regex para validar URLs de YouTube
-const isValidYouTubeUrl = (url: string) => {
-  const ytRegex = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/.+$/;
-  return ytRegex.test(url);
-};
+// Schema de Zod para validar URL de YouTube
+const videoSchema = z.object({
+  url: z
+    .string()
+    .regex(
+      /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/.+$/,
+      "Por favor ingresa una URL válida de YouTube"
+    )
+});
 
-// Función para obtener URL de embed de YouTube
-const getYouTubeEmbedUrl = (url: string) => {
-  let videoId = "";
-  if (url.includes("youtube.com")) {
-    const params = new URLSearchParams(new URL(url).search);
-    videoId = params.get("v") || "";
-  } else if (url.includes("youtu.be")) {
-    videoId = url.split("/").pop() || "";
-  }
-  return `https://www.youtube.com/embed/${videoId}?controls=1`;
-};
+type VideoForm = z.infer<typeof videoSchema>;
 
 export const VideoTab: FC = () => {
-  const [video, setVideo] = useState<string | null>(null);
-  const [open, setOpen] = useState(false);
-  const [url, setUrl] = useState("");
-  const [error, setError] = useState("");
+  const [video, setVideo] = React.useState<string | null>(null);
+  const [open, setOpen] = React.useState(false);
 
-  const handleSaveVideo = () => {
-    if (!isValidYouTubeUrl(url)) {
-      setError("Por favor ingresa una URL válida de YouTube");
-      return;
-    }
+  const form = useForm<VideoForm>({
+    resolver: zodResolver(videoSchema),
+    defaultValues: { url: "" }
+  });
 
-    setVideo(url);
-    setUrl("");
-    setError("");
+  const handleSaveVideo = (data: VideoForm) => {
+    setVideo(data.url);
+    form.reset();
     setOpen(false);
   };
 
   const handleEditClick = () => {
-    setUrl(video || "");
+    form.setValue("url", video || "");
     setOpen(true);
   };
 
@@ -76,7 +71,7 @@ export const VideoTab: FC = () => {
       ) : (
         <div>
           <p className="text-muted-foreground mb-4">
-            Este agencia aún no cuenta con videos agregados.
+            Esta agencia aún no cuenta con videos agregados.
           </p>
           <Button onClick={() => setOpen(true)}>Agregar video</Button>
         </div>
@@ -88,24 +83,17 @@ export const VideoTab: FC = () => {
             <DialogTitle>{video ? "Editar video" : "Agregar nuevo video"}</DialogTitle>
           </DialogHeader>
 
-          <div className="space-y-3">
-            <Input
-              placeholder="Pega la URL de YouTube"
-              value={url}
-              onChange={(e) => {
-                setUrl(e.target.value);
-                setError("");
-              }}
-            />
-            {error && <p className="text-sm text-red-500">{error}</p>}
-          </div>
-
-          <DialogFooter className="mt-4">
-            <Button variant="outline" onClick={() => setOpen(false)}>
-              Cancelar
-            </Button>
-            <Button onClick={handleSaveVideo}>Guardar</Button>
-          </DialogFooter>
+          <Form {...form}>
+            <form className="space-y-3" onSubmit={form.handleSubmit(handleSaveVideo)}>
+              <Form.Input control={form.control} name="url" placeholder="Pega la URL de YouTube" />
+              <DialogFooter className="mt-4">
+                <Button variant="outline" onClick={() => setOpen(false)}>
+                  Cancelar
+                </Button>
+                <Button type="submit">Guardar</Button>
+              </DialogFooter>
+            </form>
+          </Form>
         </DialogContent>
       </Dialog>
     </div>

@@ -27,7 +27,7 @@ export const AgencyHeader: FC<AgencyHeaderProps> = ({ logo, name, id, status }) 
         <div>
           <h2 className="text-xl font-semibold">{name}</h2>
           <p className="text-muted-foreground text-sm">ID {id}</p>
-          <span className="bg-foreground text-background mt-1 inline-block rounded-lg px-2 py-0.5 text-xs font-medium">
+          <span className="bg-foreground text-background inline-block rounded-lg px-2 py-0.5 text-xs font-medium">
             {status}
           </span>
         </div>
@@ -45,7 +45,7 @@ export const AgencyHeader: FC<AgencyHeaderProps> = ({ logo, name, id, status }) 
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-48">
             <DropdownMenuItem className="flex items-center gap-2">
-              <UserX className="text-muted-foreground h-4 w-4" />
+              <UserX className="text-muted-foreground" />
               <span>Desactivar cuenta</span>
             </DropdownMenuItem>
             <DropdownMenuItem className="text-destructive focus:text-destructive flex items-center gap-2">

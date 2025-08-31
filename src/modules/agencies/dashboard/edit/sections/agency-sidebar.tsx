@@ -2,7 +2,7 @@
 
 import { FC } from "react";
 
-import { Card, CardContent, CardHeader } from "@/shared/components/ui";
+import { Card, CardContent, CardHeader, CardTitle } from "@/shared/components/ui";
 
 interface AgencySidebarProps {
   properties: {
@@ -26,7 +26,7 @@ export const AgencySidebar: FC<AgencySidebarProps> = ({ properties, agents, meta
       {/* Card Propiedades */}
       <Card className="rounded-2xl border shadow-lg">
         <CardHeader>
-          <h3 className="text-sm font-medium">Propiedades</h3>
+          <CardTitle>Propiedades</CardTitle>
         </CardHeader>
         <CardContent className="space-y-1">
           <div className="flex justify-between text-sm">
