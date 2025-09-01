@@ -4,15 +4,14 @@ import { FormDescription } from "@shared/components/ui/form/elements/form-descri
 import { FormField } from "@shared/components/ui/form/elements/form-field";
 import { FormLabel } from "@shared/components/ui/form/elements/form-label";
 import { FormMessage } from "@shared/components/ui/form/elements/form-message";
-import { Input } from "@shared/components/ui/input";
-import { HTMLProps } from "react";
+import { Input, InputProps } from "@shared/components/ui/input";
 import { Control, FieldPath, FieldValues } from "react-hook-form";
 
-interface FormInputProps<TFieldValues extends FieldValues> extends HTMLProps<HTMLInputElement> {
+interface FormInputProps<TFieldValues extends FieldValues> extends Omit<InputProps, "title"> {
   control: Control<TFieldValues>;
-  description?: string;
   name: FieldPath<TFieldValues>;
-  title?: string;
+  title?: React.ReactNode;
+  description?: React.ReactNode;
   contentClassName?: string;
 }
 
@@ -33,7 +32,6 @@ export const FormInput = <TFieldValues extends FieldValues>({
           <FormLabel>{title}</FormLabel>
           <FormDescription>{description}</FormDescription>
           <FormControl>
-            {/* Pass inputProps and field props to the Input component */}
             <Input {...inputProps} {...field} value={field.value ?? ""} />
           </FormControl>
           <FormMessage />

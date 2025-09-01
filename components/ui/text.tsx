@@ -23,7 +23,8 @@ export const textVariants = cva(cn(""), {
        * emphasis should be lower. Similar to description in styles. */
       small: cn(""),
       /** Same as description but with strong emphasis (bold). */
-      strong: cn("")
+      strong: cn(""),
+      link: cn("font-medium text-foreground underline-offset-2 hover:underline")
     }
   },
   defaultVariants: {
@@ -41,7 +42,8 @@ export const textElement = {
   description: "p",
   label: "label",
   small: "p",
-  strong: "strong"
+  strong: "strong",
+  link: "a"
 };
 
 type PolymorphicAsProp<E extends ElementType> = {
