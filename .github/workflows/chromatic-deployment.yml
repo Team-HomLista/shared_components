@@ -1,0 +1,49 @@
+name: Chromatic Deployment
+
+on:
+  pull_request:
+    branches:
+      - development
+      - main
+
+jobs:
+  chromatic:
+    name: Run Chromatic
+    if: github.event_name == 'pull_request' && contains(join(github.event.pull_request.labels.*.name, ','), 'chromatic-deployment')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code (with submodules)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: recursive
+          # Use a PAT with read access to the submodule if needed
+          # token: ${{ secrets.SUBMODULES_TOKEN }}
+
+      - name: Ensure git is happy with submodules
+        run: |
+          git config --global --add safe.directory "*"
+          git submodule sync --recursive
+          git submodule update --init --recursive
+          git submodule status --recursive
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.18.0
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Verify shared stories exist
+        run: |
+          echo "Listing story files under src/shared:"
+          ls -R src/shared || true
+          echo "Checking for any *.stories or *.mdx files under src/shared..."
+          bash -lc 'shopt -s globstar nullglob; files=(src/shared/**/*.stories.* src/shared/**/*.mdx); echo "Found: ${#files[@]}"; ((${#files[@]} > 0)) || { echo "❌ No stories found under src/shared"; exit 1; }'
+
+      - name: Run Chromatic
+        uses: chromaui/action@latest
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          buildScriptName: build-storybook
+          onlyChanged: false

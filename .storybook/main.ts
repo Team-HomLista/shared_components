@@ -1,36 +1,41 @@
-import type { StorybookConfig } from "@storybook/experimental-nextjs-vite";
-import { mergeConfig } from "vite";
+import type { StorybookConfig } from "@storybook/nextjs-vite";
+import * as viteTsconfigDefault from "vite-tsconfig-paths";
+import { resolve } from "path";
+
+const tsconfigPaths = viteTsconfigDefault.default;
 
 const config: StorybookConfig = {
-  stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
-  addons: [
-    "@storybook/addon-essentials",
-    "@storybook/addon-onboarding",
-    "@chromatic-com/storybook",
-    "@storybook/experimental-addon-test"
-  ],
+  stories: ["../src/**/*.stories.@(js|jsx|ts|tsx)", "../src/**/*.mdx"],
+
+  addons: ["@chromatic-com/storybook"],
+
   framework: {
-    name: "@storybook/experimental-nextjs-vite",
+    name: "@storybook/nextjs-vite",
     options: {}
   },
+
   staticDirs: ["../public"],
-  viteFinal: (config) => {
-    // Ignore postcss.config.mjs, important fix that causes a SB bug.
-    return mergeConfig(config, {
+
+  typescript: {
+    reactDocgen: "react-docgen-typescript"
+  },
+
+  async viteFinal(config) {
+    return {
+      ...config,
+      plugins: [...(config.plugins || []), tsconfigPaths()],
       resolve: {
+        ...config.resolve,
         alias: {
-          "@": "../src"
-        }
-      },
-      css: {
-        ...config.css,
-        postcss: {
-          // Empty configurations for error preventing.
-          plugins: []
+          ...config.resolve?.alias,
+          "@": resolve(__dirname, "../src"),
+          "@shared": resolve(__dirname, "../src/shared")
         }
       }
-    });
-  }
+    };
+  },
+
+  docs: {}
 };
 
 export default config;
