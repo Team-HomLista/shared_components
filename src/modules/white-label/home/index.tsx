@@ -16,13 +16,7 @@ export function WhiteLabelHomePage({ agencySlug }: WhiteLabelHomePageProps) {
   const brandConfig = getBrandConfig(agencySlug);
 
   if (!brandConfig) {
-    return (
-      <ErrorBoundary>
-        <div className="container mx-auto px-4 py-8">
-          <h1>Brand configuration not found for: {agencySlug}</h1>
-        </div>
-      </ErrorBoundary>
-    );
+    throw new Error(`Brand configuration not found for: {agencySlug}`);
   }
 
   return (
