@@ -5,13 +5,13 @@ import { FC } from "react";
 import { TabsSection } from "@/shared/components/ui/tabs-section";
 
 import { agencyMock } from "./mocks";
-import { AgencyHeader } from "./sections/agency-header";
-import { AgencySidebar } from "./sections/agency-sidebar";
-import { AdministratorsTab } from "./tabs/administrators-tab";
-import { CertificationsTab } from "./tabs/certifications-tab";
-import { ExperienceTab } from "./tabs/experience-tab";
-import { GeneralTab } from "./tabs/general-tab";
-import { VideoTab } from "./tabs/video-tab";
+import { AgencyHeader } from "../../../../components/advisor/edit/sections/agency-header";
+import { AgencySidebar } from "../../../../components/advisor/edit/sections/agency-sidebar";
+import { AdministratorsTab } from "../../../../components/advisor/edit/tabs/administrators-tab";
+import { CertificationsTab } from "../../../../components/advisor/edit/tabs/certifications-tab";
+import { ExperienceTab } from "../../../../components/advisor/edit/tabs/experience-tab";
+import { GeneralTab } from "../../../../components/advisor/edit/tabs/general-tab";
+import { VideoTab } from "../../../../components/advisor/edit/tabs/video-tab";
 
 interface ContainerProps {
   slug?: string;

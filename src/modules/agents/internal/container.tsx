@@ -20,16 +20,16 @@ import {
 import { useRouter } from "next/navigation";
 import { FC } from "react";
 
-import { About } from "@/components/advisor_profiles/about";
-import { Certificate } from "@/components/advisor_profiles/certificate";
-import { ContactCard } from "@/components/advisor_profiles/contact-card";
-import { Header } from "@/components/advisor_profiles/header";
-import { PropertiesMap } from "@/components/advisor_profiles/properties-map";
-import PropertiesSection from "@/components/advisor_profiles/properties-section";
-import { ReviewsSection } from "@/components/advisor_profiles/reviews-section";
-import { Specialties } from "@/components/advisor_profiles/specialties";
-import { VideoCard } from "@/components/advisor_profiles/video-card";
-import { Zones } from "@/components/advisor_profiles/zones";
+import { About } from "@/components/advisor/profile/about";
+import { Certificate } from "@/components/advisor/profile/certificate";
+import { ContactCard } from "@/components/advisor/profile/contact-card";
+import { Header } from "@/components/advisor/profile/header";
+import { PropertiesMap } from "@/components/advisor/profile/properties-map";
+import PropertiesSection from "@/components/advisor/properties-section";
+import { ReviewsSection } from "@/components/advisor/reviews-section";
+import { Specialties } from "@/components/advisor/profile/specialties";
+import { VideoCard } from "@/components/advisor/profile/video-card";
+import { Zones } from "@/components/advisor/profile/zones";
 
 interface AgentContainerProps {
   slug: string;

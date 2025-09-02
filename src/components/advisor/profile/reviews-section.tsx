@@ -1,4 +1,4 @@
-import { ReviewCard } from "./review-card";
+import { ReviewCard } from "./profile/review-card";
 
 interface Review {
   id: number;
