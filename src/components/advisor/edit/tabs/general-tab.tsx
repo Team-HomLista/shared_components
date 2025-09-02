@@ -41,7 +41,7 @@ const generalSchema = z.object({
   phone: z.string().min(1, "Ingresa el teléfono"),
   extension: z.string().optional(),
   website: z.string().url().optional(),
-  email: z.string().email().optional(),
+  email: z.email().optional(),
   linkedin: z.string().url().optional(),
   facebook: z.string().url().optional(),
   username: z.string().optional(),

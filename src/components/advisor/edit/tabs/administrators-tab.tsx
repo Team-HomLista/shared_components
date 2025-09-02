@@ -9,7 +9,7 @@ import { Button, Form } from "@/shared/components/ui";
 
 const schema = z.object({
   adminName: z.string().min(1, "El nombre es requerido"),
-  adminEmail: z.string().email("Correo inválido")
+  adminEmail: z.email("Correo inválido")
 });
 
 type Schema = z.infer<typeof schema>;

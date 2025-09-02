@@ -24,7 +24,7 @@ export const AgencySidebar: FC<AgencySidebarProps> = ({ properties, agents, meta
   return (
     <aside className="space-y-4">
       {/* Card Propiedades */}
-      <Card className="rounded-2xl border shadow-lg">
+      <Card>
         <CardHeader>
           <CardTitle>Propiedades</CardTitle>
         </CardHeader>
@@ -45,7 +45,7 @@ export const AgencySidebar: FC<AgencySidebarProps> = ({ properties, agents, meta
       </Card>
 
       {/* Card Agentes */}
-      <Card className="rounded-2xl border shadow-lg">
+      <Card>
         <CardHeader>
           <h3 className="text-sm font-medium">Agentes</h3>
         </CardHeader>
@@ -58,7 +58,7 @@ export const AgencySidebar: FC<AgencySidebarProps> = ({ properties, agents, meta
       </Card>
 
       {/* Card Metadata */}
-      <Card className="rounded-2xl border shadow-lg">
+      <Card>
         <CardContent className="space-y-3 text-sm">
           <div>
             <p className="text-foreground font-medium">Fecha de creación</p>
