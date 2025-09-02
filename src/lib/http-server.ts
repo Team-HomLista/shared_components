@@ -14,7 +14,7 @@ export async function fetchServer(
   { method = "GET", params, withIdentifyToken = true, headers: headerInt, ...config }: config = {}
 ) {
   try {
-    const url = new URL(`${process.env.NEXT_PUBLIC_API_URL}${path}`);
+    const url = new URL(`${process.env.NEXT_PUBLIC_LEGACY_API_URL}${path}`);
 
     if (params) {
       Object.keys(params).forEach((key) => url.searchParams.append(key, params[key]));

@@ -1,12 +1,11 @@
 import acceptLanguage from "accept-language";
 import { NextRequest, NextResponse } from "next/server";
 
-import { fallbackLng, languages, cookieName, headerName } from "@/lib/i18n/settings";
+import { FALLBACK_LNG, LANGUAGUES, COOKIE_NAME, HEADER_NAME } from "@/config/i18n";
+import { getCookie, setCookie } from "@/lib/cookie";
+import { getAccessToken } from "@/services/access-token";
 
-import { getCookie, setCookie } from "./lib/cookie";
-import { getAccessToken } from "./services/access-token";
-
-acceptLanguage.languages(languages);
+acceptLanguage.languages([...LANGUAGUES]);
 
 export const config = {
   // Avoid matching for static files, API routes, etc.
@@ -28,8 +27,8 @@ export async function middleware(req: NextRequest) {
   if (req.headers.get("accept") === "text/x-component") return NextResponse.next();
 
   const lng = await getLanguage(req);
-  req.headers.set(headerName, lng);
-  await setCookie(cookieName, lng);
+  req.headers.set(HEADER_NAME, lng);
+  await setCookie(COOKIE_NAME, lng);
 
   if (!(await validNotAuthRoutes(req))) {
     return NextResponse.redirect(new URL("/dashboard", req.url));
@@ -43,7 +42,7 @@ export async function middleware(req: NextRequest) {
 }
 
 async function getLanguage(req: NextRequest) {
-  const languageFromCookie = await getCookie(cookieName);
+  const languageFromCookie = await getCookie(COOKIE_NAME);
 
   if (languageFromCookie) return languageFromCookie;
 
@@ -51,7 +50,7 @@ async function getLanguage(req: NextRequest) {
 
   if (languageFromHeader) return languageFromHeader;
 
-  return fallbackLng;
+  return FALLBACK_LNG;
 }
 
 async function validAuthRoutes(req: NextRequest) {

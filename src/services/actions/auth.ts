@@ -2,25 +2,34 @@
 import { redirect } from "next/navigation";
 
 import { apiClient } from "@/lib/api-client";
+import { runServerActionSafe } from "@/lib/server-action";
 import { removeAccessToken, setAccessToken } from "@/services/access-token";
 
-type LoginPayload = {
+export type LoginPayload = {
   email: string;
   password: string;
 };
 
 export async function login(payload: LoginPayload) {
-  const { data } = await apiClient.post("/api/login", payload);
+  return runServerActionSafe(async () => {
+    const { data } = await apiClient.post("login", payload);
 
-  if (!data?.token) return null;
+    if (!data?.token) throw new Error("User without token");
 
-  setAccessToken(data.token);
+    setAccessToken(data.token);
 
-  return data;
+    return data;
+  });
 }
 
 export async function logout() {
-  await apiClient.post("/api/logout");
-  await removeAccessToken();
+  const response = await runServerActionSafe(async () => {
+    await apiClient.post("logout");
+
+    await removeAccessToken();
+  });
+
+  if (!response.success) return response;
+
   redirect("/login");
 }

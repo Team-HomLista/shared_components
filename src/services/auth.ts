@@ -1,16 +1,25 @@
 "use client";
+
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
+import { useTranslation } from "react-i18next";
+import { toast } from "sonner";
 
-import { login } from "@/services/actions/auth";
+import { useServerAction } from "@/lib/server-action";
 
-export const useLogin = () => {
+import { login } from "./actions/auth";
+
+export function useLogin() {
+  const { t } = useTranslation("login");
   const router = useRouter();
 
   return useMutation({
-    mutationFn: login,
-    onSuccess: () => {
+    mutationFn: useServerAction(login),
+    onSuccess() {
       router.push("/dashboard");
+    },
+    onError() {
+      toast.error(t("error.title"), { description: t("error.description") });
     }
   });
-};
+}

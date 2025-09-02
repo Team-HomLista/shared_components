@@ -1,13 +1,8 @@
-type MockActivity = {
-  title: string;
-  subtitle: string;
-  time: string;
-  value?: string;
-  color: "primary" | "secondary";
-};
-
 // ===========================
 // Donut Charts
+
+import { ActivityItem } from "./sections/activity-card";
+
 // ===========================
 export const donutFranquicias = [
   { name: "Free", percent: 36, value: 30 },
@@ -96,7 +91,7 @@ export const indicadoresAdopcion = [
 // ===========================
 // Actividades
 // ===========================
-export const actividadesAgencias: MockActivity[] = [
+export const actividadesAgencias: ActivityItem[] = [
   {
     title: "Nueva agencia se unió al plan Pro",
     subtitle: "Inmobiliaria Centro • Plan Pro",
@@ -123,7 +118,7 @@ export const actividadesAgencias: MockActivity[] = [
   }
 ];
 
-export const actividadesPropiedades: MockActivity[] = [
+export const actividadesPropiedades: ActivityItem[] = [
   {
     title: "Nueva propiedad listada",
     subtitle: "Preferred Luxury Real Estate",

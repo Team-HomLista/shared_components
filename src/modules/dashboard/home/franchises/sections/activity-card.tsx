@@ -3,7 +3,7 @@ import { FC } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/shared/components/ui";
 import { cn } from "@/shared/lib/utils";
 
-interface ActivityItem {
+export interface ActivityItem {
   title: string;
   subtitle: string;
   time: string;

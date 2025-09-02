@@ -22,12 +22,18 @@ export function LoginForm() {
     <Form {...form}>
       <form className="flex flex-col gap-6" onSubmit={form.handleSubmit(handleSubmit)}>
         <div className="flex flex-col gap-4">
-          <Form.Input control={form.control} name="email" title={t("email")} autoFocus />
           <Form.Input
             control={form.control}
+            type="email"
+            name="email"
+            title={t("email")}
+            autoFocus
+          />
+          <Form.Input
+            control={form.control}
+            type="password"
             name="password"
             title={t("password")}
-            type="password"
           />
         </div>
 

@@ -1,8 +1,8 @@
 import {
   donutFranquicias,
-  indicadoresAdopcion,
+  topAgencias,
   ingresosPlanes,
-  topAgencias
+  indicadoresAdopcion
 } from "@/modules/dashboard/home/franchises/mocks";
 
 import { DonutDistributionCard } from "./donut-distribution-card";
