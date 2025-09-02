@@ -1,12 +1,6 @@
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardContent
-} from "@shared/components/ui/card";
 import * as React from "react";
 
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import StatsCard from "@/modules/dashboard/home/backoffice/sections/status-cards";
 
 type StatsData = {

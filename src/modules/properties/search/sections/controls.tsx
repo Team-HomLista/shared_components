@@ -1,20 +1,20 @@
 "use client";
-import { Button } from "@shared/components/ui/button";
-import { Form, FormControl, FormField, FormItem, FormMessage } from "@shared/components/ui/form";
-import { Input } from "@shared/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue
-} from "@shared/components/ui/select";
 import { ArrowUpDown, Search } from "lucide-react";
 import { FC } from "react";
 import { UseFormReturn } from "react-hook-form";
 import { z } from "zod";
 
 import { BreadcrumbPagination } from "@/components/breadcrumb-index";
+import { Button } from "@/components/ui/button";
+import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue
+} from "@/components/ui/select";
 import { controlsSchema } from "@/modules/properties/search/schema";
 import { BuildingType } from "@/types/enums/building-type";
 import { TransactionType } from "@/types/enums/transaction-type";

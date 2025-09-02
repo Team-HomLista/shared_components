@@ -1,7 +1,8 @@
 "use client";
 
-import { TableHead, TableHeader, TableRow } from "@shared/components/ui/table";
 import { flexRender, type Table } from "@tanstack/react-table";
+
+import { TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
 import { DataTableColumnHeader } from "./data-table-column-header";
 

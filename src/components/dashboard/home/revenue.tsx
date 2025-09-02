@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-import { Card, CardContent } from "@/shared/components/ui";
+import { Card, CardContent } from "@/components/ui";
 
 interface RevenueProps {
   label: string;

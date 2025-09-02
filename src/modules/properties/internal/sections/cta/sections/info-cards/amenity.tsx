@@ -1,8 +1,8 @@
-import { Button } from "@shared/components/ui/button";
-import { Tooltip, TooltipTrigger, TooltipContent } from "@shared/components/ui/tooltip";
 import { HelpCircle, ChevronDown, ChevronUp } from "lucide-react";
 import { FC, useState } from "react";
 
+import { Button } from "@/components/ui/button";
+import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
 import { DetailedProperty } from "@/types/property";
 
 import { amenityIcons } from "./amenity-icons";

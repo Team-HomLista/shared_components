@@ -1,15 +1,5 @@
 "use client";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
-import { Button } from "@shared/components/ui/button";
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger
-} from "@shared/components/ui/navigation-menu";
-import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@shared/components/ui/sheet";
 import { useQuery } from "@tanstack/react-query";
 import { Menu } from "lucide-react";
 import Image from "next/image";
@@ -17,6 +7,16 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import React, { FC, useState } from "react";
 
+import { Button } from "@/components/ui/button";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger
+} from "@/components/ui/navigation-menu";
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import { getAccessToken } from "@/services/access-token";
 

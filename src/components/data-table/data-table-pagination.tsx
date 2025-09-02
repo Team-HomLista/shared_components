@@ -1,13 +1,14 @@
 "use client";
 
+import { Table } from "@tanstack/react-table";
+
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue
-} from "@shared/components/ui/select";
-import { Table } from "@tanstack/react-table";
+} from "@/components/ui/select";
 
 import { DataTablePaginationControls } from "./data-table-pagination-controls";
 import { DataTablePaginationInfo } from "./data-table-pagination-info";

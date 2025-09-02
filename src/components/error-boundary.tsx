@@ -1,7 +1,8 @@
 "use client";
 
-import { Button } from "@shared/components/ui/button";
 import { Component, ReactNode } from "react";
+
+import { Button } from "@/components/ui/button";
 
 interface ErrorBoundaryState {
   hasError: boolean;

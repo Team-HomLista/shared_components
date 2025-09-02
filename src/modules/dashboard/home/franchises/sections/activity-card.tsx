@@ -1,7 +1,7 @@
 import { FC } from "react";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/shared/components/ui";
-import { cn } from "@/shared/lib/utils";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui";
+import { cn } from "@/lib/utils";
 
 export interface ActivityItem {
   title: string;

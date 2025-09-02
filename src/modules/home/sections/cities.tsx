@@ -1,10 +1,10 @@
-import { Button } from "@shared/components/ui/button";
-import { Text } from "@shared/components/ui/text";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 import React, { FC, useState, useEffect } from "react";
 
 import { SectionHeader } from "@/components/section-header";
+import { Button } from "@/components/ui/button";
+import { Text } from "@/components/ui/text";
 
 interface City {
   name: string;

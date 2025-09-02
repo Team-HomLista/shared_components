@@ -1,6 +1,7 @@
-import { Badge } from "@shared/components/ui/badge";
-import { Card, CardContent } from "@shared/components/ui/card";
 import { Cookie, Shield, Settings, Users, Mail } from "lucide-react";
+
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
 
 const Cookies = () => {
   return (

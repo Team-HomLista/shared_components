@@ -1,15 +1,16 @@
 "use client";
 
-import { Icon } from "@shared/components/ui";
-import { Button } from "@shared/components/ui/button";
+import type { Row } from "@tanstack/react-table";
+import { MoreHorizontal } from "lucide-react";
+
+import { Icon } from "@/components/ui";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger
-} from "@shared/components/ui/dropdown-menu";
-import type { Row } from "@tanstack/react-table";
-import { MoreHorizontal } from "lucide-react";
+} from "@/components/ui/dropdown-menu";
 
 import { Action } from "./data-table-row-actions";
 

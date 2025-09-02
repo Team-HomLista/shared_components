@@ -2,7 +2,7 @@
 
 import { FC } from "react";
 
-// import { TabsSection } from "@/shared/components/ui/tabs-section";
+// import { TabsSection } from "@/components/ui/tabs-section";
 
 import HeaderSection from "@/components/dashboard/home/header";
 import RevenueCardsSection from "@/components/dashboard/home/revenue-cards";
@@ -39,6 +39,6 @@ export const FranquiciasDashboardContainer: FC<FranquiciasDashboardContainerProp
   );
 };
 
-// TODO: Replace `@/shared/components/ui/tabs-section` to fix it when available.
+// TODO: Replace `@/components/ui/tabs-section` to fix it when available.
 // eslint-disable-next-line unused-imports/no-unused-vars
 const TabsSection = (props: any) => null;

@@ -2,7 +2,7 @@
 
 import { FC } from "react";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/shared/components/ui";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui";
 
 interface Franchise {
   name: string;

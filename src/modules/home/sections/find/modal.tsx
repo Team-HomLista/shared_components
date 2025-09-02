@@ -1,7 +1,7 @@
 "use client";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
-import { Dialog, DialogContent, DialogTitle } from "@shared/components/ui/dialog";
 
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { LeadForm } from "@/modules/home/sections/find/form";
 import type { SmallFormData } from "@/modules/home/sections/find/schemas";
 

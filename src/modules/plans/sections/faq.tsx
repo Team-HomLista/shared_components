@@ -1,13 +1,13 @@
+import { ArrowRight } from "lucide-react";
+import { FC } from "react";
+
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger
-} from "@shared/components/ui/accordion";
-import { Button } from "@shared/components/ui/button";
-import { ArrowRight } from "lucide-react";
-import { FC } from "react";
-
+} from "@/components/ui/accordion";
+import { Button } from "@/components/ui/button";
 import { FaqItem } from "@/modules/plans/faq/types";
 
 interface FAQProps {

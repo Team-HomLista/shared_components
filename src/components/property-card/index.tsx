@@ -1,8 +1,9 @@
 "use client";
-import { Card, CardContent, CardHeader } from "@shared/components/ui/card";
 import Image from "next/image";
 import Link from "next/link";
 import { FC } from "react";
+
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 
 import { PropertyCardBanner, PropertyCardBannerProps } from "./banner";
 import { PropertyCardTag, PropertyCardTagProps } from "./feature";

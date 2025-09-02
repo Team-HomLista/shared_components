@@ -1,10 +1,10 @@
-import { Button } from "@shared/components/ui/button";
-import { Input } from "@shared/components/ui/input";
 import Link from "next/link";
 import { FC, PropsWithChildren } from "react";
 
 import { Divider } from "@/components/divider";
-import { Text } from "@/shared/components/ui";
+import { Text } from "@/components/ui";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 import { SocialMediaIcons } from "./socialMediaIcons";
 

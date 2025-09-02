@@ -4,7 +4,7 @@ import { useTheme } from "next-themes";
 
 import LogoDark from "@/assets/logo-dark.svg";
 import Logo from "@/assets/logo.svg";
-import { Button, Text } from "@/shared/components/ui";
+import { Button, Text } from "@/components/ui";
 
 export function AuthHeader() {
   const { theme } = useTheme();

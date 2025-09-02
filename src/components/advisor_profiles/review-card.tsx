@@ -1,10 +1,11 @@
+import { MoreHorizontal } from "lucide-react";
+
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger
-} from "@shared/components/ui/dropdown-menu";
-import { MoreHorizontal } from "lucide-react";
+} from "@/components/ui/dropdown-menu";
 
 interface ReviewCardProps {
   title: string;

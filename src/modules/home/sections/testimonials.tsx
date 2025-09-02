@@ -1,10 +1,10 @@
 "use client";
-import { Card, CardHeader, CardContent } from "@shared/components/ui/card";
 import { FC, useState } from "react";
 
 import { Pagination } from "@/components/pagination";
 import { SectionHeader } from "@/components/section-header";
 import { StarRating } from "@/components/star-rating";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 
 interface Testimonial {
   id: number;

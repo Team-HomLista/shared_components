@@ -1,10 +1,10 @@
 "use client";
 
-import { Button } from "@shared/components/ui/button";
-import { Card, CardContent } from "@shared/components/ui/card";
 import { Building2, MapPin, TrendingUp, Users } from "lucide-react";
 import Link from "next/link";
 
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 import { getBrandConfig } from "@/config/brands";
 
 interface WhiteLabelHomePageProps {

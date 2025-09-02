@@ -1,7 +1,7 @@
-import { Text } from "@shared/components/ui";
 import { ClipboardList } from "lucide-react";
 
 import { SectionInline } from "@/components/section-inline";
+import { Text } from "@/components/ui";
 
 export function DataCollectedSection() {
   return (

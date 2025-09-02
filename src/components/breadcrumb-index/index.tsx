@@ -1,3 +1,6 @@
+import { usePathname } from "next/navigation";
+import { FC } from "react";
+
 import {
   Breadcrumb as PaginationBreadcrumb,
   BreadcrumbItem,
@@ -5,9 +8,7 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator
-} from "@shared/components/ui/breadcrumb";
-import { usePathname } from "next/navigation";
-import { FC } from "react";
+} from "@/components/ui/breadcrumb";
 
 interface BreadcrumbPaginationProps {
   propertyTitle?: string;

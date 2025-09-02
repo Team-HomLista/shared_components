@@ -2,7 +2,7 @@ import { Shield, CheckCircle, XCircle, AlertTriangle } from "lucide-react";
 
 import { ListWithIcon } from "@/components/list-with-icon";
 import { SectionInline } from "@/components/section-inline";
-import { Alert, AlertDescription, AlertTitle } from "@/shared/components/ui";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui";
 
 export function IntellectualPropertySection() {
   return (

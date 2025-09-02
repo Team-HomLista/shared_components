@@ -1,6 +1,6 @@
 import { Globe, Languages, Briefcase } from "lucide-react";
 
-import { Button } from "@/shared/components/ui";
+import { Button } from "@/components/ui";
 
 interface HeaderProps {
   imageUrl?: string;

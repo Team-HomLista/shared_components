@@ -1,6 +1,6 @@
 "use client";
 
-import { Card } from "@/shared/components/ui";
+import { Card } from "@/components/ui";
 
 export default function Page() {
   return <Card>Register</Card>;

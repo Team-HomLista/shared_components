@@ -1,6 +1,7 @@
-import { Button } from "@shared/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { FC } from "react";
+
+import { Button } from "@/components/ui/button";
 
 interface SubscriptionHeroSectionProps {}
 

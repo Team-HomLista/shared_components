@@ -1,5 +1,5 @@
-import { LoadingSpinner } from "@shared/components/ui/loading-spinner";
-import { TableCell, TableRow } from "@shared/components/ui/table";
+import { LoadingSpinner } from "@/components/ui/loading-spinner";
+import { TableCell, TableRow } from "@/components/ui/table";
 
 interface DataTableLoadingStateProps {
   colSpan: number;

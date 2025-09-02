@@ -1,11 +1,12 @@
+import { FC } from "react";
+
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue
-} from "@shared/components/ui/select";
-import { FC } from "react";
+} from "@/components/ui/select";
 
 interface LabeledSelectProps {
   label: string;

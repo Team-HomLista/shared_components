@@ -5,9 +5,9 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { Trans, useTranslation } from "react-i18next";
 
+import { Button, Form, Text } from "@/components/ui";
+import { LoadingSpinner } from "@/components/ui/loading-spinner";
 import { useLogin } from "@/services/auth";
-import { Button, Form, Text } from "@/shared/components/ui";
-import { LoadingSpinner } from "@/shared/components/ui/loading-spinner";
 
 import { Schema, schema } from "./schema";
 

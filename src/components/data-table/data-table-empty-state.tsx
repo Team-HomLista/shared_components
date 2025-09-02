@@ -1,9 +1,10 @@
 "use client";
 
-import { TableCell, TableRow } from "@shared/components/ui/table";
-import { Text } from "@shared/components/ui/text";
 import { SearchX } from "lucide-react";
 import type { ReactNode } from "react";
+
+import { TableCell, TableRow } from "@/components/ui/table";
+import { Text } from "@/components/ui/text";
 
 interface DataTableEmptyStateProps {
   colSpan: number;

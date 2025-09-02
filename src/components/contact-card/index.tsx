@@ -1,9 +1,9 @@
-import { Card, CardContent } from "@shared/components/ui/card";
 import { Mail } from "lucide-react";
 import Link from "next/link";
 import { FC } from "react";
 
-import { Button } from "@/shared/components/ui";
+import { Button } from "@/components/ui";
+import { Card, CardContent } from "@/components/ui/card";
 
 interface ContactCardProps {
   subtitle?: string;

@@ -1,14 +1,14 @@
 "use client";
+import React, { FC } from "react";
+
+import { PropertyCardItem, PropertyCardItemProps } from "@/components/property-card";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselPrevious,
   CarouselNext
-} from "@shared/components/ui/carousel";
-import React, { FC } from "react";
-
-import { PropertyCardItem, PropertyCardItemProps } from "@/components/property-card";
+} from "@/components/ui/carousel";
 
 export interface PropertyCarouselProps extends Pick<PropertyCardItemProps, "onClickLike"> {
   items: Array<Omit<PropertyCardItemProps, "onClickLike">>;

@@ -4,10 +4,10 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 
 import { ThemeProvider } from "@/components/theme-provider";
+import { Toaster } from "@/components/ui";
 import { COOKIE_NAME, FALLBACK_LNG } from "@/config/i18n";
 import { I18nextProvider } from "@/lib/i18n/provider";
 import { QueryClientProvider } from "@/lib/react-query";
-import { Toaster } from "@/shared/components/ui";
 import "@/styles/globals.css";
 
 const inter = Inter({

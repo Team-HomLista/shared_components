@@ -3,10 +3,10 @@
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { PropsWithChildren } from "react";
 
-import { SidebarInset, SidebarProvider } from "@/shared/components/ui/sidebar";
-import { AlertDialogProvider } from "@/shared/hooks/use-alert-dialog";
-import useCookie from "@/shared/hooks/use-cookie";
-import { DialogProvider } from "@/shared/hooks/use-dialog";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+import { AlertDialogProvider } from "@/hooks/use-alert-dialog";
+import useCookie from "@/hooks/use-cookie";
+import { DialogProvider } from "@/hooks/use-dialog";
 
 import { DashboardNavbar } from "./navbar";
 import { DashboardSidebar } from "./sidebar";

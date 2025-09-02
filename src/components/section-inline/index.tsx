@@ -2,8 +2,8 @@ import { cva, VariantProps } from "class-variance-authority";
 import { LucideIcon } from "lucide-react";
 import { PropsWithChildren } from "react";
 
+import { Icon } from "@/components/ui";
 import { cn } from "@/lib/utils";
-import { Icon } from "@/shared/components/ui";
 
 const iconVariants = cva(
   "flex size-8 items-center justify-center rounded-lg bg-gradient-to-br shadow-lg sm:size-10",

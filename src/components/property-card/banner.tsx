@@ -1,6 +1,6 @@
-import { Text } from "@shared/components/ui/text";
 import { FC } from "react";
 
+import { Text } from "@/components/ui/text";
 import { TransactionType } from "@/types/enums/transaction-type";
 
 export interface PropertyCardBannerProps {

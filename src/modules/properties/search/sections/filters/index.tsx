@@ -1,6 +1,9 @@
 "use client";
-import { Button } from "@shared/components/ui/button";
-import { Form } from "@shared/components/ui/form";
+import { FC } from "react";
+import { SubmitHandler, UseFormReturn } from "react-hook-form";
+
+import { Button } from "@/components/ui/button";
+import { Form } from "@/components/ui/form";
 import {
   Sheet,
   SheetContent,
@@ -8,11 +11,8 @@ import {
   SheetTrigger,
   SheetFooter,
   SheetClose
-} from "@shared/components/ui/sheet";
-import { Slider } from "@shared/components/ui/slider";
-import { FC } from "react";
-import { SubmitHandler, UseFormReturn } from "react-hook-form";
-
+} from "@/components/ui/sheet";
+import { Slider } from "@/components/ui/slider";
 import { ControlsSchema } from "@/modules/properties/search/schema";
 import { DimensionInput } from "@/modules/properties/search/sections/filters/DimensionInput";
 import { LabeledSelect } from "@/modules/properties/search/sections/filters/LabeledSelect";

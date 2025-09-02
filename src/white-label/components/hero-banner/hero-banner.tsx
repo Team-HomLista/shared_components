@@ -1,11 +1,12 @@
 "use client";
 
-import { Badge } from "@shared/components/ui/badge";
-import { Button } from "@shared/components/ui/button";
-import { cn } from "@shared/lib/utils";
 import { ArrowRight, Play, Star } from "lucide-react";
 import Link from "next/link";
 import { forwardRef } from "react";
+
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 type HeroSize = "sm" | "md" | "lg" | "xl";
 type HeroAlignment = "left" | "center" | "right";

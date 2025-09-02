@@ -1,17 +1,18 @@
 "use client";
 
-import { Button } from "@shared/components/ui/button";
+import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
+import { useState } from "react";
+
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
   DialogTrigger,
   DialogHeader,
   DialogTitle
-} from "@shared/components/ui/dialog";
-import { Input } from "@shared/components/ui/input";
-import { Textarea } from "@shared/components/ui/textarea";
-import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
-import { useState } from "react";
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
 type ContactCardType = "agent" | "agency";
 

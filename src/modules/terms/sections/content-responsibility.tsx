@@ -2,7 +2,7 @@ import { AlertTriangle, FileText, XCircle } from "lucide-react";
 
 import { ListWithIcon } from "@/components/list-with-icon";
 import { SectionInline } from "@/components/section-inline";
-import { Alert, AlertDescription, AlertTitle, Text } from "@/shared/components/ui";
+import { Alert, AlertDescription, AlertTitle, Text } from "@/components/ui";
 
 export function ContentResponsibilitySection() {
   return (

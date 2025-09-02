@@ -29,8 +29,7 @@ const nextConfig: NextConfig = {
   experimental: {
     turbo: {
       resolveAlias: {
-        "@": "src",
-        "@shared": "shared_components/src"
+        "@": "src"
       },
       rules: {
         "*.svg": {

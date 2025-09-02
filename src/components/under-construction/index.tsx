@@ -1,6 +1,7 @@
-import { Button } from "@shared/components/ui/button";
 import Link from "next/link";
 import { FC } from "react";
+
+import { Button } from "@/components/ui/button";
 
 export interface UnnderConstructionProps {}
 

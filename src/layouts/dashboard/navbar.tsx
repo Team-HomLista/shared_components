@@ -1,6 +1,5 @@
 import { LogOut } from "lucide-react";
 
-import { logout } from "@/services/actions/auth";
 import {
   Avatar,
   AvatarFallback,
@@ -9,9 +8,10 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger
-} from "@/shared/components/ui";
-import { Separator } from "@/shared/components/ui/separator";
-import { SidebarTrigger } from "@/shared/components/ui/sidebar";
+} from "@/components/ui";
+import { Separator } from "@/components/ui/separator";
+import { SidebarTrigger } from "@/components/ui/sidebar";
+import { logout } from "@/services/actions/auth";
 
 import { DashboardBreadcrumb } from "./breadcrum";
 

@@ -1,11 +1,11 @@
 "use client";
-import { Button } from "@shared/components/ui/button";
 import { SearchIcon } from "lucide-react";
 import Link from "next/link";
 import { FC, useState } from "react";
 
 import { BreadcrumbPagination } from "@/components/breadcrumb-index";
 import { PropertyCarousel } from "@/components/property-carousel";
+import { Button } from "@/components/ui/button";
 import { DetailedProperty, Property, PropertyLocationDetail } from "@/types/property";
 import { PropertyQueryParams } from "@/types/property-query-params";
 import { buildSearchQueryParams } from "@/utils/build-search-query-params";

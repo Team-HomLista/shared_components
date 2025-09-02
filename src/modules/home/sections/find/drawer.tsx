@@ -1,8 +1,8 @@
 "use client";
 
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
-import { Drawer, DrawerContent, DrawerHeader, DrawerTitle } from "@shared/components/ui/drawer";
 
+import { Drawer, DrawerContent, DrawerHeader, DrawerTitle } from "@/components/ui/drawer";
 import { LeadForm } from "@/modules/home/sections/find/form";
 import type { SmallFormData, LeadFormData } from "@/modules/home/sections/find/schemas";
 

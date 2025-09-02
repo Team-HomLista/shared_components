@@ -1,12 +1,5 @@
 "use client";
 
-import { Button } from "@shared/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuTrigger,
-  DropdownMenuContent,
-  DropdownMenuItem
-} from "@shared/components/ui/dropdown-menu";
 import { APIProvider } from "@vis.gl/react-google-maps";
 import {
   ChevronLeft,
@@ -31,6 +24,13 @@ import { ReviewsSection } from "@/components/advisor_profiles/reviews-section";
 import { Specialties } from "@/components/advisor_profiles/specialties";
 import { VideoCard } from "@/components/advisor_profiles/video-card";
 import { Zones } from "@/components/advisor_profiles/zones";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem
+} from "@/components/ui/dropdown-menu";
 
 interface AgenciesContainerProps {
   slug: string;

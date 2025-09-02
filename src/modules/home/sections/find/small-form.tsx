@@ -1,6 +1,10 @@
 "use client";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button } from "@shared/components/ui/button";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
+
+import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -8,20 +12,16 @@ import {
   FormItem,
   FormLabel,
   FormMessage
-} from "@shared/components/ui/form";
+} from "@/components/ui/form";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue
-} from "@shared/components/ui/select";
-import { Slider } from "@shared/components/ui/slider";
-import { Text } from "@shared/components/ui/text";
-import { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import * as z from "zod";
-
+} from "@/components/ui/select";
+import { Slider } from "@/components/ui/slider";
+import { Text } from "@/components/ui/text";
 import { BUILDING_TYPE_ES } from "@/constants/building-type";
 import { TRANSACTION_TYPE_GROUP_ES } from "@/constants/transaction-type";
 import { SmallFormData, smallFormSchema } from "@/modules/home/sections/find/schemas";

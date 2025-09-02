@@ -1,7 +1,10 @@
 "use client";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button } from "@shared/components/ui/button";
-import { Checkbox } from "@shared/components/ui/checkbox";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+
+import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   Form,
   FormControl,
@@ -9,20 +12,17 @@ import {
   FormItem,
   FormLabel,
   FormMessage
-} from "@shared/components/ui/form";
-import { Input } from "@shared/components/ui/input";
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue
-} from "@shared/components/ui/select";
-import { Slider } from "@shared/components/ui/slider";
-import { Text } from "@shared/components/ui/text";
-import { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-
+} from "@/components/ui/select";
+import { Slider } from "@/components/ui/slider";
+import { Text } from "@/components/ui/text";
 import { BUILDING_TYPE_ES } from "@/constants/building-type";
 import { FINGERPRINT_STORAGE_KEY } from "@/constants/localstorage";
 import { TRANSACTION_TYPE_GROUP_ES } from "@/constants/transaction-type";

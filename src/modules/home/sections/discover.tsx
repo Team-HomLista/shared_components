@@ -1,9 +1,9 @@
-import { Button } from "@shared/components/ui/button";
 import Link from "next/link";
 import { FC } from "react";
 
 import { PropertyCarousel, PropertyCarouselProps } from "@/components/property-carousel";
 import { SectionHeader } from "@/components/section-header";
+import { Button } from "@/components/ui/button";
 
 export interface DiscoverSectionProps extends PropertyCarouselProps {}
 
