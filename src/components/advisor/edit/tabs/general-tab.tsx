@@ -1,12 +1,17 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Globe, Mail, Linkedin, Facebook, AtSign, Phone } from "lucide-react";
+import { Globe, Linkedin, Facebook, AtSign } from "lucide-react";
 import { FC } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 import { Button, Form } from "@/shared/components/ui";
+
+// --- Tipos ---
+interface GeneralTabProps {
+  mode: "agency" | "agent";
+}
 
 // --- Zod Schema ---
 const generalSchema = z.object({
@@ -20,13 +25,15 @@ const generalSchema = z.object({
   linkedin: z.string().url().optional(),
   facebook: z.string().url().optional(),
   username: z.string().optional(),
-  contactPhone: z.string().optional()
+  contactPhone: z.string().optional(),
+  agency: z.string().optional(), // Agencia a la que pertenece (solo agente)
+  mobile: z.string().optional() // Teléfono móvil (solo agente)
 });
 
 type GeneralForm = z.infer<typeof generalSchema>;
 
 // --- GeneralTab Component ---
-export const GeneralTab: FC = () => {
+export const GeneralTab: FC<GeneralTabProps> = ({ mode }) => {
   const form = useForm<GeneralForm>({
     resolver: zodResolver(generalSchema),
     defaultValues: {
@@ -40,7 +47,9 @@ export const GeneralTab: FC = () => {
       linkedin: "",
       facebook: "",
       username: "",
-      contactPhone: ""
+      contactPhone: "",
+      agency: "",
+      mobile: ""
     }
   });
 
@@ -51,6 +60,21 @@ export const GeneralTab: FC = () => {
   return (
     <Form {...form}>
       <form className="space-y-6" onSubmit={form.handleSubmit(handleSubmit)}>
+        {/* Agencia a la que pertenece (solo en agente) */}
+        {mode === "agent" && (
+          <Form.Selector
+            control={form.control}
+            name="agency"
+            title="Agencia a la que pertenece"
+            placeholder="Selecciona una agencia"
+            items={[
+              { value: "siglo-xxi-cancun", label: "Siglo XXI Cancún" },
+              { value: "siglo-xxi-cdmx", label: "Siglo XXI CDMX" },
+              { value: "siglo-xxi-gdl", label: "Siglo XXI Guadalajara" }
+            ]}
+          />
+        )}
+
         {/* Estado */}
         <Form.Selector
           control={form.control}
@@ -63,6 +87,16 @@ export const GeneralTab: FC = () => {
           ]}
         />
 
+        {/* Email del Agente (solo en agente) */}
+        {mode === "agent" && (
+          <Form.Input
+            control={form.control}
+            name="email"
+            placeholder="benjamin_sigloxx@gmail.com"
+            title="Email del Agente"
+          />
+        )}
+
         {/* Dirección */}
         <Form.Input
           control={form.control}
@@ -71,17 +105,27 @@ export const GeneralTab: FC = () => {
           title="Dirección"
         />
 
-        {/* Teléfono */}
+        {/* Teléfono de Oficina */}
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-          <Form.Input control={form.control} name="lada" placeholder="+52" title="Lada" />
+          <Form.Input control={form.control} name="lada" placeholder="+52" title="LADA" />
           <Form.Input
             control={form.control}
             name="phone"
             placeholder="5555-0876"
-            title="Teléfono"
+            title="Teléfono de Oficina"
           />
           <Form.Input control={form.control} name="extension" placeholder="273" title="Extensión" />
         </div>
+
+        {/* Teléfono Móvil (solo en agente) */}
+        {mode === "agent" && (
+          <Form.Input
+            control={form.control}
+            name="mobile"
+            placeholder="5555-0876"
+            title="Teléfono Móvil"
+          />
+        )}
 
         {/* Contacto */}
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -90,12 +134,6 @@ export const GeneralTab: FC = () => {
             name="website"
             placeholder="https://siglo.com"
             prefixNode={<Globe className="text-foreground h-4 w-4" />}
-          />
-          <Form.Input
-            control={form.control}
-            name="email"
-            placeholder="siglo@gmail.com"
-            prefixNode={<Mail className="text-foreground h-4 w-4" />}
           />
           <Form.Input
             control={form.control}
@@ -114,12 +152,6 @@ export const GeneralTab: FC = () => {
             name="username"
             placeholder="@siglo"
             prefixNode={<AtSign className="text-foreground h-4 w-4" />}
-          />
-          <Form.Input
-            control={form.control}
-            name="contactPhone"
-            placeholder="5555-9000"
-            prefixNode={<Phone className="text-foreground h-4 w-4" />}
           />
         </div>
 

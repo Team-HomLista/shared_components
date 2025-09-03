@@ -10,7 +10,7 @@ interface AgencySidebarProps {
     active: number;
     inactive: number;
   };
-  agents: {
+  agents?: {
     total: number;
   };
   metadata: {
@@ -18,9 +18,15 @@ interface AgencySidebarProps {
     updatedAt: string;
     createdBy: string;
   };
+  showAgents?: boolean; // <-- nuevo parámetro
 }
 
-export const AgencySidebar: FC<AgencySidebarProps> = ({ properties, agents, metadata }) => {
+export const AgencySidebar: FC<AgencySidebarProps> = ({
+  properties,
+  agents,
+  metadata,
+  showAgents = true // por defecto mostramos agentes
+}) => {
   return (
     <aside className="space-y-4">
       {/* Card Propiedades */}
@@ -45,17 +51,19 @@ export const AgencySidebar: FC<AgencySidebarProps> = ({ properties, agents, meta
       </Card>
 
       {/* Card Agentes */}
-      <Card>
-        <CardHeader>
-          <h3 className="text-sm font-medium">Agentes</h3>
-        </CardHeader>
-        <CardContent>
-          <div className="flex justify-between text-sm">
-            <span className="text-muted-foreground">Total Agentes</span>
-            <span className="font-semibold">{agents.total}</span>
-          </div>
-        </CardContent>
-      </Card>
+      {showAgents && agents && (
+        <Card>
+          <CardHeader>
+            <h3 className="text-sm font-medium">Agentes</h3>
+          </CardHeader>
+          <CardContent>
+            <div className="flex justify-between text-sm">
+              <span className="text-muted-foreground">Total Agentes</span>
+              <span className="font-semibold">{agents.total}</span>
+            </div>
+          </CardContent>
+        </Card>
+      )}
 
       {/* Card Metadata */}
       <Card>

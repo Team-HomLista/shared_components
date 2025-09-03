@@ -3,7 +3,7 @@
 import { FC } from "react";
 
 import { AgencyHeader } from "@/components/advisor/edit/sections/agency-header";
-import { AgencySidebar } from "@/components/advisor/edit/sections/agency-sidebar";
+import { AgencySidebar } from "@/components/advisor/edit/sections/sidebar";
 import { AdministratorsTab } from "@/components/advisor/edit/tabs/administrators-tab";
 import { CertificationsTab } from "@/components/advisor/edit/tabs/certifications-tab";
 import { ExperienceTab } from "@/components/advisor/edit/tabs/experience-tab";
@@ -29,7 +29,7 @@ export const AgencyEditContainer: FC<ContainerProps> = () => {
           <TabsSection
             defaultValue="general"
             items={[
-              { value: "general", label: "General", content: <GeneralTab /> },
+              { value: "general", label: "General", content: <GeneralTab mode="agency" /> },
               { value: "admins", label: "Administradores", content: <AdministratorsTab /> },
               { value: "experience", label: "Experiencia", content: <ExperienceTab /> },
               {
