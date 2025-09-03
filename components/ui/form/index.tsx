@@ -24,6 +24,9 @@ import { FormSwitchProminent } from "@shared/components/ui/form/elements/form-sw
 import { useFormField } from "@shared/components/ui/form/hooks/use-form-field";
 import { FormProvider } from "react-hook-form";
 
+import { FormDatePicker } from "./elements/form-datepicker";
+import { FormTextarea } from "./elements/form.textarea";
+
 const Form = FormProvider as typeof FormProvider & {
   Item: typeof FormItem;
   Label: typeof FormLabel;
@@ -44,6 +47,8 @@ const Form = FormProvider as typeof FormProvider & {
   IdentitySelector: typeof FormIdentitySelector;
   Selector: typeof FormSelector;
   SwitchProminent: typeof FormSwitchProminent;
+  DatePicker: typeof FormDatePicker;
+  Textarea: typeof FormTextarea;
 };
 
 Form.Item = FormItem;
@@ -65,6 +70,8 @@ Form.RadioGroup = FormRadioGroup;
 Form.Selector = FormSelector;
 Form.IdentitySelector = FormIdentitySelector;
 Form.SwitchProminent = FormSwitchProminent;
+Form.DatePicker = FormDatePicker;
+Form.Textarea = FormTextarea;
 
 export {
   Form,
@@ -74,5 +81,7 @@ export {
   FormItem,
   FormLabel,
   FormMessage,
-  useFormField
+  useFormField,
+  FormInput,
+  FormTextarea
 };
