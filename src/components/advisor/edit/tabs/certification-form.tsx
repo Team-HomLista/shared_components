@@ -1,32 +1,16 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { format } from "date-fns";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-import { cn } from "@/lib/utils";
-import {
-  Button,
-  Form,
-  Label,
-  RadioGroup,
-  RadioGroupItem,
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-  Calendar,
-  Select,
-  SelectTrigger,
-  SelectContent,
-  SelectItem,
-  SelectValue
-} from "@/shared/components/ui";
+import { Form, Button } from "@/shared/components/ui";
+import { Visibility } from "@/types/enums/certification";
 
 const certificationSchema = z.object({
   name: z.string().min(1, "El nombre es requerido"),
   license: z.string().min(1, "La licencia es requerida"),
-  visibility: z.enum(["public", "private"]),
+  visibility: z.enum([Visibility.PUBLIC, Visibility.PRIVATE]),
   state: z.string().optional(),
   issuedAt: z.date().optional()
 });
@@ -35,7 +19,7 @@ export type Certification = {
   id: string;
   name: string;
   license: string;
-  visibility: "public" | "private";
+  visibility: `${Visibility}`;
   state?: string;
   issuedAt?: Date;
 };
@@ -54,7 +38,8 @@ export default function CertificationForm({ certification, onSave, onSuccess }: 
     defaultValues: {
       name: certification?.name ?? "",
       license: certification?.license ?? "",
-      visibility: certification?.visibility ?? "public",
+      visibility:
+        certification?.visibility === Visibility.PRIVATE ? Visibility.PRIVATE : Visibility.PUBLIC,
       state: certification?.state ?? undefined,
       issuedAt: certification?.issuedAt ? new Date(certification.issuedAt) : undefined
     }
@@ -71,76 +56,29 @@ export default function CertificationForm({ certification, onSave, onSuccess }: 
         <Form.Input control={form.control} name="name" title="Nombre de la Certificación" />
         <Form.Input control={form.control} name="license" title="Número de Licencia" />
 
-        <div className="space-y-1">
-          <Label>Visibilidad</Label>
-          <RadioGroup
-            value={form.watch("visibility")}
-            className="flex gap-4"
-            onValueChange={(val) => form.setValue("visibility", val as "public" | "private")}
-          >
-            <div className="flex items-center gap-2">
-              <RadioGroupItem value="public" id="public" />
-              <Label htmlFor="public">Público</Label>
-            </div>
-            <div className="flex items-center gap-2">
-              <RadioGroupItem value="private" id="private" />
-              <Label htmlFor="private">Privado</Label>
-            </div>
-          </RadioGroup>
-        </div>
+        <Form.RadioGroup
+          control={form.control}
+          name="visibility"
+          title="Visibilidad"
+          options={[
+            { label: "Público", value: Visibility.PUBLIC },
+            { label: "Privado", value: Visibility.PRIVATE }
+          ]}
+        />
 
-        <Form.Field
+        <Form.Selector<CertificationSchema>
           control={form.control}
           name="state"
-          render={({ field }) => (
-            <div className="space-y-1">
-              <Label htmlFor="state">Lugar de Expedición</Label>
-              <Select defaultValue={field.value} onValueChange={field.onChange}>
-                <SelectTrigger>
-                  <SelectValue placeholder="Selecciona un estado" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="CDMX">CDMX</SelectItem>
-                  <SelectItem value="GDL">Guadalajara</SelectItem>
-                  <SelectItem value="MTY">Monterrey</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-          )}
+          title="Lugar de Expedición"
+          placeholder="Selecciona un estado"
+          items={[
+            { label: "CDMX", value: "CDMX" },
+            { label: "Guadalajara", value: "GDL" },
+            { label: "Monterrey", value: "MTY" }
+          ]}
         />
 
-        <Form.Field
-          control={form.control}
-          name="issuedAt"
-          render={({ field }) => (
-            <div className="space-y-1">
-              <Label htmlFor="issuedAt">Fecha de Expedición</Label>
-              <Popover>
-                <PopoverTrigger asChild>
-                  <Button
-                    variant="outline"
-                    className={cn(
-                      "w-full justify-start text-left font-normal",
-                      !field.value && "text-muted-foreground"
-                    )}
-                  >
-                    {field.value ? format(field.value, "dd/MM/yyyy") : "Selecciona una fecha"}
-                  </Button>
-                </PopoverTrigger>
-                <PopoverContent className="w-auto p-0">
-                  <Calendar
-                    mode="single"
-                    selected={field.value}
-                    initialFocus
-                    onSelect={(date) => {
-                      field.onChange(date);
-                    }}
-                  />
-                </PopoverContent>
-              </Popover>
-            </div>
-          )}
-        />
+        <Form.DatePicker control={form.control} name="issuedAt" label="Fecha de Expedición" />
 
         <div className="flex justify-end gap-2 pt-4">
           <Button type="button" variant="ghost" onClick={onSuccess}>

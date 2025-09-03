@@ -2,36 +2,11 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Globe, Mail, Linkedin, Facebook, AtSign, Phone } from "lucide-react";
-import { FC, ReactNode } from "react";
+import { FC } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-import {
-  Button,
-  Form,
-  Input,
-  Select,
-  SelectTrigger,
-  SelectValue,
-  SelectContent,
-  SelectItem
-} from "@/shared/components/ui";
-
-// --- IconInput Component ---
-const IconInput: FC<Omit<React.ComponentProps<typeof Input>, "children"> & { icon: ReactNode }> = ({
-  icon,
-  className,
-  ...props
-}) => (
-  <div className="relative w-full">
-    <span className="pointer-events-none absolute top-1/2 left-3 -translate-y-1/2">
-      <span className="text-muted-foreground inline-flex h-4 w-4 items-center justify-center">
-        {icon}
-      </span>
-    </span>
-    <Input {...props} className={`pl-9 ${className ?? ""}`} />
-  </div>
-);
+import { Button, Form } from "@/shared/components/ui";
 
 // --- Zod Schema ---
 const generalSchema = z.object({
@@ -41,7 +16,7 @@ const generalSchema = z.object({
   phone: z.string().min(1, "Ingresa el teléfono"),
   extension: z.string().optional(),
   website: z.string().url().optional(),
-  email: z.email().optional(),
+  email: z.string().email().optional(),
   linkedin: z.string().url().optional(),
   facebook: z.string().url().optional(),
   username: z.string().optional(),
@@ -77,20 +52,15 @@ export const GeneralTab: FC = () => {
     <Form {...form}>
       <form className="space-y-6" onSubmit={form.handleSubmit(handleSubmit)}>
         {/* Estado */}
-        <Form.Field
+        <Form.Selector
           control={form.control}
           name="state"
-          render={({ field }) => (
-            <Select {...field}>
-              <SelectTrigger className="w-full">
-                <SelectValue placeholder="Selecciona un estado" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="cdmx">Ciudad de México</SelectItem>
-                <SelectItem value="qroo">Quintana Roo</SelectItem>
-              </SelectContent>
-            </Select>
-          )}
+          title="Estado"
+          placeholder="Selecciona un estado"
+          items={[
+            { value: "cdmx", label: "Ciudad de México" },
+            { value: "qroo", label: "Quintana Roo" }
+          ]}
         />
 
         {/* Dirección */}
@@ -103,105 +73,53 @@ export const GeneralTab: FC = () => {
 
         {/* Teléfono */}
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-          {/* Lada */}
-          <Form.Field
-            control={form.control}
-            name="lada"
-            render={({ field }) => (
-              <div className="flex flex-col">
-                <label htmlFor="lada" className="mb-1 text-sm font-medium text-gray-700">
-                  Lada
-                </label>
-                <input
-                  {...field}
-                  id="lada"
-                  type="text"
-                  placeholder="+52"
-                  className="w-full rounded-md border border-gray-300 px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
-                />
-              </div>
-            )}
-          />
-
-          {/* Teléfono */}
+          <Form.Input control={form.control} name="lada" placeholder="+52" title="Lada" />
           <Form.Input
             control={form.control}
             name="phone"
             placeholder="5555-0876"
             title="Teléfono"
           />
-
-          {/* Extensión */}
           <Form.Input control={form.control} name="extension" placeholder="273" title="Extensión" />
         </div>
 
         {/* Contacto */}
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-          <Form.Field
+          <Form.Input
             control={form.control}
             name="website"
-            render={({ field }) => (
-              <IconInput
-                {...field}
-                icon={<Globe className="text-foreground h-4 w-4" />}
-                placeholder="https://siglo.com"
-              />
-            )}
+            placeholder="https://siglo.com"
+            prefixNode={<Globe className="text-foreground h-4 w-4" />}
           />
-          <Form.Field
+          <Form.Input
             control={form.control}
             name="email"
-            render={({ field }) => (
-              <IconInput
-                {...field}
-                icon={<Mail className="text-foreground h-4 w-4" />}
-                placeholder="siglo@gmail.com"
-              />
-            )}
+            placeholder="siglo@gmail.com"
+            prefixNode={<Mail className="text-foreground h-4 w-4" />}
           />
-          <Form.Field
+          <Form.Input
             control={form.control}
             name="linkedin"
-            render={({ field }) => (
-              <IconInput
-                {...field}
-                icon={<Linkedin className="text-foreground h-4 w-4" />}
-                placeholder="https://linkedin/siglo.com"
-              />
-            )}
+            placeholder="https://linkedin/siglo.com"
+            prefixNode={<Linkedin className="text-foreground h-4 w-4" />}
           />
-          <Form.Field
+          <Form.Input
             control={form.control}
             name="facebook"
-            render={({ field }) => (
-              <IconInput
-                {...field}
-                icon={<Facebook className="text-foreground h-4 w-4" />}
-                placeholder="https://fb/siglo.com"
-              />
-            )}
+            placeholder="https://fb/siglo.com"
+            prefixNode={<Facebook className="text-foreground h-4 w-4" />}
           />
-          <Form.Field
+          <Form.Input
             control={form.control}
             name="username"
-            render={({ field }) => (
-              <IconInput
-                {...field}
-                icon={<AtSign className="text-foreground h-4 w-4" />}
-                placeholder="@siglo"
-              />
-            )}
+            placeholder="@siglo"
+            prefixNode={<AtSign className="text-foreground h-4 w-4" />}
           />
-          <Form.Field
+          <Form.Input
             control={form.control}
             name="contactPhone"
-            render={({ field }) => (
-              <IconInput
-                {...field}
-                icon={<Phone className="text-foreground h-4 w-4" />}
-                placeholder="5555-9000"
-              />
-            )}
+            placeholder="5555-9000"
+            prefixNode={<Phone className="text-foreground h-4 w-4" />}
           />
         </div>
 
