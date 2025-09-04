@@ -1,7 +1,7 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { FC, useState } from "react";
+import { FC } from "react";
 import { useForm, FormProvider } from "react-hook-form";
 import { z } from "zod";
 
@@ -25,8 +25,6 @@ const experienceSchema = z.object({
 type ExperienceFormValues = z.infer<typeof experienceSchema>;
 
 export const ExperienceTab: FC = () => {
-  const [about, setAbout] = useState("");
-
   const form = useForm<ExperienceFormValues>({
     resolver: zodResolver(experienceSchema),
     defaultValues: {
@@ -47,23 +45,14 @@ export const ExperienceTab: FC = () => {
     <FormProvider {...form}>
       <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
         {/* Acerca de */}
-        <Form.Item title="Acerca de">
-          <Form.Textarea
-            id="about"
-            name="about"
-            placeholder="Describe la experiencia del agente en el sector inmobiliario"
-            rows={4}
-            value={about}
-            maxLength={maxChars}
-            onChange={(e) => {
-              setAbout(e.target.value);
-              setValue("about", e.target.value); // sincroniza con react-hook-form
-            }}
-          />
-          <p className="mt-1 text-xs text-gray-500">
-            {maxChars - about.length} caracteres restantes
-          </p>
-        </Form.Item>
+        <Form.Textarea
+          control={control}
+          name="about"
+          title="Acerca de"
+          placeholder="Describe la experiencia del agente en el sector inmobiliario"
+          rows={4}
+          maxLength={maxChars}
+        />
 
         {/* Experiencia */}
         <Form.Item title="Experiencia">
@@ -93,9 +82,12 @@ export const ExperienceTab: FC = () => {
         </Form.Item>
 
         {/* Idiomas */}
-        <Form.Item title="Idiomas">
-          <Form.Input control={control} name="languages" placeholder="Agrega un idioma" />
-        </Form.Item>
+        <Form.Input
+          control={control}
+          name="languages"
+          title="Idiomas"
+          placeholder="Agrega un idioma"
+        />
 
         {/* Botón */}
         <Button type="submit" className="mt-2">

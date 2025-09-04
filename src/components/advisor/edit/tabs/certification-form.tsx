@@ -10,7 +10,7 @@ import { Visibility } from "@/types/enums/certification";
 const certificationSchema = z.object({
   name: z.string().min(1, "El nombre es requerido"),
   license: z.string().min(1, "La licencia es requerida"),
-  visibility: z.enum([Visibility.PUBLIC, Visibility.PRIVATE]),
+  visibility: z.enum(Visibility),
   state: z.string().optional(),
   issuedAt: z.date().optional()
 });
@@ -19,7 +19,7 @@ export type Certification = {
   id: string;
   name: string;
   license: string;
-  visibility: `${Visibility}`;
+  visibility: Visibility;
   state?: string;
   issuedAt?: Date;
 };
@@ -38,8 +38,7 @@ export default function CertificationForm({ certification, onSave, onSuccess }: 
     defaultValues: {
       name: certification?.name ?? "",
       license: certification?.license ?? "",
-      visibility:
-        certification?.visibility === Visibility.PRIVATE ? Visibility.PRIVATE : Visibility.PUBLIC,
+      visibility: certification?.visibility,
       state: certification?.state ?? undefined,
       issuedAt: certification?.issuedAt ? new Date(certification.issuedAt) : undefined
     }
