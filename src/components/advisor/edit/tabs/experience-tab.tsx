@@ -5,8 +5,8 @@ import { FC } from "react";
 import { useForm, FormProvider } from "react-hook-form";
 import { z } from "zod";
 
-import { Button } from "@/shared/components/ui";
-import { Form } from "@/shared/components/ui/form";
+import { Button } from "@/components/ui";
+import { Form } from "@/components/ui/form";
 
 const maxChars = 2000;
 

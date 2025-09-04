@@ -9,7 +9,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger
-} from "@/shared/components/ui";
+} from "@/components/ui";
 
 interface AgencyHeaderProps {
   logo: string;

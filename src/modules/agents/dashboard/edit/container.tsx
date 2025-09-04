@@ -8,7 +8,7 @@ import { CertificationsTab } from "@/components/advisor/edit/tabs/certifications
 import { ExperienceTab } from "@/components/advisor/edit/tabs/experience-tab";
 import { GeneralTab } from "@/components/advisor/edit/tabs/general-tab";
 import { VideoTab } from "@/components/advisor/edit/tabs/video-tab";
-import { TabsSection } from "@/shared/components/ui/tabs-section";
+import { TabsSection } from "@/components/ui/tabs-section";
 
 import { agencyMock } from "./mocks";
 

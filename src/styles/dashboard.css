@@ -119,11 +119,13 @@
 }
 
 /* Hide logo, footer, copyright from Google Map. { */
-a[href^="http://maps.google.com/maps"] {
+a[href^="http://maps.google.com/maps"]
+{
   display: none !important;
 }
 
-a[href^="https://maps.google.com/maps"] {
+a[href^="https://maps.google.com/maps"]
+{
   display: none !important;
 }
 
@@ -141,6 +143,6 @@ a[href^="https://maps.google.com/maps"] {
 
 html,
 body,
-body>#app {
+body > #app {
   height: 100%;
 }

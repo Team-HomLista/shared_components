@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-import { Form, Button } from "@/shared/components/ui";
+import { Form, Button } from "@/components/ui";
 import { Visibility } from "@/types/enums/certification";
 
 const certificationSchema = z.object({

@@ -6,7 +6,7 @@ import { FC } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-import { Button, Form } from "@/shared/components/ui";
+import { Button, Form } from "@/components/ui";
 
 // --- Tipos ---
 interface GeneralTabProps {

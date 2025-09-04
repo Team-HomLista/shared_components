@@ -2,9 +2,9 @@
 
 import { FC, useState } from "react";
 
-import { Button } from "@/shared/components/ui";
-import { Card, CardContent } from "@/shared/components/ui/card";
-import { useDialog } from "@/shared/hooks/use-dialog";
+import { Button } from "@/components/ui";
+import { Card, CardContent } from "@/components/ui/card";
+import { useDialog } from "@/hooks/use-dialog";
 
 import CertificationForm, { Certification } from "./certification-form";
 

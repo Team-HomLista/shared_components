@@ -13,8 +13,8 @@ import {
   DialogTitle,
   DialogFooter,
   Form
-} from "@/shared/components/ui";
-import { getYouTubeEmbedUrl } from "@/shared/lib/utils";
+} from "@/components/ui";
+import { getYouTubeEmbedUrl } from "@/utils/string";
 
 // Schema de Zod para validar URL de YouTube
 const videoSchema = z.object({
