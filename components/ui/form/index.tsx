@@ -25,7 +25,7 @@ import { useFormField } from "@shared/components/ui/form/hooks/use-form-field";
 import { FormProvider } from "react-hook-form";
 
 import { FormDatePicker } from "./elements/form-datepicker";
-import { FormTextarea } from "./elements/form.textarea";
+import { FormTextarea } from "./elements/form-textarea";
 
 const Form = FormProvider as typeof FormProvider & {
   Item: typeof FormItem;
