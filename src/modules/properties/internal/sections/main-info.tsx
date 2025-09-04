@@ -1,5 +1,9 @@
-import { Button } from "@shared/components/ui/button";
-import { Card } from "@shared/components/ui/card";
+import { Copy, MapPinnedIcon, PrinterIcon, Share2Icon } from "lucide-react";
+import { FC, useState } from "react";
+
+import { PropertyTags } from "@/components/property-tags";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import {
   Dialog,
   DialogContent,
@@ -7,11 +11,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger
-} from "@shared/components/ui/dialog";
-import { Copy, MapPinnedIcon, PrinterIcon, Share2Icon } from "lucide-react";
-import { FC, useState } from "react";
-
-import { PropertyTags } from "@/components/property-tags";
+} from "@/components/ui/dialog";
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
 import { PropertyPrice, PropertyPriceType, PropertyTag } from "@/types/property";
 import { formatPrice } from "@/utils/price-formatter";

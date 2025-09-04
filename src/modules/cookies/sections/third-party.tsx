@@ -2,7 +2,7 @@ import { Users, CheckCircle, Info } from "lucide-react";
 
 import { ListWithIcon } from "@/components/list-with-icon";
 import { SectionInline } from "@/components/section-inline";
-import { Alert, AlertDescription, AlertTitle, Card, CardContent } from "@/shared/components/ui";
+import { Alert, AlertDescription, AlertTitle, Card, CardContent } from "@/components/ui";
 
 const ThirdPartyCookiesSection = () => {
   return (

@@ -1,6 +1,6 @@
 @import "./globals.css";
 
-:root {
+[data-theme="dashboard"] {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.141 0.005 285.823);
@@ -35,7 +35,7 @@
   --sidebar-ring: oklch(0.705 0.015 286.067);
 }
 
-.dark {
+[data-theme="dashboard"] .dark {
   color-scheme: dark;
 
   --background: oklch(0.141 0.005 285.823);
@@ -119,13 +119,11 @@
 }
 
 /* Hide logo, footer, copyright from Google Map. { */
-a[href^="http://maps.google.com/maps"]
-{
+a[href^="http://maps.google.com/maps"] {
   display: none !important;
 }
 
-a[href^="https://maps.google.com/maps"]
-{
+a[href^="https://maps.google.com/maps"] {
   display: none !important;
 }
 
@@ -143,6 +141,6 @@ a[href^="https://maps.google.com/maps"]
 
 html,
 body,
-body > #app {
+body>#app {
   height: 100%;
 }

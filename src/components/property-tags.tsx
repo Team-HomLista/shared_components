@@ -1,4 +1,3 @@
-import { Card } from "@shared/components/ui/card";
 import {
   Star,
   Home,
@@ -13,6 +12,7 @@ import {
 } from "lucide-react";
 import { FC } from "react";
 
+import { Card } from "@/components/ui/card";
 import { PropertyTag } from "@/types/property";
 
 export interface PropertyTagsProps {

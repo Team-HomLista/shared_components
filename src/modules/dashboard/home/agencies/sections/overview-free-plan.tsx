@@ -2,7 +2,7 @@
 
 import { HelpCircle } from "lucide-react";
 
-import { Card, CardContent, CardHeader, CardTitle, Button } from "@/shared/components/ui";
+import { Card, CardContent, CardHeader, CardTitle, Button } from "@/components/ui";
 
 export type PlanUsage = {
   label: string;

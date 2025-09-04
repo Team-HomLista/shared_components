@@ -1,12 +1,5 @@
 "use client";
 
-import { Button } from "@shared/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuTrigger,
-  DropdownMenuContent,
-  DropdownMenuItem
-} from "@shared/components/ui/dropdown-menu";
 import { APIProvider } from "@vis.gl/react-google-maps";
 import {
   ChevronLeft,

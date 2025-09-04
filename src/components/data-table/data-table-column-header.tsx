@@ -1,8 +1,9 @@
 "use client";
 
-import { Button } from "@shared/components/ui/button";
 import { Column } from "@tanstack/react-table";
 import { ArrowDown, ArrowUp, ArrowUpDown } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
 
 interface DataTableColumnHeaderProps<TData, TValue> {
   column: Column<TData, TValue>;

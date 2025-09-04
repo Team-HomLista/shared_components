@@ -1,3 +1,9 @@
+import { Column, Table } from "@tanstack/react-table";
+import { format, parse } from "date-fns";
+import { es } from "date-fns/locale";
+import { ChevronDown } from "lucide-react";
+import React, { ReactNode } from "react";
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -6,12 +12,7 @@ import {
   Tag,
   TagCloseButton,
   TagCount
-} from "@shared/components/ui";
-import { Column, Table } from "@tanstack/react-table";
-import { format, parse } from "date-fns";
-import { es } from "date-fns/locale";
-import { ChevronDown } from "lucide-react";
-import React, { ReactNode } from "react";
+} from "@/components/ui";
 
 import {
   DropdownMenuCheckboxFilter,

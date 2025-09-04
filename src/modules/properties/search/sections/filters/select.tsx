@@ -1,11 +1,12 @@
+import { FC } from "react";
+
 import {
   Select,
   SelectTrigger,
   SelectValue,
   SelectContent,
   SelectItem
-} from "@shared/components/ui/select";
-import { FC } from "react";
+} from "@/components/ui/select";
 
 export interface FilterSelectProps {
   value?: string;

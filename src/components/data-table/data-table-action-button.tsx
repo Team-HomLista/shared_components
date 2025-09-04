@@ -1,7 +1,8 @@
 "use client";
 
-import { Button } from "@shared/components/ui/button";
 import type { LucideIcon } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
 
 interface DataTableActionButtonProps {
   icon?: LucideIcon;

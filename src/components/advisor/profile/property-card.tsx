@@ -1,7 +1,8 @@
 "use client";
 
-import { Card } from "@shared/components/ui/card";
 import { MapPin, BedDouble, Bath, CarFront, Maximize } from "lucide-react";
+
+import { Card } from "@/components/ui/card";
 
 interface Property {
   id: number;

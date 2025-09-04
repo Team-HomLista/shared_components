@@ -4,13 +4,12 @@ import { ChevronDownIcon, Home } from "lucide-react";
 import Link from "next/link";
 import { Fragment } from "react";
 
-import { useDashboardStore } from "@/hooks/use-dashboard";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger
-} from "@/shared/components/ui";
+} from "@/components/ui";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -18,7 +17,8 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator
-} from "@/shared/components/ui/breadcrumb";
+} from "@/components/ui/breadcrumb";
+import { useDashboardStore } from "@/hooks/use-dashboard";
 import { isBreadcrumbLinkItem, isBreadcrumbMenuItem } from "@/types/breadcrumb";
 
 export function DashboardBreadcrumb() {

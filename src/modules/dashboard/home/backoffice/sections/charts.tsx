@@ -12,7 +12,7 @@ import {
   ResponsiveContainer
 } from "recharts";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/shared/components/ui";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui";
 
 interface ChartCardProps {
   title: string;

@@ -10,7 +10,7 @@ import {
   CardContent,
   CardHeader,
   CardTitle
-} from "@/shared/components/ui";
+} from "@/components/ui";
 
 const CookieManagementSection = () => {
   return (

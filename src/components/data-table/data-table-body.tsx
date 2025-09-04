@@ -1,9 +1,10 @@
 "use client";
 
-import { Skeleton } from "@shared/components/ui";
-import { TableBody, TableCell, TableRow } from "@shared/components/ui/table";
 import { flexRender, type Table as ReactTable } from "@tanstack/react-table";
 import type { ReactNode } from "react";
+
+import { Skeleton } from "@/components/ui";
+import { TableBody, TableCell, TableRow } from "@/components/ui/table";
 
 import { DataTableEmptyState } from "./data-table-empty-state";
 

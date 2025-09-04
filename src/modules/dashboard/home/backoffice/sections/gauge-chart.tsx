@@ -3,7 +3,7 @@
 import { FC } from "react";
 import { Pie, PieChart, ResponsiveContainer } from "recharts";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/shared/components/ui";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui";
 
 interface GaugeChartProps {
   title: string;

@@ -2,8 +2,8 @@ import { cva, VariantProps } from "class-variance-authority";
 import { LucideIcon } from "lucide-react";
 import { ReactNode } from "react";
 
+import { Icon } from "@/components/ui";
 import { cn } from "@/lib/utils";
-import { Icon } from "@/shared/components/ui";
 
 const iconVariants = cva("flex-shrink-0", {
   variants: {

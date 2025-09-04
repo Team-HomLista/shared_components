@@ -1,9 +1,9 @@
-import { Badge } from "@shared/components/ui/badge";
 import { Settings, CheckCircle } from "lucide-react";
 
 import { ListWithIcon } from "@/components/list-with-icon";
 import { SectionInline } from "@/components/section-inline";
-import { Card, CardContent, CardHeader, CardTitle } from "@/shared/components/ui";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui";
+import { Badge } from "@/components/ui/badge";
 
 const TypesOfCookiesSection = () => {
   return (

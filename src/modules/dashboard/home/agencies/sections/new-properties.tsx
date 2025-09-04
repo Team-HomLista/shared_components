@@ -2,7 +2,7 @@
 
 import { Building2, Workflow, LayoutGrid } from "lucide-react";
 
-import { Card, CardContent, CardHeader, CardTitle, Button } from "@/shared/components/ui";
+import { Card, CardContent, CardHeader, CardTitle, Button } from "@/components/ui";
 
 type NewPropertiesProps = {
   stats: { label: string; value: string | number }[];

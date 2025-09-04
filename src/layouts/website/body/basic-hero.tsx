@@ -1,5 +1,6 @@
-import { Badge } from "@shared/components/ui/badge";
 import { PropsWithChildren, ReactNode } from "react";
+
+import { Badge } from "@/components/ui/badge";
 
 interface BasicHeroProps {
   title: string;

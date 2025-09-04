@@ -9,7 +9,7 @@ import {
   CardContent,
   CardHeader,
   CardTitle
-} from "@/shared/components/ui";
+} from "@/components/ui";
 
 export function CancellationRenewalSection() {
   return (

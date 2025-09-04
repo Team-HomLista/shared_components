@@ -1,9 +1,9 @@
-import { Button } from "@shared/components/ui/button";
-import { Input } from "@shared/components/ui/input";
-import { Textarea } from "@shared/components/ui/textarea";
 import Link from "next/link";
 import { FC } from "react";
 
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { PropertyAgent } from "@/types/property";
 
 export interface AgentTouchProps {

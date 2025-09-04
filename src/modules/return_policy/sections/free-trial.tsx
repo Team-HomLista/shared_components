@@ -11,7 +11,7 @@ import {
   CardDescription,
   CardHeader,
   CardTitle
-} from "@/shared/components/ui";
+} from "@/components/ui";
 
 export function FreeTrialSection() {
   return (

@@ -3,7 +3,7 @@
 import { FC } from "react";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/shared/components/ui";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui";
 
 interface DemandData {
   name: string;

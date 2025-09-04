@@ -1,8 +1,8 @@
-import { Button, Input } from "@shared/components/ui";
 import { Table, TableMeta } from "@tanstack/react-table";
 import { SearchIcon, XIcon } from "lucide-react";
 import { ReactNode, useEffect, useState } from "react";
 
+import { Button, Input } from "@/components/ui";
 import { useDebounce } from "@/hooks/use-debounce";
 import { ActionItem } from "@/types/data-table";
 

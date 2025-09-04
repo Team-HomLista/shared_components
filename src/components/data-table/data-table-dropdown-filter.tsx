@@ -1,3 +1,9 @@
+import { Table } from "@tanstack/react-table";
+import { format, parse } from "date-fns";
+import { Settings2 } from "lucide-react";
+import { ReactNode, useEffect, useId, useState } from "react";
+import { DateRange } from "react-day-picker";
+
 import {
   Button,
   Checkbox,
@@ -15,14 +21,8 @@ import {
   Label,
   RadioGroup,
   RadioGroupItem
-} from "@shared/components/ui";
-import { DateRangePicker } from "@shared/components/ui/date-range-picker";
-import { Table } from "@tanstack/react-table";
-import { format, parse } from "date-fns";
-import { Settings2 } from "lucide-react";
-import { ReactNode, useEffect, useId, useState } from "react";
-import { DateRange } from "react-day-picker";
-
+} from "@/components/ui";
+import { DateRangePicker } from "@/components/ui/date-range-picker";
 import { useDebounce } from "@/hooks/use-debounce";
 
 export const DataTableDropdownFilter = <TData,>({ table }: { table: Table<TData> }) => {

@@ -1,12 +1,15 @@
 "use client";
-import { Button } from "@shared/components/ui/button";
+import { Check, X } from "lucide-react";
+import { Fragment, useState } from "react";
+
+import { Button } from "@/components/ui/button";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue
-} from "@shared/components/ui/select";
+} from "@/components/ui/select";
 import {
   Table,
   TableHead,
@@ -14,11 +17,8 @@ import {
   TableRow,
   TableBody,
   TableCell
-} from "@shared/components/ui/table";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@shared/components/ui/tooltip";
-import { Check, X } from "lucide-react";
-import { Fragment, useState } from "react";
-
+} from "@/components/ui/table";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { ComparisonSection } from "@/types/plan-info";
 
 interface ComparisonTableProps {

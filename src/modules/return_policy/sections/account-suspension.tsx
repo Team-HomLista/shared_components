@@ -2,7 +2,7 @@ import { AlertTriangle, XCircle } from "lucide-react";
 
 import { ListWithIcon } from "@/components/list-with-icon";
 import { SectionInline } from "@/components/section-inline";
-import { Card, CardContent, CardHeader, CardTitle } from "@/shared/components/ui";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui";
 
 export function AccountSuspensionSection() {
   return (

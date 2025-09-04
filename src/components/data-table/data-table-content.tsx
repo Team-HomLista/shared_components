@@ -1,8 +1,9 @@
 "use client";
 
-import { Table } from "@shared/components/ui/table";
 import type { Table as ReactTable } from "@tanstack/react-table";
 import type { ReactNode } from "react";
+
+import { Table } from "@/components/ui/table";
 
 import { DataTableBody } from "./data-table-body";
 import { DataTableHeader } from "./data-table-header";

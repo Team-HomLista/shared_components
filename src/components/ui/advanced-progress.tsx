@@ -1,0 +1,66 @@
+import * as ProgressPrimitive from "@radix-ui/react-progress";
+import * as React from "react";
+
+import { Text } from "@/components/ui/text";
+import { cn } from "@/lib/utils";
+
+interface AdvancedProgressProps extends React.ComponentProps<typeof ProgressPrimitive.Root> {
+  text?: string;
+}
+
+function AdvancedProgress({
+  className,
+  value,
+  max,
+  getValueLabel,
+  ...props
+}: AdvancedProgressProps) {
+  const valueLabel = getValueLabel?.(value ?? 0, max ?? 100);
+
+  return (
+    <ProgressPrimitive.Root
+      className={cn("bg-primary/20 relative h-5 w-full overflow-hidden rounded-full", className)}
+      data-slot="progress"
+      getValueLabel={getValueLabel}
+      max={max}
+      {...props}
+    >
+      {getValueLabel && (
+        <div className="text-foreground absolute inset-0 flex items-center justify-center">
+          <Text>{valueLabel}</Text>
+        </div>
+      )}
+
+      <ProgressPrimitive.Indicator
+        className="bg-primary h-full w-full flex-1 overflow-hidden transition-all"
+        data-slot="progress-indicator"
+        style={{ transform: `translateX(-${100 - (value || 0)}%)` }}
+      >
+        {getValueLabel && (
+          <div
+            className="absolute inset-0 flex items-center justify-center"
+            style={{ transform: `translateX(${100 - (value || 0)}%)` }}
+          >
+            <Text className="text-primary-foreground">{valueLabel}</Text>
+          </div>
+        )}
+      </ProgressPrimitive.Indicator>
+    </ProgressPrimitive.Root>
+    // <div data-slot="advanced-progress" className={cn("relative", className)}>
+    //   <Progress
+    //     className={cn("h-5", {
+    //       "[&_[data-slot=progress-indicator]]:bg-green-500":
+    //         (value ?? 0) === 100,
+    //     })}
+    //     value={value}
+    //     {...props}
+    //   />
+
+    //   <div className="absolute inset-0 flex items-center justify-center">
+    //     <Text className="text-primary-foreground">{text ?? `${value}%`}</Text>
+    //   </div>
+    // </div>
+  );
+}
+
+export { AdvancedProgress };

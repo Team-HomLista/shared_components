@@ -1,8 +1,8 @@
-import { Text } from "@shared/components/ui/text";
 import { BathIcon, BedIcon, CarIcon, RulerIcon } from "lucide-react";
 import { FC } from "react";
 
 import { PropertyCardLandDetail } from "@/components/property-card/land-detail";
+import { Text } from "@/components/ui/text";
 import { formatPrice } from "@/utils/price-formatter";
 
 export interface PropertyCardInformationProps {

@@ -6,8 +6,7 @@ import * as React from "react";
 import { useState } from "react";
 
 import LogoDark from "@/assets/logo-dark.svg";
-import { useDashboardStore } from "@/hooks/use-dashboard";
-import { Collapsible, CollapsibleContent, CollapsibleTrigger, Icon } from "@/shared/components/ui";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger, Icon } from "@/components/ui";
 import {
   Sidebar,
   SidebarContent,
@@ -21,8 +20,9 @@ import {
   SidebarMenuSub,
   SidebarMenuSubButton,
   SidebarMenuSubItem
-} from "@/shared/components/ui/sidebar";
-import useCookie from "@/shared/hooks/use-cookie";
+} from "@/components/ui/sidebar";
+import useCookie from "@/hooks/use-cookie";
+import { useDashboardStore } from "@/hooks/use-dashboard";
 import { isMenuCollepsible, MenuCollapsible, MenuItem } from "@/types/menu";
 
 export function DashboardSidebar(props: React.ComponentProps<typeof Sidebar>) {

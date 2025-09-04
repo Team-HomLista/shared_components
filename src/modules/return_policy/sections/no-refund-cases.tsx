@@ -3,7 +3,7 @@ import { Fragment, ReactNode } from "react";
 
 import { ListWithIcon } from "@/components/list-with-icon";
 import { SectionInline } from "@/components/section-inline";
-import { Card, CardContent } from "@/shared/components/ui";
+import { Card, CardContent } from "@/components/ui";
 
 const items: Array<ReactNode> = [
   "El período de prueba gratuito ha finalizado sin activación.",

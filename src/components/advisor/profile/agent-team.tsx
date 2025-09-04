@@ -21,7 +21,7 @@ const AgentCard: React.FC<AgentCardProps> = ({ agent }) => {
         <img
           src={agent.image}
           alt={agent.name}
-          className="border-sidebar-border h-12 w-12 rounded-full border object-cover"
+          className="border-sidebar-border size-12 rounded-full border object-cover"
         />
         <div>
           <h3 className="text-sidebar-primary font-semibold">{agent.name}</h3>

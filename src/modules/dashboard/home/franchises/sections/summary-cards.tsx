@@ -2,7 +2,7 @@
 
 import { FC } from "react";
 
-import { Card, CardContent } from "@/shared/components/ui";
+import { Card, CardContent } from "@/components/ui";
 
 interface SummaryCardItem {
   label: string;

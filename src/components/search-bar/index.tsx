@@ -1,18 +1,18 @@
 "use client";
-import { Button } from "@shared/components/ui/button";
-import { Input } from "@shared/components/ui/input";
+import { Search } from "lucide-react";
+import Link from "next/link";
+import { FC, useState } from "react";
+
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue
-} from "@shared/components/ui/select";
-import { Text } from "@shared/components/ui/text";
-import { Search } from "lucide-react";
-import Link from "next/link";
-import { FC, useState } from "react";
-
+} from "@/components/ui/select";
+import { Text } from "@/components/ui/text";
 import { BuildingType } from "@/types/enums/building-type";
 import { TransactionType } from "@/types/enums/transaction-type";
 
