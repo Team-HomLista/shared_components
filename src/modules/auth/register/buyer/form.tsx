@@ -35,6 +35,40 @@ export function BuyerRegisterForm() {
       <form className="flex flex-col gap-4" onSubmit={form.handleSubmit(handleSubmit)}>
         <Form.Input
           control={form.control}
+          name="firstName"
+          title={t("register.fields.firstName")}
+        />
+
+        <Form.Input control={form.control} name="lastName" title={t("register.fields.lastName")} />
+
+        <div className="grid grid-cols-[auto_1fr_auto] gap-2">
+          <Form.Selector
+            control={form.control}
+            name="phoneCode"
+            title={t("register.fields.phoneCode")}
+            placeholder="+52"
+            items={[
+              {
+                label: "+52",
+                value: "52"
+              },
+              {
+                label: "+1",
+                value: "1"
+              }
+            ]}
+          />
+
+          <Form.Input
+            control={form.control}
+            name="phoneNumber"
+            title={t("register.fields.phoneNumber")}
+            className="min-w-32"
+          />
+        </div>
+
+        <Form.Input
+          control={form.control}
           type="email"
           name="email"
           title={t("register.fields.email")}
@@ -71,42 +105,6 @@ export function BuyerRegisterForm() {
             </li>
           ))}
         </ul>
-
-        <Text variant="subtitle">{t("register.personalInfo")}</Text>
-
-        <Form.Input
-          control={form.control}
-          name="firstName"
-          title={t("register.fields.firstName")}
-        />
-
-        <Form.Input control={form.control} name="lastName" title={t("register.fields.lastName")} />
-
-        <div className="grid grid-cols-[auto_1fr_auto] gap-2">
-          <Form.Selector
-            control={form.control}
-            name="phoneCode"
-            title={t("register.fields.phoneCode")}
-            placeholder="+52"
-            items={[
-              {
-                label: "+52",
-                value: "52"
-              },
-              {
-                label: "+1",
-                value: "1"
-              }
-            ]}
-          />
-
-          <Form.Input
-            control={form.control}
-            name="phoneNumber"
-            title={t("register.fields.phoneNumber")}
-            className="min-w-32"
-          />
-        </div>
 
         <Button
           type="submit"
