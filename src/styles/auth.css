@@ -1,6 +1,6 @@
 @import "./globals.css";
 
-:root {
+[data-theme="auth"] {
   --radius: 0.625rem;
   --background: oklab(98.483% -0.00037 0.00115);
   --foreground: oklch(0.141 0.005 285.823);
@@ -35,7 +35,7 @@
   --sidebar-ring: oklch(0.705 0.015 286.067);
 }
 
-.dark {
+[data-theme="auth"] .dark {
   color-scheme: dark;
 
   --background: oklch(0.141 0.005 285.823);

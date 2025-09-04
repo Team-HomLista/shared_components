@@ -1,10 +1,12 @@
 {
   "title": "Inicio de sesión",
-  "description": "Nos alegra tenerte de regreso",
+  "description": "Bienvenido a la experiencia Homlista",
   "email": "Correo electrónico",
   "password": "Contraseña",
-  "loginBtn": "Iniciar sesión",
-  "forgotPassBtn": "Olvidé la contraseña",
+  "submitBtn": "Ingresar",
+  "forgotPassBtn": "Olvidé mi contraseña",
+  "dontHaveAnAccount": "¿No tienes una cuenta?",
+  "register": "Registrarse",
   "acceptTermsAndPrivacy": "Al continuar acepto los <0 href=\"/terms\">Términos de Servicio</0> y <1 href=\"/privacy_policy\">Política de Privacidad</1>.",
   "error": {
     "title": "Inicio de sesión fallido",

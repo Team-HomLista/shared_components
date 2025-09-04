@@ -82,7 +82,7 @@ export const WebsiteNavbar: FC<NavbarProps> = ({ variant = "default" }) => {
 
   const { data } = useQuery({
     queryKey: ["access-token"],
-    queryFn: () => getAccessToken()
+    queryFn: async () => (await getAccessToken()) ?? ""
   });
 
   const isAuth = !!data;

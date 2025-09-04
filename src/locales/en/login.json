@@ -1,10 +1,12 @@
 {
   "title": "Login",
-  "description": "We are glad to have you back",
+  "description": "Welcome to the Homlista experience",
   "email": "Email",
   "password": "Password",
-  "loginBtn": "Login",
+  "submitBtn": "Login",
+  "dontHaveAnAccount": "Don't have an account?",
   "forgotPassBtn": "I forgot my password",
+  "register": "Register",
   "acceptTermsAndPrivacy": "By continuing, I accept the <0 href=\"/terms\">Terms of Service</0> and <1 href=\"/privacy_policy\">Privacy Policy</1>.",
   "error": {
     "title": "Login failed",

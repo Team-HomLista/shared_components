@@ -5,7 +5,7 @@
 
 @custom-variant dark (:is(.dark &):not(.light &));
 
-:root {
+[data-theme=""] {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -71,7 +71,7 @@
   --withdrawn-status-foreground: #be123c;
 }
 
-.dark {
+[data-theme=""] .dark {
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
@@ -209,6 +209,7 @@
 }
 
 @keyframes housito-bounce {
+
   0%,
   100% {
     transform: translateY(0);
@@ -237,6 +238,7 @@
 }
 
 @keyframes float {
+
   0%,
   100% {
     transform: translateY(0px);
@@ -248,6 +250,7 @@
 }
 
 @keyframes gradient-x {
+
   0%,
   100% {
     transform: translateX(0%);
