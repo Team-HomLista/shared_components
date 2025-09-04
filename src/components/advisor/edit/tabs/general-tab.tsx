@@ -4,36 +4,36 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Globe, Linkedin, Facebook, AtSign } from "lucide-react";
 import { FC } from "react";
 import { useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import { z } from "zod";
 
 import { Button, Form } from "@/components/ui";
 
-// --- Tipos ---
 interface GeneralTabProps {
   mode: "agency" | "agent";
 }
 
-// --- Zod Schema ---
-const generalSchema = z.object({
-  state: z.string().min(1, "Selecciona un estado"),
-  address: z.string().min(1, "La dirección es requerida"),
-  lada: z.string().min(1, "Selecciona la lada"),
-  phone: z.string().min(1, "Ingresa el teléfono"),
-  extension: z.string().optional(),
-  website: z.string().url().optional(),
-  email: z.string().email().optional(),
-  linkedin: z.string().url().optional(),
-  facebook: z.string().url().optional(),
-  username: z.string().optional(),
-  contactPhone: z.string().optional(),
-  agency: z.string().optional(), // Agencia a la que pertenece (solo agente)
-  mobile: z.string().optional() // Teléfono móvil (solo agente)
-});
-
-type GeneralForm = z.infer<typeof generalSchema>;
-
-// --- GeneralTab Component ---
 export const GeneralTab: FC<GeneralTabProps> = ({ mode }) => {
+  const { t } = useTranslation("general");
+
+  const generalSchema = z.object({
+    state: z.string().min(1, t("generalForm.validations.stateRequired")),
+    address: z.string().min(1, t("generalForm.validations.addressRequired")),
+    lada: z.string().min(1, t("generalForm.validations.ladaRequired")),
+    phone: z.string().min(1, t("generalForm.validations.phoneRequired")),
+    extension: z.string().optional(),
+    website: z.string().url(t("generalForm.validations.websiteInvalid")).optional(),
+    email: z.string().email(t("generalForm.validations.emailInvalid")).optional(),
+    linkedin: z.string().url(t("generalForm.validations.linkedinInvalid")).optional(),
+    facebook: z.string().url(t("generalForm.validations.facebookInvalid")).optional(),
+    username: z.string().optional(),
+    contactPhone: z.string().optional(),
+    agency: z.string().optional(),
+    mobile: z.string().optional()
+  });
+
+  type GeneralForm = z.infer<typeof generalSchema>;
+
   const form = useForm<GeneralForm>({
     resolver: zodResolver(generalSchema),
     defaultValues: {
@@ -54,19 +54,19 @@ export const GeneralTab: FC<GeneralTabProps> = ({ mode }) => {
   });
 
   const handleSubmit = (data: GeneralForm) => {
-    console.log("Datos enviados:", data);
+    console.log("Form data:", data);
   };
 
   return (
     <Form {...form}>
       <form className="space-y-6" onSubmit={form.handleSubmit(handleSubmit)}>
-        {/* Agencia a la que pertenece (solo en agente) */}
+        {/* Agency */}
         {mode === "agent" && (
           <Form.Selector
             control={form.control}
             name="agency"
-            title="Agencia a la que pertenece"
-            placeholder="Selecciona una agencia"
+            title={t("generalForm.fields.agency.label")}
+            placeholder={t("generalForm.fields.agency.placeholder")}
             items={[
               { value: "siglo-xxi-cancun", label: "Siglo XXI Cancún" },
               { value: "siglo-xxi-cdmx", label: "Siglo XXI CDMX" },
@@ -75,87 +75,97 @@ export const GeneralTab: FC<GeneralTabProps> = ({ mode }) => {
           />
         )}
 
-        {/* Estado */}
+        {/* State */}
         <Form.Selector
           control={form.control}
           name="state"
-          title="Estado"
-          placeholder="Selecciona un estado"
+          title={t("generalForm.fields.state.label")}
+          placeholder={t("generalForm.fields.state.placeholder")}
           items={[
             { value: "cdmx", label: "Ciudad de México" },
             { value: "qroo", label: "Quintana Roo" }
           ]}
         />
 
-        {/* Email del Agente (solo en agente) */}
+        {/* Email */}
         {mode === "agent" && (
           <Form.Input
             control={form.control}
             name="email"
-            placeholder="benjamin_sigloxx@gmail.com"
-            title="Email del Agente"
+            placeholder={t("generalForm.fields.email.placeholder")}
+            title={t("generalForm.fields.email.label")}
           />
         )}
 
-        {/* Dirección */}
+        {/* Address */}
         <Form.Input
           control={form.control}
           name="address"
-          placeholder="Av. Insurgentes Sur 3807, 2do. Piso, La Fama, Tlalpan, C.P.14269"
-          title="Dirección"
+          placeholder={t("generalForm.fields.address.placeholder")}
+          title={t("generalForm.fields.address.label")}
         />
 
-        {/* Teléfono de Oficina */}
+        {/* Office Phone */}
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-          <Form.Input control={form.control} name="lada" placeholder="+52" title="LADA" />
+          <Form.Input
+            control={form.control}
+            name="lada"
+            placeholder={t("generalForm.fields.lada.placeholder")}
+            title={t("generalForm.fields.lada.label")}
+          />
           <Form.Input
             control={form.control}
             name="phone"
-            placeholder="5555-0876"
-            title="Teléfono de Oficina"
+            placeholder={t("generalForm.fields.phone.placeholder")}
+            title={t("generalForm.fields.phone.label")}
           />
-          <Form.Input control={form.control} name="extension" placeholder="273" title="Extensión" />
+          <Form.Input
+            control={form.control}
+            name="extension"
+            placeholder={t("generalForm.fields.extension.placeholder")}
+            title={t("generalForm.fields.extension.label")}
+          />
         </div>
 
-        {/* Teléfono Móvil (solo en agente) */}
+        {/* Mobile */}
         {mode === "agent" && (
           <Form.Input
             control={form.control}
             name="mobile"
-            placeholder="5555-0876"
-            title="Teléfono Móvil"
+            placeholder={t("generalForm.fields.mobile.placeholder")}
+            title={t("generalForm.fields.mobile.label")}
           />
         )}
 
-        {/* Contacto */}
+        {/* Contact */}
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           <Form.Input
             control={form.control}
             name="website"
-            placeholder="https://siglo.com"
+            placeholder={t("generalForm.fields.website.placeholder")}
             prefixNode={<Globe className="text-foreground h-4 w-4" />}
           />
           <Form.Input
             control={form.control}
             name="linkedin"
-            placeholder="https://linkedin/siglo.com"
+            placeholder={t("generalForm.fields.linkedin.placeholder")}
             prefixNode={<Linkedin className="text-foreground h-4 w-4" />}
           />
           <Form.Input
             control={form.control}
             name="facebook"
-            placeholder="https://fb/siglo.com"
+            placeholder={t("generalForm.fields.facebook.placeholder")}
             prefixNode={<Facebook className="text-foreground h-4 w-4" />}
           />
           <Form.Input
             control={form.control}
             name="username"
-            placeholder="@siglo"
+            placeholder={t("generalForm.fields.username.placeholder")}
             prefixNode={<AtSign className="text-foreground h-4 w-4" />}
           />
         </div>
 
-        <Button type="submit">Guardar información</Button>
+        <Button type="submit">{t("generalForm.buttons.save")}</Button>
       </form>
     </Form>
   );

@@ -2,6 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import { z } from "zod";
 
 import { Form, Button } from "@/components/ui";
@@ -33,6 +34,8 @@ interface Props {
 }
 
 export default function CertificationForm({ certification, onSave, onSuccess }: Props) {
+  const { t } = useTranslation("agency");
+
   const form = useForm<CertificationSchema>({
     resolver: zodResolver(certificationSchema),
     defaultValues: {
@@ -52,24 +55,24 @@ export default function CertificationForm({ certification, onSave, onSuccess }: 
   return (
     <Form {...form}>
       <form className="space-y-4" onSubmit={form.handleSubmit(handleSubmit)}>
-        <Form.Input control={form.control} name="name" title="Nombre de la Certificación" />
-        <Form.Input control={form.control} name="license" title="Número de Licencia" />
+        <Form.Input control={form.control} name="name" title={t("certification.form.name")} />
+        <Form.Input control={form.control} name="license" title={t("certification.form.license")} />
 
         <Form.RadioGroup
           control={form.control}
           name="visibility"
-          title="Visibilidad"
+          title={t("certification.form.visibility")}
           options={[
-            { label: "Público", value: Visibility.PUBLIC },
-            { label: "Privado", value: Visibility.PRIVATE }
+            { label: t("certification.form.visibilityPublic"), value: Visibility.PUBLIC },
+            { label: t("certification.form.visibilityPrivate"), value: Visibility.PRIVATE }
           ]}
         />
 
         <Form.Selector<CertificationSchema>
           control={form.control}
           name="state"
-          title="Lugar de Expedición"
-          placeholder="Selecciona un estado"
+          title={t("certification.form.state")}
+          placeholder={t("certification.form.statePlaceholder")}
           items={[
             { label: "CDMX", value: "CDMX" },
             { label: "Guadalajara", value: "GDL" },
@@ -77,13 +80,19 @@ export default function CertificationForm({ certification, onSave, onSuccess }: 
           ]}
         />
 
-        <Form.DatePicker control={form.control} name="issuedAt" label="Fecha de Expedición" />
+        <Form.DatePicker
+          control={form.control}
+          name="issuedAt"
+          label={t("certification.form.issuedAt")}
+        />
 
         <div className="flex justify-end gap-2 pt-4">
           <Button type="button" variant="ghost" onClick={onSuccess}>
-            Cancelar
+            {t("certification.form.cancel")}
           </Button>
-          <Button type="submit">{certification ? "Guardar cambios" : "Crear ahora"}</Button>
+          <Button type="submit">
+            {certification ? t("certification.form.save") : t("certification.form.create")}
+          </Button>
         </div>
       </form>
     </Form>

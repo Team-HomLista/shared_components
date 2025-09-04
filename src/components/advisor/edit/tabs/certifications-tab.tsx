@@ -1,6 +1,7 @@
 "use client";
 
 import { FC, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import { Button } from "@/components/ui";
 import { Card, CardContent } from "@/components/ui/card";
@@ -10,6 +11,7 @@ import CertificationForm, { Certification } from "./certification-form";
 
 export const CertificationsTab: FC = () => {
   const { showDialog, closeDialog } = useDialog();
+  const { t } = useTranslation("agency");
 
   const [certifications, setCertifications] = useState<Certification[]>([]);
 
@@ -31,19 +33,17 @@ export const CertificationsTab: FC = () => {
       <CardContent className="p-6">
         {certifications.length === 0 ? (
           <div className="space-y-4">
-            <p className="text-muted-foreground">
-              Esta agencia aún no cuenta con certificaciones agregadas.
-            </p>
+            <p className="text-muted-foreground">{t("certifications.empty")}</p>
             <Button
               onClick={() =>
                 showDialog({
-                  title: "Agregar una certificación",
+                  title: t("certifications.addTitle"),
                   content: <CertificationForm onSave={handleSave} onSuccess={closeDialog} />,
                   showCloseButton: true
                 })
               }
             >
-              Agregar nueva
+              {t("certifications.addNew")}
             </Button>
           </div>
         ) : (
@@ -52,13 +52,13 @@ export const CertificationsTab: FC = () => {
               <Button
                 onClick={() =>
                   showDialog({
-                    title: "Agregar una certificación",
+                    title: t("certifications.addTitle"),
                     content: <CertificationForm onSave={handleSave} onSuccess={closeDialog} />,
                     showCloseButton: true
                   })
                 }
               >
-                Agregar nueva
+                {t("certifications.addNew")}
               </Button>
             </div>
             <ul className="space-y-4">
@@ -66,10 +66,12 @@ export const CertificationsTab: FC = () => {
                 <li key={cert.id} className="flex items-center justify-between">
                   <div>
                     <p className="font-medium">{cert.name}</p>
-                    <p className="text-sm text-gray-600">Licencia: {cert.license}</p>
+                    <p className="text-sm text-gray-600">
+                      {t("certifications.license")}: {cert.license}
+                    </p>
                     {cert.issuedAt && (
                       <p className="text-sm text-gray-600">
-                        Expedición: {cert.issuedAt.toLocaleDateString()}
+                        {t("certifications.issuedAt")}: {cert.issuedAt.toLocaleDateString()}
                       </p>
                     )}
                   </div>
@@ -78,7 +80,7 @@ export const CertificationsTab: FC = () => {
                     size="sm"
                     onClick={() =>
                       showDialog({
-                        title: "Editar certificación",
+                        title: t("certifications.editTitle"),
                         content: (
                           <CertificationForm
                             certification={cert}
@@ -90,7 +92,7 @@ export const CertificationsTab: FC = () => {
                       })
                     }
                   >
-                    Editar
+                    {t("certifications.edit")}
                   </Button>
                 </li>
               ))}
