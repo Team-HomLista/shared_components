@@ -171,10 +171,12 @@
 }
 
 .city-card-shimmer {
-  background: linear-gradient(110deg,
-      transparent 40%,
-      rgba(255, 255, 255, 0.1) 50%,
-      transparent 60%);
+  background: linear-gradient(
+    110deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 60%
+  );
   background-size: 200px 100%;
   animation: shimmer 2s infinite;
 }
@@ -237,7 +239,6 @@
 
 /* Accessibility improvements */
 @media (prefers-reduced-motion: reduce) {
-
   .city-card-shimmer,
   .city-card-float,
   .city-card-entrance {
