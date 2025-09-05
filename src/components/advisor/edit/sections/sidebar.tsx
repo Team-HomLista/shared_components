@@ -28,7 +28,7 @@ export const AgencySidebar: FC<AgencySidebarProps> = ({
   metadata,
   showAgents = true
 }) => {
-  const { t } = useTranslation("agency");
+  const { t } = useTranslation("auth");
 
   return (
     <aside className="space-y-4">

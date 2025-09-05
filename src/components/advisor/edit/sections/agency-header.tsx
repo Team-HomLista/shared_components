@@ -17,10 +17,18 @@ interface AgencyHeaderProps {
   name: string;
   id: string;
   status: string;
+  /** Si es true, oculta la opción "Desactivar cuenta" */
+  hideDeactivateOption?: boolean;
 }
 
-export const AgencyHeader: FC<AgencyHeaderProps> = ({ logo, name, id, status }) => {
-  const { t } = useTranslation("agency");
+export const AgencyHeader: FC<AgencyHeaderProps> = ({
+  logo,
+  name,
+  id,
+  status,
+  hideDeactivateOption = false
+}) => {
+  const { t } = useTranslation("auth");
 
   return (
     <header className="flex items-center justify-between">
@@ -40,7 +48,7 @@ export const AgencyHeader: FC<AgencyHeaderProps> = ({ logo, name, id, status }) 
 
       {/* Botones */}
       <div className="flex gap-2">
-        <Button variant="default">{t("viewProfile")}</Button>
+        <Button variant="default">{t("agency.viewProfile")}</Button>
 
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -49,13 +57,15 @@ export const AgencyHeader: FC<AgencyHeaderProps> = ({ logo, name, id, status }) 
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-48">
-            <DropdownMenuItem className="flex items-center gap-2">
-              <UserX className="text-muted-foreground" />
-              <span>{t("deactivateAccount")}</span>
-            </DropdownMenuItem>
+            {!hideDeactivateOption && (
+              <DropdownMenuItem className="flex items-center gap-2">
+                <UserX className="text-muted-foreground" />
+                <span>{t("agency.deactivateAccount")}</span>
+              </DropdownMenuItem>
+            )}
             <DropdownMenuItem className="text-destructive focus:text-destructive flex items-center gap-2">
               <Trash2 className="text-destructive h-4 w-4" />
-              <span>{t("deleteAccount")}</span>
+              <span>{t("agency.deleteAccount")}</span>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

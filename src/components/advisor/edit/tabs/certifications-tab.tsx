@@ -11,7 +11,7 @@ import CertificationForm, { Certification } from "./certification-form";
 
 export const CertificationsTab: FC = () => {
   const { showDialog, closeDialog } = useDialog();
-  const { t } = useTranslation("agency");
+  const { t } = useTranslation("auth");
 
   const [certifications, setCertifications] = useState<Certification[]>([]);
 

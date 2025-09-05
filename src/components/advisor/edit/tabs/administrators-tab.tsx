@@ -16,7 +16,7 @@ const schema = z.object({
 type Schema = z.infer<typeof schema>;
 
 export const AdministratorsTab: FC = () => {
-  const { t } = useTranslation("agency");
+  const { t } = useTranslation("auth");
 
   const form = useForm<Schema>({
     resolver: zodResolver(schema),

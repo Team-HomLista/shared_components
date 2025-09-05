@@ -19,7 +19,7 @@ import { getYouTubeEmbedUrl } from "@/utils/string";
 
 // --- Schema de Zod ---
 export const VideoTab: FC = () => {
-  const { t } = useTranslation("video");
+  const { t } = useTranslation("auth");
 
   const videoSchema = z.object({
     url: z

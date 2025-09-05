@@ -14,7 +14,7 @@ interface GeneralTabProps {
 }
 
 export const GeneralTab: FC<GeneralTabProps> = ({ mode }) => {
-  const { t } = useTranslation("general");
+  const { t } = useTranslation("auth");
 
   const generalSchema = z.object({
     state: z.string().min(1, t("generalForm.validations.stateRequired")),

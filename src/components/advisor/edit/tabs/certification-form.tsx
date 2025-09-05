@@ -34,7 +34,7 @@ interface Props {
 }
 
 export default function CertificationForm({ certification, onSave, onSuccess }: Props) {
-  const { t } = useTranslation("agency");
+  const { t } = useTranslation("auth");
 
   const form = useForm<CertificationSchema>({
     resolver: zodResolver(certificationSchema),

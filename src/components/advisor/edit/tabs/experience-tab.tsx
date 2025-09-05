@@ -12,7 +12,7 @@ import { Form } from "@/components/ui/form";
 const maxChars = 2000;
 
 export const ExperienceTab: FC = () => {
-  const { t } = useTranslation("experience");
+  const { t } = useTranslation("auth");
 
   const experienceSchema = z.object({
     about: z
