@@ -1,7 +1,8 @@
 "use client";
 
 import { getBreadcrumbFromMenuItem, useDashboard } from "@/hooks/use-dashboard";
-import { AgencyViewContainer } from "@/modules/agencies/dashboard/view/container";
+import { AgentViewContainer } from "@/modules/agents/dashboard/view/container";
+//import { AgencyViewContainer } from "@/modules/agencies/dashboard/view/container";
 
 export default function Page() {
   useDashboard({
@@ -9,5 +10,5 @@ export default function Page() {
     breadcrumb: getBreadcrumbFromMenuItem("advisors/franchises", true)
   });
 
-  return <AgencyViewContainer />;
+  return <AgentViewContainer />;
 }

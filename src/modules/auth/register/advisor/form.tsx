@@ -10,7 +10,7 @@ import { Button, Form, Text } from "@/components/ui";
 import { cn } from "@/lib/utils";
 import { passwordChecks } from "@/modules/auth/register/account/schema";
 
-import { Schema, schema } from "./schema";
+import { schema } from "./schema";
 
 export function AdvisorRegisterForm() {
   const form = useForm({
@@ -23,7 +23,7 @@ export function AdvisorRegisterForm() {
   const password = form.watch("password") ?? "";
   const isPasswordDirty = form.formState.dirtyFields?.password ?? false;
 
-  const handleSubmit = (data: Schema) => {};
+  const handleSubmit = () => {};
 
   const EyeIcon = showPassword ? Eye : EyeClosed;
 
